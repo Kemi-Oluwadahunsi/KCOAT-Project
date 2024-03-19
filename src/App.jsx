@@ -1,14 +1,14 @@
+// import { Routes, Route, BrowserRouter } from "react-router-dom";
 
+import Header from "./components/Header";
 
 function App() {
-  
   return (
     <>
-      <div className="text-blue-500">
-        This is to test the tailwind configuration
-      </div>
+    <Header />
+      
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -12,6 +12,17 @@ export default {
       bland: "#000",
       color: "#323232",
     },
+    screens: {
+      xs: "480px",
+      ss: "620px",
+      sm: "768px",
+      md: "1060px",
+      lg: "1024px",
+      xl: "1366px",
+      "2xl": "1536px",
+    },
+
+    }
   },
   plugins: [],
 };
