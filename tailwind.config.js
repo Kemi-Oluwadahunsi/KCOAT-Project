@@ -6,7 +6,7 @@ export default {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      primary: "#fff",
+      primary: "#FCFAFD",
       secondary: "#F2E29F",
       tertiary: "#0C323A",
       bland: "#000",
@@ -20,7 +20,11 @@ export default {
       lg: "1024px",
       xl: "1366px",
       "2xl": "1536px",
-    }
+    },
+    fontFamily: {
+      primary: ["Inter", "sans-serif"],
+      secondary: ["Montserrat", "sans-serif"],
+    },
   },
   plugins: [],
 };
