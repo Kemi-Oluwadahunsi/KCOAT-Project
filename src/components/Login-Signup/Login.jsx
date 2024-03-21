@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import LoginImage from "../../../assets/login.png";
-import Button from "../../Button";
+import LoginImage from "../../assets/login.png";
+import Button from "../Button";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
@@ -21,7 +21,7 @@ const Login = () => {
               Login
             </h3>
             <p className="text-createaccount font-secondary font-bold">
-              Do not have an account,
+              Don&apos;t have an account,{" "}
               <span className="font-bold text-bland">SignUp.</span>
             </p>
           </div>
@@ -47,11 +47,15 @@ const Login = () => {
                 placeholder="******"
                 className="w-full rounded-[3em] text-[1.2em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
               />
-              <FontAwesomeIcon icon={faEye} color="#A6A6A6" className="text-2xl absolute top-11 left-[90%]" />
+              <FontAwesomeIcon
+                icon={faEye}
+                color="#A6A6A6"
+                className="text-xl absolute top-11 left-[90%]"
+              />
             </div>
 
             <div className="flex justify-center items-center w-full ">
-              <div className="flex font-oxygen justify-center mt-[1rem] hover:scale-110 w-1/2 bg-tertiary font-normal rounded-xl">
+              <div className="flex font-oxygen justify-center mt-[1rem] hover:scale-110 w-1/2 py-1 text-xl bg-tertiary font-normal rounded-xl">
                 <Button>Login</Button>
               </div>
             </div>
