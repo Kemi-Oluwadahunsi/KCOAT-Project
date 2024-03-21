@@ -12,6 +12,8 @@ export default {
       bland: "#000",
       color: "#323232",
       test: "#0C323A",
+      background: "#fd690517",
+      subtext: "#666666",
     },
     screens: {
       xs: "480px",
@@ -26,7 +28,7 @@ export default {
       primary: ["Inter", "sans-serif"],
       secondary: ["Montserrat", "sans-serif"],
       tertiary: ["Lily Script One", "sans-serif"],
-      oxygen: ["Oxygen", "sans-serif"]
+      oxygen: ["Oxygen", "sans-serif"],
     },
   },
   plugins: [],

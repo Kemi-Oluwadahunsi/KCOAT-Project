@@ -1,55 +1,71 @@
+import Slider from "react-slick";
 import Button from "./Button";
 import Data from "./featured-products";
 import Arrow from "../assets/arrow-right.svg";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const ThirdSection = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+  };
+
   return (
-    <>
-      <div className="bg-secondary flex flex-col gap-5 py-10 px-[10rem]">
-        <h1 className="text-center font-secondary font-bold text-tertiary text-[3rem]">
-          Featured Products
+    <div className="flex flex-col gap-[3em] py-10 px-[5rem] bg-background">
+      <div className="flex justify-between items-center px-10">
+        <h1 className="text-center font-tertiary font-normal text-color text-[2.2rem]">
+          New & Featured Products
         </h1>
 
-        <div className="flex justify-center gap-16">
-          {Data.map((item) => (
-            <div
-              key={item.id}
-              className=" flex flex-col gap-[1em] bg-primary px-[1rem] py-[1rem] rounded-md w-[25%]"
-            >
-              <div className=" mx-auto">
+        <p className="font-oxygen font-normal font-subtext w-[36%] text-start leading-6">
+          Explore Endless Possibilities And Upgrade Your Fashion Experience
+          Today!.
+        </p>
+      </div>
+      <Slider {...settings}>
+        {Data.map((item) => (
+          <div key={item.id} className="flex justify-center gap-16 flex-wrap">
+            <div className="flex flex-col gap-[1em]  py-[1rem] rounded-md">
+              <div className="mx-auto">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-[10em] object-cover"
+                  className="object-cover"
                 />
               </div>
-              <h3 className="font-secondary font-bold text-[1.2rem]">
-                {item.title}
-              </h3>
-              <div className="flex flex-col gap-3">
-                <p className="font-secondary font-bold text-[1.2rem]">
-                  #{item.price}
-                </p>
-                <div className="flex gap-3 place-items-center">
-                  <img src={item.stars} alt="" />
-                  <img src={item.line} alt="" />
-                  <span>{item.rating}</span>
+
+              <div className="flex flex-col gap-3  px-7">
+                <h3 className="font-tertiary font-normal text-[1.5rem]">
+                  {item.title}
+                </h3>
+                <div className="flex justify-between gap-3 ">
+                  <p className="font-tertiary font-normal text-[1rem] text-tertiary">
+                    N{item.price}
+                  </p>
+                  <div className="flex gap-3 place-items-center cursor-pointer">
+                    <img src={item.cart} alt="cart" />
+                  </div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-
-        <div className="flex justify-center items-center w-full">
-          <div className=" mt-[1rem] font-secondary font-medium">
-            <Button>
-              See More
-              <img src={Arrow} alt="" />
-            </Button>
           </div>
+        ))}
+      </Slider>
+      <div className="flex justify-center items-center w-full">
+        <div className="mt-[1rem] font-secondary font-medium hover:scale-110">
+          <Button>
+            See More
+            <img src={Arrow} alt="" />
+          </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
