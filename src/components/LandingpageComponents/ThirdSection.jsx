@@ -1,7 +1,7 @@
 import Slider from "react-slick";
-import Button from "./Button";
-import Data from "./featured-products";
-import Arrow from "../assets/arrow-right.svg";
+import Button from "../Button";
+import Data from "../featured-products";
+import Arrow from "../../assets/arrow-right.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

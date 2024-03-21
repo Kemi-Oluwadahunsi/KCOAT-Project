@@ -7,7 +7,7 @@ import Shoe from "../../assets/Hero-shoe.png";
 const Hero = () => {
   return (
     <>
-      <section className=" flex flex-col gap-[5rem] h-[54.5rem] pt-10 pb-0">
+      <section className=" flex flex-col gap-[5rem] pt-10 pb-0">
         <div className="relative ">
           <div className="border border-tertiary px-7 py-2 w-2/5 bg-primary mx-auto rounded-[2.5rem]">
             <div className="flex items-center justify-between ">
@@ -22,8 +22,8 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="flex flex-row relative">
-          <div className="">
+        <div className="flex flex-row relative ">
+          <div className="mt-[4em]">
             <img src={Shoe} alt="hero-shoe" />
           </div>
           <div className="flex flex-1 flex-col gap-[3rem] place-items-center">
@@ -41,16 +41,16 @@ const Hero = () => {
               <Button>SHOP NOW</Button>
             </div>
 
-            <div className="absolute top-[35em] left-[45%]">
+            <div className="absolute top-[30em] flex items-center">
               <img src={Tinydots} alt="boxdots" />
             </div>
           </div>
 
-          <div className=" flex items-center w-[40%] h-[43.5rem] m-auto rounded-tl-[8rem] rounded-tr-[0.625rem] rounded-bl-[0.625rem] rounded-br-[4.7rem] relative top-[-1em] ">
+          <div className=" flex items-center w-[40%]  m-auto relative top-[-8em] ">
             <img
               src={photo}
               alt="sideImage"
-              className="m-auto w-[90%] h-[90%]"
+              className="m-auto w-[90%] h-[90%] rounded-tl-[8rem]  rounded-bl-[8rem]"
             />
           </div>
         </div>
