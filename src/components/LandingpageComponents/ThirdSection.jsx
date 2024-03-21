@@ -58,7 +58,7 @@ const ThirdSection = () => {
         ))}
       </Slider>
       <div className="flex justify-center items-center w-full">
-        <div className="mt-[1rem] font-secondary font-medium hover:scale-110">
+        <div className="mt-[1rem] font-secondary font-medium hover:scale-110 ">
           <Button>
             See More
             <img src={Arrow} alt="arrow" />

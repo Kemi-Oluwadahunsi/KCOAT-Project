@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      outline: {
+        focus: ["1px solid #949494", "1px"],
+      },
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",
@@ -14,6 +18,9 @@ export default {
       test: "#0C323A",
       background: "#fd690517",
       subtext: "#666666",
+      border: "#DEDFE1",
+      createaccount: "#949494",
+      password: "#282828",
     },
     screens: {
       xs: "480px",
