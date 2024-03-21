@@ -61,7 +61,7 @@ const ThirdSection = () => {
         <div className="mt-[1rem] font-secondary font-medium hover:scale-110">
           <Button>
             See More
-            <img src={Arrow} alt="" />
+            <img src={Arrow} alt="arrow" />
           </Button>
         </div>
       </div>
