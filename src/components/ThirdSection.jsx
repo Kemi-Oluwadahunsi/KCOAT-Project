@@ -1,4 +1,6 @@
+import Button from "./Button";
 import Data from "./featured-products";
+import Arrow from "../assets/arrow-right.svg";
 
 const ThirdSection = () => {
   return (
@@ -15,7 +17,11 @@ const ThirdSection = () => {
               className=" flex flex-col gap-[1em] bg-primary px-[1rem] py-[1rem] rounded-md w-[25%]"
             >
               <div className=" mx-auto">
-                <img src={item.image} alt={item.title} className="w-[10em] object-cover"/>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-[10em] object-cover"
+                />
               </div>
               <h3 className="font-secondary font-bold text-[1.2rem]">
                 {item.title}
@@ -32,6 +38,15 @@ const ThirdSection = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center items-center w-full">
+          <div className=" mt-[1rem] font-secondary font-medium">
+            <Button>
+              See More
+              <img src={Arrow} alt="" />
+            </Button>
+          </div>
         </div>
       </div>
     </>

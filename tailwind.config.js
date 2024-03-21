@@ -7,10 +7,11 @@ export default {
       transparent: "transparent",
       current: "currentColor",
       primary: "#FCFAFD",
-      secondary: "#F2E29F",
-      tertiary: "#0C323A",
+      secondary: "#404040",
+      tertiary: "#FD6905",
       bland: "#000",
       color: "#323232",
+      test: "#0C323A",
     },
     screens: {
       xs: "480px",
@@ -24,6 +25,7 @@ export default {
     fontFamily: {
       primary: ["Inter", "sans-serif"],
       secondary: ["Montserrat", "sans-serif"],
+      tertiary: ["Lily Script One", "sans-serif"],
     },
   },
   plugins: [],

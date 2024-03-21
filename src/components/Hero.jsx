@@ -8,9 +8,9 @@ import photo from "../assets/photo1.png";
 const Hero = () => {
   return (
     <>
-      <section className=" flex flex-col gap-[7rem] h-[54.5rem] bg-secondary pt-10 px-[10rem] pb-0">
+      <section className=" flex flex-col gap-[7rem] h-[54.5rem] pt-10 pb-0">
         <div className="relative ">
-          <div className="border border-tertiary px-7 py-2 w-2/4 bg-primary mx-auto rounded-[2.5rem]">
+          <div className="border border-tertiary px-7 py-2 w-2/5 bg-primary mx-auto rounded-[2.5rem]">
             <div className="flex items-center justify-between ">
               <img src={search} alt="search" />
               <input type="search" className="w-3/4 outline-none" />
@@ -18,7 +18,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="flex justify-end items-end absolute top-0 left-[92%] ">
+          <div className=" ml-[8rem] mt-[2rem]">
             <img src={Tinydots} alt="dotsbox" />
           </div>
         </div>
