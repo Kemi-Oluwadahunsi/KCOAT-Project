@@ -1,6 +1,8 @@
-import Button from "./Button";
-import Data from "./featured-products";
-import Arrow from "../assets/arrow-right.svg";
+import Button from "../Button";
+import Data from "../featured-products";
+import Arrow from "../../assets/arrow-right.svg";
+
+
 
 const ThirdSection = () => {
   return (

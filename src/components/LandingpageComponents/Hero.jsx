@@ -1,9 +1,9 @@
-import search from "../assets/Search.png";
-import outline from "../assets/search-outline.svg";
-import Tinydots from "../assets/Tinydots.svg";
-import Button from "../components/Button";
-import photo from "../assets/right-image.png";
-import Shoe from "../assets/Hero-shoe.png";
+import search from "../../assets/Search.png";
+import outline from "../../assets/search-outline.svg";
+import Tinydots from "../../assets/Tinydots.svg";
+import Button from "../Button";
+import photo from "../../assets/right-image.png";
+import Shoe from "../../assets/Hero-shoe.png";
 const Hero = () => {
   return (
     <>
