@@ -26,6 +26,7 @@ export default {
       primary: ["Inter", "sans-serif"],
       secondary: ["Montserrat", "sans-serif"],
       tertiary: ["Lily Script One", "sans-serif"],
+      oxygen: ["Oxygen", "sans-serif"]
     },
   },
   plugins: [],
