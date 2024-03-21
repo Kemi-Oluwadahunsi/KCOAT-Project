@@ -1,15 +1,19 @@
-// import { Routes, Route, BrowserRouter } from "react-router-dom";
-
-import Header from "./components/Header";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import LandingPage from "./components/LandingpageComponents/LandingPage";
-
+import Login from "./components/Login/Signup/Login";
+import Firstpage from "../Firstpage";
 
 function App() {
   return (
     <>
-    <Header />
-    <LandingPage />
-    
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Firstpage />}>
+            <Route path="/" element={<LandingPage />} />
+          </Route>
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

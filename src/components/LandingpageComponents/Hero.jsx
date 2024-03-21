@@ -23,10 +23,10 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-row relative ">
-          <div className="mt-[4em]">
+          <div className="mt-[4em] w-[25%]">
             <img src={Shoe} alt="hero-shoe" />
           </div>
-          <div className="flex flex-1 flex-col gap-[3rem] place-items-center">
+          <div className="flex flex-1 flex-col gap-[3rem] place-items-center w-[45%]">
             <div className="flex flex-col gap-[1.5rem] text-center ">
               <h1 className="heroTalk  font-tertiary  text-color text-[4rem] font-normal tracking-wide">
                 Discover And Find Your Own Fashion
@@ -46,11 +46,11 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className=" flex items-center w-[40%]  m-auto relative top-[-8em] ">
+          <div className=" flex items-center w-[35%]  m-auto relative top-[-8em] ">
             <img
               src={photo}
               alt="sideImage"
-              className="m-auto w-[90%] h-[90%] rounded-tl-[8rem]  rounded-bl-[8rem]"
+              className="m-auto rounded-tl-[8rem]  rounded-bl-[8rem]"
             />
           </div>
         </div>
