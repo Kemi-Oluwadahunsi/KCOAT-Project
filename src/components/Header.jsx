@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
   faShoppingCart,
+  faUserAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <>
@@ -14,34 +16,39 @@ const Header = () => {
         </div>
 
         <ul className="text-bland font-secondary font-medium flex justify-around space-x-4 w-2/4 place-items-center cursor-pointer">
-          <li>Featured</li>
+          <Link to="/">
+            <li>Home</li>
+          </Link>
 
           <div className="flex gap-3 place-items-center">
-            <li>Men</li>
+            <li>Products</li>
             <FontAwesomeIcon icon={faChevronDown} />
           </div>
 
-          <div className="flex gap-3 place-items-center">
-            <li>Women</li>
-            <FontAwesomeIcon icon={faChevronDown} />
-          </div>
-          <div className="flex gap-3 place-items-center">
-            <li>Accessories</li>
-            <FontAwesomeIcon icon={faChevronDown} />
-          </div>
+          <li>New & Featured</li>
+
           <li>Contact</li>
         </ul>
 
-        <div className="flex gap-5 place-items-center cursor-pointer">
+        <div className="flex gap-1 place-items-center cursor-pointer">
           <div className="text-primary flex gap-2 place-items-center p-5">
-            <FontAwesomeIcon icon={faUser} />
-            <span className="font-bold">Login / Register</span>
+            <FontAwesomeIcon icon={faUserAlt} />
+            <FontAwesomeIcon icon={faChevronDown} />
           </div>
           <FontAwesomeIcon
             icon={faShoppingCart}
             color="white"
             className="text-xl"
           />
+        </div>
+
+        <div className="flex gap-5 place-items-center cursor-pointer">
+          <div className="text-primary flex gap-2 place-items-center p-5">
+            <FontAwesomeIcon icon={faUser} />
+            <Link to="/login">
+              <span className="font-bold">Login / Register</span>
+            </Link>
+          </div>
         </div>
       </div>
     </>

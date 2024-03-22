@@ -27,8 +27,10 @@ const MostPopularProducts = () => {
           </p>
         </div>
 
-        <div className="place-self-end">
-          <Button>View All <img src= {angleRight} alt="angleRight" /> </Button>
+        <div className="place-self-end font-secondary font-medium">
+          <Button>
+            View All <img src={angleRight} alt="angleRight" />{" "}
+          </Button>
         </div>
       </div>
 

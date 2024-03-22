@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LoginImage from "../../assets/login.png";
 import Button from "../Button";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -22,7 +23,11 @@ const Login = () => {
             </h3>
             <p className="text-createaccount font-secondary font-bold">
               Don&apos;t have an account,{" "}
-              <span className="font-bold text-bland">SignUp.</span>
+              <Link to="/signup">
+                <span className="font-bold text-bland underline underline-offset-4">
+                  SignUp.
+                </span>
+              </Link>
             </p>
           </div>
 
@@ -50,7 +55,7 @@ const Login = () => {
               <FontAwesomeIcon
                 icon={faEye}
                 color="#A6A6A6"
-                className="text-xl absolute top-11 left-[90%]"
+                className="text-xl absolute top-12 left-[90%]"
               />
             </div>
 

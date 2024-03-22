@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SignupImage from "../../assets/signup.png";
 import Button from "../Button";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   return (
@@ -22,7 +23,9 @@ const Signup = () => {
             </h3>
             <p className="text-createaccount font-secondary font-bold">
               Already Have an account?{" "}
-              <span className="font-bold text-bland">Login.</span>
+              <Link to="/login">
+                <span className="font-bold text-bland underline underline-offset-4">Login.</span>
+              </Link>
             </p>
           </div>
 
@@ -86,7 +89,7 @@ const Signup = () => {
             </div>
 
             <div className="flex gap-2 items-center justify-center">
-              <input type="checkbox" className="text-md w-4 h-4"/>
+              <input type="checkbox" className="text-md w-4 h-4" />
               <span className="font-secondary text-subtext font-medium">
                 I have read and agreed to the Terms of Service and Privacy
                 Policy
