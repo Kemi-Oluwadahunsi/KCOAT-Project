@@ -25,7 +25,8 @@ export default {
       secondary: "#000",
       tertiary1:"#323232",
       tertiary2: "#FCFAFD",
-      simple1: "#fd6905"
+      simple1: "#fd6905",
+      feedback : "rgba(253, 105, 5, 0.09)"
     },
     screens: {
       xs: "480px",
