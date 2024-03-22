@@ -41,7 +41,7 @@ const ThirdSection = () => {
               </div>
 
               <div className="flex flex-col gap-3  px-7">
-                <h3 className="font-tertiary font-normal text-[1.5rem]">
+                <h3 className="font-oxygen font-normal text-[1.5rem]">
                   {item.title}
                 </h3>
                 <div className="flex justify-between gap-3 ">
