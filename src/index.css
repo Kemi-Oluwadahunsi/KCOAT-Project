@@ -11,3 +11,7 @@
   font-weight: 900;
   line-height: normal;
 }
+
+.slick-slide {
+  margin: 0;
+}
