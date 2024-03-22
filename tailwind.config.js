@@ -2,7 +2,31 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      outline: {
+        focus: ["1px solid #949494", "1px"],
+      },
+    },
+    colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      primary: "#FCFAFD",
+      secondary: "#404040",
+      tertiary: "#FD6905",
+      bland: "#000",
+      color: "#323232",
+      test: "#0C323A",
+      background: "#fd690517",
+      subtext: "#666666",
+      border: "#DEDFE1",
+      createaccount: "#949494",
+      password: "#282828",
+      primary: "#fff",
+      secondary: "#000",
+      tertiary1:"#323232",
+      tertiary2: "#FCFAFD",
+      simple1: "#fd6905"
+    },
     screens: {
       xs: "480px",
       ss: "620px",
@@ -12,23 +36,6 @@ export default {
       xl: "1366px",
       "2xl": "1536px",
     },
-
-    fontFamily: {
-      lso: ["Lily Script One", "system-ui"],
-      montserrat: ["Montserrat"],
-
-    },
-
-    colors: {
-      "primary": "#fff",
-      "secondary": "#000",
-      "tertiary1":"#323232",
-      "tertiary2": "#FCFAFD",
-      "simple1": "#fd6905"
-      
-      
-  
-    },
     
     backgroundImage: theme => ({
       'img1': "url('url../src/assets/p-necklace.png')",
@@ -37,9 +44,14 @@ export default {
       'img4': "url('url../src/assets/faceless.png')",
 
     }),
-
-
-  
+    fontFamily: {
+      primary: ["Inter", "sans-serif"],
+      secondary: ["Montserrat", "sans-serif"],
+      tertiary: ["Lily Script One", "sans-serif"],
+      oxygen: ["Oxygen", "sans-serif"],
+        lso: ["Lily Script One", "system-ui"],
+      montserrat: ["Montserrat"],
+    },
   },
   plugins: [],
 };
