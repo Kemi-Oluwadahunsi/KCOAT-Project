@@ -23,8 +23,8 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-row relative ">
-          <div className="mt-[4em] w-[25%]">
-            <img src={Shoe} alt="hero-shoe" />
+          <div className="mt-[4.5em] w-[28%]">
+            <img src={Shoe} alt="hero-shoe" className="w-full"/>
           </div>
           <div className="flex flex-1 flex-col gap-[3rem] place-items-center w-[45%]">
             <div className="flex flex-col gap-[1.5rem] text-center ">
@@ -37,7 +37,7 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="text-[1.5rem] font-secondary font-medium">
+            <div className="text-[1.5rem] font-secondary font-medium hover:scale-110">
               <Button>SHOP NOW</Button>
             </div>
 

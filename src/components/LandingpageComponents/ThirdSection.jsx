@@ -18,7 +18,7 @@ const ThirdSection = () => {
 
   return (
     <div className="flex flex-col gap-[3em] py-10 px-[5rem] bg-background">
-      <div className="flex justify-between items-center px-10">
+      <div className="flex justify-between items-center px-10 pt-5">
         <h1 className="text-center font-tertiary font-normal text-color text-[2.2rem]">
           New & Featured Products
         </h1>

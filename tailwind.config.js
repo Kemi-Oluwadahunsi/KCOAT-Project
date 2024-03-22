@@ -21,8 +21,7 @@ export default {
       border: "#DEDFE1",
       createaccount: "#949494",
       password: "#282828",
-      primary: "#fff",
-      secondary: "#000",
+      secondary2: "#000",
       tertiary1:"#323232",
       tertiary2: "#FCFAFD",
       simple1: "#fd6905"
@@ -36,14 +35,6 @@ export default {
       xl: "1366px",
       "2xl": "1536px",
     },
-    
-    backgroundImage: theme => ({
-      'img1': "url('url../src/assets/p-necklace.png')",
-      'img2': "url('url../src/assets/bbb.png')",
-      'img3': "url('url../src/assets/Orangefit.png')",
-      'img4': "url('url../src/assets/faceless.png')",
-
-    }),
     fontFamily: {
       primary: ["Inter", "sans-serif"],
       secondary: ["Montserrat", "sans-serif"],
