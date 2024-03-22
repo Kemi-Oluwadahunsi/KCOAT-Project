@@ -14,6 +14,7 @@ export default {
       test: "#0C323A",
       background: "#fd690517",
       subtext: "#666666",
+      feedback : "rgba(253, 105, 5, 0.09)"
     },
     screens: {
       xs: "480px",
