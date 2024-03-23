@@ -1,4 +1,4 @@
-import search from "../../assets/Search.png";
+
 import outline from "../../assets/search-outline.svg";
 import Tinydots from "../../assets/Tinydots.svg";
 import Button from "../Button";
@@ -11,8 +11,7 @@ const Hero = () => {
         <div className="relative ">
           <div className="border border-tertiary px-7 py-2 w-2/5 bg-primary mx-auto rounded-[2.5rem]">
             <div className="flex items-center justify-between ">
-              <img src={search} alt="search" />
-              <input type="search" className="w-3/4 outline-none" />
+              <input type="search" placeholder="Search" className=" bg-transparent w-[90%] outline-none" />
               <img src={outline} alt="outline" />
             </div>
           </div>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="flex items-center justify-center h-[45rem]">
+    <div className="flex items-center justify-center h-[43rem]">
       <div className="flex w-4/5 my-auto">
         <div className="flex  ">
           <img
@@ -39,6 +39,7 @@ const Login = () => {
               <input
                 type="text/number"
                 placeholder="Grace.joel@xmail.com"
+                required
                 className="w-full rounded-[3em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
               />
             </div>
@@ -50,6 +51,7 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="******"
+                required
                 className="w-full rounded-[3em] text-[1.2em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
               />
               <FontAwesomeIcon
