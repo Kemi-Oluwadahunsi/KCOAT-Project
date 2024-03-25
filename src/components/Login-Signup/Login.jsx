@@ -1,12 +1,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LoginImage from "../../assets/login.png";
 import Button from "../Button";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
   return (
-    <div className="flex items-center justify-center h-[43rem]">
+    <div className="flex items-center justify-center h-[43rem] relative top-[5rem]">
       <div className="flex w-4/5 my-auto">
         <div className="flex  ">
           <img
@@ -49,15 +55,16 @@ const Login = () => {
                 Enter Your Password
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="******"
                 required
                 className="w-full rounded-[3em] text-[1.2em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
               />
               <FontAwesomeIcon
-                icon={faEye}
+                icon={showPassword ? faEyeSlash : faEye}
                 color="#A6A6A6"
-                className="text-xl absolute top-12 left-[90%]"
+                className="text-xl absolute top-12 cursor-pointer left-[90%]"
+                onClick={togglePasswordVisibility}
               />
             </div>
 
@@ -67,7 +74,7 @@ const Login = () => {
               </div>
             </div>
 
-            <p className="font-secondary font-medium text-[1em] text-password text-center mt-5">
+            <p className="font-secondary font-medium text-[1em] text-password text-center mt-5 cursor-pointer">
               Forgot password?
             </p>
           </form>

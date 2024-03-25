@@ -84,7 +84,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className=" grid h-screen w-full place-content-center ">
+      <div className=" grid h-screen w-full place-content-center relative top-[4rem]">
         {success ? (
           <section>
             <h1 className="text-white text-4xl">Success!</h1>
@@ -103,7 +103,7 @@ const Signup = () => {
                 />
               </div>
 
-              <div className=" flex flex-col gap-16 px-10 pt-10 border border-border w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em]">
+              <div className=" flex flex-col gap-16 px-10 pt-10 pb-1 border border-border w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em]">
                 <div className="flex flex-col  gap-[1em]">
                   <h3 className=" font-tertiary font-normal text-[2.25em] justify-center">
                     Signup
