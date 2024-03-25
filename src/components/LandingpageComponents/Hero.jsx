@@ -1,29 +1,27 @@
 
-import outline from "../../assets/search-outline.svg";
+
 import Tinydots from "../../assets/Tinydots.svg";
 import Button from "../Button";
 import photo from "../../assets/right-image.png";
 import Shoe from "../../assets/Hero-shoe.png";
+import SearchInput from "../SearchInput";
 const Hero = () => {
   return (
     <>
       <section className=" flex flex-col gap-[5rem] pt-10 pb-0">
-        <div className="relative ">
-          <div className="border border-tertiary px-7 py-2 w-2/5 bg-primary mx-auto rounded-[2.5rem]">
-            <div className="flex items-center justify-between ">
-              <input type="search" placeholder="Search" className=" bg-transparent w-[90%] outline-none" />
-              <img src={outline} alt="outline" />
-            </div>
+        <div className="w-2/5 mx-auto ml-[30%] relative top-20">
+          <div className=" w-full mx-auto ">
+            <SearchInput />
           </div>
+        </div>
 
-          <div className=" ml-[8rem] mt-[2rem]">
-            <img src={Tinydots} alt="dotsbox" />
-          </div>
+        <div className=" ml-[8rem] mt-[2rem]">
+          <img src={Tinydots} alt="dotsbox" />
         </div>
 
         <div className="flex flex-row relative ">
           <div className="mt-[4.5em] w-[28%]">
-            <img src={Shoe} alt="hero-shoe" className="w-full"/>
+            <img src={Shoe} alt="hero-shoe" className="w-full" />
           </div>
           <div className="flex flex-1 flex-col gap-[3rem] place-items-center w-[45%]">
             <div className="flex flex-col gap-[1.5rem] text-center ">

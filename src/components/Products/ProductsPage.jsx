@@ -1,0 +1,125 @@
+import { useState } from "react";
+import SearchInput from "../SearchInput";
+import Button from "../Button";
+import angleRight from "../../assets/chevron-right.png";
+import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
+import Submenu from "./Submenu";
+import products from "../Products/AllproductsItems/allproducts";
+
+const AllProducts = () => {
+  const [selectedProducts, setSelectedProducts] = useState(products);
+
+
+  const mostPopular = selectedProducts.map((item) => (
+    <Cards
+      key={item.id}
+      id={item.id}
+      image={item.image}
+      title={item.title}
+      cart={item.cart}
+      price={item.price}
+    />
+  ));
+
+  return (
+    <>
+      <div className="flex px-[6.2rem] gap-[5rem] py-[3rem] relative top-[4em]">
+        <div className="flex flex-col gap-[3em] w-[20%] fixed ">
+          <div className="flex items-center w-full py-[2em] px-[1.8em] border-2 border-categoryborder2">
+            <div className="flex flex-col gap-[1.5em] w-full">
+              <h2 className="font-tertiary text-[1.2em] pl-4 border-l-4 border-categoryborder">
+                Categories
+              </h2>
+
+              <ul className="flex flex-col gap-[3em] font-oxygen w-full">
+                <Submenu setSelectedProducts={setSelectedProducts} />
+              </ul>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center w-full py-[2em] border-2 border-categoryborder2">
+            <div className="flex flex-col gap-5 w-[80%]">
+              <div className="font-tertiary text-[1.2em] border-l-4 border-categoryborder">
+                <h2 className="pl-4">Price Range</h2>
+              </div>
+
+              <div className="flex flex-col gap-2em leading-9 font-oxygen text-secondary">
+                <div className="flex gap-5 items-center">
+                  <input type="checkbox" className=" w-4 h-4 checkbox" />
+                  <p>N5000 - N20000</p>
+                </div>
+
+                <div className="flex gap-5 items-center">
+                  <input type="checkbox" className=" w-4 h-4 checkbox" />
+                  <p>N20000 - N25000</p>
+                </div>
+
+                <div className="flex gap-5 items-center">
+                  <input type="checkbox" className=" w-4 h-4 checkbox" />
+                  <p>N25000 - N30000</p>
+                </div>
+
+                <div className="flex gap-5 items-center">
+                  <input type="checkbox" className=" w-4 h-4 checkbox" />
+                  <p>N30000 - N35000</p>
+                </div>
+
+                <div className="flex gap-5 items-center">
+                  <input type="checkbox" className=" w-4 h-4 checkbox" />
+                  <p>N35000 - N40000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-[5rem] ml-[30%]">
+          <div className="flex flex-col gap-[2rem]">
+            <div className="flex flex-col gap-[2rem]">
+              <h1 className="font-tertiary font-normal text-[2.25em] text-color">
+                Our Collection Of Products
+              </h1>
+              <div className="w-3/5">
+                <SearchInput />
+              </div>
+              <h3 className="font-oxygen font-bold text-secondary">
+                Showing 1-12 of 24 Items
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-3  justify-center gap-[4rem]">
+              {mostPopular}
+            </div>
+          </div>
+          <div className="flex justify-center w-full">
+            <div className="flex flex-col w-[50%] py-[5rem]  gap-[1.6rem] items-center">
+              <h3 className="font-oxygen font-bold text-secondary">
+                Showing 1-12 of 24 Items
+              </h3>
+
+              <div className="w-full flex ">
+                <hr className="w-[50%] bg-tertiary h-1 border-0" />
+                <hr className="w-[50%] bg-nextpage h-1 border-0" />
+              </div>
+
+              <div className=" font-secondary font-medium">
+                <div className="flex justify-center mt-4">
+                  <Button className="py-2 px-4 bg-blue-500 text-white rounded">
+                    View More{" "}
+                    <img
+                      src={angleRight}
+                      alt="Next"
+                      className="w-4 inline ml-1"
+                    />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default AllProducts;

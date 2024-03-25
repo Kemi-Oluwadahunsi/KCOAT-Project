@@ -57,7 +57,6 @@
 
 // export default Header;
 
-
 import { useState } from "react";
 import logo from "../assets/KCOAT.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -70,7 +69,7 @@ import {
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ handleSubMenuClick }) => {
   const [isProductsMenuOpen, setProductsMenuOpen] = useState(false);
   const [isMenSubMenuOpen, setMenSubMenuOpen] = useState(false);
   const [isWomenSubMenuOpen, setWomenSubMenuOpen] = useState(false);
@@ -107,8 +106,24 @@ const Header = () => {
     }
   };
 
+  const handleMenSubMenu = () => {
+    if (!isMenSubMenuOpen) {
+      openMenSubMenu();
+    } else {
+      closeMenSubMenu();
+    }
+  };
+
+  const handleWomenSubMenu = () => {
+    if (!isWomenSubMenuOpen) {
+      openWomenSubMenu();
+    } else {
+      closeWomenSubMenu();
+    }
+  };
+
   return (
-    <div className="h-20 flex justify-around items-center font-primary text-sm px-[4rem] bg-tertiary">
+    <div className="h-20 flex justify-around items-center font-primary text-sm px-[4rem] bg-tertiary fixed w-full z-50">
       <div className="cursor-pointer">
         <img src={logo} alt="logo" />
       </div>
@@ -133,27 +148,48 @@ const Header = () => {
               onMouseLeave={closeProductsMenu}
             >
               <li className="pl-3 py-4 font-oxygen font-bold submenu-item">
-                <span className="">All Products</span>
+                <Link to="/all-products">
+                  <span>All Products</span>
+                </Link>
               </li>
 
               <li
                 className=" submenu-item px-3 py-4 relative border-t-2 border-b-2 border-border flex justify-between font-oxygen font-bold"
-                onMouseEnter={openMenSubMenu}
+                // onMouseEnter={openMenSubMenu}
+                // onMouseLeave={closeMenSubMenu}
+                onMouseEnter={handleMenSubMenu}
                 onMouseLeave={closeMenSubMenu}
               >
                 <span>Men</span>
                 {/* Men Submenu */}
                 {isMenSubMenuOpen && (
                   <ul className="absolute top-0 left-full mt-0  rounded-md drop-shadow-xl z-50 bg-primary font-oxygen font-bold w-[15rem] ">
-                    <li className=" submenu-item px-3 py-4 ">
-                      Wears
-                    </li>
-                    <li className=" submenu-item px-3 py-4 border-t-2 border-b-2 border-border">
-                      Shoes & Bags
-                    </li>
-                    <li className=" submenu-item px-3 py-4 ">
-                      Accessories
-                    </li>
+                    <Link to="/all-products">
+                      <li
+                        className=" submenu-item px-3 py-4 "
+                        onClick={() => handleSubMenuClick("MenWears")}
+                      >
+                        Wears
+                      </li>
+                    </Link>
+
+                    <Link to="/all-products">
+                      <li
+                        className=" submenu-item px-3 py-4 border-t-2 border-b-2 border-border"
+                        onClick={() => handleSubMenuClick("MenShoesBags")}
+                      >
+                        Shoes & Bags
+                      </li>
+                    </Link>
+
+                    <Link to="/all-products">
+                      <li
+                        className=" submenu-item px-3 py-4 "
+                        onClick={() => handleSubMenuClick("MenAccessories")}
+                      >
+                        Accessories
+                      </li>
+                    </Link>
                   </ul>
                 )}
                 <FontAwesomeIcon
@@ -162,22 +198,41 @@ const Header = () => {
               </li>
               <li
                 className=" submenu-item px-3 py-4 relative flex justify-between font-oxygen font-bold"
-                onMouseEnter={openWomenSubMenu}
+                // onMouseEnter={openWomenSubMenu}
+                // onMouseLeave={closeWomenSubMenu}
+                onMouseEnter={handleWomenSubMenu}
                 onMouseLeave={closeWomenSubMenu}
               >
                 <span>Women</span>
                 {/* Women Submenu */}
                 {isWomenSubMenuOpen && (
                   <ul className="absolute top-0 left-full mt-0 bg-primary rounded-md drop-shadow-xl z-50 w-[15rem] ">
-                    <li className=" submenu-item px-3 py-4 ">
-                      Wears
-                    </li>
-                    <li className=" submenu-item px-3 py-4 border-t-2 border-b-2 border-border">
-                      Shoes & Bags
-                    </li>
-                    <li className=" submenu-item px-3 py-4">
-                      Accessories
-                    </li>
+                    <Link to="/all-products">
+                      <li
+                        className=" submenu-item px-3 py-4 "
+                        onClick={() => handleSubMenuClick("WomenWears")}
+                      >
+                        Wears
+                      </li>
+                    </Link>
+
+                    <Link to="/all-products">
+                      <li
+                        className=" submenu-item px-3 py-4 border-t-2 border-b-2 border-border"
+                        onClick={() => handleSubMenuClick("WomenShoesBags")}
+                      >
+                        Shoes & Bags
+                      </li>
+                    </Link>
+
+                    <Link to="/all-products">
+                      <li
+                        className=" submenu-item px-3 py-4"
+                        onClick={() => handleSubMenuClick("Women Accessories")}
+                      >
+                        Accessories
+                      </li>
+                    </Link>
                   </ul>
                 )}
                 <FontAwesomeIcon

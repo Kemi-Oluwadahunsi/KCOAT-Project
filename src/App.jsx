@@ -5,6 +5,7 @@ import Login from "./components/Login-Signup/Login";
 import Firstpage from "../Firstpage";
 import Header from "./components/Header";
 import Signup from "./components/Login-Signup/Signup";
+import AllProducts from "./components/Products/ProductsPage";
 
 
 
@@ -21,6 +22,7 @@ function App() {
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/all-products" element={<AllProducts />} />
         </Routes>
       </BrowserRouter>
     </>
