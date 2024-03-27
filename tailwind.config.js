@@ -2,15 +2,33 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      outline: {
+        focus: ["1px solid #949494", "1px"],
+      },
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",
       primary: "#FCFAFD",
-      secondary: "#F2E29F",
-      tertiary: "#0C323A",
+      secondary: "#404040",
+      tertiary: "#FD6905",
       bland: "#000",
       color: "#323232",
+      test: "#0C323A",
+      background: "#fd690517",
+      subtext: "#666666",
+      border: "#DEDFE1",
+      createaccount: "#949494",
+      password: "#282828",
+      secondary2: "#000",
+      tertiary1: "#323232",
+      tertiary2: "#FCFAFD",
+      simple1: "#fd6905",
+      feedback: "rgba(253, 105, 5, 0.09)",
+      categoryborder: "#2D2D2D",
+      categoryborder2: "#E2E2E2",
+      nextpage: "#DFDFDF",
     },
     screens: {
       xs: "480px",
@@ -24,6 +42,10 @@ export default {
     fontFamily: {
       primary: ["Inter", "sans-serif"],
       secondary: ["Montserrat", "sans-serif"],
+      tertiary: ["Lily Script One", "sans-serif"],
+      oxygen: ["Oxygen", "sans-serif"],
+      lso: ["Lily Script One", "system-ui"],
+      montserrat: ["Montserrat"],
     },
   },
   plugins: [],
