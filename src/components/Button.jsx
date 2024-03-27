@@ -1,5 +1,4 @@
 
-
 const Button = ({children}) => {
   return (
     <>
@@ -10,4 +9,4 @@ const Button = ({children}) => {
   );
 }
 
-export default Button
+export default Button;

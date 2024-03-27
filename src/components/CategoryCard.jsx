@@ -21,7 +21,7 @@ const CategoryCard = () => {
             style={{ backgroundImage: `url(${img3})` }}
           >
             <a href="#">
-              <button className="absolute bottom-4 ml-48 bg-primary hover:bg-simple1 text-tertiary font-lso py-2 px-2 rounded">
+              <button className="absolute bottom-4 ml-48 bg-tertiary1 hover:bg-simple1 text-tertiary font-lso py-2 px-2 rounded">
                 Female wears
               </button>
             </a>
