@@ -1,16 +1,34 @@
 import { useState } from "react";
 import SearchInput from "../SearchInput";
-import Button from "../Button";
 import angleRight from "../../assets/chevron-right.png";
 import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
 import Submenu from "./Submenu";
 import products from "../Products/AllproductsItems/allproducts";
 
+const ITEMS_PER_PAGE = 12;
+
 const AllProducts = () => {
   const [selectedProducts, setSelectedProducts] = useState(products);
+  const [currentPage, setCurrentPage] = useState(1);
 
+  const indexOfLastProduct = currentPage * ITEMS_PER_PAGE;
+  const indexOfFirstProduct = indexOfLastProduct - ITEMS_PER_PAGE;
+  const currentProducts = selectedProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
-  const mostPopular = selectedProducts.map((item) => (
+  const totalPages = Math.ceil(selectedProducts.length / ITEMS_PER_PAGE);
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const mostPopular = currentProducts.map((item) => (
     <Cards
       key={item.id}
       id={item.id}
@@ -45,27 +63,27 @@ const AllProducts = () => {
 
               <div className="flex flex-col gap-2em leading-9 font-oxygen text-secondary">
                 <div className="flex gap-5 items-center">
-                  <input type="checkbox" className=" w-4 h-4 checkbox" />
+                  <input type="checkbox" className="w-4 h-4 checkbox" />
                   <p>N5000 - N20000</p>
                 </div>
 
                 <div className="flex gap-5 items-center">
-                  <input type="checkbox" className=" w-4 h-4 checkbox" />
+                  <input type="checkbox" className="w-4 h-4 checkbox" />
                   <p>N20000 - N25000</p>
                 </div>
 
                 <div className="flex gap-5 items-center">
-                  <input type="checkbox" className=" w-4 h-4 checkbox" />
+                  <input type="checkbox" className="w-4 h-4 checkbox" />
                   <p>N25000 - N30000</p>
                 </div>
 
                 <div className="flex gap-5 items-center">
-                  <input type="checkbox" className=" w-4 h-4 checkbox" />
+                  <input type="checkbox" className="w-4 h-4 checkbox" />
                   <p>N30000 - N35000</p>
                 </div>
 
                 <div className="flex gap-5 items-center">
-                  <input type="checkbox" className=" w-4 h-4 checkbox" />
+                  <input type="checkbox" className="w-4 h-4 checkbox" />
                   <p>N35000 - N40000</p>
                 </div>
               </div>
@@ -83,7 +101,10 @@ const AllProducts = () => {
                 <SearchInput />
               </div>
               <h3 className="font-oxygen font-bold text-secondary">
-                Showing 1-12 of 24 Items
+                Showing {indexOfFirstProduct + 1}-{Math.min(
+                  indexOfLastProduct,
+                  selectedProducts.length
+                )} of {selectedProducts.length} Items
               </h3>
             </div>
 
@@ -94,24 +115,38 @@ const AllProducts = () => {
           <div className="flex justify-center w-full">
             <div className="flex flex-col w-[50%] py-[5rem]  gap-[1.6rem] items-center">
               <h3 className="font-oxygen font-bold text-secondary">
-                Showing 1-12 of 24 Items
+                Showing {indexOfFirstProduct + 1}-{Math.min(
+                  indexOfLastProduct,
+                  selectedProducts.length
+                )} of {selectedProducts.length} Items
               </h3>
 
-              <div className="w-full flex ">
-                <hr className="w-[50%] bg-tertiary h-1 border-0" />
-                <hr className="w-[50%] bg-nextpage h-1 border-0" />
-              </div>
+              <div className="w-full flex">
+                <hr className={`w-[50%] h-1 border-0 ${currentPage === 1 ? 'bg-tertiary' : 'bg-nextpage'}`} />
+               <hr className={`w-[50%] h-1 border-0 ${currentPage === totalPages ? 'bg-tertiary' : 'bg-nextpage'}`} />
+             </div>
 
               <div className=" font-secondary font-medium">
                 <div className="flex justify-center mt-4">
-                  <Button className="py-2 px-4 bg-blue-500 text-white rounded">
-                    View More{" "}
-                    <img
-                      src={angleRight}
-                      alt="Next"
-                      className="w-4 inline ml-1"
-                    />
-                  </Button>
+                  {currentPage > 1 && (
+                    <button
+                      className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
+                      onClick={handlePrevPage}>
+                      Previous
+                    </button>
+                  )}
+                  {currentPage < totalPages && (
+                    <button
+                      className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
+                      onClick={handleNextPage}
+                    >View More
+                      <img
+                        src={angleRight}
+                        alt="View More"
+                        className="w-4 inline ml-1"
+                      />
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
