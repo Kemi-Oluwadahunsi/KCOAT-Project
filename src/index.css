@@ -89,3 +89,10 @@
 .openHr:hover > hr {
   display: block;
 }
+
+.checkoutbg {
+  background: url("./assets/checkoutImage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20em;
+}

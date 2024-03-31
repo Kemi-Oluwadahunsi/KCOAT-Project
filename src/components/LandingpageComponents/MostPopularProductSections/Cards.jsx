@@ -8,7 +8,7 @@ const Cards = (props) => {
           </div>
 
           <div className="flex flex-col gap-3  px-1">
-            <h3 className="font-oxygen font-bold text-[1.1rem]">
+            <h3 className="font-oxygen font-normal text-[1.1rem] text-secondary">
               {props.title}
             </h3>
             <div className="flex justify-between gap-3 ">

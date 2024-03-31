@@ -29,6 +29,10 @@ export default {
       categoryborder: "#2D2D2D",
       categoryborder2: "#E2E2E2",
       nextpage: "#DFDFDF",
+      minus: "#D7D7D7",
+      plus: "#414141",
+      cartborder: "rgba(253, 105, 5, 0.30)",
+      
     },
     screens: {
       xs: "480px",
