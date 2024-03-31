@@ -6,6 +6,7 @@ import Firstpage from "../Firstpage";
 import Header from "./components/Header";
 import Signup from "./components/Login-Signup/Signup";
 import AllProducts from "./components/Products/ProductsPage";
+import Footer from "./components/Footer"
 
 
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/all-products" element={<AllProducts />} />
+          <Route path="/footer" element={<Footer />} />
         </Routes>
       </BrowserRouter>
     </>
