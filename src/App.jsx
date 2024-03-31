@@ -6,6 +6,7 @@ import Firstpage from "../Firstpage";
 import Header from "./components/Header";
 import Signup from "./components/Login-Signup/Signup";
 import AllProducts from "./components/Products/ProductsPage";
+import Footer from "./components/Footer"
 import CartPage from "./components/Cart-Flow/CartPage";
 import Checkout from "./components/Cart-Flow/Checkout";
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/all-products" element={<AllProducts />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/footer" element={<Footer />} />
         </Routes>
       </BrowserRouter>
     </>
