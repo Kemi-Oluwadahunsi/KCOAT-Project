@@ -212,7 +212,7 @@ const Header = ({ handleSubMenuClick }) => {
                         className=" submenu-item px-3 py-4 "
                         onClick={() => handleSubMenuClick("WomenWears")}
                       >
-                        Wears
+                         Wears
                       </li>
                     </Link>
 
