@@ -139,7 +139,9 @@ const Checkout = () => {
               </div>
 
               <div className="flex justify-between w-[70%]">
-                <p className="flex items-center justify-center w-[3em] font-poppins text-color text-xl">Total</p>
+                <p className="flex items-center justify-center w-[3em] font-poppins text-color text-xl">
+                  Total
+                </p>
                 <p>N115</p>
               </div>
             </div>

@@ -11,8 +11,10 @@ import {
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const USER_REGEX = /^[a-zA-z][a-zA-Z0-9-_]{3,23}$/;
+const USER_REGEX = /^[a-zA-Z][a-zA-Z\s-]{1,23}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
@@ -87,9 +89,21 @@ const Signup = () => {
       });
       console.log(response.data);
       setSuccess(true);
+      toast.success("Signup successful!");
     } catch (error) {
       console.error("Error:", error);
-      setErrMsg("An error occurred while signing up. Please try again later.");
+      if (error.response) {
+        const status = error.response.status;
+        if (status === 409) {
+          toast.error("Customer with this email already exists");
+        } else {
+          toast.error("Error in creating customer");
+        }
+      } else {
+        toast.error(
+          "An error occurred while signing up. Please try again later."
+        );
+      }
     }
   };
 
@@ -424,6 +438,9 @@ const Signup = () => {
           </div>
         )}
         ;
+        <div className="z-[10000] pt-[20em]">
+          <ToastContainer position="top-right" autoClose={5000} />
+        </div>
       </div>
     </>
   );

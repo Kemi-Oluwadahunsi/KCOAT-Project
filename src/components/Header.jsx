@@ -69,7 +69,7 @@ import {
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 
-const Header = ({ handleSubMenuClick }) => {
+const Header = ({ handleSubMenuClick, isLoggedIn, onLogout }) => {
   const [isProductsMenuOpen, setProductsMenuOpen] = useState(false);
   const [isMenSubMenuOpen, setMenSubMenuOpen] = useState(false);
   const [isWomenSubMenuOpen, setWomenSubMenuOpen] = useState(false);
@@ -212,7 +212,7 @@ const Header = ({ handleSubMenuClick }) => {
                         className=" submenu-item px-3 py-4 "
                         onClick={() => handleSubMenuClick("WomenWears")}
                       >
-                         Wears
+                        Wears
                       </li>
                     </Link>
 
@@ -261,12 +261,28 @@ const Header = ({ handleSubMenuClick }) => {
       </div>
 
       <div className="flex gap-5 place-items-center cursor-pointer">
-        <div className="text-primary flex gap-2 place-items-center p-5">
+        {/* <div className="text-primary flex gap-2 place-items-center p-5">
           <FontAwesomeIcon icon={faUser} />
           <Link to="/login">
             <span className="font-bold">Login / Register</span>
           </Link>
-        </div>
+        </div> */}
+        {isLoggedIn ? (
+          <div
+            className="text-primary flex gap-2 place-items-center p-5"
+            onClick={onLogout}
+          >
+            <FontAwesomeIcon icon={faUser} />
+            <span className="font-bold">Logout</span>
+          </div>
+        ) : (
+          <div className="text-primary flex gap-2 place-items-center p-5">
+            <FontAwesomeIcon icon={faUser} />
+            <Link to="/login">
+              <span className="font-bold">Login / Register</span>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
