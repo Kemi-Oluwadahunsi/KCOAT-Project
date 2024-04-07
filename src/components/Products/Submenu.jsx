@@ -1,13 +1,8 @@
-import products from "./AllproductsItems/allproducts";
-import menWears from "./MenItems/menwears";
-import womenWears from "./WomenItems/womenwears";
-import menShoesBags from "./MenItems/menshoes";
-import womenShoesBags from "./WomenItems/womenshoes";
-import menAccessories from "./MenItems/menaccessories";
-import womenAccessories from "./WomenItems/womenaccessories";
+
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import axios from "axios";
 
 
 const Submenu = ({ setSelectedProducts }) => {
@@ -31,32 +26,42 @@ const Submenu = ({ setSelectedProducts }) => {
   };
 
 
-  const handleSubMenuClick = (submenu) => {
-    switch (submenu) {
-      case "AllProducts":
-        setSelectedProducts(products);
-        break;
-      case "MenWears":
-        setSelectedProducts(menWears);
-        break;
-      case "MenShoesBags":
-        setSelectedProducts(menShoesBags);
-        break;
-      case "MenAccessories":
-        setSelectedProducts(menAccessories);
-        break;
-      case "WomenWears":
-        setSelectedProducts(womenWears);
-        break;
-      case "WomenShoesBags":
-        setSelectedProducts(womenShoesBags);
-        break;
-      case "WomenAccessories":
-        setSelectedProducts(womenAccessories);
-        break;
-      default:
-        setSelectedProducts([]);
-        break;
+  const handleSubMenuClick = async (submenu) => {
+    try {
+      let response;
+      switch (submenu) {
+        case "AllProducts":
+          response = await axios.get("https://kcoat.onrender.com/products");
+          break;
+        case "MenWears":
+          response = await axios.get("https://kcoat.onrender.com/products/men/wears");
+          break;
+        case "MenShoesBags":
+          response = await axios.get("https://kcoat.onrender.com/products/men/shoes");
+          break;
+        case "MenAccessories":
+          response = await axios.get("https://kcoat.onrender.com/products/men/accessories");
+          break;
+        case "WomenWears":
+          response = await axios.get("https://kcoat.onrender.com/products/women/wears");
+          break;
+        case "WomenShoesBags":
+          response = await axios.get(
+            "https://kcoat.onrender.com/products/women/shoes"
+          );
+          break;
+        case "WomenAccessories":
+          response = await axios.get(
+            "https://kcoat.onrender.com/products/women/accessories"
+          );
+          break;
+        default:
+          response = { data: [] };
+          break;
+      }
+      setSelectedProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
     }
   };
 

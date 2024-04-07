@@ -10,8 +10,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const USER_REGEX = /^[a-zA-z][a-zA-Z0-9-_]{3,23}$/;
+const USER_REGEX = /^[a-zA-Z][a-zA-Z\s-]{1,23}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
@@ -78,19 +81,49 @@ const Signup = () => {
       setErrMsg("Invalid Entry");
       return;
     }
-    console.log(user, pwd);
-    setSuccess(true);
+
+    try {
+      const response = await axios.post(
+        "https://kcoat-1.onrender.com/register",
+        {
+          cusName: user,
+          email: email,
+          password: pwd,
+        }
+      );
+      console.log(response.data);
+      setSuccess(true);
+      toast.success("Signup successful!");
+    } catch (error) {
+      console.error("Error:", error);
+      if (error.response) {
+        const status = error.response.status;
+        if (status === 409) {
+          toast.error("Customer with this email already exists");
+        } else {
+          toast.error("Error in creating customer");
+        }
+      } else {
+        toast.error(
+          "An error occurred while signing up. Please try again later."
+        );
+      }
+    }
   };
 
   return (
     <>
       <div className=" grid h-screen w-full place-content-center relative top-[4rem]">
         {success ? (
-          <section>
-            <h1 className="text-white text-4xl">Success!</h1>
-            <span className="text-white text-4xl mt-10">
-              <Link to="/login">Sign In</Link>
-            </span>
+          <section className="flex flex-col gap-[3em]">
+            <h1 className="text-white text-4xl">Success! Please Sign in</h1>
+            <Link to="/login">
+              <div className="flex items-center justify-center w-full">
+                <div className="flex font-oxygen justify-center hover:scale-110 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
+                  <Button>Sign In</Button>
+                </div>
+              </div>
+            </Link>
           </section>
         ) : (
           <div className="flex items-center justify-center h-[45rem]">
@@ -393,7 +426,7 @@ const Signup = () => {
                       <input type="checkbox" className="text-md w-4 h-4" />
                       <span className="font-secondary text-[0.95em] text-subtext font-medium">
                         I have read and agreed to the Terms of Service and
-                        Privacy Policy
+                        <span> Privacy Policy</span>
                       </span>
                     </div>
 
@@ -409,6 +442,9 @@ const Signup = () => {
           </div>
         )}
         ;
+        <div className="z-[10000]">
+          <ToastContainer position="top-right" autoClose={5000} />
+        </div>
       </div>
     </>
   );
