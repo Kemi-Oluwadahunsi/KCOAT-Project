@@ -81,12 +81,16 @@ const Signup = () => {
       setErrMsg("Invalid Entry");
       return;
     }
+
     try {
-      const response = await axios.post("https://kcoat.onrender.com/register", {
-        cusName: user,
-        email: email,
-        password: pwd,
-      });
+      const response = await axios.post(
+        "https://kcoat-1.onrender.com/register",
+        {
+          cusName: user,
+          email: email,
+          password: pwd,
+        }
+      );
       console.log(response.data);
       setSuccess(true);
       toast.success("Signup successful!");
@@ -438,7 +442,7 @@ const Signup = () => {
           </div>
         )}
         ;
-        <div className="z-[10000] pt-[20em]">
+        <div className="z-[10000]">
           <ToastContainer position="top-right" autoClose={5000} />
         </div>
       </div>

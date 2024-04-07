@@ -32,6 +32,7 @@ export default {
       minus: "#D7D7D7",
       plus: "#414141",
       cartborder: "rgba(253, 105, 5, 0.30)",
+      hr: "#DDDDDD",
       
     },
     screens: {

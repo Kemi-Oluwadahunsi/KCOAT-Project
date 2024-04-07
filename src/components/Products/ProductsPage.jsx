@@ -1,15 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchInput from "../SearchInput";
 import angleRight from "../../assets/chevron-right.png";
 import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
 import Submenu from "./Submenu";
-import products from "../Products/AllproductsItems/allproducts";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ITEMS_PER_PAGE = 12;
 
 const AllProducts = () => {
-  const [selectedProducts, setSelectedProducts] = useState(products);
+  const [selectedProducts, setSelectedProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+const [isLoading, setIsLoading] = useState(true);
+
+  const fetchProducts = async () => {
+    try {
+      // Make API call to fetch products
+      const response = await axios.get("https://kcoat.onrender.com/products");
+      console.log(response.data);
+      setSelectedProducts(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setIsLoading(false);
+    }
+  };
+
+  // Fetch products on component mount
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const indexOfLastProduct = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstProduct = indexOfLastProduct - ITEMS_PER_PAGE;
@@ -28,21 +48,26 @@ const AllProducts = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
 
-  const mostPopular = currentProducts.map((item) => (
-    <Cards
-      key={item.id}
-      id={item.id}
-      image={item.image}
-      title={item.title}
-      cart={item.cart}
-      price={item.price}
-    />
-  ));
+ const mostPopular = currentProducts.map((item) => {
+   console.log("Product ID:", item.Productid); // Log the Productid
+   return (
+     <Link key={item.Productid} to={`/all-products/${item.Productid}`}>
+      
+       <Cards
+         key={item.Productid}
+         id={item.Productid}
+         image={item.ProductImage}
+         title={item.ProductName}
+         price={item.ProductPrice}
+       />
+     </Link>
+   );
+ });
 
   return (
     <>
       <div className="flex px-[6.2rem] gap-[5rem] py-[3rem] relative top-[4em]">
-        <div className="flex flex-col gap-[3em] w-[20%] fixed ">
+        <div className="flex flex-col gap-[3em] w-[20%]">
           <div className="flex items-center w-full py-[2em] px-[1.8em] border-2 border-categoryborder2">
             <div className="flex flex-col gap-[1.5em] w-full">
               <h2 className="font-tertiary text-[1.2em] pl-4 border-l-4 border-categoryborder">
@@ -91,7 +116,7 @@ const AllProducts = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-[5rem] ml-[30%]">
+        <div className="flex flex-col gap-[5rem] w-[80%]">
           <div className="flex flex-col gap-[2rem]">
             <div className="flex flex-col gap-[2rem]">
               <h1 className="font-tertiary font-normal text-[2.25em] text-color">
@@ -101,37 +126,44 @@ const AllProducts = () => {
                 <SearchInput />
               </div>
               <h3 className="font-oxygen font-bold text-secondary">
-                Showing {indexOfFirstProduct + 1}-{Math.min(
-                  indexOfLastProduct,
-                  selectedProducts.length
-                )} of {selectedProducts.length} Items
+                Showing {indexOfFirstProduct + 1}-
+                {Math.min(indexOfLastProduct, selectedProducts.length)} of{" "}
+                {selectedProducts.length} Items
               </h3>
             </div>
 
-            <div className="grid grid-cols-3  justify-center gap-[4rem]">
+            {isLoading ? <div className="loader"></div> : <div className="grid grid-cols-3  justify-center gap-[4rem]">
               {mostPopular}
-            </div>
+            </div>}
           </div>
           <div className="flex justify-center w-full">
             <div className="flex flex-col w-[50%] py-[5rem]  gap-[1.6rem] items-center">
               <h3 className="font-oxygen font-bold text-secondary">
-                Showing {indexOfFirstProduct + 1}-{Math.min(
-                  indexOfLastProduct,
-                  selectedProducts.length
-                )} of {selectedProducts.length} Items
+                Showing {indexOfFirstProduct + 1}-
+                {Math.min(indexOfLastProduct, selectedProducts.length)} of{" "}
+                {selectedProducts.length} Items
               </h3>
 
               <div className="w-full flex">
-                <hr className={`w-[50%] h-1 border-0 ${currentPage === 1 ? 'bg-tertiary' : 'bg-nextpage'}`} />
-               <hr className={`w-[50%] h-1 border-0 ${currentPage === totalPages ? 'bg-tertiary' : 'bg-nextpage'}`} />
-             </div>
+                <hr
+                  className={`w-[50%] h-1 border-0 ${
+                    currentPage === 1 ? "bg-tertiary" : "bg-nextpage"
+                  }`}
+                />
+                <hr
+                  className={`w-[50%] h-1 border-0 ${
+                    currentPage === totalPages ? "bg-tertiary" : "bg-nextpage"
+                  }`}
+                />
+              </div>
 
               <div className=" font-secondary font-medium">
                 <div className="flex justify-center mt-4">
                   {currentPage > 1 && (
                     <button
                       className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
-                      onClick={handlePrevPage}>
+                      onClick={handlePrevPage}
+                    >
                       Previous
                     </button>
                   )}
@@ -139,7 +171,8 @@ const AllProducts = () => {
                     <button
                       className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
                       onClick={handleNextPage}
-                    >View More
+                    >
+                      View More
                       <img
                         src={angleRight}
                         alt="View More"

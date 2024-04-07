@@ -11,6 +11,9 @@ import Checkout from "./components/Cart-Flow/Checkout";
 import { useState } from "react";
 import Logout from "./components/Login-Signup/Logout";
 import axios from "axios";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import SingleProductsPage from "./components/Cart-Flow/SingleProductsPage";
+import ScrollArrow from "./components/ScrollArrow";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,6 +41,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+        <ScrollArrow />
         <Routes>
           <Route element={<Firstpage />}>
             <Route path="/" element={<LandingPage />} />
@@ -51,7 +55,13 @@ function App() {
           <Route path="/all-products" element={<AllProducts />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/all-products/:Productid"
+            element={<SingleProductsPage />}
+          />
+
           <Route path="/footer" element={<Footer />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -1,3 +1,5 @@
+import Cart from "/images/cart-plus-alt.svg"
+
 const Cards = (props) => {
   return (
     <div>
@@ -16,7 +18,7 @@ const Cards = (props) => {
                 N{props.price}
               </p>
               <div className="flex gap-3 place-items-center cursor-pointer">
-                <img src={props.cart} alt="cart" />
+                <img src={Cart} alt="cart" />
               </div>
             </div>
           </div>

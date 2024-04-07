@@ -2,10 +2,15 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CartItems from "../Cart-Flow/cartproducts";
 import Input from "./Input";
+import DarkCircle from "../../assets/dark-circle.svg";
+import Button from "../Button";
+import Trophy from "../../assets/trophy1.svg"
+import Guarantee from "../../assets/guarantee.svg"
+import Service from "../../assets/customer-support.svg"
 
 const Checkout = () => {
   return (
-    <div className="pt-[5em]">
+    <div className="pt-[5em] flex flex-col gap-[20em]">
       <div className="flex flex-col gap-[7em]">
         <div className="checkoutbg flex flex-col gap-3 items-center justify-center">
           <h1 className="font-bold text-tertiary font-tertiary text-[2.5em]">
@@ -132,19 +137,90 @@ const Checkout = () => {
               </table>
             </div>
 
-            <div>
-              <div className="flex justify-between w-[70%]">
-                <p className="font-poppins text-color text-xl">Subtotal</p>
-                <p>N115</p>
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col gap-5 w-[70%] pb-[5em]">
+                <div className="flex justify-between w-full">
+                  <p className="font-poppins text-color text-xl">Subtotal</p>
+                  <p className=" font-bold font-tertiary text-tertiary">N115,000</p>
+                </div>
+
+                <div className="flex justify-between w-full">
+                  <p className="flex items-center justify-center w-[3em] font-poppins text-color text-xl">
+                    Total
+                  </p>
+                  <p className="font-bold font-tertiary text-tertiary">N115,000</p>
+                </div>
               </div>
 
-              <div className="flex justify-between w-[70%]">
-                <p className="flex items-center justify-center w-[3em] font-poppins text-color text-xl">
-                  Total
-                </p>
-                <p>N115</p>
+              <div className="flex flex-col justify-center px-[5em] gap-[5em]">
+                <div className="flex flex-col w-[80%] gap-10">
+                  <div className="flex flex-col gap-4 w-full">
+                    <div className="flex gap-5">
+                      <img src={DarkCircle} alt="" />
+                      <p className=" font-poppins text-[1.2em] font-medium text-color">
+                        Card Payment
+                      </p>
+                    </div>
+                    <p className=" font-oxygen text-justify text-createaccount">
+                      Make your payment using your card.. Please use your Order
+                      ID as the payment reference. Your order will not be
+                      shipped until the funds have cleared in our account.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col gap-3 w-full">
+                    <div className="flex gap-5">
+                      <input type="radio" />
+                      <p className=" font-poppins text-[1.2em] font-medium text-createaccount">
+                        Card Payment
+                      </p>
+                    </div>
+
+                    
+                    <p className=" font-oxygen text-justify text-subtext">
+                      Your personal data will be used to support your experience
+                      throughout this website, to manage access to your account,
+                      and for other purposes described in our{" "}
+                      <span className="font-oxygen text-color font-bold">
+                        privacy policy.
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                <div className=" flex items-center justify-center">
+                  <div className="w-[50%] font-medium text-2xl bg-tertiary py-2 rounded-2xl flex items-center justify-center">
+                    <Button>Place Order</Button>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-feedback flex justify-between p-[5em]">
+        <div className="flex gap-4 ">
+          <img src={Trophy} alt="" />
+          <div className="flex flex-col gap-1">
+            <h1 className="font-tertiary font-bold text-[2.5em]">High Quality</h1>
+            <p className="font-oxygen text-[1.2em] text-color">crafted from top materials</p>
+          </div>
+        </div>
+
+        <div className="flex gap-4 ">
+          <img src={Guarantee} alt="" />
+          <div className="flex flex-col gap-1">
+            <h1 className="font-tertiary text-[2.5em]">Delivery Service</h1>
+            <p className="font-oxygen text-[1.2em] text-color">Fast and Efficient</p>
+          </div>
+        </div>
+
+        <div className="flex gap-4 ">
+          <img src={Service} alt="" />
+          <div className="flex flex-col gap-1">
+            <h1 className="font-tertiary font-bold text-[2.5em]">24 / 7 Support</h1>
+            <p className="font-oxygen text-[1.2em] text-color">Dedicated support</p>
           </div>
         </div>
       </div>
