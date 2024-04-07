@@ -29,6 +29,8 @@ export default {
       categoryborder: "#2D2D2D",
       categoryborder2: "#E2E2E2",
       nextpage: "#DFDFDF",
+      tertiary3:"#3D3D3D",
+      tertiary4:"#666",
     },
     screens: {
       xs: "480px",

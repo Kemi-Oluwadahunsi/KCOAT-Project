@@ -245,7 +245,7 @@ const Header = ({ handleSubMenuClick }) => {
 
         <li className="text-lg">New & Featured</li>
 
-        <li className="text-lg">Contact</li>
+        <li className="text-lg"><Link to="/contact">Contact</Link></li>
       </ul>
 
       <div className="flex gap-1 place-items-center cursor-pointer">

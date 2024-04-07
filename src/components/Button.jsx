@@ -2,7 +2,7 @@
 const Button = ({children}) => {
   return (
     <>
-      <button className=" flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110">
+      <button className=" flex place-items-center gap-4 bg-tertiary text-primary rounded-x1 px-4 py-2 cursor-pointer hover:scale-110">
         {children}
       </button>
     </>
