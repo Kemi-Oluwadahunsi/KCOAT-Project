@@ -7,7 +7,7 @@ import ThirdSection from "./ThirdSection"
 
 const LandingPage = () => {
   return (
-    <div>
+    <div className="border-l-8 border-simple1">
       <Hero />
       <CategoryCard />
       <ThirdSection />

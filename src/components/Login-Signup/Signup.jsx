@@ -113,7 +113,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className=" grid h-screen w-full place-content-center relative top-[4rem]">
+      <div className=" grid h-screen w-full place-content-center relative top-[4rem] border-l-8 border-simple1">
         {success ? (
           <section className="flex flex-col gap-[3em]">
             <h1 className="text-white text-4xl">Success! Please Sign in</h1>

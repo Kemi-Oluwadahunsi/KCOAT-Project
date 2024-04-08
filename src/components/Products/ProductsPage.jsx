@@ -66,7 +66,7 @@ const [isLoading, setIsLoading] = useState(true);
 
   return (
     <>
-      <div className="flex px-[6.2rem] gap-[5rem] py-[3rem] relative top-[4em]">
+      <div className="flex px-[6.2rem] gap-[5rem] py-[3rem] relative pt-[8em] border-l-8 border-simple1">
         <div className="flex flex-col gap-[3em] w-[20%]">
           <div className="flex items-center w-full py-[2em] px-[1.8em] border-2 border-categoryborder2">
             <div className="flex flex-col gap-[1.5em] w-full">
@@ -132,9 +132,13 @@ const [isLoading, setIsLoading] = useState(true);
               </h3>
             </div>
 
-            {isLoading ? <div className="loader"></div> : <div className="grid grid-cols-3  justify-center gap-[4rem]">
-              {mostPopular}
-            </div>}
+            {isLoading ? (
+              <div className="loader"></div>
+            ) : (
+              <div className="grid grid-cols-3  justify-center gap-[4rem]">
+                {mostPopular}
+              </div>
+            )}
           </div>
           <div className="flex justify-center w-full">
             <div className="flex flex-col w-[50%] py-[5rem]  gap-[1.6rem] items-center">

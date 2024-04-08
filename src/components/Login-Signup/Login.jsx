@@ -54,7 +54,7 @@ const Login = ({ setIsLoggedIn }) => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
   return (
-    <div className="h-screen">
+    <div className="h-screen border-l-8 border-simple1">
       <div className="flex items-center justify-center h-[43rem] relative top-[5rem]">
         <div className="flex w-4/5 my-auto">
           <div className="flex  ">

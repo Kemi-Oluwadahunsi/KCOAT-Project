@@ -23,7 +23,7 @@ const SingleProductsPage = ( product ) => {
   // console.log("Product:", product);
 
   return (
-    <div className=" flex flex-col gap-[10em] pt-[10rem] ">
+    <div className=" flex flex-col gap-[10em] pt-[10rem] border-l-8 border-simple1">
       <div className=" flex w-full px-[10em] gap-[15em]">
         <div className="basis-[40%]">
           <img

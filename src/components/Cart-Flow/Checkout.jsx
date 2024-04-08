@@ -10,7 +10,7 @@ import Service from "../../assets/customer-support.svg"
 
 const Checkout = () => {
   return (
-    <div className="pt-[5em] flex flex-col gap-[20em]">
+    <div className="pt-[5em] flex flex-col gap-[20em] border-l-8 border-simple1">
       <div className="flex flex-col gap-[7em]">
         <div className="checkoutbg flex flex-col gap-3 items-center justify-center">
           <h1 className="font-bold text-tertiary font-tertiary text-[2.5em]">
@@ -141,14 +141,18 @@ const Checkout = () => {
               <div className="flex flex-col gap-5 w-[70%] pb-[5em]">
                 <div className="flex justify-between w-full">
                   <p className="font-poppins text-color text-xl">Subtotal</p>
-                  <p className=" font-bold font-tertiary text-tertiary">N115,000</p>
+                  <p className=" font-bold font-tertiary text-tertiary">
+                    N115,000
+                  </p>
                 </div>
 
                 <div className="flex justify-between w-full">
                   <p className="flex items-center justify-center w-[3em] font-poppins text-color text-xl">
                     Total
                   </p>
-                  <p className="font-bold font-tertiary text-tertiary">N115,000</p>
+                  <p className="font-bold font-tertiary text-tertiary">
+                    N115,000
+                  </p>
                 </div>
               </div>
 
@@ -176,7 +180,6 @@ const Checkout = () => {
                       </p>
                     </div>
 
-                    
                     <p className=" font-oxygen text-justify text-subtext">
                       Your personal data will be used to support your experience
                       throughout this website, to manage access to your account,
@@ -203,8 +206,12 @@ const Checkout = () => {
         <div className="flex gap-4 ">
           <img src={Trophy} alt="" />
           <div className="flex flex-col gap-1">
-            <h1 className="font-tertiary font-bold text-[2.5em]">High Quality</h1>
-            <p className="font-oxygen text-[1.2em] text-color">crafted from top materials</p>
+            <h1 className="font-tertiary font-bold text-[2.5em]">
+              High Quality
+            </h1>
+            <p className="font-oxygen text-[1.2em] text-color">
+              crafted from top materials
+            </p>
           </div>
         </div>
 
@@ -212,15 +219,21 @@ const Checkout = () => {
           <img src={Guarantee} alt="" />
           <div className="flex flex-col gap-1">
             <h1 className="font-tertiary text-[2.5em]">Delivery Service</h1>
-            <p className="font-oxygen text-[1.2em] text-color">Fast and Efficient</p>
+            <p className="font-oxygen text-[1.2em] text-color">
+              Fast and Efficient
+            </p>
           </div>
         </div>
 
         <div className="flex gap-4 ">
           <img src={Service} alt="" />
           <div className="flex flex-col gap-1">
-            <h1 className="font-tertiary font-bold text-[2.5em]">24 / 7 Support</h1>
-            <p className="font-oxygen text-[1.2em] text-color">Dedicated support</p>
+            <h1 className="font-tertiary font-bold text-[2.5em]">
+              24 / 7 Support
+            </h1>
+            <p className="font-oxygen text-[1.2em] text-color">
+              Dedicated support
+            </p>
           </div>
         </div>
       </div>

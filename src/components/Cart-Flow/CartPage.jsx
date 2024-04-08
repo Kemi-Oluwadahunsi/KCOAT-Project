@@ -20,7 +20,7 @@ const CartPage = () => {
     />
   ));
   return (
-    <div className="flex flex-col gap-[10em] pt-[10em] px-[7.5em]">
+    <div className="flex flex-col gap-[10em] pt-[10em] px-[7.5em] border-l-8 border-simple1">
       <div className="flex w-full gap-[2em]">
         <div className="flex-1 border border-cartborder rounded-xl">
           <table className="w-full">
