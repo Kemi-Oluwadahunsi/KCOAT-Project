@@ -83,14 +83,11 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://kcoat-1.onrender.com/register",
-        {
-          cusName: user,
-          email: email,
-          password: pwd,
-        }
-      );
+      const response = await axios.post("https://kcoat.onrender.com/register", {
+        cusName: user,
+        email: email,
+        password: pwd,
+      });
       console.log(response.data);
       setSuccess(true);
       toast.success("Signup successful!");

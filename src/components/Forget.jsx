@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 const ForgotPassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,14 +29,16 @@ const ForgotPassword = () => {
               />
             </div>
 
-            <div className="flex justify-center">
-              <button
+            <div className="flex items-center justify-center">
+            <div className=" flex justify-center mt-[2em] hover:scale-105 w-[19rem] bg-tertiary rounded-xl">
+              <Button
                 type="submit"
-                className="border-3 bg-simple1 text-tertiary2 font-oxygen text-base  rounded-xl w-[19.5rem] h-[3rem] hover:scale-90"
+                className={`border-3 bg-simple1 text-tertiary2 font-oxygen flex items-center justify-center py-1 text-xl`}
               >
                 Send Link
-              </button>
+              </Button>
             </div>
+          </div>
           </form>
         </div>
         <p className="text-sm text-tertiary4 flex justify-center gap-2 ">

@@ -5,13 +5,14 @@ import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
 import Submenu from "./Submenu";
 import axios from "axios";
 import { Link } from "react-router-dom";
+// import {productWithDetails } from "../Cart-Flow/SingleProductStaticProps"
 
 const ITEMS_PER_PAGE = 12;
 
 const AllProducts = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchProducts = async () => {
     try {
@@ -26,6 +27,7 @@ const [isLoading, setIsLoading] = useState(true);
     }
   };
 
+  
   // Fetch products on component mount
   useEffect(() => {
     fetchProducts();
@@ -48,21 +50,20 @@ const [isLoading, setIsLoading] = useState(true);
     setCurrentPage((prevPage) => prevPage - 1);
   };
 
- const mostPopular = currentProducts.map((item) => {
-   console.log("Product ID:", item.Productid); // Log the Productid
-   return (
-     <Link key={item.Productid} to={`/all-products/${item.Productid}`}>
-      
-       <Cards
-         key={item.Productid}
-         id={item.Productid}
-         image={item.ProductImage}
-         title={item.ProductName}
-         price={item.ProductPrice}
-       />
-     </Link>
-   );
- });
+  const mostPopular = currentProducts.map((item) => {
+    console.log("Product ID:", item.Productid); // Log the Productid
+    return (
+      <Link key={item.Productid} to={`/products/${item.Productid}`}>
+        <Cards
+          key={item.Productid}
+          id={item.Productid}
+          image={item.ProductImage}
+          title={item.ProductName}
+          price={item.ProductPrice}
+        />
+      </Link>
+    );
+  });
 
   return (
     <>
