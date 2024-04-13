@@ -1,34 +1,35 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import CheckCircle from "../../assets/check-circle.svg";
-import Button from "../Button";
+import Button from "../StaticComponents/Button";
 
-import { Link } from "react-router-dom";
-
-// import { removeCartItemById, updateQuantity } from "../../../hooks/CartContext";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import {CartContext} from "../../../hooks/CartContext";
-// import axios from "axios";
+import { CartContext } from "../../../hooks/CartContext";
 
 const CartPage = () => {
+  const navigate = useNavigate();
+
+  const handleProceedToCheckout = () => {
+    navigate("/checkout", { state: { cartItems: cartItems } });
+  };
+
   const { loading, cartItems, removeCartItemById, updateCartItemQuantity } =
-    useContext(CartContext); // Using useContext to access the CartContext values
-  // Using the useQuantity hook to manage quantity state
+    useContext(CartContext);
 
- const handleIncrement = (productId) => {
-   const item = cartItems.find((item) => item.id === productId);
-   if (item) {
-     updateCartItemQuantity(productId, item.quantity + 1);
-   }
- };
+  const handleIncrement = (productId) => {
+    const item = cartItems.find((item) => item.id === productId);
+    if (item) {
+      updateCartItemQuantity(productId, item.quantity + 1);
+    }
+  };
 
-   const handleDecrement = (productId) => {
-     const item = cartItems.find((item) => item.id === productId);
-     if (item && item.quantity > 1) {
-       updateCartItemQuantity(productId, item.quantity - 1);
-     }
-   };
-
+  const handleDecrement = (productId) => {
+    const item = cartItems.find((item) => item.id === productId);
+    if (item && item.quantity > 1) {
+      updateCartItemQuantity(productId, item.quantity - 1);
+    }
+  };
 
   const handleRemoveItem = (productId) => {
     removeCartItemById(productId); // Removing item from cart
@@ -40,7 +41,7 @@ const CartPage = () => {
     0
   );
   // Calculate total
-  // const total = subtotal;
+  const total = subtotal;
 
   return (
     <>
@@ -142,19 +143,19 @@ const CartPage = () => {
                   </tr>
                   <tr className="flex text-xl text-color font-oxygen justify-between px-5">
                     <td>TOTAL</td>
-                    <td>N{subtotal}</td>
+                    <td>N{total}</td>
                   </tr>
                 </tbody>
               </table>
 
-              <Link to="/checkout">
+              <div onClick={handleProceedToCheckout}>
                 <div className="flex items-center justify-center">
                   <div className="flex bg-tertiary gap-1  items-center w-[70%] justify-center rounded-xl p-1 hover:scale-110 ">
                     <Button>Proceed To Checkout</Button>
                     <img src={CheckCircle} alt="" />
                   </div>
                 </div>
-              </Link>
+              </div>
             </div>
           </div>
           ;

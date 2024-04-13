@@ -1,10 +1,8 @@
-
-
 import Tinydots from "../../assets/Tinydots.svg";
-import Button from "../Button";
+import Button from "../StaticComponents/Button";
 import photo from "../../assets/right-image.png";
 import Shoe from "../../assets/Hero-shoe.png";
-import SearchInput from "../SearchInput";
+import SearchInput from "../StaticComponents/SearchInput";
 const Hero = () => {
   return (
     <>
@@ -34,7 +32,7 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="text-[1.5rem] font-secondary font-medium hover:scale-110">
+            <div className="flex justify-center items-center text-[1.5rem] font-secondary font-medium hover:scale-105 py-1 w-[15em] bg-tertiary rounded-xl">
               <Button>SHOP NOW</Button>
             </div>
 
@@ -57,4 +55,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

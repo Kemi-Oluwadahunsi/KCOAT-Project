@@ -1,4 +1,4 @@
-import outline from "../assets/search-outline.svg";
+import outline from "../../assets/search-outline.svg";
 
 
 const SearchInput = () => {

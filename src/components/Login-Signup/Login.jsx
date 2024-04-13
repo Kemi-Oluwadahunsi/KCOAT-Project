@@ -1,7 +1,7 @@
 import { ProductContext } from "../../../hooks/ProductContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LoginImage from "../../assets/login.png";
-import Button from "../Button";
+import Button from "../StaticComponents/Button";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
@@ -15,7 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
     try {
       const emailInput = document.getElementById("email").value;
@@ -125,9 +125,11 @@ const Login = () => {
                 </div>
               </div>
 
-              <p className="font-secondary font-medium text-[1em] text-password text-center mt-5 cursor-pointer">
-                Forgot password?
-              </p>
+              <Link to="/Forget">
+                <p className="font-secondary font-medium text-[1em] text-password text-center mt-5 cursor-pointer">
+                  Forgot password?
+                </p>
+              </Link>
             </form>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SearchInput from "../SearchInput";
+import SearchInput from "../StaticComponents/SearchInput";
 import angleRight from "../../assets/chevron-right.png";
 import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
 import Submenu from "./Submenu";
@@ -27,7 +27,6 @@ const AllProducts = () => {
     }
   };
 
-  
   // Fetch products on component mount
   useEffect(() => {
     fetchProducts();

@@ -1,23 +1,42 @@
-import { createContext, useState, useEffect, } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const ProductContext = createContext();
-
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [mostPopularProducts, setMostPopularProducts] = useState([]);
 
   const login = () => {
     // Perform login logic
     setIsLoggedIn(true);
   };
 
-  const logout = () => {
-    // Perform logout logic
-    setIsLoggedIn(false);
+  const logout = async () => {
+    try {
+      await axios.post("https://kcoat.onrender.com/logout");
+      setIsLoggedIn(false);
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
+
+  useEffect(() => {
+    const MostPopularProduct = async () => {
+      try {
+        const response = await axios.get(
+          "https://kcoat.onrender.com/products/most-popular-products"
+        );
+        // console.log("Most Popular Products:", response.data);
+        setMostPopularProducts(response.data);
+      } catch (error) {
+        // console.error("Error fetching product:", error)
+      }
+    };
+    MostPopularProduct();
+  }, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -40,7 +59,6 @@ export const ProductProvider = ({ children }) => {
         `https://kcoat.onrender.com/products/${productId}`
       );
       return response.data;
-
     } catch (error) {
       console.error("Error fetching product by ID:", error);
       return null;
@@ -49,7 +67,16 @@ export const ProductProvider = ({ children }) => {
 
   return (
     <ProductContext.Provider
-      value={{ products, loading, setLoading, fetchProductById, isLoggedIn, login, logout }}
+      value={{
+        products,
+        loading,
+        setLoading,
+        fetchProductById,
+        isLoggedIn,
+        login,
+        logout,
+        mostPopularProducts,
+      }}
     >
       {children}
     </ProductContext.Provider>

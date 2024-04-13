@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SignupImage from "../../assets/signup.png";
-import Button from "../Button";
+import Button from "../StaticComponents/Button";
 import {
   faCheck,
   faEye,
@@ -183,7 +183,7 @@ const Signup = () => {
                           </label>
                           <input
                             type="text/number"
-                            placeholder="Grace Joel"
+                            placeholder="First-name Last-name"
                             className="w-[16em] rounded-[3em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
                             id="username"
                             ref={userRef}
@@ -223,6 +223,16 @@ const Signup = () => {
                           className="font-secondary font-medium text-color"
                         >
                           Email
+                          <span className={validEmail ? "valid" : "hide"}>
+                            <FontAwesomeIcon className="ml-2" icon={faCheck} />
+                          </span>
+                          <span
+                            className={
+                              validEmail || !email ? "hide" : "invalid"
+                            }
+                          >
+                            <FontAwesomeIcon icon={faTimes} />
+                          </span>
                         </label>
                         <input
                           type="text/number"
@@ -255,10 +265,9 @@ const Signup = () => {
                         </p>
                       </div>
                     </div>
-
+                    
+                    {/* Password and Validation */}
                     <div className="flex gap-7 w-[100%]">
-                      {/* Password and Validation */}
-
                       <div className="flex flex-col flex-1">
                         <div className="flex flex-col gap-2 w-full relative ">
                           <label
@@ -428,8 +437,8 @@ const Signup = () => {
                     </div>
 
                     <div className="flex justify-center items-center w-full ">
-                      <div className="flex font-oxygen justify-center hover:scale-110 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
-                        <Button>Shop Now</Button>
+                      <div className="flex font-oxygen justify-center hover:scale-105 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
+                        <Button className={`border-0`}>Shop Now</Button>
                       </div>
                     </div>
                   </form>

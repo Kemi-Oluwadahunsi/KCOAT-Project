@@ -1,6 +1,6 @@
-import { ProductContext } from "../../hooks/ProductContext";
+import { ProductContext } from "../../../hooks/ProductContext";
 
-import logo from "../assets/KCOAT.png";
+import logo from "../../assets/KCOAT.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
@@ -10,8 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
-import{ useContext, useState } from "react";
-import { CartContext } from "../../hooks/CartContext";
+import { useContext, useState } from "react";
+import { CartContext } from "../../../hooks/CartContext";
 
 //isLoggedIn, onLogout
 const Header = ({ handleSubMenuClick }) => {
@@ -19,9 +19,7 @@ const Header = ({ handleSubMenuClick }) => {
   const [isMenSubMenuOpen, setMenSubMenuOpen] = useState(false);
   const [isWomenSubMenuOpen, setWomenSubMenuOpen] = useState(false);
   const { isLoggedIn, logout } = useContext(ProductContext);
- const { cartCount } = useContext(CartContext);
-
-
+  const { cartCount } = useContext(CartContext);
 
   const openProductsMenu = () => {
     setProductsMenuOpen(true);
@@ -46,11 +44,6 @@ const Header = ({ handleSubMenuClick }) => {
   const closeWomenSubMenu = () => {
     setWomenSubMenuOpen(false);
   };
-
-  // useEffect(() => {
-  //   // Update cart quantity whenever cart count changes
-  //   setCartQuantity(getCartCount());
-  // }, [getCartCount]);
 
   const handleProductsMenu = () => {
     if (!isProductsMenuOpen) {

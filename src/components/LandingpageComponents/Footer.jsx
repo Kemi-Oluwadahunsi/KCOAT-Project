@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logo from "../assets/KCOAT.png";
-import facebook from "../assets/facebook.svg";
-import instagram from "../assets/instagram.svg";
-import whatsapp from "../assets/whatsapp.svg";
+import logo from "../../assets/KCOAT.png";
+import facebook from "../../assets/facebook.svg";
+import instagram from "../../assets/instagram.svg";
+import whatsapp from "../../assets/whatsapp.svg";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 const Footer = () => {
   return (

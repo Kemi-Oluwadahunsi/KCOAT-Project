@@ -1,9 +1,9 @@
 import Slider from "react-slick";
-import Button from "../Button";
-import Data from "../featured-products";
+import Button from "../StaticComponents/Button";
 import Arrow from "../../assets/arrow-right.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import x from "../featured-products"
 
 const ThirdSection = () => {
   const settings = {
@@ -29,7 +29,7 @@ const ThirdSection = () => {
         </p>
       </div>
       <Slider {...settings}>
-        {Data.map((item) => (
+        {x.map((item) => (
           <div key={item.id} className="flex justify-center gap-16 flex-wrap">
             <div className="flex flex-col gap-[1em]  py-[1rem] rounded-md">
               <div className="mx-auto">

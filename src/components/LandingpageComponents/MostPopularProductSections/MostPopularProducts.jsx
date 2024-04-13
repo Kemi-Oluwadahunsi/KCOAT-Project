@@ -1,7 +1,8 @@
-import Button from "../../Button";
+import Button from "../../StaticComponents/Button";
 import Cards from "./Cards";
-import angleRight from  "../../../assets/chevron-right.png"
-import products from "./mostpopularObjects"
+import angleRight from "../../../assets/chevron-right.png";
+import products from "./mostpopularObjects";
+import { Link } from "react-router-dom";
 
 const MostPopularProducts = () => {
   const mostPopular = products.map((item) => (
@@ -12,7 +13,6 @@ const MostPopularProducts = () => {
       title={item.title}
       cart={item.cart}
       price={item.price}
-      
     />
   ));
   return (
@@ -27,11 +27,13 @@ const MostPopularProducts = () => {
           </p>
         </div>
 
-        <div className="place-self-end font-secondary font-medium">
-          <Button>
-            View All <img src={angleRight} alt="angleRight" />{" "}
-          </Button>
-        </div>
+        <Link to="/most-popular-product">
+          <div className="place-self-end font-secondary font-medium">
+            <Button>
+              View All <img src={angleRight} alt="angleRight" />{" "}
+            </Button>
+          </div>
+        </Link>
       </div>
 
       <div className="grid grid-cols-4 my-12 mx-[6rem] justify-center">

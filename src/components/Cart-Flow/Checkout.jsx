@@ -1,14 +1,29 @@
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CartItems from "../Cart-Flow/cartproducts";
-import Input from "./Input";
+import Input from "../StaticComponents/Input";
 import DarkCircle from "../../assets/dark-circle.svg";
-import Button from "../Button";
-import Trophy from "../../assets/trophy1.svg"
-import Guarantee from "../../assets/guarantee.svg"
-import Service from "../../assets/customer-support.svg"
+import Button from "../StaticComponents/Button";
+import Trophy from "../../assets/trophy1.svg";
+import Guarantee from "../../assets/guarantee.svg";
+import Service from "../../assets/customer-support.svg";
+import { Link, useLocation } from "react-router-dom";
 
 const Checkout = () => {
+  const location = useLocation();
+  const { cartItems } = location.state || { cartItems: [] };
+  console.log(cartItems);
+
+  if (!cartItems) {
+    return <div>Error: Cart items not found!</div>; // Render an error message if cartItems is null
+  }
+
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.productPrice * item.quantity,
+    0
+  );
+  // Total is the same as subtotal for this example
+  const total = subtotal;
+
   return (
     <div className="pt-[5em] flex flex-col gap-[20em] border-l-8 border-simple1">
       <div className="flex flex-col gap-[7em]">
@@ -17,9 +32,13 @@ const Checkout = () => {
             Checkout
           </h1>
           <div className="flex gap-[2em] font-oxygen font-bold text-color">
-            <h3>Home</h3>
+            <Link to="/">
+              <h3>Home</h3>
+            </Link>
             <FontAwesomeIcon icon={faChevronRight} />
-            <h3>Cart</h3>
+            <Link to="/cart">
+              <h3>Cart</h3>
+            </Link>
           </div>
         </div>
 
@@ -95,40 +114,41 @@ const Checkout = () => {
                 </thead>
 
                 <tbody className="">
-                  {CartItems.map((product) => (
+                  {cartItems.map((product, index) => (
                     <tr
                       className="border border-t-0 border-b-1 border-l-0 border-r-0 border-border text-center h-20"
                       key={product.id}
                     >
                       <td className="w-[10%] font-bold cursor-pointer">
-                        <span className="font-oxygen text-color text-sm">
-                          X
+                        <span className="font-oxygen text-color text-lg">
+                          {index + 1}.
                         </span>
                       </td>
                       <td className=" flex items-center justify-evenly py-5">
                         <img
-                          src={product.image}
+                          src={product.productImage}
                           width={50}
                           alt=""
                           className=" w-[70px] h-[70px] object-cover rounded-lg"
                         />
                         <span className=" flex items-start w-[50%] text-secondary font-oxygen">
-                          {product.title}
+                          {product.productName}
                         </span>
                       </td>
 
                       <td className="w-[15%] font-bold font-tertiary text-tertiary">
-                        <span>N{product.price}</span>
+                        <span>N{product.productPrice}</span>
                       </td>
 
                       <td className="w-[15%]">
-                        <div className="font-oxygen text-lg text-color">1</div>
+                        <div className="font-oxygen text-lg text-color">
+                          {product.quantity}
+                        </div>
                       </td>
 
                       <td className="w-[15%]">
                         <span className="font-bold font-tertiary text-tertiary">
-                          {/* ${product.price * product.quantity} */}N
-                          {product.price}
+                          N{product.productPrice * product.quantity}
                         </span>
                       </td>
                     </tr>
@@ -142,7 +162,7 @@ const Checkout = () => {
                 <div className="flex justify-between w-full">
                   <p className="font-poppins text-color text-xl">Subtotal</p>
                   <p className=" font-bold font-tertiary text-tertiary">
-                    N115,000
+                    N{subtotal}
                   </p>
                 </div>
 
@@ -151,7 +171,7 @@ const Checkout = () => {
                     Total
                   </p>
                   <p className="font-bold font-tertiary text-tertiary">
-                    N115,000
+                    N{total}
                   </p>
                 </div>
               </div>

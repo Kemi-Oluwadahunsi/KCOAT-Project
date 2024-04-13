@@ -1,4 +1,3 @@
-
 import { ProductContext } from "../../../hooks/ProductContext";
 // import { useHistory } from "react-router-dom";
 import { CartContext } from "../../../hooks/CartContext";
@@ -12,88 +11,43 @@ import {
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "../Button";
+import Button from "../StaticComponents/Button";
 import { CiStar } from "react-icons/ci";
 import Delivery from "../../assets/group.svg";
 import Deliver from "../../assets/3d-rotate.svg";
 import Caret from "../../assets/caret.svg";
 
 const SingleProductsPage = () => {
-  // const { Productid } = useParams();
 
-  // const [product, setProduct] = useState(null);
-  // const { pquantity, updateQuantity } = useQuantity();
+  const { Productid } = useParams();
+  const { fetchProductById, loading } = useContext(ProductContext);
+  const { addToCart } = useContext(CartContext); 
+  const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const fetchedProduct = await fetchProductById(Productid);
+        setProduct(fetchedProduct);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+    fetchProduct();
+  }, [Productid, fetchProductById]);
 
-  // const incrementQuantity = () => {
-  //   updateQuantity(pquantity + 1);
-  // };
-
-  // const decrementQuantity = () => {
-  //   if (pquantity > 1) {
-  //     updateQuantity(pquantity - 1);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   const fetchProduct = async () => {
-  //     const fetchedProduct = await fetchProductById(Productid);
-  //     console.log("Fetched product:", fetchedProduct); // Log fetched product data
-  //     setProduct(fetchedProduct);
-  //     setLoading(false);
-  //   };
-  //   fetchProduct();
-  // }, [Productid]);
-
-  // const handleAddToCart = () => {
-  //   if (product) {
-  //     const productData = {
-  //       id: product.productId,
-  //       productImage: product.ProductImage, // Assuming ProductId is the ID of the product
-  //       productName: product.ProductName,
-  //       productPrice: product.ProductPrice,
-  //       quantity: pquantity, //You can set quantity here or fetch it from state
-  //     };
-  //     addToCart(productData);
-  //   }
-  // };
-
-  // if (loading) {
-  //   return <div className="flex items-center"></div>;
-  // }
-const { Productid } = useParams();
-const { fetchProductById, loading } = useContext(ProductContext);
- const { addToCart} = useContext(CartContext); // Use pquantity and updateQuantity from CartContext
- const [product, setProduct] = useState(null);
- const [quantity, setQuantity] = useState(1);
-
- useEffect(() => {
-  
-   const fetchProduct = async () => {
-     try {
-       const fetchedProduct = await fetchProductById(Productid);
-       setProduct(fetchedProduct);
-     } catch (error) {
-       console.error("Error fetching product:", error);
-     }
-   };
-   fetchProduct();
- }, [Productid, fetchProductById]);
-
- const handleAddToCart = () => {
-   if (product) {
-     const productData = {
-       id: product.Productid,
-       productImage: product.ProductImage,
-       productName: product.ProductName,
-       productPrice: product.ProductPrice,
-      
-     };
-     addToCart(productData,quantity);
-     
-   }
- };
-
+  const handleAddToCart = () => {
+    if (product) {
+      const productData = {
+        id: product.Productid,
+        productImage: product.ProductImage,
+        productName: product.ProductName,
+        productPrice: product.ProductPrice,
+      };
+      addToCart(productData, quantity);
+    }
+  };
 
   // const { product, quantity } = productState;
 
@@ -120,9 +74,6 @@ const { fetchProductById, loading } = useContext(ProductContext);
   //   }
   // };
 
-  
-
-  
   if (!product || loading) {
     return (
       <div className="h-screen flex items-center justify-center">
@@ -130,7 +81,6 @@ const { fetchProductById, loading } = useContext(ProductContext);
       </div>
     );
   }
-
 
   return (
     <>
