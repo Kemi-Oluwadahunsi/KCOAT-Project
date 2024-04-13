@@ -1,15 +1,16 @@
+import { ProductContext } from "../../../hooks/ProductContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LoginImage from "../../assets/login.png";
 import Button from "../Button";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
-const Login = ({ setIsLoggedIn }) => {
+const Login = () => {
+  const { login } = useContext(ProductContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -20,15 +21,17 @@ const Login = ({ setIsLoggedIn }) => {
       const emailInput = document.getElementById("email").value;
       const passwordInput = document.getElementById("password").value;
 
-      const response = await axios.post("https://kcoat-1.onrender.com/login", {
+      const response = await axios.post("https://kcoat.onrender.com/login", {
         email: emailInput,
         userpassword: passwordInput,
       });
 
       console.log(response.data);
-       setIsLoggedIn(true);
-      navigate("/");
-       toast.success("Login successful!");
+      login();
+      toast.success("Login successful!");
+      setTimeout(() => {
+        navigate("/");
+      }, 4000);
     } catch (error) {
       console.error("Error:", error);
       if (error.response) {

@@ -5,6 +5,8 @@ import SearchInput from "../SearchInput";
 import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
 import Submenu from "./Submenu";
 import angleRight from "../../assets/chevron-right.png";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -19,6 +21,21 @@ const AllProducts = () => {
     category: null,
   });
 
+  const fetchProducts = async () => {
+    try {
+      // Make API call to fetch products
+      const response = await axios.get("https://kcoat.onrender.com/products");
+      console.log(response.data);
+      setSelectedProducts(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setIsLoading(false);
+    }
+  };
+
+  
+  // Fetch products on component mount
   useEffect(() => {
     // Fetch products on mount
     const fetchProducts = async () => {
@@ -102,17 +119,33 @@ const AllProducts = () => {
     }
   };
 
+
   // Renders product cards
-  const renderProductCards = currentProducts.map((item) => (
-    <Link key={item.Productid} to={`/all-products/${item.Productid}`}>
-      <Cards
-        id={item.Productid}
-        image={item.ProductImage}
-        title={item.ProductName}
-        price={item.ProductPrice}
-      />
-    </Link>
+//   const renderProductCards = currentProducts.map((item) => (
+//     <Link key={item.Productid} to={`/all-products/${item.Productid}`}>
+//       <Cards
+//         id={item.Productid}
+//         image={item.ProductImage}
+//         title={item.ProductName}
+//         price={item.ProductPrice}
+//       />
+//     </Link>
   ));
+  
+  const mostPopular = currentProducts.map((item) => {
+    console.log("Product ID:", item.Productid); // Log the Productid
+    return (
+      <Link key={item.Productid} to={`/products/${item.Productid}`}>
+        <Cards
+          key={item.Productid}
+          id={item.Productid}
+          image={item.ProductImage}
+          title={item.ProductName}
+          price={item.ProductPrice}
+        />
+      </Link>
+    );
+  });
 
   return (
     <div className="flex px-[6.2rem] gap-[5rem] py-[3rem] relative pt-[8em] border-l-8 border-simple1">

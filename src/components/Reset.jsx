@@ -9,7 +9,7 @@ const ResetPassword = () => {
 
   return (
     <div className="flex py-[7rem] px-[10rem] border-l-8 border-simple1">
-      <div className=" basis-[50%]">
+      <div className=" basis-[50%] w-fit">
         <img src={sideImage} alt="Reset Password" className="w-full " />
       </div>
       <div className=" flex flex-col gap-8 basis-[50%] border border-solid border-border rounded-l-md px-[3rem] pt-[1rem]">
@@ -48,7 +48,7 @@ const ResetPassword = () => {
               type="password"
               id="confirmPassword"
               name="confirmPassword"
-              className="p-3 border rounded-full border-solid border-opacity-50 border-createaccount w-full "
+              className="p-3 border rounded-full border-solid border-opacity-50 border-createaccount w-full"
             />
           </div>
           <div className="flex items-center justify-center">
