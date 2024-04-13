@@ -1,7 +1,12 @@
 import outline from "../../assets/search-outline.svg";
 
 
-const SearchInput = () => {
+const SearchInput = ({onChange}) => {
+
+  const handleInputChange = (event) => {
+    onChange(event.target.value);
+  };
+
   return (
     <div>
       <div className=" ">
@@ -11,12 +16,14 @@ const SearchInput = () => {
               type="search"
               placeholder="Search"
               className=" bg-transparent w-[90%] outline-none"
+              onChange={handleInputChange}
             />
-            <img src={outline} alt="outline" />
+            <button type="submit" >
+              <img src={outline} alt="outline" className="cursor-pointer" />
+            </button>
+            
           </div>
         </div>
-
-        
       </div>
     </div>
   );

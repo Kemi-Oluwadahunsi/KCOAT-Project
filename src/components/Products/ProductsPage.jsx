@@ -10,9 +10,11 @@ const ITEMS_PER_PAGE = 12;
 
 const AllProducts = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const [priceRange, setPriceRange] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   // Fetch products on component mount
   useEffect(() => {
@@ -20,7 +22,7 @@ const AllProducts = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get("https://kcoat.onrender.com/products");
-        // setProducts(response.data);
+        setFilteredProducts(response.data);
         setSelectedProducts(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -31,14 +33,60 @@ const AllProducts = () => {
     fetchProducts();
   }, []);
 
+  /// Filter products based on search query and price range
+  useEffect(() => {
+    const filterProducts = () => {
+      const filtered = selectedProducts.filter((product) => {
+        const matchesPriceRange =
+          !priceRange.length ||
+          (product.ProductPrice >= priceRange[0] &&
+            product.ProductPrice <= priceRange[1]);
+
+        const matchesSearchQuery =
+          product.ProductName.toLowerCase().includes(
+            searchQuery.toLowerCase()
+          ) ||
+          product.ProductDescription.toLowerCase().includes(
+            searchQuery.toLowerCase()
+          ) ||
+          (Number(searchQuery) && product.ProductPrice === Number(searchQuery));
+
+        return matchesPriceRange && matchesSearchQuery;
+      });
+
+      setFilteredProducts(filtered);
+    };
+
+    filterProducts();
+  }, [selectedProducts, priceRange, searchQuery]);
+
+ const handleSearchInputChange = (value) => {
+   // Ensure that value is defined before accessing its properties
+   if (value !== undefined) {
+     setSearchQuery(value);
+   }
+ };
+  
+  const handlePriceRangeClick = (range) => {
+    // Toggle the price range filter
+    if (priceRange[0] === range[0] && priceRange[1] === range[1]) {
+      // If the range is already selected, uncheck it and reset the filter
+      setPriceRange([]);
+    } else {
+      // If the range is not selected, set the price range filter
+      setPriceRange(range);
+    }
+  };
+
   const indexOfLastProduct = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstProduct = indexOfLastProduct - ITEMS_PER_PAGE;
-  const currentProducts = selectedProducts.slice(
+  const currentProducts = filteredProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
+  console.log("Current Products:", currentProducts);
 
-  const totalPages = Math.ceil(selectedProducts.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -96,12 +144,18 @@ const AllProducts = () => {
                 { label: "N25000 - N30000", range: [25000, 30000] },
                 { label: "N30000 - N35000", range: [30000, 35000] },
                 { label: "N35000 - N40000", range: [35000, 40000] },
-              ].map(({ label }, index) => (
+              ].map(({ label, range }, index) => (
                 <div key={index} className="flex gap-5 items-center">
                   <input
                     type="checkbox"
                     className="w-4 h-4 checkbox"
-                    // onChange={() => handleFilterChange("priceRange", range)}
+                    checked={priceRange[0] === range[0]}
+                    onChange={() => {}}
+                    onClick={() => handlePriceRangeClick(range)}
+                    style={{
+                      cursor:
+                        priceRange[0] === range[0] ? "default" : "pointer",
+                    }}
                   />
                   <p>{label}</p>
                 </div>
@@ -117,12 +171,16 @@ const AllProducts = () => {
             Our Collection Of Products
           </h1>
           <div className="w-3/5">
-            <SearchInput /> {/*onSearch={handleSearch} */}
+            <SearchInput
+              value={searchQuery}
+              onChange={handleSearchInputChange}
+            />{" "}
+            {/*onSearch={handleSearch} */}
           </div>
           <h3 className="font-oxygen font-bold text-secondary">
             Showing {indexOfFirstProduct + 1}-
-            {Math.min(indexOfLastProduct, selectedProducts.length)} of{" "}
-            {selectedProducts.length} Items
+            {Math.min(indexOfLastProduct, filteredProducts.length)} of{" "}
+            {filteredProducts.length} Items
           </h3>
 
           {isLoading ? (
@@ -139,8 +197,8 @@ const AllProducts = () => {
           <div className="flex flex-col w-[50%] py-[5rem] gap-[1.6rem] items-center">
             <h3 className="font-oxygen font-bold text-secondary">
               Showing {indexOfFirstProduct + 1}-
-              {Math.min(indexOfLastProduct, selectedProducts.length)} of{" "}
-              {selectedProducts.length} Items
+              {Math.min(indexOfLastProduct, filteredProducts.length)} of{" "}
+              {filteredProducts.length} Items
             </h3>
 
             <div className="w-full flex">

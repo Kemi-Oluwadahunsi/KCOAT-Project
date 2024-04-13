@@ -1,17 +1,22 @@
 // import { useState } from "react";
 import Button from "../StaticComponents/Button";
 import axios from "axios";
+import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ForgotPassword = () => {
-  // const [email, setEmail] = useState("")
+   const [email, setEmail] = useState("")
 
   const handlePasswordSend = async (e) => {
     e.preventDefault();
     // Handle password reset email sending
     try {
-      await axios.get("https://kcoat.onrender.com/forgot");
+      await axios.post("https://kcoat.onrender.com/forgot-password", {
+        params: {
+          email: email, // Pass the email from state
+        },
+      });
       toast.success("Password reset email sent successfully");
     } catch (error) {
       console.error("Error sending email:", error);
@@ -19,7 +24,7 @@ const ForgotPassword = () => {
     }
   };
   
-  
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +50,7 @@ const ForgotPassword = () => {
                 type="email"
                 id="email"
                 name="email"
+                onChange={(e) => setEmail(e.target.value)}
                 className="outline-createaccount gap-4 p-4 border rounded-full border-solid border-opacity-50 border-createaccount w-[32.3rem] h-[3.15rem] text-createaccount"
               />
             </div>

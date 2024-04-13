@@ -3,14 +3,32 @@ import Button from "../StaticComponents/Button";
 import photo from "../../assets/right-image.png";
 import Shoe from "../../assets/Hero-shoe.png";
 import SearchInput from "../StaticComponents/SearchInput";
+import {useNavigate} from "react-router-dom";
+import { useState } from "react";
 const Hero = () => {
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const navigate = useNavigate();
+
+  const handleSearchInputChange = (value) => {
+    setSearchQuery(value);
+  };
+
+  // Function to handle search form submission
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    // Navigate to the products page with the search query as a query parameter
+    navigate(`/products?search=${encodeURIComponent(searchQuery)}`);
+  };
   return (
     <>
       <section className=" flex flex-col gap-[5rem] pt-10 pb-0">
         <div className="w-2/5 mx-auto ml-[30%] relative top-20">
-          <div className=" w-full mx-auto ">
-            <SearchInput />
-          </div>
+          <form className=" w-full mx-auto " onSubmit={handleSearchSubmit}>
+            <SearchInput
+              value={searchQuery}
+              onChange={handleSearchInputChange}
+            />
+          </form>
         </div>
 
         <div className=" ml-[8rem] mt-[2rem]">
