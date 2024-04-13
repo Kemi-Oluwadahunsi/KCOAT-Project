@@ -18,6 +18,8 @@ const ForgotPassword = () => {
       toast.error("Enter a valid email address");
     }
   };
+  
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
