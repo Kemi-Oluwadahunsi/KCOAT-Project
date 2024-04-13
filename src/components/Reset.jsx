@@ -1,5 +1,6 @@
 import sideImage from "../assets/Resetpw.jpg";
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const ResetPassword = () => {
   const handleSubmit = (e) => {
@@ -54,7 +55,7 @@ const ResetPassword = () => {
             <div className=" flex justify-center mt-[2em] hover:scale-105 w-[19rem] bg-tertiary rounded-xl">
               <Button
                 type="submit"
-                className={`border-3 bg-simple1 text-tertiary2 font-oxygen flex items-center justify-center py-1 text-xl`}
+                className={`border-3 bg-simple1 text-tertiary2 font-oxygen  justify-center py-1 text-xl`}
               >
                 Send
               </Button>
@@ -62,9 +63,13 @@ const ResetPassword = () => {
           </div>
         </form>
 
-        <p className="mt-4 text-sm font-oxygen text-tertiary4 ">
-          <a href="">Back to login</a>
-        </p>
+        <div>
+        <Link to="#">
+          <button className="mt-4 text-sm font-oxygen text-tertiary4 cursor-pointer hover:scale-110">
+          Back to login
+          </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
