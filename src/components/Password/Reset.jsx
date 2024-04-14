@@ -1,8 +1,18 @@
 import { useEffect, useState } from "react";
 import sideImage from "../../assets/Resetpw.jpg";
+import { useParams } from "react-router-dom";
 import Button from "../StaticComponents/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faEye, faEyeSlash, faInfoCircle, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faEye,
+  faEyeSlash,
+  faInfoCircle,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const ResetPassword = () => {
@@ -17,6 +27,8 @@ const ResetPassword = () => {
   const [isPwdVisible, setIsPwdVisible] = useState(false);
   const [isMatchPwdVisible, setIsMatchPwdVisible] = useState(false);
 
+  const { token } = useParams();
+
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
     console.log(result);
@@ -26,10 +38,31 @@ const ResetPassword = () => {
     setValidMatch(match);
   }, [pwd, matchPwd]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (pwd !== matchPwd) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    
+    try {
+      const response = await axios.put(
+        `https://kcoat.onrender.com/reset-password/${token}`,
+        {
+          password: pwd,
+          confirmPassword: matchPwd,
+        }
+      );
+      console.log(response.data);
+      toast.success(response.data.message);
+    } catch (error) {
+      console.error("Error resetting password:", error);
+      toast.error("Error resetting password");
+    }
   };
 
+  // /reset-password/:token
   return (
     <div className="flex py-[7rem] px-[10rem] border-l-8 border-simple1">
       <div className=" basis-[50%] w-fit">
@@ -40,9 +73,9 @@ const ResetPassword = () => {
           <h2 className=" text-tertiary3 text-3xl font-lso mt-4 mb-4">
             Reset Your Password
           </h2>
-          <p className=" text-createaccount w-[60%]">
+          {/* <p className=" text-createaccount w-[60%]">
             A verification email will be sent to the mail box. Please check it.
-          </p>
+          </p> */}
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
           <div className="flex flex-col gap-7 w-[100%]">
@@ -192,6 +225,9 @@ const ResetPassword = () => {
         <p className="mt-4 text-sm font-oxygen text-tertiary4 ">
           <a href="">Back to login</a>
         </p>
+      </div>
+      <div className="z-[10000] pt-[20em]">
+        <ToastContainer position="top-right" autoClose={5000} />
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ import ScrollArrow from "./components/StaticComponents/ScrollArrow";
 import MainProfile from "./components/UserProfile/MainProfile";
 import EditProfile from "./components/UserProfile/EditProfile";
 import MostPopularProductPage from "./components/LandingpageComponents/MostPopularProductSections/MostPopularProductPage";
+import AboutUs from "./components/StaticComponents/AboutUs";
 
 function App() {
   return (
@@ -41,7 +42,11 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/user-profile" element={<MainProfile />} />
           <Route path="/edit-profile" element={<EditProfile />} />
-          <Route path="/most-popular-product" element={<MostPopularProductPage />} />
+          <Route
+            path="/most-popular-product"
+            element={<MostPopularProductPage />}
+          />
+          <Route path="/about-us" element={<AboutUs />} />
         </Routes>
       </BrowserRouter>
       <Footer />
