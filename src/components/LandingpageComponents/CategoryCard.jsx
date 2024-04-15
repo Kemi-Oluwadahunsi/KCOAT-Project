@@ -1,7 +1,7 @@
-import img1 from "../assets/p-necklace.png";
-import img2 from "../assets/bbb.png";
-import img3 from "../assets/orangefit.png";
-import img4 from "../assets/faceless.png";
+import img1 from "../../assets/p-necklace.png";
+import img2 from "../../assets/bbb.png";
+import img3 from "../../assets/orangefit.png";
+import img4 from "../../assets/faceless.png";
 
 const CategoryCard = () => {
   return (

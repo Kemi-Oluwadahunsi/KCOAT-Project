@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SignupImage from "../../assets/signup.png";
-import Button from "../Button";
+import Button from "../StaticComponents/Button";
 import {
   faCheck,
   faEye,
@@ -10,8 +10,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const USER_REGEX = /^[a-zA-z][a-zA-Z0-9-_]{3,23}$/;
+const USER_REGEX = /^[a-zA-Z][a-zA-Z\s-]{1,23}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
@@ -78,19 +81,46 @@ const Signup = () => {
       setErrMsg("Invalid Entry");
       return;
     }
-    console.log(user, pwd);
-    setSuccess(true);
+
+    try {
+      const response = await axios.post("https://kcoat.onrender.com/register", {
+        cusName: user,
+        email: email,
+        password: pwd,
+      });
+      console.log(response.data);
+      setSuccess(true);
+      toast.success("Signup successful!");
+    } catch (error) {
+      console.error("Error:", error);
+      if (error.response) {
+        const status = error.response.status;
+        if (status === 409) {
+          toast.error("Customer with this email already exists");
+        } else {
+          toast.error("Error in creating customer");
+        }
+      } else {
+        toast.error(
+          "An error occurred while signing up. Please try again later."
+        );
+      }
+    }
   };
 
   return (
     <>
-      <div className=" grid h-screen w-full place-content-center relative top-[4rem]">
+      <div className=" grid h-screen w-full place-content-center relative top-[4rem] border-l-8 border-simple1">
         {success ? (
-          <section>
-            <h1 className="text-white text-4xl">Success!</h1>
-            <span className="text-white text-4xl mt-10">
-              <Link to="/login">Sign In</Link>
-            </span>
+          <section className="flex flex-col gap-[3em]">
+            <h1 className="text-white text-4xl">Success! Please Sign in</h1>
+            <Link to="/login">
+              <div className="flex items-center justify-center w-full">
+                <div className="flex font-oxygen justify-center hover:scale-110 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
+                  <Button>Sign In</Button>
+                </div>
+              </div>
+            </Link>
           </section>
         ) : (
           <div className="flex items-center justify-center h-[45rem]">
@@ -153,7 +183,7 @@ const Signup = () => {
                           </label>
                           <input
                             type="text/number"
-                            placeholder="Grace Joel"
+                            placeholder="First-name Last-name"
                             className="w-[16em] rounded-[3em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
                             id="username"
                             ref={userRef}
@@ -193,6 +223,16 @@ const Signup = () => {
                           className="font-secondary font-medium text-color"
                         >
                           Email
+                          <span className={validEmail ? "valid" : "hide"}>
+                            <FontAwesomeIcon className="ml-2" icon={faCheck} />
+                          </span>
+                          <span
+                            className={
+                              validEmail || !email ? "hide" : "invalid"
+                            }
+                          >
+                            <FontAwesomeIcon icon={faTimes} />
+                          </span>
                         </label>
                         <input
                           type="text/number"
@@ -225,10 +265,9 @@ const Signup = () => {
                         </p>
                       </div>
                     </div>
-
+                    
+                    {/* Password and Validation */}
                     <div className="flex gap-7 w-[100%]">
-                      {/* Password and Validation */}
-
                       <div className="flex flex-col flex-1">
                         <div className="flex flex-col gap-2 w-full relative ">
                           <label
@@ -393,13 +432,13 @@ const Signup = () => {
                       <input type="checkbox" className="text-md w-4 h-4" />
                       <span className="font-secondary text-[0.95em] text-subtext font-medium">
                         I have read and agreed to the Terms of Service and
-                        Privacy Policy
+                        <span> Privacy Policy</span>
                       </span>
                     </div>
 
                     <div className="flex justify-center items-center w-full ">
-                      <div className="flex font-oxygen justify-center hover:scale-110 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
-                        <Button>Shop Now</Button>
+                      <div className="flex font-oxygen justify-center hover:scale-105 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
+                        <Button className={`border-0`}>Shop Now</Button>
                       </div>
                     </div>
                   </form>
@@ -409,6 +448,9 @@ const Signup = () => {
           </div>
         )}
         ;
+        <div className="z-[10000]">
+          <ToastContainer position="top-right" autoClose={5000} />
+        </div>
       </div>
     </>
   );

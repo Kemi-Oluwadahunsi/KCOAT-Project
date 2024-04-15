@@ -1,3 +1,5 @@
+import Cart from "/images/cart-plus-alt.svg"
+
 const Cards = (props) => {
   return (
     <div>
@@ -8,7 +10,7 @@ const Cards = (props) => {
           </div>
 
           <div className="flex flex-col gap-3  px-1">
-            <h3 className="font-oxygen font-bold text-[1.1rem]">
+            <h3 className="font-oxygen font-normal text-[1.1rem] text-secondary">
               {props.title}
             </h3>
             <div className="flex justify-between gap-3 ">
@@ -16,7 +18,7 @@ const Cards = (props) => {
                 N{props.price}
               </p>
               <div className="flex gap-3 place-items-center cursor-pointer">
-                <img src={props.cart} alt="cart" />
+                <img src={Cart} alt="cart" />
               </div>
             </div>
           </div>

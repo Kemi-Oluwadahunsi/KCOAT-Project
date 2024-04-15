@@ -1,64 +1,6 @@
-// import logo from "../assets/KCOAT.png";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faChevronDown,
-//   faShoppingCart,
-//   faUserAlt,
-// } from "@fortawesome/free-solid-svg-icons";
-// import { faUser } from "@fortawesome/free-regular-svg-icons";
-// import { Link } from "react-router-dom";
-// const Header = () => {
-//   return (
-//     <>
-//       <div className="h-20 flex place-content-center justify-around items-center font-primary text-sm px-[4rem] bg-tertiary">
-//         <div className="cursor-pointer">
-//           <img src={logo} alt="logo" />
-//         </div>
+import { ProductContext } from "../../../hooks/ProductContext";
 
-//         <ul className="text-color font-oxygen font-medium flex justify-around space-x-4 w-2/4 place-items-center cursor-pointer">
-//           <Link to="/">
-//             <li>Home</li>
-//           </Link>
-
-//           <div className="flex gap-3 place-items-center">
-//             <li>Products</li>
-//             <FontAwesomeIcon icon={faChevronDown} />
-//           </div>
-
-//           <li>New & Featured</li>
-
-//           <li>Contact</li>
-//         </ul>
-
-//         <div className="flex gap-1 place-items-center cursor-pointer">
-//           <div className="text-primary flex gap-2 place-items-center p-5">
-//             <FontAwesomeIcon icon={faUserAlt} />
-//             <FontAwesomeIcon icon={faChevronDown} />
-//           </div>
-//           <FontAwesomeIcon
-//             icon={faShoppingCart}
-//             color="white"
-//             className="text-xl"
-//           />
-//         </div>
-
-//         <div className="flex gap-5 place-items-center cursor-pointer">
-//           <div className="text-primary flex gap-2 place-items-center p-5">
-//             <FontAwesomeIcon icon={faUser} />
-//             <Link to="/login">
-//               <span className="font-bold">Login / Register</span>
-//             </Link>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Header;
-
-import { useState } from "react";
-import logo from "../assets/KCOAT.png";
+import logo from "../../assets/KCOAT.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
@@ -68,11 +10,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { CartContext } from "../../../hooks/CartContext";
 
+//isLoggedIn, onLogout
 const Header = ({ handleSubMenuClick }) => {
   const [isProductsMenuOpen, setProductsMenuOpen] = useState(false);
   const [isMenSubMenuOpen, setMenSubMenuOpen] = useState(false);
   const [isWomenSubMenuOpen, setWomenSubMenuOpen] = useState(false);
+  const { isLoggedIn, logout } = useContext(ProductContext);
+  const { cartCount } = useContext(CartContext);
 
   const openProductsMenu = () => {
     setProductsMenuOpen(true);
@@ -133,7 +80,7 @@ const Header = ({ handleSubMenuClick }) => {
           <li className="text-lg">Home</li>
         </Link>
 
-        <li className="relative" onMouseEnter={handleProductsMenu}>
+        <li className="relative" onClick={handleProductsMenu}>
           <div className="flex gap-3 place-items-center text-lg">
             <span>Products</span>
             <FontAwesomeIcon
@@ -144,7 +91,7 @@ const Header = ({ handleSubMenuClick }) => {
           {isProductsMenuOpen && (
             <ul
               className="absolute top-full left-0 mt-4 bg-primary border-border rounded-md drop-shadow-xl z-50 w-[15rem]"
-              onMouseEnter={openProductsMenu}
+              onClick={openProductsMenu}
               onMouseLeave={closeProductsMenu}
             >
               <li className="pl-3 py-4 font-oxygen font-bold submenu-item">
@@ -212,7 +159,7 @@ const Header = ({ handleSubMenuClick }) => {
                         className=" submenu-item px-3 py-4 "
                         onClick={() => handleSubMenuClick("WomenWears")}
                       >
-                         Wears
+                        Wears
                       </li>
                     </Link>
 
@@ -245,7 +192,9 @@ const Header = ({ handleSubMenuClick }) => {
 
         <li className="text-lg">New & Featured</li>
 
-        <li className="text-lg">Contact</li>
+        <li className="text-lg">
+          <Link to="/contact">Contact</Link>
+        </li>
       </ul>
 
       <div className="flex gap-1 place-items-center cursor-pointer">
@@ -253,20 +202,39 @@ const Header = ({ handleSubMenuClick }) => {
           <FontAwesomeIcon icon={faUserAlt} />
           <FontAwesomeIcon icon={faChevronDown} />
         </div>
-        <FontAwesomeIcon
-          icon={faShoppingCart}
-          color="white"
-          className="text-xl"
-        />
+        <Link to="/cart">
+          <div className="relative flex items-center justify-center">
+            <FontAwesomeIcon
+              icon={faShoppingCart}
+              color="white"
+              className="text-2xl"
+            />
+            <button
+              className={`absolute -top-3 left-4 bg-primary text-tertiary px-[0.3em] rounded-full font-bold`}
+            >
+              {cartCount}
+            </button>
+          </div>
+        </Link>
       </div>
 
       <div className="flex gap-5 place-items-center cursor-pointer">
-        <div className="text-primary flex gap-2 place-items-center p-5">
-          <FontAwesomeIcon icon={faUser} />
-          <Link to="/login">
-            <span className="font-bold">Login / Register</span>
-          </Link>
-        </div>
+        {isLoggedIn ? (
+          <div
+            className="text-primary flex gap-2 place-items-center p-5"
+            onClick={logout}
+          >
+            <FontAwesomeIcon icon={faUser} />
+            <span className="font-bold">Logout</span>
+          </div>
+        ) : (
+          <div className="text-primary flex gap-2 place-items-center p-5">
+            <FontAwesomeIcon icon={faUser} />
+            <Link to="/login">
+              <span className="font-bold">Login / Register</span>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

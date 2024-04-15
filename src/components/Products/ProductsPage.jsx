@@ -1,159 +1,248 @@
-import { useState } from "react";
-import SearchInput from "../SearchInput";
+import { useEffect, useState } from "react";
+import SearchInput from "../StaticComponents/SearchInput";
 import angleRight from "../../assets/chevron-right.png";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
 import Submenu from "./Submenu";
-import products from "../Products/AllproductsItems/allproducts";
 
 const ITEMS_PER_PAGE = 12;
 
 const AllProducts = () => {
-  const [selectedProducts, setSelectedProducts] = useState(products);
+  const [selectedProducts, setSelectedProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const [priceRange, setPriceRange] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  // Fetch products on component mount
+  useEffect(() => {
+    // Fetch products on mount
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("https://kcoat.onrender.com/products");
+        setFilteredProducts(response.data);
+        setSelectedProducts(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setIsLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  /// Filter products based on search query and price range
+  useEffect(() => {
+    const filterProducts = () => {
+      const filtered = selectedProducts.filter((product) => {
+        const matchesPriceRange =
+          !priceRange.length ||
+          (product.ProductPrice >= priceRange[0] &&
+            product.ProductPrice <= priceRange[1]);
+
+        const matchesSearchQuery =
+          product.ProductName.toLowerCase().includes(
+            searchQuery.toLowerCase()
+          ) ||
+          product.ProductDescription.toLowerCase().includes(
+            searchQuery.toLowerCase()
+          ) ||
+          (Number(searchQuery) && product.ProductPrice === Number(searchQuery));
+
+        return matchesPriceRange && matchesSearchQuery;
+      });
+
+      setFilteredProducts(filtered);
+    };
+
+    filterProducts();
+  }, [selectedProducts, priceRange, searchQuery]);
+
+ const handleSearchInputChange = (value) => {
+   // Ensure that value is defined before accessing its properties
+   if (value !== undefined) {
+     setSearchQuery(value);
+   }
+ };
+  
+  const handlePriceRangeClick = (range) => {
+    // Toggle the price range filter
+    if (priceRange[0] === range[0] && priceRange[1] === range[1]) {
+      // If the range is already selected, uncheck it and reset the filter
+      setPriceRange([]);
+    } else {
+      // If the range is not selected, set the price range filter
+      setPriceRange(range);
+    }
+  };
 
   const indexOfLastProduct = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstProduct = indexOfLastProduct - ITEMS_PER_PAGE;
-  const currentProducts = selectedProducts.slice(
+  const currentProducts = filteredProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
+  console.log("Current Products:", currentProducts);
 
-  const totalPages = Math.ceil(selectedProducts.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
 
   const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
   };
 
   const handlePrevPage = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
   };
 
-  const mostPopular = currentProducts.map((item) => (
-    <Cards
-      key={item.id}
-      id={item.id}
-      image={item.image}
-      title={item.title}
-      cart={item.cart}
-      price={item.price}
-    />
-  ));
+  const mostPopular = currentProducts.map((item) => {
+    console.log("Product ID:", item.Productid); // Log the Productid
+    return (
+      <Link key={item.Productid} to={`/products/${item.Productid}`}>
+        <Cards
+          key={item.Productid}
+          id={item.Productid}
+          image={item.ProductImage}
+          title={item.ProductName}
+          price={item.ProductPrice}
+        />
+      </Link>
+    );
+  });
 
   return (
-    <>
-      <div className="flex px-[6.2rem] gap-[5rem] py-[3rem] relative top-[4em]">
-        <div className="flex flex-col gap-[3em] w-[20%] fixed ">
-          <div className="flex items-center w-full py-[2em] px-[1.8em] border-2 border-categoryborder2">
-            <div className="flex flex-col gap-[1.5em] w-full">
-              <h2 className="font-tertiary text-[1.2em] pl-4 border-l-4 border-categoryborder">
-                Categories
-              </h2>
-
-              <ul className="flex flex-col gap-[3em] font-oxygen w-full">
-                <Submenu setSelectedProducts={setSelectedProducts} />
-              </ul>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center w-full py-[2em] border-2 border-categoryborder2">
-            <div className="flex flex-col gap-5 w-[80%]">
-              <div className="font-tertiary text-[1.2em] border-l-4 border-categoryborder">
-                <h2 className="pl-4">Price Range</h2>
-              </div>
-
-              <div className="flex flex-col gap-2em leading-9 font-oxygen text-secondary">
-                <div className="flex gap-5 items-center">
-                  <input type="checkbox" className="w-4 h-4 checkbox" />
-                  <p>N5000 - N20000</p>
-                </div>
-
-                <div className="flex gap-5 items-center">
-                  <input type="checkbox" className="w-4 h-4 checkbox" />
-                  <p>N20000 - N25000</p>
-                </div>
-
-                <div className="flex gap-5 items-center">
-                  <input type="checkbox" className="w-4 h-4 checkbox" />
-                  <p>N25000 - N30000</p>
-                </div>
-
-                <div className="flex gap-5 items-center">
-                  <input type="checkbox" className="w-4 h-4 checkbox" />
-                  <p>N30000 - N35000</p>
-                </div>
-
-                <div className="flex gap-5 items-center">
-                  <input type="checkbox" className="w-4 h-4 checkbox" />
-                  <p>N35000 - N40000</p>
-                </div>
-              </div>
-            </div>
+    <div className="flex px-[6.2rem] gap-[5rem] py-[3rem] relative pt-[8em] border-l-8 border-simple1">
+      <div className="flex flex-col gap-[3em] w-[20%]">
+        {/* Categories and Filters */}
+        <div className="flex items-center w-full py-[2em] px-[1.8em] border-2 border-categoryborder2">
+          <div className="flex flex-col gap-[1.5em] w-full">
+            <h2 className="font-tertiary text-[1.2em] pl-4 border-l-4 border-categoryborder">
+              Categories
+            </h2>
+            <ul className="flex flex-col gap-[3em] font-oxygen w-full">
+              <Submenu setSelectedProducts={setSelectedProducts} />
+            </ul>
           </div>
         </div>
 
-        <div className="flex flex-col gap-[5rem] ml-[30%]">
-          <div className="flex flex-col gap-[2rem]">
-            <div className="flex flex-col gap-[2rem]">
-              <h1 className="font-tertiary font-normal text-[2.25em] text-color">
-                Our Collection Of Products
-              </h1>
-              <div className="w-3/5">
-                <SearchInput />
-              </div>
-              <h3 className="font-oxygen font-bold text-secondary">
-                Showing {indexOfFirstProduct + 1}-{Math.min(
-                  indexOfLastProduct,
-                  selectedProducts.length
-                )} of {selectedProducts.length} Items
-              </h3>
+        <div className="flex flex-col items-center w-full py-[2em] border-2 border-categoryborder2">
+          <div className="flex flex-col gap-5 w-[80%]">
+            <div className="font-tertiary text-[1.2em] border-l-4 border-categoryborder">
+              <h2 className="pl-4">Price Range</h2>
             </div>
 
-            <div className="grid grid-cols-3  justify-center gap-[4rem]">
-              {mostPopular}
+            {/* Price range checkboxes */}
+            <div className="flex flex-col gap-2em leading-9 font-oxygen text-secondary">
+              {[
+                { label: "N5000 - N20000", range: [5000, 20000] },
+                { label: "N20000 - N25000", range: [20000, 25000] },
+                { label: "N25000 - N30000", range: [25000, 30000] },
+                { label: "N30000 - N35000", range: [30000, 35000] },
+                { label: "N35000 - N40000", range: [35000, 40000] },
+              ].map(({ label, range }, index) => (
+                <div key={index} className="flex gap-5 items-center">
+                  <input
+                    type="checkbox"
+                    className="w-4 h-4 checkbox"
+                    checked={priceRange[0] === range[0]}
+                    onChange={() => {}}
+                    onClick={() => handlePriceRangeClick(range)}
+                    style={{
+                      cursor:
+                        priceRange[0] === range[0] ? "default" : "pointer",
+                    }}
+                  />
+                  <p>{label}</p>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="flex justify-center w-full">
-            <div className="flex flex-col w-[50%] py-[5rem]  gap-[1.6rem] items-center">
-              <h3 className="font-oxygen font-bold text-secondary">
-                Showing {indexOfFirstProduct + 1}-{Math.min(
-                  indexOfLastProduct,
-                  selectedProducts.length
-                )} of {selectedProducts.length} Items
-              </h3>
+        </div>
+      </div>
 
-              <div className="w-full flex">
-                <hr className={`w-[50%] h-1 border-0 ${currentPage === 1 ? 'bg-tertiary' : 'bg-nextpage'}`} />
-               <hr className={`w-[50%] h-1 border-0 ${currentPage === totalPages ? 'bg-tertiary' : 'bg-nextpage'}`} />
-             </div>
+      <div className="flex flex-col gap-[5rem] w-[80%]">
+        <div className="flex flex-col gap-[2rem]">
+          <h1 className="font-tertiary font-normal text-[2.25em] text-color">
+            Our Collection Of Products
+          </h1>
+          <div className="w-3/5">
+            <SearchInput
+              value={searchQuery}
+              onChange={handleSearchInputChange}
+            />{" "}
+            {/*onSearch={handleSearch} */}
+          </div>
+          <h3 className="font-oxygen font-bold text-secondary">
+            Showing {indexOfFirstProduct + 1}-
+            {Math.min(indexOfLastProduct, filteredProducts.length)} of{" "}
+            {filteredProducts.length} Items
+          </h3>
 
-              <div className=" font-secondary font-medium">
-                <div className="flex justify-center mt-4">
-                  {currentPage > 1 && (
-                    <button
-                      className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
-                      onClick={handlePrevPage}>
-                      Previous
-                    </button>
-                  )}
-                  {currentPage < totalPages && (
-                    <button
-                      className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
-                      onClick={handleNextPage}
-                    >View More
-                      <img
-                        src={angleRight}
-                        alt="View More"
-                        className="w-4 inline ml-1"
-                      />
-                    </button>
-                  )}
-                </div>
+          {isLoading ? (
+            <div className="loader"></div>
+          ) : (
+            <div className="grid grid-cols-3 justify-center gap-[4rem]">
+              {mostPopular}
+            </div>
+          )}
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center w-full">
+          <div className="flex flex-col w-[50%] py-[5rem] gap-[1.6rem] items-center">
+            <h3 className="font-oxygen font-bold text-secondary">
+              Showing {indexOfFirstProduct + 1}-
+              {Math.min(indexOfLastProduct, filteredProducts.length)} of{" "}
+              {filteredProducts.length} Items
+            </h3>
+
+            <div className="w-full flex">
+              <hr
+                className={`w-[50%] h-1 border-0 ${
+                  currentPage === 1 ? "bg-tertiary" : "bg-nextpage"
+                }`}
+              />
+              <hr
+                className={`w-[50%] h-1 border-0 ${
+                  currentPage === totalPages ? "bg-tertiary" : "bg-nextpage"
+                }`}
+              />
+            </div>
+
+            <div className="font-secondary font-medium">
+              <div className="flex justify-center mt-4">
+                {currentPage > 1 && (
+                  <button
+                    className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
+                    onClick={handlePrevPage}
+                  >
+                    Previous
+                  </button>
+                )}
+                {currentPage < totalPages && (
+                  <button
+                    className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
+                    onClick={handleNextPage}
+                  >
+                    View More
+                    <img
+                      src={angleRight}
+                      alt="View More"
+                      className="w-4 inline ml-1"
+                    />
+                  </button>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

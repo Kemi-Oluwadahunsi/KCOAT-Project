@@ -17,20 +17,12 @@
 }
 
 .submenu-item:active {
-  background-color: #FD6905;
+  background-color: #fd6905;
 }
 
 .submenu-item:hover {
-  /* background-color: rgba(253, 105, 5, 0.09); */
-  /* transform: scale(1.05); */
   transform: translateX(5px);
 }
-
-/* .back {
-  background: url(./assets/Field.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
 
 .hide {
   display: none;
@@ -57,7 +49,7 @@
 .instructions {
   font-size: 0.8rem;
   border-radius: 0.5rem;
-  background: #DEDFE1;
+  background: #dedfe1;
   color: #000;
   padding: 0.25rem;
   position: relative;
@@ -80,7 +72,7 @@
 }
 
 .checkbox {
-  accent-color: #FD6905;
+  accent-color: #fd6905;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,3 +81,77 @@
 .openHr:hover > hr {
   display: block;
 }
+
+.checkoutbg {
+  background: url("./assets/checkoutImage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20em;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+  margin: 3em auto 0 auto;
+}
+@keyframes l5 {
+  0% {
+    box-shadow: 20px 0 #fd6905, -20px 0 #0002;
+    background: #fd6905;
+  }
+  33% {
+    box-shadow: 20px 0 #fd6905, -20px 0 #0002;
+    background: #0002;
+  }
+  66% {
+    box-shadow: 20px 0 #0002, -20px 0 #fd6905;
+    background: #0002;
+  }
+  100% {
+    box-shadow: 20px 0 #0002, -20px 0 #fd6905;
+    background: #fd6905;
+  }
+}
+
+.scroll-buttons .btn-Scroll {
+  position: fixed;
+  bottom: 2rem;
+  font-size: 2rem;
+  z-index: 10001;
+  cursor: pointer;
+  padding: .05em .3em;
+  color: #dedfe1;
+  right: 1.6%;
+  border-radius: 50px;
+  border: none;
+  opacity: 0.9;
+  background-color: #fd6905;
+}
+@media screen and (min-width: 481px) and (max-width: 900px) {
+  .scroll-buttons .btn-Scroll {
+    bottom: 2rem;
+    font-size: 2.4rem;
+  }
+  .scroll-buttons .btn-Scroll html {
+    scroll-snap-type: none;
+    scroll-snap-align: none;
+  }
+  .scroll-buttons .btn-Scroll #section {
+    height: 30rem;
+  }
+}
+@media (max-width: 480px) {
+  .scroll-buttons .btn-Scroll {
+    bottom: 1rem;
+    font-size: 2.1rem;
+    right: 2%;
+  }
+  .scroll-buttons .btn-Scroll html {
+    scroll-snap-type: none;
+    scroll-snap-align: none;
+  }
+}
+
