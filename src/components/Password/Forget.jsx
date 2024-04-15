@@ -76,6 +76,11 @@ const ForgotPassword = () => {
             Resend
           </a>
         </p>
+
+        <p className="font-bold">
+          Note: Can&apos;t find message in inbox? Kindly check your <span className="text-tertiary">spam </span>or <span className="text-tertiary"> junk </span>
+          folder.
+        </p>
       </div>
       <div className="z-[10000] pt-[20em]">
         <ToastContainer position="top-right" autoClose={5000} />

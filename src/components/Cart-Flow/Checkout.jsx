@@ -148,7 +148,7 @@ const Checkout = () => {
 
                       <td className="w-[15%]">
                         <span className="font-bold font-tertiary text-tertiary">
-                          N{product.productPrice * product.quantity}
+                          N{product.productPrice * product.quantity}.00
                         </span>
                       </td>
                     </tr>
@@ -162,7 +162,7 @@ const Checkout = () => {
                 <div className="flex justify-between w-full">
                   <p className="font-poppins text-color text-xl">Subtotal</p>
                   <p className=" font-bold font-tertiary text-tertiary">
-                    N{subtotal}
+                    N{subtotal}.00
                   </p>
                 </div>
 
@@ -171,7 +171,7 @@ const Checkout = () => {
                     Total
                   </p>
                   <p className="font-bold font-tertiary text-tertiary">
-                    N{total}
+                    N{total}.00
                   </p>
                 </div>
               </div>

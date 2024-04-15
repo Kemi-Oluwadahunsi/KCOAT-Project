@@ -64,7 +64,8 @@ const [cartItems, setCartItems] = useState(() => {
   // Function to clear all items from the cart
   const clearCart = () => {
     setCartItems([]);
-    setCartCount(0); // Reset cart count
+    setCartCount(0);
+     // Reset cart count
   };
   // Function to get the count of items in the cart
   const getCartCount = () => {

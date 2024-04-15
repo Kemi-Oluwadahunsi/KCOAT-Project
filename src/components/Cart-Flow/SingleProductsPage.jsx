@@ -3,7 +3,8 @@ import { ProductContext } from "../../../hooks/ProductContext";
 import { CartContext } from "../../../hooks/CartContext";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { useQuantity } from "../../../hooks/CartContext";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   faMinus,
@@ -46,6 +47,7 @@ const SingleProductsPage = () => {
         productPrice: product.ProductPrice,
       };
       addToCart(productData, quantity);
+      toast.success("Item added to cart!")
     }
   };
 
@@ -60,19 +62,6 @@ const SingleProductsPage = () => {
       setQuantity(quantity - 1); // Decrement quantity by 1, if greater than 1
     }
   };
-
-  // const handleAddToCart = () => {
-  //   if (product) {
-  //     const productData = {
-  //       id: product.ProductId, // Corrected to product.Productid
-  //       productImage: product.ProductImage,
-  //       productName: product.ProductName,
-  //       productPrice: product.ProductPrice,
-  //       quantity: pquantity,
-  //     };
-  //   addToCart(productData);
-  //   }
-  // };
 
   if (!product || loading) {
     return (
@@ -198,6 +187,9 @@ const SingleProductsPage = () => {
                 <li className=" list-disc">Duarable</li>
               </ul>
             </div>
+          </div>
+          <div className="z-[10000] pt-[20em]">
+            <ToastContainer position="top-right" autoClose={2000} />
           </div>
         </div>
       )}
