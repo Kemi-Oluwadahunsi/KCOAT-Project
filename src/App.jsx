@@ -19,6 +19,7 @@ import EditProfile from "./components/UserProfile/EditProfile";
 import MostPopularProductPage from "./components/LandingpageComponents/MostPopularProductSections/MostPopularProductPage";
 import AboutUs from "./components/StaticComponents/AboutUs";
 import PaymentSuccessPage from "./components/Cart-Flow/PaymentSuccessPage";
+import CheckOut2 from "./components/Cart-Flow/CheckOut2";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
             element={<MostPopularProductPage />}
           />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/checkout-payment" element={<CheckOut2 />} />
         </Routes>
       </BrowserRouter>
       <Footer />
