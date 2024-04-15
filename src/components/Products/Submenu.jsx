@@ -1,9 +1,7 @@
-
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import axios from "axios";
-
 
 const Submenu = ({ setSelectedProducts }) => {
   const [isMenSubMenuOpen, setMenSubMenuOpen] = useState(false);
@@ -25,7 +23,6 @@ const Submenu = ({ setSelectedProducts }) => {
     setWomenSubMenuOpen(false);
   };
 
-
   const handleSubMenuClick = async (submenu) => {
     try {
       let response;
@@ -34,16 +31,24 @@ const Submenu = ({ setSelectedProducts }) => {
           response = await axios.get("https://kcoat.onrender.com/products");
           break;
         case "MenWears":
-          response = await axios.get("https://kcoat.onrender.com/products/men/wears");
+          response = await axios.get(
+            "https://kcoat.onrender.com/products/men/wears"
+          );
           break;
         case "MenShoesBags":
-          response = await axios.get("https://kcoat.onrender.com/products/men/shoes");
+          response = await axios.get(
+            "https://kcoat.onrender.com/products/men/shoes"
+          );
           break;
         case "MenAccessories":
-          response = await axios.get("https://kcoat.onrender.com/products/men/accessories");
+          response = await axios.get(
+            "https://kcoat.onrender.com/products/men/accessories"
+          );
           break;
         case "WomenWears":
-          response = await axios.get("https://kcoat.onrender.com/products/women/wears");
+          response = await axios.get(
+            "https://kcoat.onrender.com/products/women/wears"
+          );
           break;
         case "WomenShoesBags":
           response = await axios.get(
@@ -67,19 +72,22 @@ const Submenu = ({ setSelectedProducts }) => {
 
   return (
     <ul className="flex flex-col gap-[3em] font-oxygen w-full">
-      <div className="openHr flex flex-col gap-[1em] cursor-pointer ">
-        <li onClick={() => handleSubMenuClick("AllProducts")}>
+      <div
+        className="openHr flex flex-col gap-[1em] cursor-pointer "
+        onClick={() => handleSubMenuClick("AllProducts")}
+      >
+        <li>
           <span>All Products</span>
           <hr className="w-[50%] bg-tertiary h-[0.2rem] hidden" />
         </li>
       </div>
 
-      <div className="openHr flex flex-col gap-[1em] cursor-pointer">
-        <li
-          className="flex flex-col justify-between "
-          onMouseEnter={openMenSubMenu}
-          onMouseLeave={closeMenSubMenu}
-        >
+      <div
+        className="openHr flex flex-col gap-[1em] cursor-pointer"
+        onMouseEnter={openMenSubMenu}
+        onMouseLeave={closeMenSubMenu}
+      >
+        <li className="flex flex-col justify-between ">
           <div className="flex justify-between items-center">
             <span>Men</span>
 
@@ -115,12 +123,12 @@ const Submenu = ({ setSelectedProducts }) => {
         <hr className="w-[50%] bg-tertiary h-[0.2rem] hidden" />
       </div>
 
-      <div className="openHr flex flex-col gap-[1em] cursor-pointer">
-        <li
-          className="flex flex-col justify-between"
-          onMouseEnter={openWomenSubMenu}
-          onMouseLeave={closeWomenSubMenu}
-        >
+      <div
+        className="openHr flex flex-col gap-[1em] cursor-pointer"
+        onMouseEnter={openWomenSubMenu}
+        onMouseLeave={closeWomenSubMenu}
+      >
+        <li className="flex flex-col justify-between">
           <div className="flex justify-between items-center">
             <span>Women</span>
             <FontAwesomeIcon

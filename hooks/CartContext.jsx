@@ -1,18 +1,33 @@
 // import axios from "axios";
-import { createContext, useState,useContext } from "react";
+import { createContext, useState,useContext, 
+  useEffect
+ } from "react";
 
 // Create a new context for managing the cart
 export const CartContext = createContext();
 export const useQuantity = () => useContext(CartContext);
 // Cart Provider component
 export const CartProvider = ({ children }) => {
-  // State to hold cart items
-  const [cartItems, setCartItems] = useState([]);
-  // const [pquantity, setPQuantity] = useState(1);
-  const [cartCount, setCartCount] = useState(0);
+//   // State to hold cart items
+
+const [cartItems, setCartItems] = useState(() => {
+    // Fetch cart items from local storage on component mount
+    const storedCartItems = localStorage.getItem("cartItems");
+    return storedCartItems ? JSON.parse(storedCartItems) : [];
+  });
+  
+  const [cartCount, setCartCount] = useState(cartItems.length);
+
+
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+
 
   const addToCart = async (product, quantity ) => {
-    
+
     try {
       if (!product) {
         console.error("Product is null or undefined");
@@ -43,7 +58,8 @@ export const CartProvider = ({ children }) => {
   const removeCartItemById = (productId) => {
     setCartItems(cartItems.filter((item) => item.id !== productId));
     setCartCount((prevCount) => prevCount - 1);
-  };
+
+   };
 
   // Function to clear all items from the cart
   const clearCart = () => {
@@ -57,12 +73,9 @@ export const CartProvider = ({ children }) => {
 
   const updateCartItemQuantity = (productId, quantity) => {
     // Find the item in the cart by productId
-    const updatedCartItems = cartItems.map((item) => {
-      if (item.id === productId) {
-        return { ...item, quantity: quantity };
-      }
-      return item;
-    });
+    const updatedCartItems = cartItems.map((item) =>
+      item.id === productId ? { ...item, quantity: quantity } : item
+    );
     setCartItems(updatedCartItems);
   };
 
