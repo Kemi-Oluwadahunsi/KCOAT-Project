@@ -20,6 +20,7 @@ import MostPopularProductPage from "./components/LandingpageComponents/MostPopul
 import AboutUs from "./components/StaticComponents/AboutUs";
 import PaymentSuccessPage from "./components/Cart-Flow/PaymentSuccessPage";
 import CheckOut2 from "./components/Cart-Flow/CheckOut2";
+import NewFeatured from "./components/Products/NewFeatured";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/checkout-payment" element={<CheckOut2 />} />
+          <Route path="/new-featured" element={<NewFeatured />} />
         </Routes>
       </BrowserRouter>
       <Footer />

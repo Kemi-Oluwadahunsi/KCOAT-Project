@@ -7,7 +7,8 @@ export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [mostPopularProducts, setMostPopularProducts] = useState([]);
+  // const [mostPopularProducts, setMostPopularProducts] = useState([]);
+
 
   const login = () => {
     // Perform login logic
@@ -23,20 +24,22 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    const MostPopularProduct = async () => {
-      try {
-        const response = await axios.get(
-          "https://kcoat.onrender.com/products/most-popular-products"
-        );
-        // console.log("Most Popular Products:", response.data);
-        setMostPopularProducts(response.data);
-      } catch (error) {
-        // console.error("Error fetching product:", error)
-      }
-    };
-    MostPopularProduct();
-  }, []);
+  // useEffect(() => {
+  //   const MostPopularProduct = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://kcoat.onrender.com/products/most-popular-products"
+  //       );
+  //       // console.log("Most Popular Products:", response.data);
+  //       setMostPopularProducts(response.data);
+  //     } catch (error) {
+  //       // console.error("Error fetching product:", error)
+  //     }
+  //   };
+  //   MostPopularProduct();
+  // }, []);
+
+  
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -75,7 +78,7 @@ export const ProductProvider = ({ children }) => {
         isLoggedIn,
         login,
         logout,
-        mostPopularProducts,
+        // mostPopularProducts,
       }}
     >
       {children}

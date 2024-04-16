@@ -2,13 +2,16 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Input from "../StaticComponents/Input";
 import DarkCircle from "../../assets/dark-circle.svg";
-import Button from "../StaticComponents/Button";
 import Trophy from "../../assets/trophy1.svg";
 import Guarantee from "../../assets/guarantee.svg";
 import Service from "../../assets/customer-support.svg";
 import { Link, useLocation } from "react-router-dom";
+import CheckOut2 from "../Cart-Flow/CheckOut2";
+// import { useContext } from "react";
+// import { CartContext } from "../../../hooks/CartContext";
 
 const Checkout = () => {
+  // const { cartItems } = useContext(CartContext);
   const location = useLocation();
   const { cartItems } = location.state || { cartItems: [] };
   console.log(cartItems);
@@ -213,7 +216,7 @@ const Checkout = () => {
 
                 <div className=" flex items-center justify-center">
                   <div className="w-[50%] font-medium text-2xl bg-tertiary py-2 rounded-2xl flex items-center justify-center">
-                    <Button>Place Order</Button>
+                    <CheckOut2 />
                   </div>
                 </div>
               </div>
