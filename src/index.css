@@ -95,7 +95,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   animation: l5 1s infinite linear alternate;
-  margin: 3em auto 0 auto;
+  margin: 0 auto 0 auto;
 }
 @keyframes l5 {
   0% {

@@ -1,6 +1,4 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-// import cart from "/images/cart-plus-alt.svg"
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
@@ -49,12 +47,12 @@ const NewFeatured = () => {
 
   return (
     <div className="flex flex-col gap-[3em] py-[8rem] px-[5rem] bg-background">
-      <div className="flex justify-between items-center px-10 pt-5">
-        <h1 className="text-center font-tertiary font-normal text-color text-[2.2rem]">
+      <div className="flex flex-col items-center px-10 pt-5">
+        <h1 className="text-center font-tertiary font-normal text-color text-[2.5rem]">
           New & Featured Products
         </h1>
 
-        <p className="font-oxygen font-normal font-subtext w-[36%] text-start leading-6">
+        <p className="font-oxygen font-normal font-subtext text-start leading-6">
           Explore Endless Possibilities And Upgrade Your Fashion Experience
           Today!.
         </p>
@@ -63,7 +61,7 @@ const NewFeatured = () => {
       {isLoading ? (
         <div className="loader"></div>
       ) : (
-        <div className="grid grid-cols-3 justify-center gap-[4rem]">
+        <div className="grid grid-cols-4 justify-center gap-[4rem]">
           {mostPopular}
         </div>
       )}

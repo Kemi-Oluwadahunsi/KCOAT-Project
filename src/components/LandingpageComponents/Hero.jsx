@@ -2,9 +2,9 @@ import Tinydots from "../../assets/Tinydots.svg";
 import Button from "../StaticComponents/Button";
 import photo from "../../assets/right-image.png";
 import Shoe from "../../assets/Hero-shoe.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
- 
   return (
     <>
       <section className=" flex flex-col gap-[5rem] pt-[5rem] pb-0">
@@ -36,9 +36,11 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="flex justify-center items-center text-[1.5rem] font-secondary font-medium hover:scale-105 py-1 w-[15em] bg-tertiary rounded-xl">
-              <Button>SHOP NOW</Button>
-            </div>
+            <Link to="/all-products">
+              <div className="flex justify-center items-center text-[1.5rem] font-secondary font-medium hover:scale-105 py-1 w-[15em] bg-tertiary rounded-xl">
+                <Button>SHOP NOW</Button>
+              </div>
+            </Link>
 
             <div className="absolute top-[30em] flex items-center">
               <img src={Tinydots} alt="boxdots" />

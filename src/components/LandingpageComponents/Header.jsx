@@ -190,7 +190,7 @@ const Header = ({ handleSubMenuClick }) => {
           )}
         </li>
 
-        <li className="text-lg">New & Featured</li>
+        <Link to="/new-featured"><li className="text-lg">New & Featured</li></Link>
 
         <li className="text-lg">
           <Link to="/contact">Contact</Link>
