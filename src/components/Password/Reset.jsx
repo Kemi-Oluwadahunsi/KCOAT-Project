@@ -27,8 +27,9 @@ const ResetPassword = () => {
   const [isPwdVisible, setIsPwdVisible] = useState(false);
   const [isMatchPwdVisible, setIsMatchPwdVisible] = useState(false);
 
- const pathname = window.location.pathname;
- const token = pathname.split("/").pop(); 
+  const pathname = window.location.pathname;
+  const segments = pathname.split("/");
+  const token = segments[segments.length - 1]; // Extracts the last segment of the path
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
@@ -46,7 +47,7 @@ const ResetPassword = () => {
       toast.error("Passwords do not match");
       return;
     }
-    
+
     try {
       const response = await axios.put(
         `https://kcoat.onrender.com/reset-password/${token}`,
@@ -55,7 +56,7 @@ const ResetPassword = () => {
           confirmPassword: matchPwd,
         }
       );
-      console.log(token)
+      console.log(token);
       console.log(response.data);
       toast.success(response.data.message);
     } catch (error) {
@@ -225,7 +226,9 @@ const ResetPassword = () => {
         </form>
 
         <p className="mt-4 text-sm font-oxygen text-tertiary4 ">
-          <Link to="/login" href="">Back to login</Link>
+          <Link to="/login" href="">
+            Back to login
+          </Link>
         </p>
       </div>
       <div className="z-[10000] pt-[20em]">

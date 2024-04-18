@@ -1,5 +1,4 @@
 import axios from "axios";
-// import userdp from "../../assets/Ellipse-4.svg";
 import Button from "../StaticComponents/Button";
 import { useContext, useRef, useState } from "react";
 import { ProductContext } from "../../../hooks/ProductContext";
@@ -72,8 +71,8 @@ const EditProfile = () => {
                 style={{ display: "none" }} // Hide the file input
                 name="image"
                 onChange={handleChange}
-                accept="image/*" 
-                className="rounded-full w-2 h-2"
+                accept="image/*"
+                className="rounded-full w-2 h-2 bg-bland"
               />
             </div>
             <div className="flex flex-col items-center gap-4 text-[1.5em] font-bold  justify-center">
@@ -91,7 +90,7 @@ const EditProfile = () => {
               <div className="flex flex-col gap-[1.5em]">
                 <h2 className="text-[1.1em] font-bold">Profile Information</h2>
 
-                <form className="flex flex-col gap-[1.5em]">
+                <div className="flex flex-col gap-[1.5em]">
                   <div className="flex justify-between  gap-[5em] w-full">
                     <div className="flex flex-col gap-3 basis-[50%]">
                       <label>First Name</label>
@@ -111,6 +110,8 @@ const EditProfile = () => {
                         className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
                         required
                         placeholder="Daniels"
+                        value={formData.lastName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -121,8 +122,9 @@ const EditProfile = () => {
                       <input
                         className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount"
                         required
-                        placeholder="hannahdaniels@gmail.com
-                    "
+                        placeholder="hannahdaniels@gmail.com"
+                        value={formData.email}
+                        onChange={handleChange}
                       />
                     </div>
 
@@ -132,16 +134,18 @@ const EditProfile = () => {
                         className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount"
                         required
                         placeholder="+2348084400000"
+                        value={formData.phoneNumber}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
 
               <div className="flex flex-col gap-[1.5em]">
                 <h2 className="text-[1.1em] font-bold">Change Password</h2>
 
-                <form action="" className="flex w-full gap-[5em] ">
+                <div action="" className="flex w-full gap-[5em] ">
                   <div className="flex flex-col gap-3 basis-[50%]">
                     <label htmlFor="password">New Password</label>
                     <input
@@ -151,6 +155,8 @@ const EditProfile = () => {
                       placeholder="***********"
                       className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
                       required
+                      value={formData.newPassword}
+                      onChange={handleChange}
                     />
                   </div>
 
@@ -165,7 +171,7 @@ const EditProfile = () => {
                       required
                     />
                   </div>
-                </form>
+                </div>
               </div>
 
               <div className="flex flex-col gap-[1.5em]">
@@ -179,6 +185,8 @@ const EditProfile = () => {
                       placeholder="Your address"
                       className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
                       required
+                      value={formData.address}
+                      onChange={handleChange}
                     />
                   </div>
 
@@ -188,6 +196,8 @@ const EditProfile = () => {
                       placeholder="Your state"
                       className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount w-[50%]"
                       required
+                      value={formData.state}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
