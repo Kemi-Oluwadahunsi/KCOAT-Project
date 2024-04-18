@@ -27,9 +27,7 @@ const ResetPassword = () => {
   const [isPwdVisible, setIsPwdVisible] = useState(false);
   const [isMatchPwdVisible, setIsMatchPwdVisible] = useState(false);
 
-  const pathname = window.location.pathname;
-  const segments = pathname.split("/");
-  const token = segments[segments.length - 1]; // Extracts the last segment of the path
+ const token = new URLSearchParams(window.location.search).get('token'); //Extracts the last segment of the path
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);

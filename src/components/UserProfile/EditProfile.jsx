@@ -1,19 +1,33 @@
 import axios from "axios";
 import Button from "../StaticComponents/Button";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ProductContext } from "../../../hooks/ProductContext";
 const EditProfile = () => {
-  const { userProfile, setIsLoading } = useContext(ProductContext);
+  const { userProfile } = useContext(ProductContext);
   const fileInputRef = useRef(null);
   const [formData, setFormData] = useState({
-    firstName: userProfile.firstName,
-    lastName: userProfile.lastName,
-    email: userProfile.email,
-    phoneNumber: userProfile.phoneNumber,
-    address: userProfile.address,
-    state: userProfile.state,
-    image: null, // Added image state to hold the uploaded file
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    state: "",
+    image: null,
   });
+
+  useEffect(() => {
+    if (userProfile) {
+      setFormData({
+        firstName: userProfile.firstName || "",
+        lastName: userProfile.lastName || "",
+        email: userProfile.email || "",
+        phoneNumber: userProfile.phoneNumber || "",
+        address: userProfile.address || "",
+        state: userProfile.state || "",
+        image: null,
+      });
+    }
+  }, [userProfile]);
 
   const handleChange = (e) => {
     if (e.target.name === "image") {
@@ -31,7 +45,7 @@ const EditProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+   
     try {
       const formDataWithImage = new FormData(); // Create FormData object
       // Append form data to include the image file
@@ -52,10 +66,10 @@ const EditProfile = () => {
           },
         }
       );
-      setIsLoading(false);
+     
     } catch (error) {
       console.error("Error updating user profile:", error);
-      setIsLoading(false);
+    
     }
   };
   return (
@@ -110,6 +124,7 @@ const EditProfile = () => {
                         className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
                         required
                         placeholder="Daniels"
+                        name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
                       />
@@ -123,6 +138,7 @@ const EditProfile = () => {
                         className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount"
                         required
                         placeholder="hannahdaniels@gmail.com"
+                        name="email"
                         value={formData.email}
                         onChange={handleChange}
                       />
@@ -134,6 +150,7 @@ const EditProfile = () => {
                         className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount"
                         required
                         placeholder="+2348084400000"
+                        name="phoneNumber"
                         value={formData.phoneNumber}
                         onChange={handleChange}
                       />
@@ -185,6 +202,7 @@ const EditProfile = () => {
                       placeholder="Your address"
                       className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
                       required
+                      name="address"
                       value={formData.address}
                       onChange={handleChange}
                     />
@@ -196,6 +214,7 @@ const EditProfile = () => {
                       placeholder="Your state"
                       className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount w-[50%]"
                       required
+                      name="state"
                       value={formData.state}
                       onChange={handleChange}
                     />
