@@ -5,14 +5,24 @@ import Button from "../StaticComponents/Button";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../../hooks/CartContext";
+import { ProductContext } from "../../../hooks/ProductContext";
 
 const CartPage = () => {
   const navigate = useNavigate();
 
+  // const handleProceedToCheckout = () => {
+  //   navigate("/checkout", { state: { cartItems: cartItems } });
+  // };
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false); // State to track login prompt modal
+  const { isLoggedIn } = useContext(ProductContext);
   const handleProceedToCheckout = () => {
-    navigate("/checkout", { state: { cartItems: cartItems } });
+    if (isLoggedIn) {
+      navigate("/checkout", { state: { cartItems: cartItems } });
+    } else {
+      setShowLoginPrompt(true);
+    }
   };
 
   const {
@@ -39,12 +49,12 @@ const CartPage = () => {
 
   const handleRemoveItem = (productId) => {
     removeCartItemById(productId);
-    toast.success("Item deleted from cart!") // Removing item from cart
+    toast.success("Item deleted from cart!"); // Removing item from cart
   };
 
   const handleClearCart = () => {
     clearCart();
-    toast.success("Cart is empty!") // Removing all items from cart
+    toast.success("Cart is empty!"); // Removing all items from cart
   };
 
   // Calculating subtotal
@@ -61,7 +71,7 @@ const CartPage = () => {
   const total = parseFloat(subtotal.toFixed(2));
 
   return (
-    <>
+    <div>
       {loading ? (
         <div className="loader h-screen"></div>
       ) : (
@@ -210,7 +220,30 @@ const CartPage = () => {
           </div>
         </div>
       )}
-    </>
+
+      {showLoginPrompt && (
+        <div className="absolute top-[40%] left-[40%] bg-primary shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)] rounded-2xl z-50 pb-[1em]">
+          <div className=" flex flex-col gap-[2em] bg-white p-8 rounded-lg">
+            <p className="text-xl">
+              Please login or create an account to checkout.
+            </p>
+            <Link to="/login">
+              <div className="flex items-center justify-center">
+                <div className="w-[8em] flex justify-center items-center font-secondary font-medium py-1  bg-tertiary rounded-xl">
+                  <Button>Login</Button>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <button
+            onClick={() => setShowLoginPrompt(false)}
+            className="-mt-[1em] ml-[2em] text-lg underline cursor-pointer"
+          >
+            Close
+          </button>
+        </div>
+      )}
+    </div>
   );
 };
 

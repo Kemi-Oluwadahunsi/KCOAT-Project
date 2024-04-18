@@ -21,18 +21,26 @@ import AboutUs from "./components/StaticComponents/AboutUs";
 import PaymentSuccessPage from "./components/Cart-Flow/PaymentSuccessPage";
 import CheckOut2 from "./components/Cart-Flow/CheckOut2";
 import NewFeatured from "./components/Products/NewFeatured";
+import AdminManagepage from "./components/Admin/AdminManagepage";
+import AdminLogin from "./components/Admin/AdminLogin";
+import { useContext } from "react";
+import { ProductContext } from "../hooks/ProductContext";
 
 function App() {
+//   const {customerId} = "customerId"
+//  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+const { customerId, isLoggedIn } = useContext(ProductContext);
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header customerId={customerId} isLoggedIn={isLoggedIn} />
         <ScrollArrow />
         <Routes>
           <Route element={<Firstpage />}>
             <Route path="/" element={<LandingPage />} />
           </Route>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/all-products" element={<AllProducts />} />
           <Route path="/contact" element={<Contact />} />
@@ -53,6 +61,8 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/checkout-payment" element={<CheckOut2 />} />
           <Route path="/new-featured" element={<NewFeatured />} />
+          <Route path="/admin" element={<AdminManagepage />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
         </Routes>
       </BrowserRouter>
       <Footer />

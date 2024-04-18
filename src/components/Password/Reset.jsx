@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import sideImage from "../../assets/Resetpw.jpg";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../StaticComponents/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -27,7 +27,8 @@ const ResetPassword = () => {
   const [isPwdVisible, setIsPwdVisible] = useState(false);
   const [isMatchPwdVisible, setIsMatchPwdVisible] = useState(false);
 
-  const { token } = useParams();
+ const pathname = window.location.pathname;
+ const token = pathname.split("/").pop(); 
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
@@ -54,6 +55,7 @@ const ResetPassword = () => {
           confirmPassword: matchPwd,
         }
       );
+      console.log(token)
       console.log(response.data);
       toast.success(response.data.message);
     } catch (error) {
@@ -223,7 +225,7 @@ const ResetPassword = () => {
         </form>
 
         <p className="mt-4 text-sm font-oxygen text-tertiary4 ">
-          <a href="">Back to login</a>
+          <Link to="/login" href="">Back to login</Link>
         </p>
       </div>
       <div className="z-[10000] pt-[20em]">

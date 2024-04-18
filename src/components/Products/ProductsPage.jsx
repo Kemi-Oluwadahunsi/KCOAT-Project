@@ -100,6 +100,7 @@ const AllProducts = () => {
     }
   };
 
+  
   const mostPopular = currentProducts.map((item) => {
     console.log("Product ID:", item.Productid); // Log the Productid
     return (

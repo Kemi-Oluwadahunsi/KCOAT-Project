@@ -18,8 +18,12 @@ const Header = ({ handleSubMenuClick }) => {
   const [isProductsMenuOpen, setProductsMenuOpen] = useState(false);
   const [isMenSubMenuOpen, setMenSubMenuOpen] = useState(false);
   const [isWomenSubMenuOpen, setWomenSubMenuOpen] = useState(false);
-  const { isLoggedIn, logout } = useContext(ProductContext);
+  const { isLoggedIn, logout } =
+    useContext(ProductContext);
+  
   const { cartCount } = useContext(CartContext);
+ 
+  
 
   const openProductsMenu = () => {
     setProductsMenuOpen(true);
@@ -190,7 +194,9 @@ const Header = ({ handleSubMenuClick }) => {
           )}
         </li>
 
-        <Link to="/new-featured"><li className="text-lg">New & Featured</li></Link>
+        <Link to="/new-featured">
+          <li className="text-lg">New & Featured</li>
+        </Link>
 
         <li className="text-lg">
           <Link to="/contact">Contact</Link>
@@ -199,9 +205,14 @@ const Header = ({ handleSubMenuClick }) => {
 
       <div className="flex gap-1 place-items-center cursor-pointer">
         <div className="text-primary flex gap-2 place-items-center p-5">
-          <FontAwesomeIcon icon={faUserAlt} />
+          <Link to={`/user-profile`}>
+            <div>
+              <FontAwesomeIcon icon={faUserAlt} />
+            </div>
+          </Link>
           <FontAwesomeIcon icon={faChevronDown} />
         </div>
+
         <Link to="/cart">
           <div className="relative flex items-center justify-center">
             <FontAwesomeIcon
@@ -219,7 +230,7 @@ const Header = ({ handleSubMenuClick }) => {
       </div>
 
       <div className="flex gap-5 place-items-center cursor-pointer">
-        {isLoggedIn ? (
+        {isLoggedIn === true ? (
           <div
             className="text-primary flex gap-2 place-items-center p-5"
             onClick={logout}
@@ -228,7 +239,10 @@ const Header = ({ handleSubMenuClick }) => {
             <span className="font-bold">Logout</span>
           </div>
         ) : (
-          <div className="text-primary flex gap-2 place-items-center p-5">
+          <div
+            className="text-primary flex gap-2 place-items-center p-5"
+            onClick={() => console.log(isLoggedIn)}
+          >
             <FontAwesomeIcon icon={faUser} />
             <Link to="/login">
               <span className="font-bold">Login / Register</span>

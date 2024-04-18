@@ -113,14 +113,19 @@ const Signup = () => {
       <div className=" grid h-screen w-full place-content-center relative top-[4rem] border-l-8 border-simple1">
         {success ? (
           <section className="flex flex-col gap-[3em]">
-            <h1 className="text-white text-4xl">Success! Please Sign in</h1>
-            <Link to="/login">
-              <div className="flex items-center justify-center w-full">
-                <div className="flex font-oxygen justify-center hover:scale-110 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
-                  <Button>Sign In</Button>
+            <div
+              className="w-[60%] py-[4em] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)]
+          rounded-[1em]"
+            >
+              <h1 className="text-white text-4xl">Success! Please Sign in</h1>
+              <Link to="/login">
+                <div className="flex items-center justify-center w-full">
+                  <div className="flex font-oxygen justify-center hover:scale-110 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
+                    <Button>Sign In</Button>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </section>
         ) : (
           <div className="flex items-center justify-center h-[45rem]">
@@ -265,7 +270,7 @@ const Signup = () => {
                         </p>
                       </div>
                     </div>
-                    
+
                     {/* Password and Validation */}
                     <div className="flex gap-7 w-[100%]">
                       <div className="flex flex-col flex-1">

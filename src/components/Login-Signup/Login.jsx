@@ -13,6 +13,7 @@ const Login = () => {
   const { login } = useContext(ProductContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+ 
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -25,9 +26,11 @@ const Login = () => {
         email: emailInput,
         userpassword: passwordInput,
       });
+      // setIsLoggedIn(localStorage.setItem("isLoggedIn", true));
+      login(emailInput);
 
       console.log(response.data);
-      login();
+      
       toast.success("Login successful!");
       setTimeout(() => {
         navigate("/");
@@ -134,7 +137,7 @@ const Login = () => {
           </div>
         </div>
         <div className="z-[10000] pt-[20em]">
-          <ToastContainer position="top-right" autoClose={5000} />
+          <ToastContainer position="top-right" autoClose={2000} />
         </div>
       </div>
     </div>

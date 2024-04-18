@@ -1,27 +1,12 @@
 import Button from "../StaticComponents/Button";
-import userdp from "../../assets/Ellipse-4.svg";
+// import userdp from "../../assets/Ellipse-4.svg";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
+import { ProductContext } from "../../../hooks/ProductContext";
 
 const MainProfile = () => {
-  const [users, setUsers] = useState(null);
-
-  useEffect(() => {
-    const UserDetails = async () => {
-      try {
-        const response = await axios.get(
-          "https://kcoat.onrender.com/user-profile/:customerId"
-        ); 
-          const data = response.data;
-        console.log(data);
-        setUsers(data);
-      } catch (error) {
-        console.log("Error fetching user details:", error);
-      }
-    };
-    UserDetails();
-  }, []);
+ 
+ const {isLoading, userProfile} = useContext(ProductContext)
 
   return (
     <div className="pt-[8rem] px-[15em]">
@@ -39,84 +24,91 @@ const MainProfile = () => {
           </Link>
         </div>
 
-        {users.map((user) => {
-        <div>
-          <div className=" flex gap-8 border border-tertiary rounded-3xl py-[2em] px-[5em] ">
-            <div>
-              <img src={userdp} alt="User-Image" />
+        {isLoading ? (
+          <div className="loader"></div>
+        ) : userProfile ? (
+          <div key={userProfile.customerId}>
+            <div className=" flex gap-8 border border-tertiary rounded-3xl py-[2em] px-[5em] ">
+              <div>
+                <img src={userProfile.image} alt="User-Image" />
+              </div>
+              {/* {userProfile.image} */}
+              <div className="flex flex-col gap-4 text-[1.5em] font-bold  justify-center">
+                <h1>
+                  {userProfile.firstName} {userProfile.lastName}
+                </h1>
+                <p>{userProfile.address}</p>
+              </div>
             </div>
-            <div className="flex flex-col gap-4 text-[1.5em] font-bold  justify-center">
-              <h1>
-                {user.firstName} {user.lastName}
-              </h1>
-              <p>{user.address}</p>
+
+            <div className="flex flex-col gap-8 border border-tertiary rounded-3xl py-[3em] px-[5em]">
+              <h2 className="text-[1.5em] font-bold">Personal Information</h2>
+
+              <div>
+                <div className="flex flex-col gap-[4em]">
+                  <div className="flex justify-between  gap-[10em] w-full">
+                    <div className="flex flex-col gap-3 basis-[50%]">
+                      <h2>First Name</h2>
+                      <div className="border border-border w-full  px-4 py-3 rounded-[1.5em]">
+                        {userProfile.firstName}
+                      </div>
+                    </div>
+
+                    <div className="flex basis-[50%] flex-col gap-3">
+                      <h2>Last Name</h2>
+                      <div className="border border-border w-full px-4 py-3 rounded-[1.5em]">
+                        {userProfile.lastName}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between gap-[10em] w-full">
+                    <div className="flex basis-[50%] flex-col gap-3">
+                      <h2>Email Address</h2>
+                      <div className="border border-border px-4 py-3 rounded-[1.5em]">
+                        {userProfile.email}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col basis-[50%] gap-3">
+                      <h2>Phone</h2>
+                      <div className="border border-border px-4 py-3 rounded-[1.5em]">
+                        {userProfile.phoneNumber}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div className="flex flex-col gap-8 border border-tertiary rounded-3xl py-[3em] px-[5em]">
-            <h2 className="text-[1.5em] font-bold">Personal Information</h2>
-
-            <div>
-              <div className="flex flex-col gap-[4em]">
-                <div className="flex justify-between  gap-[10em] w-full">
+            <div className="flex flex-col border border-tertiary rounded-3xl py-[2em] px-[5em]">
+              <div className="flex flex-col gap-[2em]">
+                <h2 className="text-[1.5em] font-bold">Address</h2>
+                <div className="flex flex-col justify-between gap-[3em]">
                   <div className="flex flex-col gap-3 basis-[50%]">
-                    <h2>First Name</h2>
-                    <div className="border border-border w-full  px-4 py-3 rounded-[1.5em]">
-                      {user.firstName}
+                    <h2>State</h2>
+                    <div className="border border-border px-4 py-3 rounded-[1.5em] w-[50%]">
+                      {userProfile.state}
                     </div>
                   </div>
 
-                  <div className="flex basis-[50%] flex-col gap-3">
-                    <h2>Last Name</h2>
-                    <div className="border border-border w-full px-4 py-3 rounded-[1.5em]">
-                      {user.lastName}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex justify-between gap-[10em] w-full">
-                  <div className="flex basis-[50%] flex-col gap-3">
-                    <h2>Email Address</h2>
-                    <div className="border border-border px-4 py-3 rounded-[1.5em]">
-                      {user.email}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col basis-[50%] gap-3">
-                    <h2>Phone</h2>
-                    <div className="border border-border px-4 py-3 rounded-[1.5em]">
-                      {user.phoneNumber}
+                  <div className="flex flex-col gap-3">
+                    <h2>Delivery Address</h2>
+                    <div className="border border-border px-4 py-3 rounded-[1.5em] w-[70%]">
+                      {userProfile.address}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="flex flex-col border border-tertiary rounded-3xl py-[2em] px-[5em]">
-            <div className="flex flex-col gap-[2em]">
-              <h2 className="text-[1.5em] font-bold">Address</h2>
-              <div className="flex flex-col justify-between gap-[3em]">
-                <div className="flex flex-col gap-3 basis-[50%]">
-                  <h2>State</h2>
-                  <div className="border border-border px-4 py-3 rounded-[1.5em] w-[50%]">
-                   {user.state}
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  <h2>Delivery Address</h2>
-                  <div className="border border-border px-4 py-3 rounded-[1.5em] w-[70%]">
-                   {user.address}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>})}
+        ) : (
+          <div>No user details found</div>
+        )}
       </div>
     </div>
   );
+
 };
 
 export default MainProfile;
