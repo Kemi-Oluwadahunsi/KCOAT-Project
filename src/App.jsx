@@ -24,6 +24,7 @@ import AdminManagepage from "./components/Admin/AdminManagepage";
 import AdminLogin from "./components/Admin/AdminLogin";
 import { useContext } from "react";
 import { ProductContext } from "../hooks/ProductContext";
+import ProductsPage from './components/Products/ProductsPage';
 function App() {
 //   const {customerId} = "customerId"
 //  const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -60,6 +61,7 @@ const { customerId, isLoggedIn } = useContext(ProductContext);
           <Route path="/new-featured" element={<NewFeatured />} />
           <Route path="/admin/*" element={<AdminManagepage />} />
           <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/all-products" element={<ProductsPage />} />
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -11,6 +11,12 @@ import Button from "../StaticComponents/Button";
 
 const AdminLogin = () => {
   const [isPwdVisible, setIsPwdVisible] = useState(false);
+  //  const scrollToTop = () => {
+  //    window.scrollTo({
+  //      top: 0,
+  //      behavior: "smooth", // Optional: smooth scroll animation
+  //    });
+  //  };
 
   return (
     <div className="pt-[7rem] flex items-center justify-center pb-[3em]">

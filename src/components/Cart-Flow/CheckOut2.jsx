@@ -8,11 +8,19 @@ const CheckOut2 = () => {
   const [checkoutUrl, setCheckoutUrl] = useState(null);
   const [checkout, setCheckOut] = useState(false);
 
+ const scrollToTop = () => {
+   window.scrollTo({
+     top: 0,
+     behavior: "smooth", // Optional: smooth scroll animation
+   });
+ };
 
   const handleCheckout = async () => {
     try {
       setLoading(true);
       setCheckOut(true);
+
+       scrollToTop();
 
       // Retrieve cartItems from local storage
       const cartItems = JSON.parse(localStorage.getItem("cartItems"));

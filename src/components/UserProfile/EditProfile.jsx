@@ -1,6 +1,6 @@
 import axios from "axios";
 import Button from "../StaticComponents/Button";
-import userdp from "../../assets/Ellipse-4.svg";
+// import userdp from "../../assets/Ellipse-4.svg";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ProductContext } from "../../../hooks/ProductContext";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +37,7 @@ const EditProfile = () => {
   const handleChange = (e) => {
     if (e.target.name === "image") {
       // If the input is an image file, set the image state
-      setFormData({ ...formData, [e.target.name]: e.target.files[0] });
+       setFormData({ ...formData, image: e.target.files[0] });
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
@@ -85,17 +85,17 @@ const EditProfile = () => {
         <div className="">
           <div className=" flex flex-col gap-8 items-center justify-center rounded-3xl py-[2em] px-[5em] ">
             <div onClick={handleImageClick} style={{ cursor: "pointer" }}>
-              <img src={userdp} alt="" />
-              {/* <img src={formData.image} alt="User-image" /> */}
-              {/* <input
+              {/* <img src={userdp} alt="" /> */}
+              <img src={formData.image} alt="User-image" />
+              <input
                 type="file"
                 ref={fileInputRef} // Attach the ref to the file input
-                style={{ display: "none" }} // Hide the file input
+                // style={{ display: "none" }} // Hide the file input
                 name="image"
                 onChange={handleChange}
                 accept="image/*"
-                className="rounded-full w-2 h-2 bg-bland"
-              />*/}
+                className="rounded-full w-20 h-20 bg-bland"
+              />
             </div>
             <div className="flex flex-col items-center gap-4 text-[1.5em] font-bold  justify-center">
               <h1>

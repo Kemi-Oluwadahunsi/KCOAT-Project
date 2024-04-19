@@ -13,7 +13,12 @@ const Login = () => {
   const { login } = useContext(ProductContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
- 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Optional: smooth scroll animation
+    });
+  };
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -35,6 +40,7 @@ const Login = () => {
       setTimeout(() => {
         navigate("/");
       }, 4000);
+      scrollToTop();
     } catch (error) {
       console.error("Error:", error);
       if (error.response) {

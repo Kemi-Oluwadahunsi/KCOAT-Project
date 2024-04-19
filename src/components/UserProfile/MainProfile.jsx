@@ -1,5 +1,5 @@
 import Button from "../StaticComponents/Button";
-import userdp from "../../assets/Ellipse-4.svg";
+// import userdp from "../../assets/Ellipse-4.svg";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ProductContext } from "../../../hooks/ProductContext";
@@ -30,7 +30,7 @@ const MainProfile = () => {
           <div key={userProfile.customerId} className="flex flex-col gap-[3em]">
             <div className=" flex gap-8 border border-tertiary rounded-3xl py-[2em] px-[5em] ">
               <div>
-                <img src={userdp} alt="User-Image" />
+                <img src={userProfile.image} alt="User-Image" />
 
               </div>
               {/* {userProfile.image} */}
