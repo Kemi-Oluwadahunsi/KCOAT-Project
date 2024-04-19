@@ -4,7 +4,6 @@ import Login from "./components/Login-Signup/Login";
 import Firstpage from "../Firstpage";
 import Header from "./components/LandingpageComponents/Header";
 import Signup from "./components/Login-Signup/Signup";
-import AllProducts from "./components/Products/ProductsPage";
 import Contact from "./components/Contact";
 import Reset from "./components/Password/Reset";
 import Forget from "./components/Password/Forget";
@@ -25,7 +24,6 @@ import AdminManagepage from "./components/Admin/AdminManagepage";
 import AdminLogin from "./components/Admin/AdminLogin";
 import { useContext } from "react";
 import { ProductContext } from "../hooks/ProductContext";
-
 function App() {
 //   const {customerId} = "customerId"
 //  const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -42,7 +40,6 @@ const { customerId, isLoggedIn } = useContext(ProductContext);
           </Route>
           <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/all-products" element={<AllProducts />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/Reset" element={<Reset />} />
           <Route path="/Forget" element={<Forget />} />
@@ -61,7 +58,7 @@ const { customerId, isLoggedIn } = useContext(ProductContext);
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/checkout-payment" element={<CheckOut2 />} />
           <Route path="/new-featured" element={<NewFeatured />} />
-          <Route path="/admin" element={<AdminManagepage />} />
+          <Route path="/admin/*" element={<AdminManagepage />} />
           <Route path="/admin-login" element={<AdminLogin />} />
         </Routes>
       </BrowserRouter>
