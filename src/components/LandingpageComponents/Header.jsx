@@ -18,12 +18,9 @@ const Header = ({ handleSubMenuClick }) => {
   const [isProductsMenuOpen, setProductsMenuOpen] = useState(false);
   const [isMenSubMenuOpen, setMenSubMenuOpen] = useState(false);
   const [isWomenSubMenuOpen, setWomenSubMenuOpen] = useState(false);
-  const { isLoggedIn, logout } =
-    useContext(ProductContext);
-  
+  const { isLoggedIn, logout } = useContext(ProductContext);
+
   const { cartCount } = useContext(CartContext);
- 
-  
 
   const openProductsMenu = () => {
     setProductsMenuOpen(true);

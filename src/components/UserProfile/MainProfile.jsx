@@ -27,11 +27,11 @@ const MainProfile = () => {
         {isLoading ? (
           <div className="loader"></div>
         ) : userProfile ? (
-          <div key={userProfile.customerId}>
+          <div key={userProfile.customerId} className="flex flex-col gap-[3em]">
             <div className=" flex gap-8 border border-tertiary rounded-3xl py-[2em] px-[5em] ">
               <div>
                 <img src={userProfile.image} alt="User-Image" />
-                
+
               </div>
               {/* {userProfile.image} */}
               <div className="flex flex-col gap-4 text-[1.5em] font-bold  justify-center">

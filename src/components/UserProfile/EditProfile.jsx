@@ -1,9 +1,14 @@
 import axios from "axios";
 import Button from "../StaticComponents/Button";
+// import userdp from "../../assets/Ellipse-4.svg";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ProductContext } from "../../../hooks/ProductContext";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const EditProfile = () => {
   const { userProfile } = useContext(ProductContext);
+  const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -32,7 +37,7 @@ const EditProfile = () => {
   const handleChange = (e) => {
     if (e.target.name === "image") {
       // If the input is an image file, set the image state
-      setFormData({ ...formData, [e.target.name]: e.target.files[0] });
+       setFormData({ ...formData, image: e.target.files[0] });
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
@@ -45,7 +50,7 @@ const EditProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+
     try {
       const formDataWithImage = new FormData(); // Create FormData object
       // Append form data to include the image file
@@ -66,10 +71,12 @@ const EditProfile = () => {
           },
         }
       );
-     
+      toast.success("Profile edited successful!");
+      setTimeout(() => {
+        navigate("/user-profile");
+      }, 4000);
     } catch (error) {
       console.error("Error updating user profile:", error);
-    
     }
   };
   return (
@@ -78,15 +85,16 @@ const EditProfile = () => {
         <div className="">
           <div className=" flex flex-col gap-8 items-center justify-center rounded-3xl py-[2em] px-[5em] ">
             <div onClick={handleImageClick} style={{ cursor: "pointer" }}>
+              {/* <img src={userdp} alt="" /> */}
               <img src={formData.image} alt="User-image" />
               <input
                 type="file"
                 ref={fileInputRef} // Attach the ref to the file input
-                style={{ display: "none" }} // Hide the file input
+                // style={{ display: "none" }} // Hide the file input
                 name="image"
                 onChange={handleChange}
                 accept="image/*"
-                className="rounded-full w-2 h-2 bg-bland"
+                className="rounded-full w-20 h-20 bg-bland"
               />
             </div>
             <div className="flex flex-col items-center gap-4 text-[1.5em] font-bold  justify-center">
@@ -110,7 +118,6 @@ const EditProfile = () => {
                       <label>First Name</label>
                       <input
                         className="border border-border w-full  px-4 py-3 rounded-[1.5em] outline-createaccount"
-                        required
                         placeholder="Hannah"
                         name="firstName"
                         value={formData.firstName}
@@ -122,7 +129,6 @@ const EditProfile = () => {
                       <label>Last Name</label>
                       <input
                         className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
-                        required
                         placeholder="Daniels"
                         name="lastName"
                         value={formData.lastName}
@@ -136,7 +142,6 @@ const EditProfile = () => {
                       <label>Email Address</label>
                       <input
                         className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount"
-                        required
                         placeholder="hannahdaniels@gmail.com"
                         name="email"
                         value={formData.email}
@@ -148,7 +153,6 @@ const EditProfile = () => {
                       <label>Phone</label>
                       <input
                         className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount"
-                        required
                         placeholder="+2348084400000"
                         name="phoneNumber"
                         value={formData.phoneNumber}
@@ -171,7 +175,6 @@ const EditProfile = () => {
                       id="password"
                       placeholder="***********"
                       className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
-                      required
                       value={formData.newPassword}
                       onChange={handleChange}
                     />
@@ -185,7 +188,6 @@ const EditProfile = () => {
                       id="password"
                       placeholder="***********"
                       className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
-                      required
                     />
                   </div>
                 </div>
@@ -201,7 +203,6 @@ const EditProfile = () => {
                       cols="5"
                       placeholder="Your address"
                       className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
-                      required
                       name="address"
                       value={formData.address}
                       onChange={handleChange}
@@ -213,7 +214,6 @@ const EditProfile = () => {
                     <input
                       placeholder="Your state"
                       className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount w-[50%]"
-                      required
                       name="state"
                       value={formData.state}
                       onChange={handleChange}
@@ -232,6 +232,9 @@ const EditProfile = () => {
           </div>
         </div>
       </form>
+      <div className="z-[10000] pt-[20em]">
+        <ToastContainer position="top-right" autoClose={2000} />
+      </div>
     </div>
   );
 };

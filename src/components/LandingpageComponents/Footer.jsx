@@ -5,6 +5,7 @@ import instagram from "../../assets/instagram.svg";
 import whatsapp from "../../assets/whatsapp.svg";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 const Footer = () => {
+  
   return (
     <>
       <div className=" flex flex-col pt-[1em] pb-[1em] px-[8em] bg-color text-primary font-oxygen">

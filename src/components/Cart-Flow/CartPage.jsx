@@ -11,6 +11,12 @@ import { ProductContext } from "../../../hooks/ProductContext";
 
 const CartPage = () => {
   const navigate = useNavigate();
+   const scrollToTop = () => {
+     window.scrollTo({
+       top: 0,
+       behavior: "smooth", // Optional: smooth scroll animation
+     });
+   };
 
   // const handleProceedToCheckout = () => {
   //   navigate("/checkout", { state: { cartItems: cartItems } });
@@ -190,7 +196,7 @@ const CartPage = () => {
 
             <div className="flex gap-8">
               <Link to="/all-products">
-                <div className="flex justify-center items-center font-secondary font-medium hover:scale-105 py-1 w-[12em] bg-tertiary rounded-xl">
+                <div onClick={scrollToTop} className="flex justify-center items-center font-secondary font-medium hover:scale-105 py-1 w-[12em] bg-tertiary rounded-xl">
                   <Button>Continue Shopping</Button>
                 </div>
               </Link>

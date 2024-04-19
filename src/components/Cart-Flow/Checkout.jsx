@@ -11,7 +11,13 @@ import CheckOut2 from "../Cart-Flow/CheckOut2";
 // import { CartContext } from "../../../hooks/CartContext";
 
 const Checkout = () => {
-  // const { cartItems } = useContext(CartContext);
+   const scrollToTop = () => {
+     window.scrollTo({
+       top: 0,
+       behavior: "smooth", // Optional: smooth scroll animation
+     });
+   };
+
   const location = useLocation();
   const { cartItems } = location.state || { cartItems: [] };
   console.log(cartItems);
@@ -214,7 +220,7 @@ const Checkout = () => {
                   </div>
                 </div>
 
-                <div className=" flex  justify-center">
+                <div className=" flex  justify-center" onClick={scrollToTop}>
                   <div className="w-[60%] font-medium text-xl bg-tertiary py-2 rounded-2xl flex items-center justify-center">
                     <CheckOut2 />
                   </div>

@@ -45,10 +45,10 @@ export const ProductProvider = ({ children}) => {
     fetchUserProfile();
   }, [loggedInUserEmail]);
 
-   const login = (email, userId) => {
+   const login = (email) => {
      // Update login function to set loggedInUserId
      setLoggedInUserEmail(email);
-     setLoggedInUserId(userId);
+    //  setLoggedInUserId(customerId);
      localStorage.setItem("isLoggedIn", true);
    };
 
