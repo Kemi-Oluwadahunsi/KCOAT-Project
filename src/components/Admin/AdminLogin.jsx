@@ -35,7 +35,7 @@ const handleAdminLogin = async (event) => {
       "https://kcoat.onrender.com/admin-login",
       {
         email: emailInput,
-        userpassword: passwordInput,
+        password: passwordInput,
       }
     );
 

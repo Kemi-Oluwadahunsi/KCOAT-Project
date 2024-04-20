@@ -12,7 +12,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AllProducts = () => {
-  const { products, loading, fetchProducts } = useContext(ProductContext);
+  const { products, loading } = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
     const [editingProduct, setEditingProduct] = useState(null);
   const productsPerPage = 5;
@@ -44,7 +44,6 @@ const handleSave = async (editedProduct) => {
       editedProduct
     );
     toast.success("Product updated successfully!");
-    fetchProducts()
     setEditingProduct(null);
   } catch (error) {
     console.error("Error saving product:", error);
@@ -58,21 +57,20 @@ const handleCancel = () => {
 };
 
 const handleDelete = async (product) => {
-     const confirm = window.confirm(
-       `Are you sure you want to delete ${product.ProductName}?`
-     );
-     if (confirm) {
+    //  const confirm = window.confirm(
+    //    `Are you sure you want to delete ${product.ProductName}?`
+    //  );
+    //  if (confirm) {
      try {
        await axios.delete(
          `https://kcoat.onrender.com/products/${product.Productid}`
        );
        // Refresh the product list after deletion
        toast.success("Product deleted successfully!");
-       fetchProducts();
      } catch (error) {
        console.error("Error deleting product:", error);
        toast.error("Failed to delete product.");
-     }   
+    //  }   
      }
   
 };

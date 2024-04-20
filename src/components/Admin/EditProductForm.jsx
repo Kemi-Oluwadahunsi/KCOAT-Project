@@ -118,15 +118,15 @@ const [editedProduct, setEditedProduct] = useState({
             className="pl-2 py-1 border-2 border-border outline-categoryborder rounded-md text-color"
           />
         </div>
-        {/* Add more fields as needed */}
+        
         <div className="flex gap-4 text-primary">
-          <button type="submit" className="px-4 py-2 bg-tertiary rounded-lg">
+          <button type="submit" className="px-4 py-2 bg-tertiary rounded-lg cursor-pointer">
             Save
           </button>
           <button
             type="button"
             onClick={onCancel}
-            className="px-4 py-2 bg-delete rounded-lg"
+            className="px-4 py-2 bg-delete rounded-lg cursor-pointer"
           >
             Cancel
           </button>
