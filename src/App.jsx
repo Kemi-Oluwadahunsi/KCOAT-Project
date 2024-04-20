@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingpageComponents/LandingPage";
 import Login from "./components/Login-Signup/Login";
 import Firstpage from "../Firstpage";
@@ -24,46 +24,45 @@ import AdminManagepage from "./components/Admin/AdminManagepage";
 import AdminLogin from "./components/Admin/AdminLogin";
 import { useContext } from "react";
 import { ProductContext } from "../hooks/ProductContext";
-import ProductsPage from './components/Products/ProductsPage';
+import ProductsPage from "./components/Products/ProductsPage";
 function App() {
-//   const {customerId} = "customerId"
-//  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  //   const {customerId} = "customerId"
+  //  const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-const { customerId, isLoggedIn } = useContext(ProductContext);
+  const { customerId, isLoggedIn } = useContext(ProductContext);
   return (
     <>
-      <BrowserRouter>
-        <Header customerId={customerId} isLoggedIn={isLoggedIn} />
-        <ScrollArrow />
-        <Routes>
-          <Route element={<Firstpage />}>
-            <Route path="/" element={<LandingPage />} />
-          </Route>
-          <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/Reset" element={<Reset />} />
-          <Route path="/Forget" element={<Forget />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="products/:Productid" element={<SingleProductsPage />} />
-          <Route path="/footer" element={<Footer />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/user-profile" element={<MainProfile />} />
-          <Route path="/edit-profile" element={<EditProfile />} />
-          <Route path="/payment-success" element={<PaymentSuccessPage />} />
-          <Route
-            path="/most-popular-product"
-            element={<MostPopularProductPage />}
-          />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/checkout-payment" element={<CheckOut2 />} />
-          <Route path="/new-featured" element={<NewFeatured />} />
-          <Route path="/admin/*" element={<AdminManagepage />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/all-products" element={<ProductsPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Header customerId={customerId} isLoggedIn={isLoggedIn} />
+      <ScrollArrow />
+      <Routes>
+        <Route element={<Firstpage />}>
+          <Route path="/" element={<LandingPage />} />
+        </Route>
+        <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/Reset" element={<Reset />} />
+        <Route path="/Forget" element={<Forget />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="products/:Productid" element={<SingleProductsPage />} />
+        <Route path="/footer" element={<Footer />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/user-profile" element={<MainProfile />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/payment-success" element={<PaymentSuccessPage />} />
+        <Route
+          path="/most-popular-product"
+          element={<MostPopularProductPage />}
+        />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/checkout-payment" element={<CheckOut2 />} />
+        <Route path="/new-featured" element={<NewFeatured />} />
+        <Route path="/admin/*" element={<AdminManagepage />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/all-products" element={<ProductsPage />} />
+      </Routes>
+
       <Footer />
     </>
   );

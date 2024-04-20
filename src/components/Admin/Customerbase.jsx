@@ -1,38 +1,18 @@
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
+import { ProductContext } from "../../../hooks/ProductContext";
 const Customerbase = () => {
- const [userProfile, setUserProfile] = useState([])
- const [loading, setloading] = useState(false)
+  const {loadings, usersProfile} = useContext(ProductContext);
 
- useEffect (() => {
-     setloading(true)
-
-     const fetchUser = async () => {
-        try {
-            const response = await axios.get( "https://kcoat.onrender.com/user-profile")
-            const data = await response.data
-            console.log(data)
-            setloading(false)
-            setUserProfile(data)
-
-        } catch (error) {
-            console.error ("Error fetching user profile:", error)
-            setloading(false)
-        }
-     }
-     fetchUser()
- }, [])
   return (
     <>
       <div className="flex flex-col gap-10">
         <div>
-          {loading ? (
+          {loadings ? (
             <div className="loader"></div>
           ) : (
             <div>
@@ -58,7 +38,7 @@ const Customerbase = () => {
                   </tr>
                 </thead>
                 <tbody className="text-stats">
-                  {userProfile.map((user) => (
+                  {usersProfile.map((user) => (
                     <tr
                       key={user.customerId}
                       className="border-b border-categoryborder2"

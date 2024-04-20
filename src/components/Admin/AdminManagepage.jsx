@@ -7,15 +7,47 @@ import Dashboard from "./Dashboard";
 import Sales from "./Sales";
 import Feedbacks from "./Feedbacks";
 import Customerbase from "./Customerbase";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Analytics from "./Analytics";
 import AddNewProducts from "./AddNewProducts";
+import salesData from "./soldItems";
+import { ProductContext } from "../../../hooks/ProductContext";
 
 const AdminManagepage = () => {
   const [selectedMenu, setSelectedMenu] = useState("dashboard");
+  const [totalSales, setTotalSales] = useState(0);
+  // const [totalUsers, setTotalUsers] = useState(0);
+  const { products, totalUsers } = useContext(ProductContext);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Optional: smooth scroll animation
+    });
+  };
+  const totalProducts = products.length;
+  // Calculate total sales amount
+  const calculateTotalSales = () => {
+    let totalAmount = 0;
+    salesData.forEach((sale) => {
+      totalAmount += parseInt(sale.total.replace(",", ""));
+    });
+    return totalAmount;
+  };
+
+  // Set total sales amount
+  const updateTotalSales = () => {
+    const total = calculateTotalSales();
+    setTotalSales(total);
+  };
+
+  useEffect(() => {
+    updateTotalSales();
+  }, []); // Empty dependency array ensures it runs only once when the component mounts
+
   // Function to set the selected menu
   const handleMenuClick = (menu) => {
     setSelectedMenu(menu);
+    scrollToTop()
   };
   // Render the component based on the selected menu
   const renderComponent = () => {
@@ -45,14 +77,14 @@ const AdminManagepage = () => {
           <AdminSidebar handleMenuClick={handleMenuClick} />
         </div>
 
-        <div className="basis-[80%] pt-[2em] flex flex-col gap-[5em]">
+        <div className="basis-[80%] pt-[2em] flex flex-col gap-[3em]">
           <div className="flex justify-between">
             <div>
               <img src={shopping} alt="" />
               <div>
                 <p>Total Sales</p>
                 <p className="font-poppins font-bold text-2xl text-stats">
-                  N0.00
+                  N{totalSales}
                 </p>
               </div>
             </div>
@@ -61,7 +93,9 @@ const AdminManagepage = () => {
               <img src={shopping} alt="" />
               <div>
                 <p>Total Products</p>
-                <p className="font-poppins font-bold text-2xl text-stats">0</p>
+                <p className="font-poppins font-bold text-2xl text-stats">
+                  {totalProducts}
+                </p>
               </div>
             </div>
 
@@ -77,7 +111,9 @@ const AdminManagepage = () => {
               <img src={users} alt="" />
               <div>
                 <p>Total Visitors</p>
-                <p className="font-poppins font-bold text-2xl text-stats">0</p>
+                <p className="font-poppins font-bold text-2xl text-stats">
+                  {totalUsers}
+                </p>
               </div>
             </div>
           </div>

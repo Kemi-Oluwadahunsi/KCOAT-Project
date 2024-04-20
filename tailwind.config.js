@@ -15,7 +15,7 @@ export default {
       tertiary: "#FD6905",
       bland: "#000",
       color: "#323232",
-      test: "#0C323A",
+      // test: "#0C323A",
       background: "#fd690517",
       subtext: "#666666",
       border: "#DEDFE1",
