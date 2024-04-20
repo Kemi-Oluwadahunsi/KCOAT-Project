@@ -24,8 +24,8 @@ const AdminManagepage = () => {
         return <Dashboard />;
       case "products":
         return <AllProducts />;
-      case "addProducts":
-        return <AddNewProducts />;
+      case "addProduct":
+        return <AddProduct />;
       case "sales":
         return <Sales />;
       case "customers":

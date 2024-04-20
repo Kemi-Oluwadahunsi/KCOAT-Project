@@ -17,7 +17,8 @@ const AddProduct = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  
   // Form submission function
   const handleFormSubmit = async (event) => {
       event.preventDefault();
@@ -61,63 +62,64 @@ const AddProduct = () => {
   // Function to handle closing the form
   const handleClose = () => {
       console.log('Form closed');
+      setIsFormOpen(false);
   };
 
   return (
+
       <div className="flex pt-[2rem]">
           <AdminSidebar/>
-        <div className="flex-1 p-5">
+      <div className="flex-1 p-5">
 
               {/* Add new product section */}
-              <div className="flex justify-between items-center mb-6">
-                  <h1 className="text-2xl font-bold text-categoryborder">Add a New Product</h1>
-                  <button onClick={handleClose}>
-                      <FontAwesomeIcon icon={faTimes} size="lg" />
-                  </button>
-              </div>
+          <div className="flex justify-between items-center mb-6">
+              <h1 className="text-2xl font-bold text-categoryborder">Add a New Product</h1>
+              <button onClick={handleClose}>
+                  <FontAwesomeIcon icon={faTimes} size="lg" />
+              </button>
+          </div>
 
-        <div className="basis-[80%] pt-[2em] flex justify-between">
+      <div className="basis-[80%] pt-[2em] flex justify-between">
           <div className="flex items-center">
                 <img src={shopping} alt="Total Sale" />
-            <div>
+              <div>
                     <p className="font-oxygen">Total Sales</p>
                     <p className="font-poppins font-bold text-2xl text-stats">N0.00</p>
-            </div>
+              </div>
             </div>
             <div className="flex items-center">
-                <img src={users} alt="Total Visitors" className="mr-2" />
+                <img src={users} alt="Total Visitors" />
                 <div>
                           <p className="font-oxygen">Total Visitors</p>
                           <p className="font-poppins font-bold text-2xl text-stats">0</p>
-                      </div>
-                  </div>
+                </div>
+              </div>
 
-                <div className="flex items-center">
+              <div className="flex items-center">
                     <img src={bell} alt="Notifications"/>
                     <div>
                         <p className="font-oxygen">Notifications</p>
                         <p className="font-poppins font-bold text-2xl text-stats">0</p>
                     </div>
-                </div>
-                <div className="flex items-center">
+              </div>
+              <div className="flex items-center">
                     <div>
                         <p className="font-oxygen">Total Orders</p>
                         <p className="font-poppins font-bold text-2xl text-stats">0</p>
                     </div>
-                </div>
-            </div>
+              </div>
+        </div>
              
-              
-          <div className='flex flex-col w-[60%] mx-auto px-[8rem]'>
-              <div className="inline-flex gap-[5em] p-[1em]">
+      <div className='flex flex-col w-[60%] mx-auto px-[8rem]'>
+          <div className="inline-flex gap-[5em] p-[1em]">
               <h1 className="text-[2.5rem] font-lso text-categoryborder">Add A New Product</h1>
               <button onClick={handleClose} className="">
                   <FontAwesomeIcon icon={faTimes} size="lg" />
               </button>
-              </div>
+          </div>
           {/* For success or error messages */}
-              {success && <div className="bg-border text-primary p-2 rounded-md">{success}</div>}
-              {error && <div className="bg-tertiary text-primary p-2 rounded-md">{error}</div>}
+              {success && <div className="bg-tertiary text-primary p-2 rounded-md">{success}</div>}
+              {error && <div className="bg-delete text-primary p-2 rounded-md">{error}</div>}
 
           <form onSubmit={handleFormSubmit} className="space-y-4">
               <div className="flex flex-col gap-2">
@@ -198,9 +200,9 @@ const AddProduct = () => {
               </button>
           </div>
       </form>
+        </div>
       </div>
-  </div>
-      </div>
+    </div>
   );
 };
 
