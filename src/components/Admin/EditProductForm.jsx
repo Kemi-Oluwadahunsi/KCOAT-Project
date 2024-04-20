@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AdminContext } from "../../../hooks/AdminContextPage";
 
-const EditProductForm = ({ product, onSave, onCancel }) => {
+const EditProductForm = ({ product }) => {
 const [editedProduct, setEditedProduct] = useState({
   Productid: "",
   ProductName: "",
@@ -13,24 +14,39 @@ const [editedProduct, setEditedProduct] = useState({
   Quantity: 0,
 });
 
+ const { handleSave, handleEdit } = useContext(AdminContext);
+
  useEffect(() => {
    setEditedProduct(product);
  }, [product]);
 
  const handleInputChange = (e) => {
    const { name, value } = e.target;
-   setEditedProduct({ ...editedProduct, [name]: value });
+   console.log("Name:", name);
+   console.log("Value:", value);
+   // Update the editedProduct state by spreading the previous state and updating the specific field
+   setEditedProduct((prevState) => ({
+     ...prevState,
+     [name]: value,
+   }));
  };
 
- const handleSubmit = (e) => {
-   e.preventDefault();
-   onSave(editedProduct);
- };
+ 
+const handleSubmit = (e) => {
+  e.preventDefault();
+  handleSave(editedProduct);
+};
 
+const handleCancel = () => {
+  handleEdit(null);
+};
+
+
+ 
   return (
-    <div className="bg-tertiary4 text-nextpage absolute top-[30%] right-10 w-[30rem] ">
+    <div className="bg-tertiary4 text-nextpage absolute top-[30%] z-50 right-10 w-[30rem] ">
       <h2 className="font-bold text-2xl text-center">Edit Product</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-7 p-4">
+      <form className="flex flex-col gap-7 p-4" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-2">
           <label>Product Name:</label>
           <input
@@ -118,14 +134,17 @@ const [editedProduct, setEditedProduct] = useState({
             className="pl-2 py-1 border-2 border-border outline-categoryborder rounded-md text-color"
           />
         </div>
-        
+
         <div className="flex gap-4 text-primary">
-          <button type="submit" className="px-4 py-2 bg-tertiary rounded-lg cursor-pointer">
+          <button
+            type="submit"
+            className="px-4 py-2 bg-tertiary rounded-lg cursor-pointer"
+          >
             Save
           </button>
           <button
             type="button"
-            onClick={onCancel}
+            onClick={handleCancel}
             className="px-4 py-2 bg-delete rounded-lg cursor-pointer"
           >
             Cancel

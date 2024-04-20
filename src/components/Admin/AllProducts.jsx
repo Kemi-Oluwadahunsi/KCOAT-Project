@@ -6,15 +6,16 @@ import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
 } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 import EditProductForm from "./EditProductForm";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { AdminContext } from "../../../hooks/AdminContextPage";
+// import { toast, ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 const AllProducts = () => {
   const { products, loading } = useContext(ProductContext);
+  const { editingProduct, handleEdit, handleDelete } = useContext(AdminContext);
   const [currentPage, setCurrentPage] = useState(1);
-    const [editingProduct, setEditingProduct] = useState(null);
+
   const productsPerPage = 5;
 
   // Calculate index of the first and last products on the current page
@@ -31,50 +32,6 @@ const AllProducts = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-const handleEdit = (product) => {
-  setEditingProduct(product);
-};
-
-const handleSave = async (editedProduct) => {
-  try {
-    // Send edited product details to the server using PUT request
-    await axios.put(
-      `https://kcoat.onrender.com/products/${editedProduct.Productid}`,
-      editedProduct
-    );
-    toast.success("Product updated successfully!");
-    setEditingProduct(null);
-  } catch (error) {
-    console.error("Error saving product:", error);
-    toast.error("Failed to update product.");
-  }
-};
-
-const handleCancel = () => {
-    console.log("Cancel button clicked");
-  setEditingProduct(null);
-};
-
-const handleDelete = async (product) => {
-    //  const confirm = window.confirm(
-    //    `Are you sure you want to delete ${product.ProductName}?`
-    //  );
-    //  if (confirm) {
-     try {
-       await axios.delete(
-         `https://kcoat.onrender.com/products/${product.Productid}`
-       );
-       // Refresh the product list after deletion
-       toast.success("Product deleted successfully!");
-     } catch (error) {
-       console.error("Error deleting product:", error);
-       toast.error("Failed to delete product.");
-    //  }   
-     }
-  
-};
-
 
   return (
     <>
@@ -134,11 +91,7 @@ const handleDelete = async (product) => {
                             {editingProduct &&
                               editingProduct.Productid ===
                                 product.Productid && (
-                                <EditProductForm
-                                  product={editingProduct}
-                                  onSave={handleSave}
-                                  onCancel={handleCancel}
-                                />
+                                <EditProductForm product={editingProduct} />
                               )}
                           </div>
                           <div
@@ -194,10 +147,10 @@ const handleDelete = async (product) => {
           </button>
         </div>
       </div>
-      
-      <div className="z-[10000] pt-[20em]">
+
+      {/* <div className="z-[10000] pt-[20em]">
         <ToastContainer position="center" autoClose={2000} />
-      </div>
+      </div> */}
     </>
   );
 };
