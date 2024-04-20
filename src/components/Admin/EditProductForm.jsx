@@ -38,7 +38,7 @@ const handleSubmit = (e) => {
 };
 
 const handleCancel = () => {
-  handleEdit(null);
+  handleEdit(false);
 };
 
 
