@@ -78,7 +78,7 @@ const AddProduct = () => {
                   <FontAwesomeIcon icon={faTimes} size="lg" />
               </button>
           </div>
-
+            {/* the heading*/}
       <div className="basis-[80%] pt-[2em] flex justify-between">
           <div className="flex items-center">
                 <img src={shopping} alt="Total Sale" />
@@ -109,7 +109,7 @@ const AddProduct = () => {
                     </div>
               </div>
         </div>
-             
+             {/*The x icon not currently closing*/}
       <div className='flex flex-col w-[60%] mx-auto px-[8rem]'>
           <div className="inline-flex gap-[5em] p-[1em]">
               <h1 className="text-[2.5rem] font-lso text-categoryborder">Add A New Product</h1>
@@ -121,6 +121,7 @@ const AddProduct = () => {
               {success && <div className="bg-tertiary text-primary p-2 rounded-md">{success}</div>}
               {error && <div className="bg-delete text-primary p-2 rounded-md">{error}</div>}
 
+                    {/* For choose file*/}
           <form onSubmit={handleFormSubmit} className="space-y-4">
               <div className="flex flex-col gap-2">
                   <label className="text-categoryborder font-oxygen text-lg font-medium"
@@ -132,6 +133,7 @@ const AddProduct = () => {
                       file:bg-simple1 file:border-none file:py-2  file:font-oxygen"
                   />
               </div>
+                       {/* add new product form */}
                   <div className="flex flex-col gap-2">
                       <label className="text-categoryborder font-oxygen text-lg 
                       font-medium">Product Title:</label>
@@ -178,7 +180,7 @@ const AddProduct = () => {
                   required
               />
           </div>
-
+                {/*for the buttonns below the container NOTE: Button Component not working here */}
           <div className="flex justify-center space-x-4">
               <button
                   type="button"
@@ -188,7 +190,7 @@ const AddProduct = () => {
               >
                   Close
               </button>
-
+                    
               <button
                   type="submit"
                   className={`px-4 py-2 border text-primary border-simple1 
