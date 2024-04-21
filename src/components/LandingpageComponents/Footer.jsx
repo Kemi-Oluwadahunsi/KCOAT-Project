@@ -4,6 +4,7 @@ import facebook from "../../assets/facebook.svg";
 import instagram from "../../assets/instagram.svg";
 import whatsapp from "../../assets/whatsapp.svg";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const Footer = () => {
   
   return (
@@ -39,6 +40,7 @@ const Footer = () => {
             <ul className="flex flex-col gap-3 cursor-pointer">
               <li>About Us</li>
               <li>Contact</li>
+             <Link to="/admin-login"><li className="text-delete">Admin</li></Link> 
             </ul>
           </div>
         </div>

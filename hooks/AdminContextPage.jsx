@@ -1,17 +1,96 @@
 import axios from "axios";
 import { createContext, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import axiosRetry from "axios-retry"; 
+
+axiosRetry(axios, {
+  retries: 3, // Number of retries
+  retryDelay: axiosRetry.exponentialDelay, // Exponential delay between retries
+  shouldResetTimeout: true, // Reset timeout between retries
+});
+
 
 export const AdminContext = createContext();
 
 export const AdminContextProvider = ({ children }) => {
   const [editingProduct, setEditingProduct] = useState(null);
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
+    // Initialize isAdminLoggedIn state based on value from localStorage
+    return localStorage.getItem("isAdminLoggedIn") === "true";
+  });
+   const navigate = useNavigate();
+   
+   const scrollToTop = () => {
+     window.scrollTo({
+       top: 0,
+       behavior: "smooth", // Optional: smooth scroll animation
+     });
+   };
 
- 
-  const handleEdit = (product) => {
-    setEditingProduct({ ...product });
+  const handleAdminLogin = async (event) => {
+    event.preventDefault();
+
+    try {
+      const emailInput = document.getElementById("email").value;
+      const passwordInput = document.getElementById("password").value;
+
+      const response = await axios.post(
+        "https://kcoat.onrender.com/admin-login",
+        {
+          email: emailInput,
+          password: passwordInput,
+        }
+      );
+
+      console.log(response.data);
+      // Successful authentication
+      toast.success("Login successful!");
+      localStorage.setItem("isAdminLoggedIn", "true");
+      setIsAdminLoggedIn(true);
+      setTimeout(() => {
+        navigate("/admin");
+      }, 2000);
+      scrollToTop();
+    } catch (error) {
+      console.error("Error:", error);
+      if (error.response) {
+        const status = error.response.status;
+        if (status === 404) {
+          toast.error("Wrong Email");
+        } else if (status === 401) {
+          toast.error("Wrong password");
+        } else {
+          console.error("Server Error:", error);
+          toast.error("An unexpected error occurred. Please try again later.");
+        }
+      } else {
+        console.error("Network Error:", error);
+        toast.error(
+          "A network error occurred. Please check your internet connection."
+        );
+      }
+    }
   };
 
+  const handleAdminLogout = () => {
+    localStorage.removeItem("isAdminLoggedIn");
+    setIsAdminLoggedIn(false);
+    navigate("/admin-login");
+  }
+
+ 
+ const handleEdit = (product) => {
+   setEditingProduct(product);
+ };
+
  const handleSave = async (editedProduct) => {
+     if (!isAdminLoggedIn) {
+       // If admin is not logged in, show error message and return
+       toast.error("Admin is not logged in.");
+       return;
+     }
    try {
      // Send edited product details to the server using PUT request
      await axios.put(
@@ -40,7 +119,16 @@ export const AdminContextProvider = ({ children }) => {
 
   return (
     <AdminContext.Provider
-      value={{ editingProduct, handleEdit, handleSave, handleDelete }}
+      value={{
+        editingProduct,
+        handleEdit,
+        handleSave,
+        handleDelete,
+        ToastContainer,
+        handleAdminLogin,
+        isAdminLoggedIn,
+        handleAdminLogout,
+      }}
     >
       {children}
     </AdminContext.Provider>

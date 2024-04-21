@@ -2,47 +2,46 @@ import { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../../../hooks/AdminContextPage";
 
 const EditProductForm = ({ product }) => {
-const [editedProduct, setEditedProduct] = useState({
-  Productid: "",
-  ProductName: "",
-  ProductPrice: "",
-  ProductDescription: "",
-  ProductCategory: "",
-  SubCategory: "",
-  ProductImage: "",
-  ProductSize: 0,
-  Quantity: 0,
-});
+  const [editedProduct, setEditedProduct] = useState({
+    Productid: "",
+    ProductName: "",
+    ProductPrice: "",
+    ProductDescription: "",
+    ProductCategory: "",
+    SubCategory: "",
+    ProductImage: "",
+    ProductSize: 0,
+    Quantity: 0,
+  });
 
- const { handleSave, handleEdit } = useContext(AdminContext);
+  const { handleSave, handleEdit } = useContext(AdminContext);
 
- useEffect(() => {
-   setEditedProduct(product);
- }, [product]);
+  useEffect(() => {
+    setEditedProduct(product);
+  }, [product]);
 
- const handleInputChange = (e) => {
-   const { name, value } = e.target;
-   console.log("Name:", name);
-   console.log("Value:", value);
-   // Update the editedProduct state by spreading the previous state and updating the specific field
-   setEditedProduct((prevState) => ({
-     ...prevState,
-     [name]: value,
-   }));
- };
-
- 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  handleSave(editedProduct);
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+   console.log("name:", name);
+   console.log("value:", value);
+  setEditedProduct((prevState) => ({
+    ...prevState,
+    [name]: value,
+  }));
 };
 
-const handleCancel = () => {
-  handleEdit(false);
-};
+    // setEditedProduct({ ...editedProduct, [name]: value });
+  
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSave(editedProduct);
+  };
 
- 
+  const handleCancel = () => {
+    handleEdit(false);
+  };
+
   return (
     <div className="bg-tertiary4 text-nextpage absolute top-[30%] z-50 right-10 w-[30rem] ">
       <h2 className="font-bold text-2xl text-center">Edit Product</h2>

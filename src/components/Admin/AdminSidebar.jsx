@@ -9,7 +9,7 @@ import { BiBarChart } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-const AdminSidebar = ({ handleMenuClick }) => {
+const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
   return (
     <div className="">
       <div className="flex flex-col px-[2em] bg-tertiary rounded-2xl h-[full] justify-between gap-[15rem] font-oxygen py-4">
@@ -92,7 +92,7 @@ const AdminSidebar = ({ handleMenuClick }) => {
               <p>Settings</p>
             </div>
 
-            <div className="flex gap-4 items-center  hover:border-b">
+            <div className="flex gap-4 items-center  hover:border-b" onClick={handleAdminLogout}>
               <LuLogOut />
               <p>Logout</p>
             </div>

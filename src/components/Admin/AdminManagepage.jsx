@@ -12,8 +12,10 @@ import Analytics from "./Analytics";
 import AddNewProducts from "./AddNewProducts";
 import salesData from "./soldItems";
 import { ProductContext } from "../../../hooks/ProductContext";
+import { AdminContext } from "../../../hooks/AdminContextPage";
 
 const AdminManagepage = () => {
+  const {handleAdminLogout} = useContext(AdminContext)
   const [selectedMenu, setSelectedMenu] = useState("dashboard");
   const [totalSales, setTotalSales] = useState(0);
   // const [totalUsers, setTotalUsers] = useState(0);
@@ -74,7 +76,7 @@ const AdminManagepage = () => {
     <div className="pt-[8rem] px-[4em] ">
       <div className="flex gap-[3em]">
         <div className="basis-[20%]">
-          <AdminSidebar handleMenuClick={handleMenuClick} />
+          <AdminSidebar handleMenuClick={handleMenuClick} handleAdminLogout={handleAdminLogout} />
         </div>
 
         <div className="basis-[80%] pt-[2em] flex flex-col gap-[3em]">
