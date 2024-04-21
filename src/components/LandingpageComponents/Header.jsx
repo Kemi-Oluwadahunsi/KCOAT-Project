@@ -201,14 +201,15 @@ const Header = ({ handleSubMenuClick }) => {
       </ul>
 
       <div className="flex gap-1 place-items-center cursor-pointer">
-        <div className="text-primary flex gap-2 place-items-center p-5">
+        {isLoggedIn  &&  <div className="text-primary flex gap-2 place-items-center p-5">
           <Link to={`/user-profile`}>
             <div>
               <FontAwesomeIcon icon={faUserAlt} />
             </div>
           </Link>
           <FontAwesomeIcon icon={faChevronDown} />
-        </div>
+        </div>}
+       
 
         <Link to="/cart">
           <div className="relative flex items-center justify-center">
@@ -227,7 +228,7 @@ const Header = ({ handleSubMenuClick }) => {
       </div>
 
       <div className="flex gap-5 place-items-center cursor-pointer">
-        {isLoggedIn === true ? (
+        {isLoggedIn ? (
           <div
             className="text-primary flex gap-2 place-items-center p-5"
             onClick={logout}
@@ -247,6 +248,7 @@ const Header = ({ handleSubMenuClick }) => {
           </div>
         )}
       </div>
+      
     </div>
   );
 };

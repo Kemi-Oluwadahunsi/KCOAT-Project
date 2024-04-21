@@ -6,27 +6,33 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AdminImage from "../../assets/adminlogin.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "../StaticComponents/Button";
+import { AdminContext } from "../../../hooks/AdminContextPage";
+
+
 
 const AdminLogin = () => {
-  const [isPwdVisible, setIsPwdVisible] = useState(false);
-  //  const scrollToTop = () => {
-  //    window.scrollTo({
-  //      top: 0,
-  //      behavior: "smooth", // Optional: smooth scroll animation
-  //    });
-  //  };
+ const [isPwdVisible, setIsPwdVisible] = useState(false);
+
+ const {ToastContainer, handleAdminLogin} = useContext(AdminContext)
+
+ 
+  
 
   return (
     <div className="pt-[7rem] flex items-center justify-center pb-[3em]">
       <div className="flex w-[70%] border border-border rounded-2xl">
         <div className="w-[50%]">
-          <img src={AdminImage} alt="" />
+          <img src={AdminImage} alt="" className=" h-full object-cover" />
         </div>
 
         <div className=" flex  w-[50%] py-[2em]">
-          <form action="" className="w-full px-[3em] flex flex-col gap-[3em]">
+          <form
+            action=""
+            className="w-full px-[3em] flex flex-col gap-[3em]"
+            onSubmit={handleAdminLogin}
+          >
             <div className="w-full flex flex-col gap-8">
               <h1 className="text-tertiary3 text-3xl font-lso mt-4 mb-4 flex items-center justify-center w-full">
                 Admin Login
@@ -80,18 +86,9 @@ const AdminLogin = () => {
               </div>
             </div>
 
-
             <div className="flex flex-col gap-6">
-              <div className="flex flex-col gap-4 items-center justify-center">
-                <h4>Forgot your password?</h4>
-                <div className="flex gap-4">
-                  <input type="checkbox" />
-                  <p>Remember me</p>
-                </div>
-              </div>
-
               <div className="flex flex-col gap-4">
-                <div className="flex justify-center items-center w-full ">
+                <div className="flex justify-center items-center w-full" onClick={handleAdminLogin}>
                   <div className="flex font-oxygen justify-center hover:scale-105 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
                     <Button className={`border-0`}>Login</Button>
                   </div>
@@ -110,6 +107,9 @@ const AdminLogin = () => {
             </div>
           </form>
         </div>
+      </div>
+      <div className="z-[10000] pt-[20em]">
+        <ToastContainer position="top-right" autoClose={2000} />
       </div>
     </div>
   );

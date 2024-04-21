@@ -10,7 +10,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const { login } = useContext(ProductContext);
+  const { login} = useContext(ProductContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const scrollToTop = () => {
@@ -35,18 +35,18 @@ const Login = () => {
       login(emailInput);
 
       console.log(response.data);
-      
+    
       toast.success("Login successful!");
       setTimeout(() => {
         navigate("/");
-      }, 4000);
+      }, 2000);
       scrollToTop();
     } catch (error) {
       console.error("Error:", error);
       if (error.response) {
         const status = error.response.status;
         if (status === 404) {
-          toast.error("Username not found. Do you want to create an account?");
+          toast.error("User not found. Do you want to create an account?");
         } else if (status === 401) {
           toast.error("Wrong password");
         } else {

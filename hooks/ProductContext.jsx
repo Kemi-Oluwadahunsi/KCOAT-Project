@@ -1,18 +1,54 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children}) => {
+  
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+   const [loadings, setLoadings] = useState(true); 
   const [isLoading, setIsLoading] = useState(true)
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem("isLoggedIn")
-  );
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+// localStorage.getItem("isLoggedIn") === true ? setIsLoggedIn(true) : setIsLoggedIn(false);
   const [loggedInUserEmail, setLoggedInUserEmail] = useState(null)
-  const [loggedInUserId, setLoggedInUserId] = useState(null)
+  // const [loggedInUserId, setLoggedInUserId] = useState(null)
   const [userProfile, setUserProfile] = useState(null);
+    const [usersProfile, setUsersProfile] = useState([]);
+    const [totalUsers, setTotalUsers] =useState(null)
+
+    const navigate = useNavigate();
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // Optional: smooth scroll animation
+      });
+    };
+
+    
+
+  useEffect(() => {
+    setLoadings(true);
+
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(
+          "https://kcoat.onrender.com/user-profile"
+        );
+        const data = await response.data;
+        console.log(data);
+        setLoadings(false);
+        setUsersProfile(data);
+        setTotalUsers(data.length);
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+        setLoadings(false);
+      }
+    };
+    fetchUser();
+  }, []);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -45,22 +81,39 @@ export const ProductProvider = ({ children}) => {
     fetchUserProfile();
   }, [loggedInUserEmail]);
 
+   useEffect(() => {
+     // Check local storage for login state
+     const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
+     const storedUserEmail = localStorage.getItem("userEmail");
+     if (storedIsLoggedIn && storedUserEmail) {
+       setIsLoggedIn(JSON.parse(storedIsLoggedIn));
+       setLoggedInUserEmail(storedUserEmail);
+     }
+   }, []);
+
+
    const login = (email) => {
      // Update login function to set loggedInUserId
      setLoggedInUserEmail(email);
     //  setLoggedInUserId(customerId);
-     localStorage.setItem("isLoggedIn", true);
+    setIsLoggedIn( true);
+    localStorage.setItem("isLoggedIn", true);
+    localStorage.setItem("userEmail", email);
    };
 
-   const logout = async (email) => {
+   const logout = async () => {
      try {
-       // Post to the /logout endpoint with email as request body
-       await axios.post("https://kcoat.onrender.com/logout", { email });
-       // Clear loggedInUserEmail and loggedInUserId
-       setLoggedInUserEmail(null);
-       setLoggedInUserId(null);
-       // Remove isLoggedIn from localStorage
+      
+       setIsLoggedIn(false);
+        setLoggedInUserEmail(null);
+       // Remove login state from local storage
        localStorage.removeItem("isLoggedIn");
+       localStorage.removeItem("userEmail");
+        setTimeout(() => {
+          navigate("/");
+        }, 500);
+        scrollToTop();
+   
      } catch (error) {
        console.error("Error logging out:", error);
      }
@@ -140,12 +193,16 @@ export const ProductProvider = ({ children}) => {
         fetchProductById,
         isLoggedIn,
         setIsLoggedIn,
-         login,
-         loggedInUserEmail,
+        login,
+        loggedInUserEmail,
         logout,
-        loggedInUserId,
+        // loggedInUserId,
         isLoading,
         userProfile,
+        usersProfile,
+        totalUsers,
+        loadings,
+        
         // mostPopularProducts,
         // fetchUserDetails,
       }}

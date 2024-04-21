@@ -82,3 +82,71 @@ const CustomNextArrow = (props) => {
 };
 
 export default FeedbackCorner;
+
+// function to fix feedback endpoint
+// import { useState } from "react";
+// import Slider from "react-slick";
+// import FeedbackCards from "./FeedbackCards";
+// import feedbackArray from "./feedbackArray";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+// import axios from "axios"; // Import axios for HTTP requests
+
+// const FeedbackCorner = () => {
+//   const [email, setEmail] = useState("");
+//   const [feedback, setFeedback] = useState("");
+
+//   const handleEmailChange = (e) => {
+//     setEmail(e.target.value);
+//   };
+
+//   const handleFeedbackChange = (e) => {
+//     setFeedback(e.target.value);
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     // Check if email exists in the database
+//     const emailExistsInDatabase = await checkEmailInDatabase(email);
+//     if (emailExistsInDatabase) {
+//       // Email exists, submit feedback
+//       submitFeedback();
+//     } else {
+//       // Email doesn't exist, prompt user to log in or sign up
+//       alert("Please log in or sign up to submit feedback.");
+//     }
+//   };
+
+//   const checkEmailInDatabase = async (email) => {
+//     try {
+//       // Send request to the /user-profile endpoint to check if email exists
+//       const response = await axios.get(`https://example.com/user-profile/${email}`);
+//       return response.status === 200; // Return true if email exists, false otherwise
+//     } catch (error) {
+//       console.error("Error checking email:", error);
+//       return false; // Return false in case of any error
+//     }
+//   };
+
+//   const submitFeedback = async () => {
+//     try {
+//       // Send request to the /feedbacks endpoint to submit feedback
+//       await axios.post("https://example.com/feedbacks", {
+//         email: email,
+//         feedback: feedback,
+//       });
+//       // Feedback submitted successfully
+//       console.log("Feedback submitted:", { email, feedback });
+//       // Clear input fields after submission
+//       setEmail("");
+//       setFeedback("");
+//     } catch (error) {
+//       console.error("Error submitting feedback:", error);
+//       // Handle error
+//     }
+//   };
+
+//   // Slider settings...
+// };
+
+// export default FeedbackCorner;

@@ -6,8 +6,65 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Button from "./StaticComponents/Button";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Contact = () => {
+  const formRef = useRef();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleFormSubmit = () => {
+    toast.success("Message submitted successfully");
+  };
+
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_6xfcc2g",
+        "template_l56kvhh",
+        formRef.current,
+        "aRO-sklNECVerBfsH"
+      )
+      .then(
+        (result) => {
+          setSuccess(true);
+          setError(false);
+          console.log(result);
+
+          // Reset the form fields
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+          });
+          handleFormSubmit();
+        },
+        (error) => {
+          setError(true);
+          setSuccess(false);
+          console.log("Error sending email:", error);
+        }
+      );
+  };
   return (
     <div className="pt-[5em] flex flex-col gap-[3rem] border-l-8 border-simple1">
       <div
@@ -75,37 +132,48 @@ const Contact = () => {
         </div>
 
         <div className=" bg-tertiary2 w-full basis-[60%] px-8 pt-[8em] pb-[3em]">
-          <form className="flex flex-col gap-[5em] px-[5em]">
+          <form
+            className="flex flex-col gap-[3em] px-[5em]"
+            ref={formRef}
+            onSubmit={sendEmail}
+            id="form"
+          >
             <div className=" flex flex-col gap-[2em]">
               <div className="flex flex-col gap-[1em]">
                 <label
                   htmlFor="name"
-                  className=" text-categoryborder font-oxygen text-lg font-medium"
+                  className="required text-categoryborder font-oxygen text-lg font-medium"
                 >
                   Your name
                 </label>
                 <input
                   type="text"
-                  id="name"
                   name="name"
                   required
-                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-createaccount"
+                  placeholder="Swiss Merry"
+                  autoComplete="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-color"
                 />
               </div>
 
               <div className="flex flex-col gap-[1em]">
                 <label
                   htmlFor="email"
-                  className=" text-categoryborder font-oxygen text-lg font-medium"
+                  className="required text-categoryborder font-oxygen text-lg font-medium"
                 >
                   Email address
                 </label>
                 <input
                   type="email"
-                  id="email"
                   name="email"
                   required
-                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-createaccount"
+                  placeholder="example@dot.com"
+                  autoComplete="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-color"
                 />
               </div>
 
@@ -120,35 +188,47 @@ const Contact = () => {
                   type="text"
                   id="subject"
                   name="subject"
-                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-createaccount"
+                  placeholder="Inquiry"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-color"
                 />
               </div>
 
               <div className="flex flex-col gap-[1em]">
                 <label
                   htmlFor="message"
-                  className=" text-categoryborder font-oxygen text-lg font-medium"
+                  className="required text-categoryborder font-oxygen text-lg font-medium"
                 >
                   Message
                 </label>
                 <textarea
+                  type="message"
                   id="message"
                   name="message"
-                  rows="4"
-                  required
-                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-createaccount"
+                  rows="10"
+                  placeholder="Feel free to us for product inquiry or complaint. Thank you!"
+                  autoComplete="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-color"
                 ></textarea>
               </div>
             </div>
 
             <Button
               type="submit"
-              className={`flex items-center justify-center w-[15em] bg-simple1 text-tertiary2 hover:scale-105 font-oxygen text-2xl py-2 px-5 rounded-xl mx-auto cursor-pointer`}
+              className={`flex items-center justify-center w-[15em] bg-simple1 text-tertiary2 hover:scale-105 font-oxygen text-2xl py-1 px-5 rounded-xl mx-auto cursor-pointer`}
             >
               Submit
             </Button>
+            {error && "Error"}
+            {success && ""}
           </form>
         </div>
+      </div>
+      <div className="z-[10000] pt-[20em]">
+        <ToastContainer position="top-right" autoClose={2000} />
       </div>
     </div>
   );

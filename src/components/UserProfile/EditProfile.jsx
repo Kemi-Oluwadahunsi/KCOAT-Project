@@ -35,12 +35,17 @@ const EditProfile = () => {
   }, [userProfile]);
 
   const handleChange = (e) => {
-    if (e.target.name === "image") {
-      // If the input is an image file, set the image state
-       setFormData({ ...formData, image: e.target.files[0] });
-    } else {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleImageChange = (e) => {
+    setFormData({
+      ...formData,
+      image: e.target.files[0],
+    });
   };
 
   const handleImageClick = () => {
@@ -52,22 +57,23 @@ const EditProfile = () => {
     e.preventDefault();
 
     try {
-      const formDataWithImage = new FormData(); // Create FormData object
-      // Append form data to include the image file
-      formDataWithImage.append("image", formData.image);
+      const formDataWithImage = new FormData();
       formDataWithImage.append("firstName", formData.firstName);
       formDataWithImage.append("lastName", formData.lastName);
       formDataWithImage.append("email", formData.email);
       formDataWithImage.append("phoneNumber", formData.phoneNumber);
       formDataWithImage.append("address", formData.address);
       formDataWithImage.append("state", formData.state);
+      formDataWithImage.append("image", formData.image);
+
+      await uploadImageToCloudinary(formData.image);
 
       await axios.put(
         `https://kcoat.onrender.com/user-profile/${userProfile.customerId}`,
         formDataWithImage,
         {
           headers: {
-            "Content-Type": "multipart/form-data", // Set content type to multipart/form-data for file upload
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -79,6 +85,18 @@ const EditProfile = () => {
       console.error("Error updating user profile:", error);
     }
   };
+
+  const uploadImageToCloudinary = async (imageFile) => {
+    const formData = new FormData();
+    formData.append("file", imageFile);
+    formData.append("upload_preset", "wq90ysos"); // Replace with your Cloudinary upload preset
+
+    return await axios.post(
+      "https://api.cloudinary.com/v1_1/dcqybedxj/image/upload",
+      formData
+    );
+  };
+
   return (
     <div className="pt-[8rem] px-[20rem] py-[5em] font-oxygen">
       <form action="" onSubmit={handleSubmit}>
@@ -89,10 +107,9 @@ const EditProfile = () => {
               <img src={formData.image} alt="User-image" />
               <input
                 type="file"
-                ref={fileInputRef} // Attach the ref to the file input
-                // style={{ display: "none" }} // Hide the file input
+                ref={fileInputRef}
                 name="image"
-                onChange={handleChange}
+                onChange={handleImageChange}
                 accept="image/*"
                 className="rounded-full w-20 h-20 bg-bland"
               />

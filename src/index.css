@@ -122,13 +122,19 @@
   font-size: 2rem;
   z-index: 10001;
   cursor: pointer;
-  padding: .05em .3em;
+  padding: 0.05em 0.3em;
   color: #dedfe1;
   right: 1.6%;
   border-radius: 50px;
   border: none;
   opacity: 0.9;
   background-color: #fd6905;
+}
+
+.required::after {
+  content: " *";
+  color: red;
+  font-size: 1.2rem;
 }
 @media screen and (min-width: 481px) and (max-width: 900px) {
   .scroll-buttons .btn-Scroll {
@@ -154,4 +160,3 @@
     scroll-snap-align: none;
   }
 }
-
