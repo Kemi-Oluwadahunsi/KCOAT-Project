@@ -36,8 +36,8 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
           </NavLink>
 
           <NavLink
-            to="/add-product"
-            onClick={() => handleMenuClick("addProduct")}
+            to="/admin/add-product"
+            onClick={() => handleMenuClick("addproduct")}
           >
             <div className="flex gap-4 items-center  hover:border-b">
               <MdOutlineAddToPhotos />

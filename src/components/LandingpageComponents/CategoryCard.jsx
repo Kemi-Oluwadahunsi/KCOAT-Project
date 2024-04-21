@@ -5,7 +5,7 @@ import img4 from "../../assets/faceless.png";
 
 const CategoryCard = () => {
   return (
-    <section>
+    <section className="hidden md:block lg:block">
       <div className="bg-tertiary2 flex flex-col justify-center gap-10 pt-5">
         <div className="flex gap-8 text-center rounded-xl border border-simple1 border-opacity-25 py-2 lg:block mx-[10rem]">
           <h2 className="text-tertiary1 font-lso text-4xl ">

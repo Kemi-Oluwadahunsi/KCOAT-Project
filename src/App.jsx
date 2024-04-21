@@ -22,10 +22,10 @@ import CheckOut2 from "./components/Cart-Flow/CheckOut2";
 import NewFeatured from "./components/Products/NewFeatured";
 import AdminManagepage from "./components/Admin/AdminManagepage";
 import AdminLogin from "./components/Admin/AdminLogin";
-import AddProduct from "./components/Admin/AddProduct";
 import { useContext } from "react";
 import { ProductContext } from "../hooks/ProductContext";
 import ProductsPage from "./components/Products/ProductsPage";
+import NavBar from "./components/LandingpageComponents/NavBar"
 function App() {
   //   const {customerId} = "customerId"
   //  const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -33,7 +33,7 @@ function App() {
   const { customerId, isLoggedIn } = useContext(ProductContext);
   return (
     <>
-
+<NavBar />
       <Header customerId={customerId} isLoggedIn={isLoggedIn} />
       <ScrollArrow />
       <Routes>
@@ -62,7 +62,6 @@ function App() {
         <Route path="/new-featured" element={<NewFeatured />} />
         <Route path="/admin/*" element={<AdminManagepage />} />
         <Route path="/admin-login" element={<AdminLogin />} />
-        <Route path="/add-product" element={<AddProduct />} />
         <Route path="/all-products" element={<ProductsPage />} />
       </Routes>
 

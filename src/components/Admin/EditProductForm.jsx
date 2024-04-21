@@ -10,7 +10,6 @@ const EditProductForm = ({ product }) => {
     ProductCategory: "",
     SubCategory: "",
     ProductImage: "",
-    ProductSize: 0,
     Quantity: 0,
   });
 
@@ -74,17 +73,6 @@ const handleInputChange = (e) => {
             type="text"
             name="ProductDescription"
             value={editedProduct.ProductDescription}
-            onChange={handleInputChange}
-            className="pl-2 py-1 border-2 border-border outline-categoryborder rounded-md text-color"
-          />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <label>Product Size:</label>
-          <textarea
-            type="number"
-            name="ProductSize"
-            value={editedProduct.ProductSize}
             onChange={handleInputChange}
             className="pl-2 py-1 border-2 border-border outline-categoryborder rounded-md text-color"
           />

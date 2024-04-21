@@ -21,13 +21,13 @@ const FeedbackCorner = () => {
     nextArrow: <CustomNextArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
         },
@@ -43,7 +43,7 @@ const FeedbackCorner = () => {
           </h2>
           <p className="font-medium">What Our Customers Are Saying..........</p>
         </div>
-        <Slider {...settings} style={{}} className="px-[6rem] py-20">
+        <Slider {...settings} style={{}} className="px-[2rem] sm:px-[3rem] md:px-[5rem] lg:px-[6rem] py-20">
           {feedbackArray.map((item) => (
             <div key={item.id} className=" ">
               <FeedbackCards

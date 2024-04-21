@@ -26,6 +26,7 @@ const SingleProductsPage = () => {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
+  
   useEffect(() => {
     const fetchProduct = async () => {
       try {

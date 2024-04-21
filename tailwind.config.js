@@ -39,13 +39,17 @@ export default {
       delete: "#D91F06",
     },
     screens: {
-      xs: "480px",
-      ss: "620px",
-      sm: "768px",
-      md: "1060px",
-      lg: "1024px",
-      xl: "1366px",
-      "2xl": "1536px",
+      'xs': {'max': '480px'},
+      // => @media (min-width: 640px and max-width: 767px) { ... }
+
+      'sm': {'min': '481px', 'max': '800px'},
+      // => @media (min-width: 768px and max-width: 1023px) { ... }
+
+      'md': {'min': '801px', 'max': '1200px'},
+      // => @media (min-width: 1024px and max-width: 1279px) { ... }
+
+      'lg': {'min': '1201px', 'max': '1600px'},
+      // => @media (min-width: 1280px and max-width: 1535px) { ... }
     },
     fontFamily: {
       primary: ["Inter", "sans-serif"],

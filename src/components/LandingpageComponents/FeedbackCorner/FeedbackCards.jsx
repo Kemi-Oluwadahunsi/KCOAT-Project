@@ -4,7 +4,7 @@ const FeedbackCards = (props) => {
 
   return (
    <div className="flex justify-center items-center">
-     <div className="  bg-primary hover:bg-tertiary text-color w-[80%] h-[16rem] p-8 flex flex-col  gap-10 rounded">
+     <div className="  bg-primary hover:bg-tertiary text-color sm:w-[90%] md:w-[80%] lg:w-[80%] h-[16rem] md:p-7 sm:p-4 xs:p-8 lg:p-8 flex flex-col md:gap-9 sm:gap-4 xs:gap-2 lg:gap-10 ">
         <div>
         <img src={props.image} alt={props.image} />
         </div>
@@ -14,5 +14,6 @@ const FeedbackCards = (props) => {
    </div>
   )
 }
+
 
 export default FeedbackCards

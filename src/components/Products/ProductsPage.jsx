@@ -99,7 +99,6 @@ const AllProducts = () => {
       setCurrentPage((prevPage) => prevPage - 1);
     }
   };
-
   
   const mostPopular = currentProducts.map((item) => {
     console.log("Product ID:", item.Productid); // Log the Productid

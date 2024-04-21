@@ -169,21 +169,6 @@ export const ProductProvider = ({ children}) => {
     }
   };
 
-
-  // const fetchUserDetails = async (customerId) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `https://kcoat.onrender.com/user-profile/${customerId}`
-  //       // `https://kcoat.onrender.com/user-profile/5b70121d-24db-4d90-bde4-92d89357c605`
-  //     );
-  //     console.log("User details:", response.data);
-  //     return response.data;
-  //   } catch (error) {
-  //     console.error("Error fetching user details:", error);
-  //   }
-  //   //   }
-  // };
-
   return (
     <ProductContext.Provider
       value={{

@@ -159,4 +159,14 @@
     scroll-snap-type: none;
     scroll-snap-align: none;
   }
+
+}
+
+@media (max-width: 768px) {
+  .heroBackground {
+    background-image: linear-gradient(to bottom, rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0.4)), url(./assets/right-image.png);
+    background-position: top;
+    background-size: contain;
+    object-fit: contain;
+  }
 }

@@ -40,7 +40,7 @@ const MostPopularProductPage = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4  my-12 justify-between ">
+      <div className="grid grid-cols-4 my-12 justify-between ">
         {mostPopular}
       </div>
     </div>
