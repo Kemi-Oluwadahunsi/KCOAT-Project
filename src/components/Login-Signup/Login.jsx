@@ -67,22 +67,22 @@ const Login = () => {
   };
   return (
     <div className="h-screen border-l-8 border-simple1">
-      <div className="flex items-center justify-center h-[43rem] relative top-[5rem]">
+      <div className="flex items-center justify-center xs:h-auto h-[43rem] relative xs:top-[8rem] top-[5rem] ">
         <div className="flex w-4/5 my-auto">
-          <div className="flex  ">
+          <div className="flex xs:hidden ">
             <img
               src={LoginImage}
               alt="LoginImage"
-              className="rounded-tr-[0.625em] rounded-br-[0.625em]"
+              className="rounded-tr-[0.625em] rounded-br-[0.625em] "
             />
           </div>
 
-          <div className=" flex flex-col gap-20 px-16 pt-10 border border-border w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em]">
-            <div className="flex flex-col  gap-[1em]">
-              <h3 className=" font-tertiary font-normal text-[2.25em] justify-center">
+          <div className=" flex flex-col xs:gap-5 gap-20 xs:pb-8 xs:px-4 px-16 pt-10 border border-border xs:w-[100%] w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em] xs:rounded-tr-[0.625em] xs:rounded-br-[0.625em]">
+            <div className="flex flex-col xs:gap-[.5em] gap-[1em]">
+              <h3 className=" font-tertiary font-normal xs:text-[2em] text-[2.25em] xs:text-center justify-center">
                 Login
               </h3>
-              <p className="text-createaccount font-secondary font-bold">
+              <p className="text-createaccount xs:text-[.9em] font-secondary font-bold">
                 Don&apos;t have an account,{" "}
                 <Link to="/signup">
                   <span className="font-bold text-bland underline underline-offset-4">
@@ -102,7 +102,7 @@ const Login = () => {
                   id="email"
                   placeholder="Grace.joel@xmail.com"
                   required
-                  className="w-full rounded-[3em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
+                  className="w-full rounded-[3em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
                 />
               </div>
 
@@ -115,12 +115,12 @@ const Login = () => {
                   id="password"
                   placeholder="******"
                   required
-                  className="w-full rounded-[3em] text-[1.2em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
+                  className="w-full rounded-[3em] text-[1.2em] xs:py-2 px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
                 />
                 <FontAwesomeIcon
                   icon={showPassword ? faEyeSlash : faEye}
                   color="#A6A6A6"
-                  className="text-xl absolute top-12 cursor-pointer left-[90%]"
+                  className="text-xl xs:text-sm absolute top-12 cursor-pointer xs:left-[87%] left-[90%]"
                   onClick={togglePasswordVisibility}
                 />
               </div>
@@ -129,7 +129,7 @@ const Login = () => {
                 className="flex justify-center items-center w-full "
                 onClick={handleLogin}
               >
-                <div className="flex font-oxygen justify-center mt-[1rem] hover:scale-110 w-1/2 py-1 text-xl bg-tertiary font-normal rounded-xl">
+                <div className="flex font-oxygen justify-center xs:mt-0 mt-[1rem] hover:scale-110 w-1/2 py-1 xs:text-base text-xl bg-tertiary font-normal rounded-xl">
                   <Button>Login</Button>
                 </div>
               </div>

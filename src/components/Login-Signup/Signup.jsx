@@ -110,8 +110,8 @@ const Signup = () => {
 
   return (
     <>
-      <div className=" grid h-screen w-full place-content-center relative top-[4rem] border-l-8 border-simple1">
-        {success ? (
+      <div className=" flex h-screen xs:h-auto w-full xs:pt-[6rem] pt-[8rem] border-l-8 border-simple1 mx-auto">
+        {success ? ( 
           <section className="flex flex-col gap-[3em]">
             <div
               className="w-[60%] py-[4em] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)]
@@ -128,9 +128,9 @@ const Signup = () => {
             </div>
           </section>
         ) : (
-          <div className="flex items-center justify-center h-[45rem]">
-            <div className="flex my-auto">
-              <div className="flex  ">
+          <div className="flex items-center xs:pt-[7rem] justify-center xs:h-auto h-[45rem]">
+            <div className="flex xs:mx-auto my-auto">
+              <div className="flex xs:hidden">
                 <img
                   src={SignupImage}
                   alt="SignupImage"
@@ -138,8 +138,8 @@ const Signup = () => {
                 />
               </div>
 
-              <div className=" flex flex-col gap-16 px-10 pt-10 pb-1 border border-border w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em]">
-                <div className="flex flex-col  gap-[1em]">
+              <div className=" flex flex-col xs:gap-8 gap-16 px-10 xs:pt-4 pt-10 pb-1 border border-border xs:w-[90%] w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em] xs:rounded-tr-[0.625em] xs:rounded-br-[0.625em]">
+                <div className="flex flex-col gap-[1em]">
                   <h3 className=" font-tertiary font-normal text-[2.25em] justify-center">
                     Signup
                   </h3>
@@ -163,7 +163,7 @@ const Signup = () => {
                     {errMsg}{" "}
                   </p>
                   <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
-                    <div className="flex gap-7">
+                    <div className="flex xs:flex-col gap-7">
                       {/* Username and Validation */}
                       <div className="flex flex-col">
                         <div className="flex flex-col gap-2">
@@ -272,7 +272,7 @@ const Signup = () => {
                     </div>
 
                     {/* Password and Validation */}
-                    <div className="flex gap-7 w-[100%]">
+                    <div className="flex xs:flex-col gap-7 w-[100%]">
                       <div className="flex flex-col flex-1">
                         <div className="flex flex-col gap-2 w-full relative ">
                           <label

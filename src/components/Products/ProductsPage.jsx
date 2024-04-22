@@ -116,7 +116,7 @@ const AllProducts = () => {
   });
 
   return (
-    <div className="flex xs:flex-col xs:px-[2rem] px-[6.2rem] xs:gap-[2rem] gap-[5rem] xs:py-0 py-[3rem] relative xs:pt-[8rem] pt-[8em] border-l-8 border-simple1">
+    <div className="flex xs:flex-col xs:px-[2rem] md:px-0 px-[6.2rem] xs:gap-[2rem] gap-[5rem] xs:py-0 py-[3rem] relative xs:pt-[8rem] pt-[8em] border-l-8 border-simple1">
       <div className="flex flex-col xs:flex-row xs:gap-0 xs:justify-between xs:w-full gap-[3em] w-[20%]">
         {/* Categories and Filters */}
         <div className="flex items-center xs:w-[45%] w-full xs:py-[0.5em] py-[2em] xs:px-[0.5em] px-[1.8em] border-2 border-categoryborder2 xs:h-fit">
@@ -184,7 +184,7 @@ const AllProducts = () => {
           {isLoading ? (
             <div className="loader"></div>
           ) : (
-            <div className="grid xs:grid-cols-2 sm:grid-cols-2 grid-cols-3 justify-center xs:gap-[2rem] gap-[4rem]">
+            <div className="grid xs:grid-cols-2 sm:grid-cols-2 grid-cols-3 justify-center xs:gap-[2rem] md:gap-[1rem] gap-[4rem]">
               {mostPopular}
             </div>
           )}
