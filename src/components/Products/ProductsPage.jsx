@@ -184,7 +184,7 @@ const AllProducts = () => {
           {isLoading ? (
             <div className="loader"></div>
           ) : (
-            <div className="grid xs:grid-cols-2 sm:grid-cols-2 grid-cols-3 justify-center xs:gap-[2rem`] gap-[4rem]">
+            <div className="grid xs:grid-cols-2 sm:grid-cols-2 grid-cols-3 justify-center xs:gap-[2rem] gap-[4rem]">
               {mostPopular}
             </div>
           )}
