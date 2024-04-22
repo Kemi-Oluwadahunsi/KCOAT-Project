@@ -72,11 +72,11 @@ const ThirdSection = () => {
 
   return (
     <div className="flex flex-col gap-[2em] md:gap-[3em] lg:gap-[3em] py-10 xs:px-[2rem] md:px-[5rem] lg:px-[5rem] bg-background">
-      <div className="flex xs:flex-col justify-between items-center px-3 sm:px-5 md:px-10 lg:px-10 pt-2 sm:pt-4 md:pt-5 lg:pt-5">
+      <div className="flex xs:flex-col sm:flex-col justify-between items-center px-3 sm:px-5 md:px-10 lg:px-10 pt-2 sm:pt-4 md:pt-5 lg:pt-5">
         <h1 className="text-center font-tertiary font-normal text-color text-[1.5em] lg:text-[2.2rem]">
           New & Featured Products
         </h1>
-        <p className="font-oxygen font-normal font-subtext w-[90%] xs:text-center sm:w-[70%] md:w-[36%] lg:w-[36%] text-start leading-6">
+        <p className="font-oxygen font-normal font-subtext w-[90%] xs:text-center sm:w-[80%] md:w-[36%] lg:w-[36%] text-start leading-6">
           Explore Endless Possibilities And Upgrade Your Fashion Experience
           Today!.
         </p>

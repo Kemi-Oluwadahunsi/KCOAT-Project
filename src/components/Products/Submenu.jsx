@@ -2,26 +2,21 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import axios from "axios";
+import { useMediaQuery } from "react-responsive";
 
 const Submenu = ({ setSelectedProducts }) => {
   const [isMenSubMenuOpen, setMenSubMenuOpen] = useState(false);
   const [isWomenSubMenuOpen, setWomenSubMenuOpen] = useState(false);
+   const isMobile = useMediaQuery({ maxWidth: 768 }); // Adjust the max width as needed
 
-  const openMenSubMenu = () => {
-    setMenSubMenuOpen(true);
-  };
+   const toggleMenSubMenu = () => {
+     setMenSubMenuOpen(!isMenSubMenuOpen);
+   };
 
-  const closeMenSubMenu = () => {
-    setMenSubMenuOpen(false);
-  };
+   const toggleWomenSubMenu = () => {
+     setWomenSubMenuOpen(!isWomenSubMenuOpen);
+   };
 
-  const openWomenSubMenu = () => {
-    setWomenSubMenuOpen(true);
-  };
-
-  const closeWomenSubMenu = () => {
-    setWomenSubMenuOpen(false);
-  };
 
   const handleSubMenuClick = async (submenu) => {
     try {
@@ -71,7 +66,7 @@ const Submenu = ({ setSelectedProducts }) => {
   };
 
   return (
-    <ul className="flex flex-col gap-[3em] font-oxygen w-full">
+    <ul className="flex flex-col xs:gap-[0.5em] gap-[3em] font-oxygen w-full">
       <div
         className="openHr flex flex-col gap-[1em] cursor-pointer "
         onClick={() => handleSubMenuClick("AllProducts")}
@@ -84,8 +79,9 @@ const Submenu = ({ setSelectedProducts }) => {
 
       <div
         className="openHr flex flex-col gap-[1em] cursor-pointer"
-        onMouseEnter={openMenSubMenu}
-        onMouseLeave={closeMenSubMenu}
+        onMouseEnter={() => !isMobile && setMenSubMenuOpen(true)}
+        onMouseLeave={() => !isMobile && setMenSubMenuOpen(false)}
+        onClick={isMobile ? toggleMenSubMenu : null}
       >
         <li className="flex flex-col justify-between ">
           <div className="flex justify-between items-center">
@@ -125,8 +121,9 @@ const Submenu = ({ setSelectedProducts }) => {
 
       <div
         className="openHr flex flex-col gap-[1em] cursor-pointer"
-        onMouseEnter={openWomenSubMenu}
-        onMouseLeave={closeWomenSubMenu}
+        onMouseEnter={() => !isMobile && setWomenSubMenuOpen(true)}
+        onMouseLeave={() => !isMobile && setWomenSubMenuOpen(false)}
+        onClick={isMobile ? toggleWomenSubMenu : null}
       >
         <li className="flex flex-col justify-between">
           <div className="flex justify-between items-center">

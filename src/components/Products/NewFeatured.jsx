@@ -46,13 +46,12 @@ const NewFeatured = () => {
    });
 
   return (
-    <div className="flex flex-col gap-[3em] py-[8rem] px-[5rem] bg-background">
-      <div className="flex flex-col items-center px-10 pt-5">
-        <h1 className="text-center font-tertiary font-normal text-color text-[2.5rem]">
+    <div className="flex flex-col xs:gap-[1em] gap-[3em] xs:py-[5rem] py-[8rem] xs:px-[2rem] px-[5rem] bg-background">
+      <div className="flex xs:flex-col sm:flex-col justify-between items-center px-3 sm:px-5 md:px-10 lg:px-10 pt-2 sm:pt-4 md:pt-5 lg:pt-5">
+        <h1 className="text-center font-tertiary font-normal text-color text-[1.5em] lg:text-[2.2rem]">
           New & Featured Products
         </h1>
-
-        <p className="font-oxygen font-normal font-subtext text-start leading-6">
+        <p className="font-oxygen font-normal font-subtext w-[90%] xs:text-center sm:w-[80%] md:w-[36%] lg:w-[36%] text-start leading-6">
           Explore Endless Possibilities And Upgrade Your Fashion Experience
           Today!.
         </p>
@@ -61,7 +60,7 @@ const NewFeatured = () => {
       {isLoading ? (
         <div className="loader"></div>
       ) : (
-        <div className="grid grid-cols-4 justify-center gap-[4rem]">
+        <div className="grid xs:grid-cols-2 grid-cols-4 justify-center xs:gap-[2rem] gap-[4rem]">
           {mostPopular}
         </div>
       )}

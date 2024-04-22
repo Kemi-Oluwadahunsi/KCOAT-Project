@@ -18,7 +18,7 @@ const MostPopularProducts = () => {
   return (
     <div className="xs:pb-[2rem] sm:pb-[2rem]">
       <div className="  flex place-content-center mt-0 sm:mt-5 md:mt-7 lg:mt-8">
-        <div className=" basis-[72%] flex flex-col ml-12  place-items-center">
+        <div className=" basis-[72%] flex flex-col lg:ml-12  place-items-center">
           <h2 className="font-tertiary text-color font-bold text-2xl md:text-3xl lg:text-4xl mt-10 mb-1 ">
             Most Popular Products
           </h2>
@@ -36,7 +36,7 @@ const MostPopularProducts = () => {
         </Link>
       </div>
 
-      <div className="grid lg:grid-cols-4 md:py-12 lg:py-12 px-[2em] sm:px-[3em] md:px-[6em] lg:px-[4em] justify-center">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:py-12 lg:py-12 px-[2em] sm:px-[3em] md:px-[6em] lg:px-[4em] justify-center">
         {mostPopular}
       </div>
       <Link to="/most-popular-product">

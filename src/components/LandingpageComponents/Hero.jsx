@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <>
-      <section className=" flex flex-col gap-[2rem] sm:gap-[3rem] md:gap-[4rem] lg:gap-[5rem] pt-[5rem] xs:pb-4 sm:pb-0 md:pb-0 lg:pb-0 heroBackground">
+      <section className=" flex flex-col gap-[2rem] sm:gap-[3rem] md:gap-[4rem] lg:gap-[5rem] pt-[5rem] xs:pb-4 sm:pb-8 md:pb-0 lg:pb-0 heroBackground">
         <div className="w-[3em] sm:w-[4em] md:w-[5em] lg:w-full ml-[3rem] md:ml-[8rem] lg:ml-[8rem] mt-[2rem]">
           <img src={Tinydots} alt="dotsbox" />
         </div>
@@ -18,7 +18,7 @@ const Hero = () => {
           </div>
           <div className="flex flex-1 flex-col gap-[3rem] place-items-center w-[45%] xs:text-primary sm:text-primary lg:text-color md:text-color">
             <div className="flex flex-col gap-[1.5rem] text-center ">
-              <h1 className="heroTalk  font-tertiary text-[2rem] md:text-[4rem] lg:text-[4rem] font-normal tracking-wide">
+              <h1 className="heroTalk  font-tertiary text-[2rem] sm:text-[3rem] md:text-[4rem] lg:text-[4rem] font-normal tracking-wide">
                 Discover And Find Your Own Fashion
               </h1>
               <p className="font-oxygen text-base md:text-lg lg:text-lg font-normal">

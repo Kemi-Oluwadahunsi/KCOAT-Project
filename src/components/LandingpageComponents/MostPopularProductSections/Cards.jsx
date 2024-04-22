@@ -3,14 +3,14 @@ import Cart from "/images/cart-plus-alt.svg"
 const Cards = (props) => {
   return (
     <div>
-      <div className="flex justify-center flex-wrap">
-        <div className="flex flex-col gap-[1em]  py-[1rem] rounded-md">
+      <div className="flex md:mx-4 justify-center flex-wrap">
+        <div className="flex flex-col gap-[1em]  py-[1rem] rounded-md xs:w-full">
           <div className="mx-auto">
             <img src={props.image} alt={props.title} className="object-cover" />
           </div>
 
           <div className="flex flex-col gap-3  px-1">
-            <h3 className="font-oxygen font-normal text-[1.1rem] text-secondary">
+            <h3 className="font-oxygen font-normal xs:text-[.9rem] sm:text-base text-[1.1rem] text-secondary">
               {props.title}
             </h3>
             <div className="flex justify-between gap-3 ">

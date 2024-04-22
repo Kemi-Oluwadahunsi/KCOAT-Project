@@ -18,7 +18,7 @@ const Footer = () => {
 
             <div className="flex flex-col gap-3">
               <h3 className="md:text-2xl text-[1.2rem] lg:text-2xl">Social Media</h3>
-              <div className="flex justify-between cursor-pointer xs:w-[40%] md:w-[30%]">
+              <div className="flex justify-between cursor-pointer xs:w-[40%] sm:w-[20%] md:w-[30%]">
                 <img src={whatsapp} alt="" />
                 <img src={instagram} alt="" />
                 <img src={facebook} alt="" />
@@ -53,7 +53,7 @@ const Footer = () => {
             <h3>Nigeria</h3>
           </div>
 
-          <ul className="flex justify-between gap-10 cursor-pointer">
+          <ul className="flex xs:text-[0.8em] justify-between xs:w-[80%] xs:gap-4 gap-10 cursor-pointer">
             <li>Guides</li>
             <li>Terms of Sale</li>
             <li>Terms of Use</li>

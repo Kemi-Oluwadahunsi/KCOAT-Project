@@ -116,12 +116,12 @@ const AllProducts = () => {
   });
 
   return (
-    <div className="flex px-[6.2rem] gap-[5rem] py-[3rem] relative pt-[8em] border-l-8 border-simple1">
-      <div className="flex flex-col gap-[3em] w-[20%]">
+    <div className="flex xs:flex-col xs:px-[2rem] px-[6.2rem] xs:gap-[2rem] gap-[5rem] xs:py-0 py-[3rem] relative xs:pt-[8rem] pt-[8em] border-l-8 border-simple1">
+      <div className="flex flex-col xs:flex-row xs:gap-0 xs:justify-between xs:w-full gap-[3em] w-[20%]">
         {/* Categories and Filters */}
-        <div className="flex items-center w-full py-[2em] px-[1.8em] border-2 border-categoryborder2">
-          <div className="flex flex-col gap-[1.5em] w-full">
-            <h2 className="font-tertiary text-[1.2em] pl-4 border-l-4 border-categoryborder">
+        <div className="flex items-center xs:w-[45%] w-full xs:py-[0.5em] py-[2em] xs:px-[0.5em] px-[1.8em] border-2 border-categoryborder2 xs:h-fit">
+          <div className="flex flex-col xs:gap-[0.5em] gap-[1.5em] w-full">
+            <h2 className="font-tertiary xs:text-base text-[1.2em] pl-4 border-l-4 border-categoryborder">
               Categories
             </h2>
             <ul className="flex flex-col gap-[3em] font-oxygen w-full">
@@ -130,22 +130,20 @@ const AllProducts = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center w-full py-[2em] border-2 border-categoryborder2">
-          <div className="flex flex-col gap-5 w-[80%]">
-            <div className="font-tertiary text-[1.2em] border-l-4 border-categoryborder">
+        <div className="flex flex-col items-center xs:w-[48%] xs:h-fit w-full xs:py-[0.5em] py-[2em] border-2 border-categoryborder2">
+          <div className="flex flex-col xs:gap-3 gap-5 xs:w-[100%] w-[80%]">
+            <div className="font-tertiary xs:text-base text-[1.2em] border-l-4 border-categoryborder">
               <h2 className="pl-4">Price Range</h2>
             </div>
 
             {/* Price range checkboxes */}
-            <div className="flex flex-col gap-2em leading-9 font-oxygen text-secondary">
+            <div className="flex flex-col xs:gap-[0.5em] xs:text-[0.9em] xs:leading-5 leading-9 font-oxygen text-secondary">
               {[
                 { label: "N5000 - N20000", range: [5000, 20000] },
                 { label: "N20000 - N25000", range: [20000, 25000] },
                 { label: "N25000 - N30000", range: [25000, 30000] },
-                { label: "N30000 - N35000", range: [30000, 35000] },
-                { label: "N35000 - N40000", range: [35000, 40000] },
               ].map(({ label, range }, index) => (
-                <div key={index} className="flex gap-5 items-center">
+                <div key={index} className="flex xs:gap-1 gap-5 xs:items-start items-center">
                   <input
                     type="checkbox"
                     className="w-4 h-4 checkbox"
@@ -165,12 +163,12 @@ const AllProducts = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-[5rem] w-[80%]">
-        <div className="flex flex-col gap-[2rem]">
-          <h1 className="font-tertiary font-normal text-[2.25em] text-color">
+      <div className="flex flex-col xs:gap-[3rem] gap-[5rem] xs:w-[100%] w-[80%]">
+        <div className="flex flex-col xs:gap-[1rem] gap-[2rem]">
+          <h1 className="font-tertiary font-normal xs:text-[1.5em] text-[2.25em] text-color">
             Our Collection Of Products
           </h1>
-          <div className="w-3/5">
+          <div className=" xs:w-full w-3/5">
             <SearchInput
               value={searchQuery}
               onChange={handleSearchInputChange}
@@ -186,7 +184,7 @@ const AllProducts = () => {
           {isLoading ? (
             <div className="loader"></div>
           ) : (
-            <div className="grid grid-cols-3 justify-center gap-[4rem]">
+            <div className="grid xs:grid-cols-2 sm:grid-cols-2 grid-cols-3 justify-center xs:gap-[2rem`] gap-[4rem]">
               {mostPopular}
             </div>
           )}
@@ -194,7 +192,7 @@ const AllProducts = () => {
 
         {/* Pagination */}
         <div className="flex justify-center w-full">
-          <div className="flex flex-col w-[50%] py-[5rem] gap-[1.6rem] items-center">
+          <div className="flex flex-col xs:w-[100%] w-[50%] xs:py-[1rem] py-[5rem] gap-[1.6rem] items-center">
             <h3 className="font-oxygen font-bold text-secondary">
               Showing {indexOfFirstProduct + 1}-
               {Math.min(indexOfLastProduct, filteredProducts.length)} of{" "}
@@ -215,7 +213,7 @@ const AllProducts = () => {
             </div>
 
             <div className="font-secondary font-medium">
-              <div className="flex justify-center mt-4">
+              <div className="flex justify-center xs:mt-2 mt-4">
                 {currentPage > 1 && (
                   <button
                     className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"

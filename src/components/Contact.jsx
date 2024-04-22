@@ -66,7 +66,7 @@ const Contact = () => {
       );
   };
   return (
-    <div className="pt-[5em] flex flex-col gap-[3rem] border-l-8 border-simple1">
+    <div className="pt-[5em] flex flex-col xs:gap-[1em] gap-[3rem] border-l-8 border-simple1">
       <div
         className=" flex flex-col gap-3 items-center justify-center h-[20em] "
         style={{
@@ -76,7 +76,7 @@ const Contact = () => {
         <h1 className=" font-bold text-tertiary font-tertiary text-[2.5em]">
           Contact
         </h1>
-        <div className="flex gap-[2em] font-oxygen font-bold text-color">
+        <div className="flex items-center justify-center xs:gap-[1em] gap-[2em] text-[1.2em] font-oxygen font-bold text-bland">
           <Link to="/">
             <h3>Home</h3>
           </Link>
@@ -88,20 +88,20 @@ const Contact = () => {
       </div>
 
       <div className=" flex flex-col gap-4 text-center">
-        <h3 className="text-5xl fontbold font-lso text-categoryborder">
+        <h3 className="text-5xl xs:text-3xl fontbold font-lso text-categoryborder">
           Get In Touch With Us
         </h3>
-        <p className="font-oxygen text-simple1 w-[40%] mx-auto">
+        <p className="font-oxygen xs:text-sm text-simple1 xs:w-[90%] w-[40%] mx-auto">
           For More Information About Our Product & Services. Please Feel Free To
           Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not
           Hesitate!
         </p>
       </div>
 
-      <div className="flex justify-between items-start px-[10em]">
-        <div className="basis-[30%] mt-[10em] py-[3em]">
-          <ul className="flex flex-col gap-[2em] ">
-            <li className="flex flex-col gap-[2em]">
+      <div className="flex xs:flex-col justify-between items-start xs:px-[2rem] px-[10em]">
+        <div className="basis-[30%] xs:basis-[100%] xs:mt-[0] mt-[10em] xs:py-[1em] py-[3em]">
+          <ul className="flex flex-col xs:gap-[1em] gap-[2em] ">
+            <li className="flex flex-col xs:gap-[1em] gap-[2em]">
               <div className="flex gap-[1em]">
                 <img src={img03} alt="Address Icon" />
                 <p className="font-lso text-simple1 text-lg">Address</p>
@@ -109,7 +109,7 @@ const Contact = () => {
               <p className="font-oxygen text-base">Lagos, Nigeria</p>
             </li>
 
-            <li className="flex flex-col gap-[2em]">
+            <li className="flex flex-col xs:gap-[1em] gap-[2em]">
               <div className="flex gap-[1em]">
                 <img src={img04} alt="Phone Icon" />
                 <p className="font-lso text-simple1 text-lg">Phone</p>
@@ -117,7 +117,7 @@ const Contact = () => {
               <p className="font-oxygen">Mobile: +(234)8133425123</p>
             </li>
 
-            <li className="flex flex-col gap-[2em]">
+            <li className="flex flex-col xs:gap-[1em] gap-[2em]">
               <div className="flex gap-[1em]">
                 <img src={img05} alt="Time Icon" />
                 <p className="font-lso text-simple1 text-lg">Working Time</p>
@@ -131,18 +131,18 @@ const Contact = () => {
           </ul>
         </div>
 
-        <div className=" bg-tertiary2 w-full basis-[60%] px-8 pt-[8em] pb-[3em]">
+        <div className=" bg-tertiary2 w-full xs:basis-[100%] basis-[60%] xs:px-0 px-8 xs:pt-[2em] pt-[8em] xs:pb-[1em] pb-[3em]">
           <form
-            className="flex flex-col gap-[3em] px-[5em]"
+            className="flex flex-col xs:gap-[1em] gap-[3em] xs:px-[2em] px-[5em]"
             ref={formRef}
             onSubmit={sendEmail}
             id="form"
           >
-            <div className=" flex flex-col gap-[2em]">
-              <div className="flex flex-col gap-[1em]">
+            <div className=" flex flex-col xs:gap-[1em] gap-[2em]">
+              <div className="flex flex-col xs:gap-[0.5em] gap-[1em]">
                 <label
                   htmlFor="name"
-                  className="required text-categoryborder font-oxygen text-lg font-medium"
+                  className="required text-categoryborder font-oxygen xs:text-base text-lg font-medium"
                 >
                   Your name
                 </label>
@@ -154,14 +154,14 @@ const Contact = () => {
                   autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-color"
+                  className="border rounded-lg border-border outline-createaccount xs:py-3 px-4 py-6  text-color"
                 />
               </div>
 
               <div className="flex flex-col gap-[1em]">
                 <label
                   htmlFor="email"
-                  className="required text-categoryborder font-oxygen text-lg font-medium"
+                  className="required text-categoryborder font-oxygen xs:text-base text-lg font-medium"
                 >
                   Email address
                 </label>
@@ -173,14 +173,14 @@ const Contact = () => {
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-color"
+                  className="border rounded-lg border-border outline-createaccount xs:py-3 px-4 py-6  text-color"
                 />
               </div>
 
               <div className="flex flex-col gap-[1em]">
                 <label
                   htmlFor="subject"
-                  className=" text-categoryborder font-oxygen text-lg font-medium "
+                  className=" text-categoryborder font-oxygen xs:text-base text-lg font-medium "
                 >
                   Subject
                 </label>
@@ -191,14 +191,14 @@ const Contact = () => {
                   placeholder="Inquiry"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-color"
+                  className="border rounded-lg border-border outline-createaccount xs:py-3 px-4 py-6  text-color"
                 />
               </div>
 
               <div className="flex flex-col gap-[1em]">
                 <label
                   htmlFor="message"
-                  className="required text-categoryborder font-oxygen text-lg font-medium"
+                  className="required text-categoryborder font-oxygen xs:text-base text-lg font-medium"
                 >
                   Message
                 </label>
@@ -211,14 +211,14 @@ const Contact = () => {
                   autoComplete="message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="border rounded-lg border-border outline-createaccount px-4 py-6  text-color"
+                  className="border rounded-lg border-border outline- xs:py-0 px-4 py-6  text-color"
                 ></textarea>
               </div>
             </div>
 
             <Button
               type="submit"
-              className={`flex items-center justify-center w-[15em] bg-simple1 text-tertiary2 hover:scale-105 font-oxygen text-2xl py-1 px-5 rounded-xl mx-auto cursor-pointer`}
+              className={`flex items-center justify-center xs:w-[8em] w-[15em] bg-simple1 text-tertiary2 hover:scale-105 font-oxygen xs:text-lg text-2xl xs:py-0 py-1 px-5 rounded-xl mx-auto cursor-pointer`}
             >
               Submit
             </Button>
@@ -227,7 +227,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      <div className="z-[10000] pt-[20em]">
+      <div className="z-[10000] pt-[20em] xs:pt-0">
         <ToastContainer position="top-right" autoClose={2000} />
       </div>
     </div>

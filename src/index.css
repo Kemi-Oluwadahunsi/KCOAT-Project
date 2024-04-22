@@ -160,13 +160,38 @@
     scroll-snap-align: none;
   }
 
+  .scroll-buttons .btn-Scroll {
+    font-size: 1.4rem;
+    padding: 0.05em 0.3em;
+    bottom: 1rem;
+  }
 }
 
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .scroll-buttons .btn-Scroll {
+    font-size: 1.7rem;
+    padding: 0.05em 0.3em;
+    bottom: 1rem;
+  }
+}
 @media (max-width: 768px) {
   .heroBackground {
-    background-image: linear-gradient(to bottom, rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0.4)), url(./assets/right-image.png);
+    background-image: linear-gradient(
+        to bottom,
+        rgb(0, 0, 0, 0.4),
+        rgb(0, 0, 0, 0.4)
+      ),
+      url(./assets/right-image.png);
     background-position: top;
     background-size: contain;
     object-fit: contain;
   }
+
+  .slick-next {
+    right: 0;
+  }
+.openHr:hover > hr {
+  display: none;
+}
+  
 }
