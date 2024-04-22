@@ -20,21 +20,21 @@ const Header = () => {
         <img src={logo} alt="logo" />
       </div>
 
-      <ul className="text-color font-oxygen font-medium flex justify-around space-x-4 w-2/4 place-items-center cursor-pointer">
+      <ul className="text-color font-oxygen font-medium flex justify-around space-x-4 xs:w-3/4 w-2/4 place-items-center cursor-pointer">
         <Link to="/">
-          <li className="text-lg relative">Home</li>
+          <li className="text-lg">Home</li>
         </Link>
 
         <Link to="/all-products">
-          <li className="text-lg relative">Products</li>
+          <li className="text-lg">Products</li>
         </Link>
 
         <Link to="/new-featured">
-          <li className="text-lg relative">New & Featured</li>
+          <li className="text-lg">New & Featured</li>
         </Link>
 
         <Link to="/contact">
-          <li className="text-lg relative">Contact</li>
+          <li className="text-lg">Contact</li>
         </Link>
       </ul>
 

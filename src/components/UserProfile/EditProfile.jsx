@@ -98,10 +98,10 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="pt-[8rem] px-[20rem] py-[5em] font-oxygen">
+    <div className="pt-[8rem] xs:px-[2rem] px-[20rem] py-[5em] font-oxygen">
       <form action="" onSubmit={handleSubmit}>
         <div className="">
-          <div className=" flex flex-col gap-8 items-center justify-center rounded-3xl py-[2em] px-[5em] ">
+          <div className=" flex flex-col xs:gap-4 gap-8 items-center justify-center rounded-3xl py-[2em] xs:px-0 px-[5em] ">
             <div onClick={handleImageClick} style={{ cursor: "pointer" }}>
               {/* <img src={userdp} alt="" /> */}
               <img src={formData.image} alt="User-image" />
@@ -114,7 +114,7 @@ const EditProfile = () => {
                 className="rounded-full w-20 h-20 bg-bland"
               />
             </div>
-            <div className="flex flex-col items-center gap-4 text-[1.5em] font-bold  justify-center">
+            <div className="flex flex-col items-center gap-4 xs:text-base text-[1.5em] font-bold  justify-center">
               <h1>
                 {formData.firstName} {formData.lastName}
               </h1>
@@ -122,19 +122,19 @@ const EditProfile = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-[5em]">
-            <div className="flex flex-col gap-[2em]">
-              <h2 className="text-[1.5em] font-bold">Account Settings</h2>
+          <div className="flex flex-col xs:gap-[2em] gap-[5em]">
+            <div className="flex flex-col xs:gap-[1em] gap-[2em]">
+              <h2 className="text-[1.5em] xs:text-[1.2em] font-bold">Account Settings</h2>
 
-              <div className="flex flex-col gap-[1.5em]">
+              <div className="flex flex-col  gap-[1.5em]">
                 <h2 className="text-[1.1em] font-bold">Profile Information</h2>
 
-                <div className="flex flex-col gap-[1.5em]">
-                  <div className="flex justify-between  gap-[5em] w-full">
+                <div className="flex flex-col xs:gap-[1em] gap-[1.5em]">
+                  <div className="flex xs:flex-col justify-between xs:gap-[1em] gap-[5em] w-full">
                     <div className="flex flex-col gap-3 basis-[50%]">
                       <label>First Name</label>
                       <input
-                        className="border border-border w-full  px-4 py-3 rounded-[1.5em] outline-createaccount"
+                        className="border border-border w-full  xs:py-2  px-4 py-3 rounded-[1.5em] outline-createaccount"
                         placeholder="Hannah"
                         name="firstName"
                         value={formData.firstName}
@@ -145,7 +145,7 @@ const EditProfile = () => {
                     <div className="flex basis-[50%] flex-col gap-3">
                       <label>Last Name</label>
                       <input
-                        className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
+                        className="border border-border w-full px-4 xs:py-2  py-3 rounded-[1.5em] outline-createaccount"
                         placeholder="Daniels"
                         name="lastName"
                         value={formData.lastName}
@@ -154,11 +154,11 @@ const EditProfile = () => {
                     </div>
                   </div>
 
-                  <div className="flex justify-between gap-[5em] w-full">
-                    <div className="flex basis-[50%] flex-col gap-3">
+                  <div className="flex xs:flex-col justify-between xs:gap-[1em] gap-[5em] w-full">
+                    <div className="flex  xs:basis-[100%] basis-[50%] flex-col gap-3">
                       <label>Email Address</label>
                       <input
-                        className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount"
+                        className="border border-border px-4 xs:py-2 py-3 rounded-[1.5em] outline-createaccount"
                         placeholder="hannahdaniels@gmail.com"
                         name="email"
                         value={formData.email}
@@ -169,7 +169,7 @@ const EditProfile = () => {
                     <div className="flex flex-col basis-[50%] gap-3">
                       <label>Phone</label>
                       <input
-                        className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount"
+                        className="border border-border px-4  xs:py-2 py-3 rounded-[1.5em] outline-createaccount"
                         placeholder="+2348084400000"
                         name="phoneNumber"
                         value={formData.phoneNumber}
@@ -180,10 +180,10 @@ const EditProfile = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-[1.5em]">
+              <div className="flex flex-col xs:gap-[1em] gap-[1.5em]">
                 <h2 className="text-[1.1em] font-bold">Change Password</h2>
 
-                <div action="" className="flex w-full gap-[5em] ">
+                <div action="" className="flex xs:flex-col w-full xs:gap-[1em] gap-[5em] ">
                   <div className="flex flex-col gap-3 basis-[50%]">
                     <label htmlFor="password">New Password</label>
                     <input
@@ -191,7 +191,7 @@ const EditProfile = () => {
                       name="password"
                       id="password"
                       placeholder="***********"
-                      className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
+                      className="border border-border w-full  xs:py-2 px-4 py-3 rounded-[1.5em] outline-createaccount"
                       value={formData.newPassword}
                       onChange={handleChange}
                     />
@@ -204,16 +204,16 @@ const EditProfile = () => {
                       name="password"
                       id="password"
                       placeholder="***********"
-                      className="border border-border w-full px-4 py-3 rounded-[1.5em] outline-createaccount"
+                      className="border border-border w-full px-4 xs:py-2 py-3 rounded-[1.5em] outline-createaccount"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-[1.5em]">
+              <div className="flex flex-col xs:gap-[1em] gap-[1.5em]">
                 <h2 className="text-[1.1em] font-bold">Address</h2>
 
-                <div className="flex flex-col gap-[1.5em]">
+                <div className="flex flex-col xs:gap-[1em] gap-[1.5em]">
                   <div className="flex flex-col gap-[1em]">
                     <label htmlFor="password">Delivery Address</label>
                     <textarea
@@ -230,7 +230,7 @@ const EditProfile = () => {
                     <label htmlFor="password">State</label>
                     <input
                       placeholder="Your state"
-                      className="border border-border px-4 py-3 rounded-[1.5em] outline-createaccount w-[50%]"
+                      className="border border-border xs:py-2 px-4 py-3 rounded-[1.5em] outline-createaccount xs:w-[100%] w-[50%]"
                       name="state"
                       value={formData.state}
                       onChange={handleChange}

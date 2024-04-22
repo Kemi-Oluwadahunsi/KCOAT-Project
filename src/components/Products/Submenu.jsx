@@ -95,19 +95,19 @@ const Submenu = ({ setSelectedProducts }) => {
           {isMenSubMenuOpen && (
             <ul className="flex flex-col gap-[1em]">
               <li
-                className=" submenu-item px-3 py-4 active:bg-tertiary"
+                className=" submenu-item px-3 xs:py-2 py-4 active:bg-tertiary"
                 onClick={() => handleSubMenuClick("MenWears")}
               >
                 <span>Wears</span>
               </li>
               <li
-                className=" submenu-item px-3 py-4 border-t-2 border-b-2 border-border"
+                className=" submenu-item px-3 xs:py-2 py-4 border-t-2 border-b-2 border-border"
                 onClick={() => handleSubMenuClick("MenShoesBags")}
               >
                 <span>Shoes & Bags</span>
               </li>
               <li
-                className=" submenu-item px-3 py-4"
+                className=" submenu-item xs:py-2 px-3 py-4"
                 onClick={() => handleSubMenuClick("MenAccessories")}
               >
                 <span>Accessories</span>
@@ -136,19 +136,19 @@ const Submenu = ({ setSelectedProducts }) => {
           {isWomenSubMenuOpen && (
             <ul className="relative top-full left-0 z-10">
               <li
-                className=" submenu-item px-3 py-4 active:bg-tertiary"
+                className=" submenu-item px-3 xs:py-2 py-4 active:bg-tertiary"
                 onClick={() => handleSubMenuClick("WomenWears")}
               >
                 <span>Wears</span>
               </li>
               <li
-                className=" submenu-item px-3 py-4 border-t-2 border-b-2 border-border"
+                className=" submenu-item px-3 xs:py-2 py-4 border-t-2 border-b-2 border-border"
                 onClick={() => handleSubMenuClick("WomenShoesBags")}
               >
                 <span>Shoes & Bags</span>
               </li>
               <li
-                className=" submenu-item px-3 py-4"
+                className=" submenu-item px-3 xs:py-2 py-4"
                 onClick={() => handleSubMenuClick("WomenAccessories")}
               >
                 <span>Accessories</span>

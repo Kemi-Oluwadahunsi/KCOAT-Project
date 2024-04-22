@@ -95,7 +95,7 @@ const Header = () => {
           </Link>
 
           <Link to="/all-products" onClick={closeMobileContent}>
-            <li className="relative">Products</li>
+            <li className="text-lg">Products</li>
           </Link>
 
           <Link to="/new-featured" onClick={closeMobileContent}>
