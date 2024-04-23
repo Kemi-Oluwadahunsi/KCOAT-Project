@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 const AddProduct = () => {
@@ -8,6 +8,8 @@ const AddProduct = () => {
   const [ProductName, setProductName] = useState("");
   const [ProductDescription, setProductDescription] = useState("");
   const [ProductPrice, setProductPrice] = useState("");
+  const [ProductCategory, setProductCategory] = useState("");
+  const [SubCategory, setSubCategory] = useState("")
   const [Quantity, setQuantity] = useState("");
   const [ProductImage, setProductImage] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,12 +25,17 @@ const AddProduct = () => {
 
     try {
       setIsSubmitting(true);
+      const cloudinaryResponse = await uploadImageToCloudinary(ProductImage);
+
+      const imageUrl = cloudinaryResponse.data.secure_url;
       const formData = new FormData();
       formData.append("ProductName", ProductName);
       formData.append("ProductDescription", ProductDescription);
+      formData.append("ProductCategory", ProductCategory);
+      formData.append("SubCategory", SubCategory);
       formData.append("ProductPrice", ProductPrice);
       formData.append("Quantity", Quantity);
-      formData.append("ProductImage", ProductImage);
+      formData.append("ProductImage", imageUrl);
 
       await uploadImageToCloudinary(formData.image);
 
@@ -48,6 +55,8 @@ const AddProduct = () => {
         setProductName("");
         setProductDescription("");
         setProductPrice("");
+        setProductCategory("");
+        setSubCategory("");
         setQuantity("");
         setProductImage(null);
       } else {
@@ -80,16 +89,15 @@ const AddProduct = () => {
   };
 
   return (
-    <>
-      {/*The x icon not currently closing*/}
-      <div className="flex flex-col  mx-auto px-[8rem]">
-        <div className="inline-flex gap-[5em] p-[1em]">
+    <div
+      className="w-full
+    "
+    >
+      <div className="flex flex-col w-[50%] pl-[4em]">
+        <div className="">
           <h1 className="text-[2.5rem] font-lso text-categoryborder">
             Add A New Product
           </h1>
-          <button className="">
-            <FontAwesomeIcon icon={faTimes} size="lg" />
-          </button>
         </div>
         {/* For success or error messages */}
         {success && (
@@ -110,7 +118,7 @@ const AddProduct = () => {
             </label>
             <input
               type="file"
-            ref={fileInputRef}
+              ref={fileInputRef}
               onChange={(e) => setProductImage(e.target.files[0])}
               className="border rounded-lg border-simple1 outline-simple1
                       file:bg-simple1 file:border-none file:py-2  file:font-oxygen"
@@ -118,10 +126,7 @@ const AddProduct = () => {
           </div>
           {/* add new product form */}
           <div className="flex flex-col gap-2">
-            <label
-              className="text-categoryborder font-oxygen text-lg 
-                      font-medium"
-            >
+            <label className="text-categoryborder font-oxygen text-lg font-medium">
               Product Title:
             </label>
             <input
@@ -160,6 +165,32 @@ const AddProduct = () => {
 
           <div className="flex flex-col gap-2">
             <label className="text-categoryborder font-oxygen text-lg font-medium">
+              Product Category:
+            </label>
+            <input
+              type="text"
+              value={ProductCategory}
+              onChange={(e) => setProductCategory(e.target.value)}
+              className="p-2 border rounded-lg border-simple1 outline-simple1"
+              required
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-categoryborder font-oxygen text-lg font-medium">
+              SubCategory:
+            </label>
+            <input
+              type="text"
+              value={SubCategory}
+              onChange={(e) => setSubCategory(e.target.value)}
+              className="p-2 border rounded-lg border-simple1 outline-simple1"
+              required
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-categoryborder font-oxygen text-lg font-medium">
               Product Quantity:
             </label>
             <input
@@ -185,7 +216,7 @@ const AddProduct = () => {
         </form>
         {/* )} */}
       </div>
-    </>
+    </div>
   );
 };
 

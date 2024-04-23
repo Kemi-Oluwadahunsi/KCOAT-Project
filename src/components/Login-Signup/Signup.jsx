@@ -112,15 +112,17 @@ const Signup = () => {
     <div className="border-l-8 border-simple1 md:w-[100%]">
       <div className="justify-center flex h-screen xs:h-auto md:h-auto w-[100%] md:w-[90%] md:pb-[2rem] xs:pt-[6rem] md:pt-[7rem] pt-[5rem]   mx-auto">
         {success ? (
-          <section className="flex flex-col gap-[3em]">
+          <section className="">
             <div
-              className="w-[60%] py-[4em] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)]
-          rounded-[1em]"
+              className="w-[100%] py-[4em] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)]
+          rounded-[1em] flex flex-col xs:gap-4 gap-[3em]"
             >
-              <h1 className="text-white text-4xl">Success! Please Sign in</h1>
+              <h1 className="text-white xs:text-2xl text-4xl">
+                Success! Please Sign in
+              </h1>
               <Link to="/login">
                 <div className="flex items-center justify-center w-full">
-                  <div className="flex font-oxygen justify-center hover:scale-110 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
+                  <div className="flex font-oxygen justify-center hover:scale-110 xs:hover:scale-0 w-1/2 py-1 bg-tertiary font-normal rounded-xl xs:text-lg text-xl">
                     <Button>Sign In</Button>
                   </div>
                 </div>
@@ -162,7 +164,7 @@ const Signup = () => {
                     {errMsg}{" "}
                   </p>
                   <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
-                    <div className="flex xs:flex-col gap-7 w-[100%] xs:w-[90%]">
+                    <div className="flex xs:flex-col gap-7 w-[100%] ">
                       {/* Username and Validation */}
                       <div className="flex flex-col w-[50%] xs:w-[100%]">
                         <div className="flex flex-col gap-2 w-full">
@@ -188,7 +190,7 @@ const Signup = () => {
                           <input
                             type="text/number"
                             placeholder="First-name Last-name"
-                            className=" rounded-[3em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
+                            className=" rounded-[3em] xs:text-base text-[1.2em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
                             id="username"
                             ref={userRef}
                             autoComplete="off"
@@ -241,7 +243,7 @@ const Signup = () => {
                         <input
                           type="text/number"
                           placeholder="Grace.joel@xmail.com"
-                          className="w-full rounded-[3em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
+                          className="w-full rounded-[3em] xs:text-base text-[1.2em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
                           onChange={(e) => setEmail(e.target.value)}
                           value={email}
                           required
@@ -296,7 +298,7 @@ const Signup = () => {
                             <input
                               type={isPwdVisible ? "text" : "password"}
                               placeholder="******"
-                              className="w-full rounded-[3em] text-[1.2em] xs:py-2 px-4 py-3 border border-border focus:outline-none focus:border-createaccount w-full"
+                              className="rounded-[3em] xs:text-base text-[1.2em] xs:py-2 px-4 py-3 border border-border focus:outline-none focus:border-createaccount w-full"
                               id="password"
                               onChange={(e) => setPwd(e.target.value)}
                               value={pwd}
@@ -381,7 +383,7 @@ const Signup = () => {
                           <input
                             type={isMatchPwdVisible ? "text" : "password"}
                             placeholder="******"
-                            className="w-full rounded-[3em] text-[1.2em] xs:py-2 px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
+                            className="w-full rounded-[3em] xs:text-base text-[1.2em] xs:py-2 px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
                             id="confirm_pwd"
                             onChange={(e) => setMatchPwd(e.target.value)}
                             value={matchPwd}

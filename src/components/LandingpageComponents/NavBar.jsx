@@ -60,7 +60,7 @@ const Header = () => {
         </Link>
 
         <Link to="/cart">
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center ml-[9em] ">
             <FontAwesomeIcon
               icon={faShoppingCart}
               color="white"

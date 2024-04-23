@@ -64,7 +64,7 @@ const EditProfile = () => {
       formDataWithImage.append("phoneNumber", formData.phoneNumber);
       formDataWithImage.append("address", formData.address);
       formDataWithImage.append("state", formData.state);
-      formDataWithImage.append("image", formData.image);
+      formDataWithImage.append("image", formData.imageUrl);
 
       await uploadImageToCloudinary(formData.image);
 

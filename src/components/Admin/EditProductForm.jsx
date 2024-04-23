@@ -13,7 +13,7 @@ const EditProductForm = ({ product }) => {
     Quantity: 0,
   });
 
-  const { handleSave, handleCancel } = useContext(AdminContext);
+  const { handleSave, editingProduct } = useContext(AdminContext);
 
   useEffect(() => {
     setEditedProduct(product);
@@ -37,12 +37,12 @@ const handleInputChange = (e) => {
     handleSave(editedProduct);
   };
 
-  // const handleCancel = () => {
-  //   handleEdit(null);
-  // };
+  const handleCancel = () => {
+    editingProduct(null);
+  };
 
   return (
-    <div className="bg-tertiary4 text-nextpage absolute top-[30%] z-50 xs:right-2 right-10 xs:w-[20rem] w-[30rem] ">
+    <div className="bg-tertiary4 text-nextpage absolute top-[27%] z-50 xs:right-2 right-10 xs:w-[20rem] w-[30rem] ">
       <h2 className="font-bold text-2xl text-center">Edit Product</h2>
       <form className="flex flex-col gap-7 p-4" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-2">
@@ -129,8 +129,9 @@ const handleInputChange = (e) => {
           >
             Save
           </button>
+
           <button
-            type="button"
+            type="delete"
             onClick={handleCancel}
             className="px-4 py-2 bg-delete rounded-lg cursor-pointer"
           >

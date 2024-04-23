@@ -7,8 +7,17 @@ import { BsFillChatSquareQuoteFill } from "react-icons/bs";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
+  const [activeMenu, setActiveMenu] = useState(""); // State to track active menu item
+
+  // Function to handle menu click
+  const handleClick = (menu) => {
+    setActiveMenu(menu); // Set the active menu
+    handleMenuClick(menu); // Call the handleMenuClick prop function
+  };
+
   return (
     <div className="">
       <div className="flex flex-col px-[2em] bg-tertiary rounded-2xl h-[full] justify-between gap-[15rem] font-oxygen py-4">
@@ -16,19 +25,24 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
           <h2>Menu</h2>
           <NavLink
             to="/admin/dashboard"
-            onClick={() => handleMenuClick("dashboard")}
+            onClick={() => handleClick("dashboard")}
           >
-            <div className="flex gap-4 items-center  hover:border-b">
+            <div
+              className={`flex gap-4 items-center ${
+                activeMenu === "dashboard" ? "border-b-2" : ""
+              }`}
+            >
               <MdDashboard />
               <p>Dashboard</p>
             </div>
           </NavLink>
 
-          <NavLink
-            to="/admin/products"
-            onClick={() => handleMenuClick("products")}
-          >
-            <div className="flex gap-4 items-center  hover:border-b">
+          <NavLink to="/admin/products" onClick={() => handleClick("products")}>
+            <div
+              className={`flex gap-4 items-center ${
+                activeMenu === "products" ? "border-b-2" : ""
+              }`}
+            >
               <RiShoppingBagLine />
               <p>Products</p>
             </div>
@@ -36,16 +50,24 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
 
           <NavLink
             to="/admin/add-product"
-            onClick={() => handleMenuClick("addproduct")}
+            onClick={() => handleClick("addproduct")}
           >
-            <div className="flex gap-4 items-center  hover:border-b">
+            <div
+              className={`flex gap-4 items-center ${
+                activeMenu === "addproduct" ? "border-b-2" : ""
+              }`}
+            >
               <MdOutlineAddToPhotos />
               <p>Add New Product</p>
             </div>
           </NavLink>
 
-          <NavLink to="/admin/sales" onClick={() => handleMenuClick("sales")}>
-            <div className="flex gap-4 items-center  hover:border-b">
+          <NavLink to="/admin/sales" onClick={() => handleClick("sales")}>
+            <div
+              className={`flex gap-4 items-center ${
+                activeMenu === "sales" ? "border-b-2" : ""
+              }`}
+            >
               <LuBadgePercent />
               <p>Sales</p>
             </div>
@@ -53,9 +75,13 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
 
           <NavLink
             to="/admin/customers"
-            onClick={() => handleMenuClick("customers")}
+            onClick={() => handleClick("customers")}
           >
-            <div className="flex gap-4 items-center  hover:border-b">
+            <div
+              className={`flex gap-4 items-center ${
+                activeMenu === "customers" ? "border-b-2" : ""
+              }`}
+            >
               <FaUserAlt />
               <p>Customers</p>
             </div>
@@ -63,15 +89,17 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
 
           <NavLink
             to="/admin/feedback-corner"
-            onClick={() => handleMenuClick("feedbacks")}
+            onClick={() => handleClick("feedbacks")}
           >
-            <div className="flex gap-4 items-center  hover:border-b">
+            <div
+              className={`flex gap-4 items-center ${
+                activeMenu === "feedbacks" ? "border-b-2" : ""
+              }`}
+            >
               <BsFillChatSquareQuoteFill />
               <p>Feedback Corner</p>
             </div>
           </NavLink>
-
-          
         </div>
 
         <div className="text-primary ">
@@ -83,7 +111,10 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
               <p>Settings</p>
             </div>
 
-            <div className="flex gap-4 items-center  hover:border-b" onClick={handleAdminLogout}>
+            <div
+              className="flex gap-4 items-center  hover:border-b"
+              onClick={handleAdminLogout}
+            >
               <LuLogOut />
               <p>Logout</p>
             </div>

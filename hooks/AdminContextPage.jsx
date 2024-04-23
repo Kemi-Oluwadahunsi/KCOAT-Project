@@ -83,9 +83,9 @@ export const AdminContextProvider = ({ children }) => {
     setEditingProduct(product);
   };
 
-  const handleCancel = () => {
-    setEditingProduct(null);
-  };
+  // const handleCancel = () => {
+  //   setEditingProduct(null);
+  // };
 
   const handleSave = async (editedProduct) => {
     if (!isAdminLoggedIn) {
@@ -107,17 +107,6 @@ export const AdminContextProvider = ({ children }) => {
       throw new Error("Failed to save product.");
     }
   };
-
-  // const handleDelete = async (product) => {
-  //   try {
-  //     // Send DELETE request to the server to delete the product
-  //     await axios.delete(`https://kcoat.onrender.com/products/${product.Productid}`);
-  //     // You can add more actions if needed, like showing a success message
-  //   } catch (error) {
-  //     console.error("Error deleting product:", error);
-  //     throw new Error("Failed to delete product.");
-  //   }
-  // };
 
   const handleDelete = async (product) => {
     try {
@@ -157,7 +146,7 @@ export const AdminContextProvider = ({ children }) => {
         handleAdminLogin,
         isAdminLoggedIn,
         handleAdminLogout,
-        handleCancel,
+        // handleCancel,
       }}
     >
       {children}
