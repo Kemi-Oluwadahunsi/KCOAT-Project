@@ -277,7 +277,7 @@ const CartPage = () => {
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <div className="flex flex-col gap-10 xs:px-4 px-10">
               <h1 className="text-tertiary font-bold font-tertiary xs:text-[1.5em] text-[2.5em]">
                 You May Also Like
@@ -285,9 +285,9 @@ const CartPage = () => {
 
               <div className="grid grid-cols-4 justify-center gap-[4rem] ">
                 {/* {mostPopular} */}
-              </div>
+              {/* </div>
             </div>
-          </div>
+          </div> */} 
           <div className="z-[10000] pt-[20em] xs:pt-0 md:pt-0">
             <ToastContainer position="top-right" autoClose={2000} />
           </div>

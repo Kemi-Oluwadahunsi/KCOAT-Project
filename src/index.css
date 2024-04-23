@@ -83,9 +83,19 @@
 }
 
 .checkoutbg {
-  background: url("./assets/checkoutImage.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./assets/banner2.png");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  height: 20em;
+  object-fit: cover;
+}
+
+.contactbg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./assets/Hanger.png");
+   background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   height: 20em;
   object-fit: cover;
 }

@@ -35,16 +35,16 @@ const total = subtotal;
 
   return (
     <div className="pt-[5em] flex flex-col xs:gap-[2em] md:gap-[4em] gap-[7em] border-l-8 border-simple1">
-      <div className="flex flex-col gap-[7em]">
-        <div className="checkoutbg flex flex-col gap-3 items-center justify-center">
-          <h1 className="font-bold text-tertiary font-tertiary text-[2.5em]">
+      <div className="flex flex-col ">
+        <div className="checkoutbg flex flex-col gap-2 items-center justify-center">
+          <h1 className="font-bold text-tertiary font-tertiary xs:text-[2.5em] text-[4em]">
             Checkout
           </h1>
-          <div className="flex gap-[2em] font-oxygen font-bold text-color">
+          <div className="flex gap-[1em] xs:text-base text-[1.5em]  font-oxygen font-bold text-primary">
             <Link to="/">
               <h3>Home</h3>
             </Link>
-            <FontAwesomeIcon icon={faChevronRight} />
+            <FontAwesomeIcon icon={faChevronRight} className="text-tertiary"/>
             <Link to="/cart">
               <h3>Cart</h3>
             </Link>

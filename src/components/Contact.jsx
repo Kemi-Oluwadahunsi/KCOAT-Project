@@ -1,4 +1,3 @@
-import img01 from "../assets/Hanger.png";
 import img03 from "../assets/Map.png";
 import img04 from "../assets/phone.png";
 import img05 from "../assets/bi_clock-fill.svg";
@@ -10,7 +9,6 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 const Contact = () => {
   const formRef = useRef();
@@ -67,20 +65,15 @@ const Contact = () => {
   };
   return (
     <div className="pt-[5em] flex flex-col xs:gap-[1em] md:gap-[2rem] gap-[3rem] border-l-8 border-simple1">
-      <div
-        className=" flex flex-col gap-3 items-center justify-center h-[20em] "
-        style={{
-          backgroundImage: `url(${img01})`,
-        }}
-      >
-        <h1 className=" font-bold text-tertiary font-tertiary text-[2.5em]">
+      <div className="contactbg flex flex-col gap-2 items-center justify-center ">
+        <h1 className=" font-bold text-tertiary font-tertiary xs:text-[2.5em] text-[4em]">
           Contact
         </h1>
-        <div className="flex items-center justify-center xs:gap-[1em] gap-[2em] text-[1.2em] font-oxygen font-bold text-bland">
+        <div className="flex items-center justify-center xs:gap-[1em] gap-[1em] xs:text-base text-[1.5em] font-oxygen font-bold text-primary">
           <Link to="/">
             <h3>Home</h3>
           </Link>
-          <FontAwesomeIcon icon={faChevronRight} />
+          <FontAwesomeIcon icon={faChevronRight} className="text-tertiary" />
           <Link to="/all-products">
             <h3>Products</h3>
           </Link>

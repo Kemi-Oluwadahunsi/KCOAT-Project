@@ -6,7 +6,10 @@ import { ProductContext } from "../../../hooks/ProductContext";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const EditProfile = () => {
+  const [progress, setProgress] = useState({ started: false, percentage: 0 });
+  const [message, setMessage] = useState("");
   const { userProfile } = useContext(ProductContext);
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
@@ -55,7 +58,10 @@ const EditProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+// if (!image) {
+//   setMessage("Please select an image.");
+//   toast.error(message);
+// }
     try {
       const formDataWithImage = new FormData();
       formDataWithImage.append("firstName", formData.firstName);
@@ -64,13 +70,28 @@ const EditProfile = () => {
       formDataWithImage.append("phoneNumber", formData.phoneNumber);
       formDataWithImage.append("address", formData.address);
       formDataWithImage.append("state", formData.state);
-      formDataWithImage.append("image", formData.imageUrl);
+      formDataWithImage.append("image", formData.image);
 
       await uploadImageToCloudinary(formData.image);
-
+      setMessage("Uploading...")     
+      setProgress((prevState) => {
+        return { ...prevState, started: true, percentage: 0 };
+      }); 
       await axios.put(
         `https://kcoat.onrender.com/user-profile/${userProfile.customerId}`,
         formDataWithImage,
+        {
+          onUploadProgress: (progressEvent) => {
+            toast.loading(
+              setProgress((prevState) => {
+                return {
+                  ...prevState,
+                  percentage: Math.round(progressEvent.progress * 100),
+                };
+              })
+            );
+          },
+        },
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -113,6 +134,11 @@ const EditProfile = () => {
                 accept="image/*"
                 className="rounded-full w-20 h-20 bg-bland"
               />
+
+              {progress.started && (
+                <progress max="100" value={progress.percentage}></progress>
+              )}
+              {message && <span className="text-tertiary">{message}</span>}
             </div>
             <div className="flex flex-col items-center gap-4 xs:text-base text-[1.5em] font-bold  justify-center">
               <h1>
@@ -124,7 +150,9 @@ const EditProfile = () => {
 
           <div className="flex flex-col xs:gap-[2em] gap-[5em]">
             <div className="flex flex-col xs:gap-[1em] gap-[2em]">
-              <h2 className="text-[1.5em] xs:text-[1.2em] font-bold">Account Settings</h2>
+              <h2 className="text-[1.5em] xs:text-[1.2em] font-bold">
+                Account Settings
+              </h2>
 
               <div className="flex flex-col  gap-[1.5em]">
                 <h2 className="text-[1.1em] font-bold">Profile Information</h2>
@@ -183,7 +211,10 @@ const EditProfile = () => {
               <div className="flex flex-col xs:gap-[1em] gap-[1.5em]">
                 <h2 className="text-[1.1em] font-bold">Change Password</h2>
 
-                <div action="" className="flex xs:flex-col w-full xs:gap-[1em] gap-[5em] ">
+                <div
+                  action=""
+                  className="flex xs:flex-col w-full xs:gap-[1em] gap-[5em] "
+                >
                   <div className="flex flex-col gap-3 basis-[50%]">
                     <label htmlFor="password">New Password</label>
                     <input

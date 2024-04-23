@@ -76,11 +76,11 @@ const SingleProductsPage = () => {
         <div className="loader"></div>
       ) : (
         <div
-          className=" flex flex-col gap-[10em] xs:gap-[3rem] pt-[10rem] border-l-8 border-simple1"
+          className=" flex flex-col gap-[10em] xs:gap-[3rem] xs:pt-[8rem] pt-[10rem] border-l-8 border-simple1"
           key={product.ProductId}
         >
-          <div className=" flex xs:flex-col w-full xs:px-[2rem] md:px-[5em] px-[10em] xs:gap-[3em] md:gap-[5em] gap-[15em]">
-            <div className="basis-[40%] ">
+          <div className=" flex xs:flex-col xs:items-center w-full xs:px-[2rem] md:px-[5em] px-[10em] xs:gap-[3em] md:gap-[5em] gap-[15em]">
+            <div className="basis-[40%] xs:w-[70%] ">
               <img
                 src={product.ProductImage}
                 alt="ProductImage"
@@ -185,7 +185,7 @@ const SingleProductsPage = () => {
             </div>
           </div>
         </div>
-      )};
+      )}
     </>
   );
 };

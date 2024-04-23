@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddProduct = () => {
   // State variables for forms
@@ -15,12 +17,17 @@ const AddProduct = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [progress, setProgress] = useState({started: false, percentage: 0});
+  const [message, setMessage] = useState("");
   //   const [isFormOpen, setIsFormOpen] = useState(false);
 
   // Form submission function
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    if (!ProductImage) {
+      setMessage("Please select an image.");
+      toast.error(message);
+    }
     // FormData object
 
     try {
@@ -39,9 +46,18 @@ const AddProduct = () => {
 
       await uploadImageToCloudinary(formData.image);
 
+      setMessage("Uploading...");
+      setProgress(prevState => {
+        return {...prevState, started: true, percentage: 0};});
       const response = await axios.post(
         "https://kcoat.onrender.com/products",
-        formData,
+        formData, {
+          onUploadProgress: (progressEvent) => {
+          toast.loading(setProgress(prevState => {
+            return {...prevState, percentage: Math.round((progressEvent.progress * 100))}
+          }));
+          }
+        },
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -123,6 +139,8 @@ const AddProduct = () => {
               className="border rounded-lg border-simple1 outline-simple1
                       file:bg-simple1 file:border-none file:py-2  file:font-oxygen"
             />
+            {progress.started && <progress max="100" value={progress.percentage}></progress>}
+            {message && <span className="text-tertiary">{message}</span>}
           </div>
           {/* add new product form */}
           <div className="flex flex-col gap-2">
@@ -215,6 +233,9 @@ const AddProduct = () => {
           </div>
         </form>
         {/* )} */}
+      </div>
+      <div className="z-[10000] pt-[20em] xs:pt-0 md:pt-0">
+        <ToastContainer position="top-right" autoClose={2000} />
       </div>
     </div>
   );
