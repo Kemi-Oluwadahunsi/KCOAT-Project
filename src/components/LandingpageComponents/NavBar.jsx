@@ -51,7 +51,7 @@ const Header = () => {
     });
   };
   return (
-    <div className="small-screens flex flex-col  justify-around items-center font-primary text-sm fixed w-full z-50 md:hidden">
+    <div className="small-screens flex flex-col  justify-around items-end font-primary text-sm fixed w-full z-50 md:hidden">
       <div className="flex justify-between items-center w-full h-20 bg-tertiary px-5">
         <Link to="/">
           <div className="cursor-pointer w-[5rem]">
@@ -94,7 +94,7 @@ const Header = () => {
       <div
         className={` ${
           showMobileContent ? "visible" : "hidden"
-        } flex flex-col  text-primary h-[30rem] z-[999] bg-[#FD6905] w-full pb-4`}
+        } flex flex-col  text-primary h-[30rem] z-[999] bg-[#FD6905] w-3/4 pb-4 transition-all ease-in-out duration-100 rounded-bl-xl`}
       >
         <ul
           className=" font-oxygen font-medium flex flex-col justify-around h-[80%]

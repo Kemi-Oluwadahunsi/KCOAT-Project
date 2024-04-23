@@ -249,7 +249,7 @@ const CartPage = () => {
 
                 <div onClick={handleProceedToCheckout}>
                   <div className="flex items-center justify-center">
-                    <div className="flex bg-tertiary gap-1 text-[1.2rem] xs:text-base items-center w-[70%] md:w-[90%] justify-center rounded-xl p-1 hover:scale-110 xs:hover:scale-0 ">
+                    <div className="flex bg-tertiary gap-1 text-[1.2rem] xs:text-base items-center xs:w-[90%] w-[70%] md:w-[90%] justify-center rounded-xl p-1 hover:scale-110 xs:hover:scale-0 ">
                       <Button>Proceed To Checkout</Button>
                       <img src={CheckCircle} alt="" />
                     </div>
@@ -258,7 +258,7 @@ const CartPage = () => {
               </div>
             </div>
 
-            <div className="flex gap-8">
+            <div className="flex xs:gap-3 gap-8">
               <Link to="/all-products">
                 <div
                   onClick={scrollToTop}
@@ -295,9 +295,9 @@ const CartPage = () => {
       )}
 
       {showLoginPrompt && (
-        <div className="absolute top-[40%] left-[40%] bg-primary shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)] rounded-2xl z-50 pb-[1em]">
-          <div className=" flex flex-col gap-[2em] bg-white p-8 rounded-lg">
-            <p className="text-xl">
+        <div className="absolute top-[40%] xs:left-[20%] left-[40%] bg-primary xs:right-[4em] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)] rounded-2xl z-50 pb-[1em]">
+          <div className=" flex flex-col xs:gap-[1em] gap-[2em] bg-white p-8 rounded-lg">
+            <p className="text-xl xs:text-base">
               Please login or create an account to checkout.
             </p>
             <Link to="/login">

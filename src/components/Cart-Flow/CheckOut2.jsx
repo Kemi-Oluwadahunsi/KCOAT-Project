@@ -8,19 +8,10 @@ const CheckOut2 = () => {
   const [checkoutUrl, setCheckoutUrl] = useState(null);
   const [checkout, setCheckOut] = useState(false);
 
-//  const scrollToTop = () => {
-//    window.scrollTo({
-//      top: 0,
-//      behavior: "smooth", // Optional: smooth scroll animation
-//    });
-//  };
-
    const handleCheckout = async () => {
      try {
        setLoading(true);
        setCheckOut(true);
-
-      //  scrollToTop();
 
        // Retrieve cartItems from local storage
        const cartItems = JSON.parse(localStorage.getItem("cartItems"));
@@ -36,7 +27,7 @@ const CheckOut2 = () => {
            },
            body: JSON.stringify({
              // Provide customerId, email, and cartItems data
-             customerId: "CUSTOMER_ID", // You can replace with actual customerId if needed
+             customerId: "customerId", 
              cartItems: cartItems,
            }),
          }
@@ -69,7 +60,7 @@ const CheckOut2 = () => {
   return (
     <div>
       <div
-        className="flex justify-center items-center font-secondary font-medium hover:scale-105 bg-tertiary rounded-xl"
+        className="flex justify-center xs:text-[0.9em] items-center font-secondary font-medium hover:scale-105 bg-tertiary rounded-xl"
         onClick={handleCheckout}
         disabled={loading}
       >

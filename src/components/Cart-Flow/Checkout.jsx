@@ -267,7 +267,7 @@ const total = subtotal;
               </div>
             </div>
 
-            <div className="flex flex-col justify-center xs:px-[2em] px-[5em] xs:gap-2 gap-[5em]">
+            <div className="flex flex-col justify-center xs:px-[2em] px-[5em] xs:gap-[2em] gap-[5em]">
               <div className="flex flex-col xs:w-[100%] w-[80%] xs:gap-4 gap-10">
                 <div className="flex flex-col gap-4 w-full">
                   <div className="flex gap-5">
