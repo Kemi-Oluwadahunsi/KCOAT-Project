@@ -28,13 +28,16 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="pt-[7rem] pb-[3em] flex justify-center border-l-8 border-simple1 h-screen">
-      <div className="h-full bg-white border border-solid border-border rounded-md shadow-lg px-[2rem] pt-[4rem] flex flex-col gap-[2rem]">
-        <div className="flex flex-col gap-[5em]">
-          <h2 className=" text-tertiary3 text-3xl font-lso flex justify-center">
+    <div className="xs:flex items-center pt-[7rem] xs:pb-0 xs:px-4 pb-[3em] flex justify-center border-l-8 border-simple1 h-screen">
+      <div className="h-full md:h-auto xs:h-fit xs:pb-8 bg-white border border-solid border-border rounded-md shadow-lg px-[2rem] xs:pt-4 pt-[4rem] flex flex-col md:gap-[1em] xs:gap-[1em] gap-[2rem]">
+        <div className="flex flex-col xs:gap-[2em] gap-[5em]">
+          <h2 className=" text-tertiary3 xs:text-2xl text-3xl font-lso flex justify-center">
             Forget Password
           </h2>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-[5rem]">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col xs:gap-[2em] gap-[5rem]"
+          >
             <div className="flex flex-col gap-3">
               <label
                 htmlFor="email"
@@ -46,8 +49,9 @@ const ForgotPassword = () => {
                 type="email"
                 id="email"
                 name="email"
+                placeholder="gracey@xmail.com"
                 onChange={(e) => setEmail(e.target.value)}
-                className="outline-createaccount gap-4 p-4 border rounded-full border-solid border-opacity-50 border-createaccount w-[32.3rem] h-[3.15rem] text-createaccount"
+                className="outline-createaccount gap-4 p-4 border rounded-full border-solid border-opacity-50 border-createaccount  xs:py-2 py-3 text-createaccount"
               />
             </div>
 
@@ -55,10 +59,10 @@ const ForgotPassword = () => {
               className="flex items-center justify-center"
               onClick={handlePasswordSend}
             >
-              <div className=" flex justify-center mt-[2em] hover:scale-105 w-[19rem] bg-tertiary rounded-xl">
+              <div className=" flex justify-center mt-[2em] hover:scale-105 xs:w-[10rem] w-[19rem] bg-tertiary rounded-xl">
                 <Button
                   type="submit"
-                  className={`border-3 bg-simple1 text-tertiary2 font-oxygen flex items-center justify-center py-1 text-xl`}
+                  className={`border-3 bg-simple1 text-tertiary2 font-oxygen flex items-center justify-center xs:py-0 xs:text-lg py-1 text-xl`}
                 >
                   Send Link
                 </Button>
@@ -77,12 +81,14 @@ const ForgotPassword = () => {
           </a>
         </p>
 
-        <p className="font-bold">
-          Note: Can&apos;t find message in inbox? Kindly check your <span className="text-tertiary">spam </span>or <span className="text-tertiary"> junk </span>
+        <p className="font-bold xs:text-[.9em]">
+          Note: Can&apos;t find message in inbox? Kindly check your{" "}
+          <span className="text-tertiary">spam </span>or{" "}
+          <span className="text-tertiary"> junk </span>
           folder.
         </p>
       </div>
-      <div className="z-[10000] pt-[20em]">
+      <div className="z-[10000] pt-[20em] xs:pt-0">
         <ToastContainer position="top-right" autoClose={5000} />
       </div>
     </div>

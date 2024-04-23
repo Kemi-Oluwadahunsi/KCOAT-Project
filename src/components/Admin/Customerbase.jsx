@@ -46,10 +46,10 @@ const Customerbase = () => {
                       <td className="border-l border-categoryborder2 px-[2em] font-medium font-oxygen h-[3rem] text-center">
                         {user.firstName} {user.lastName}
                       </td>
-                      <td className="border-l border-categoryborder2 px-[2em] font-medium font-tertiary h-[3rem] text-center">
+                      <td className="border-l border-categoryborder2 px-[2em] font-medium font-oxygen h-[3rem] text-center">
                         {user.phoneNumber}
                       </td>
-                      <td className="border-l border-categoryborder2 px-[2em] font-medium font-tertiary h-[3rem] text-center">
+                      <td className="border-l border-categoryborder2 px-[2em] font-medium font-oxygen h-[3rem] text-center">
                         {user.email}
                       </td>
                       <td className="border-l border-categoryborder2 px-[1em]  font-medium h-[3rem] text-center">

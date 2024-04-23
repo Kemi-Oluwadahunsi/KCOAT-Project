@@ -17,7 +17,9 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-col gap-3">
-              <h3 className="md:text-2xl text-[1.2rem] lg:text-2xl">Social Media</h3>
+              <h3 className="md:text-2xl text-[1.2rem] lg:text-2xl">
+                Social Media
+              </h3>
               <div className="flex justify-between cursor-pointer xs:w-[40%] sm:w-[20%] md:w-[30%]">
                 <img src={whatsapp} alt="" />
                 <img src={instagram} alt="" />
@@ -29,17 +31,27 @@ const Footer = () => {
           <div className="flex flex-col gap-3 ">
             <h2 className="text-tertiary ">PRODUCTS</h2>
             <ul className="flex flex-col gap-3 cursor-pointer">
-              <li>All products</li>
-              <li>Men</li>
-              <li>Women</li>
+              <Link to="/all-products">
+                <li>All Products</li>
+              </Link>
+              <Link to="/all-products">
+                <li>Men</li>
+              </Link>
+              <Link to="/all-products">
+                <li>Women</li>
+              </Link>
             </ul>
           </div>
 
           <div className="flex flex-col gap-3">
             <h2 className="text-tertiary">BRAND</h2>
             <ul className="flex flex-col gap-3 cursor-pointer">
-              <li>About Us</li>
-              <li>Contact</li>
+              <Link to="/about-us">
+                <li>About Us</li>
+              </Link>
+              <Link to="/contact">
+                <li>Contact</li>
+              </Link>
               <Link to="/admin-login">
                 <li className="text-delete">Admin</li>
               </Link>
@@ -57,7 +69,9 @@ const Footer = () => {
             <li>Guides</li>
             <li>Terms of Sale</li>
             <li>Terms of Use</li>
-            <li>Privacy Policy</li>
+            <Link to="/privacy-policy">
+              <li>Privacy Policy</li>
+            </Link>
           </ul>
         </div>
       </div>

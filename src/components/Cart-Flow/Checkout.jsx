@@ -250,9 +250,11 @@ const Checkout = () => {
                     Your personal data will be used to support your experience
                     throughout this website, to manage access to your account,
                     and for other purposes described in our{" "}
-                    <span className="font-oxygen text-color font-bold">
-                      privacy policy.
-                    </span>
+                    <Link to="/privacy-policy">
+                      <span className="font-oxygen text-bland font-bold">
+                        privacy policy.
+                      </span>
+                    </Link>
                   </p>
                 </div>
               </div>

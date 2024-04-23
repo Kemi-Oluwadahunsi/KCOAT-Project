@@ -130,14 +130,14 @@ const AllProducts = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center xs:w-[48%] xs:h-fit w-full xs:py-[0.5em] py-[2em] border-2 border-categoryborder2">
+        <div className="flex flex-col items-center xs:w-[49%] xs:h-fit w-full xs:pl-2 xs:py-[0.5em] py-[2em] border-2 border-categoryborder2">
           <div className="flex flex-col xs:gap-3 gap-5 xs:w-[100%] w-[80%]">
             <div className="font-tertiary xs:text-base text-[1.2em] border-l-4 border-categoryborder">
               <h2 className="pl-4">Price Range</h2>
             </div>
 
             {/* Price range checkboxes */}
-            <div className="flex flex-col xs:gap-[0.5em] xs:text-[0.9em] xs:leading-5 leading-9 font-oxygen text-secondary">
+            <div className="flex flex-col xs:gap-[0.5em] xs:text-[0.8em] xs:leading-5 leading-9 font-oxygen text-secondary">
               {[
                 { label: "N5000 - N20000", range: [5000, 20000] },
                 { label: "N20000 - N25000", range: [20000, 25000] },

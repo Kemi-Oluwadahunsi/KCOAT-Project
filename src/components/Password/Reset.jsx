@@ -27,7 +27,7 @@ const ResetPassword = () => {
   const [isPwdVisible, setIsPwdVisible] = useState(false);
   const [isMatchPwdVisible, setIsMatchPwdVisible] = useState(false);
 
- const token = new URLSearchParams(window.location.search).get('token'); //Extracts the last segment of the path
+  const token = new URLSearchParams(window.location.search).get("token"); //Extracts the last segment of the path
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
@@ -65,172 +65,174 @@ const ResetPassword = () => {
 
   // /reset-password/:token
   return (
-    <div className="flex py-[7rem] px-[10rem] border-l-8 border-simple1">
-      <div className=" basis-[50%] w-fit">
-        <img src={sideImage} alt="Reset Password" className="w-full " />
-      </div>
-      <div className=" flex flex-col gap-8 basis-[50%] border border-solid border-border rounded-l-md px-[3rem] pt-[1rem]">
-        <div className="">
-          <h2 className=" text-tertiary3 text-3xl font-lso mt-4 mb-4">
+    <div className="flex py-[7rem] items-center justify-center w-[100%] border-l-8 border-simple1">
+      <div className="flex  xs:px-[2rem] h-[] xs:w-[100%] md:w-[80%] w-[70%]">
+        <div className="xs:hidden w-[50%]object-cover">
+          <img
+            src={sideImage}
+            alt="Reset Password"
+            className=" md:h-[35rem] "
+          />
+        </div>
+        <div className=" flex flex-col xs:gap-4 md:gap-4 xs:px-4 gap-8 xs:basis-[100%] xs:justify-center w-[50%]   border border-border rounded-l-md px-[3rem] pt-[1rem] xs:pb-4">
+          <h2 className=" text-tertiary3 xs:text-[1.2em] text-3xl font-lso mt-4 mb-8 xs:text-center">
             Reset Your Password
           </h2>
-          {/* <p className=" text-createaccount w-[60%]">
-            A verification email will be sent to the mail box. Please check it.
-          </p> */}
-        </div>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-          <div className="flex flex-col gap-7 w-[100%]">
-            <div className="flex flex-col flex-1">
-              <div className="flex flex-col gap-2 w-full relative ">
-                <label
-                  htmlFor="password"
-                  className="font-secondary font-medium text-color"
-                >
-                  Enter New Password
-                  <span className={validPwd ? "valid" : "hide"}>
-                    <FontAwesomeIcon className="ml-2" icon={faCheck} />
-                  </span>
-                  <span className={validPwd || !pwd ? "hide" : "invalid"}>
-                    <FontAwesomeIcon icon={faTimes} />
-                  </span>
-                </label>
 
-                <div className="relative">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+            <div className="flex flex-col gap-7 w-[100%]">
+              <div className="flex flex-col flex-1">
+                <div className="flex flex-col gap-2 w-full relative ">
+                  <label
+                    htmlFor="password"
+                    className="font-secondary font-medium text-color"
+                  >
+                    Enter New Password
+                    <span className={validPwd ? "valid" : "hide"}>
+                      <FontAwesomeIcon className="ml-2" icon={faCheck} />
+                    </span>
+                    <span className={validPwd || !pwd ? "hide" : "invalid"}>
+                      <FontAwesomeIcon icon={faTimes} />
+                    </span>
+                  </label>
+
+                  <div className="relative">
+                    <input
+                      type={isPwdVisible ? "text" : "password"}
+                      placeholder="******"
+                      className=" rounded-[3em] text-[1.2em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount w-full"
+                      id="password"
+                      onChange={(e) => setPwd(e.target.value)}
+                      value={pwd}
+                      required
+                      aria-invalid={validPwd ? "false" : "true"}
+                      aria-describedby="pwdnote"
+                      onFocus={() => setPwdFocus(true)}
+                      onBlur={() => setPwdFocus(false)}
+                    ></input>
+
+                    <div
+                      className="text-xl md:text-lg xs:text-base absolute top-3 right-4"
+                      onClick={() =>
+                        setIsPwdVisible((prevIsVisible) => !prevIsVisible)
+                      }
+                    >
+                      {isPwdVisible ? (
+                        <FontAwesomeIcon icon={faEye} color="#A6A6A6" />
+                      ) : (
+                        <FontAwesomeIcon icon={faEyeSlash} color="#A6A6A6" />
+                      )}
+                    </div>
+                  </div>
+                  <p
+                    id="pwdnote"
+                    className={` adjustWidth ${
+                      pwdFocus && !validPwd ? "instructions" : "offscreen"
+                    }`}
+                  >
+                    <FontAwesomeIcon
+                      className="text-color text-xs ml-2"
+                      icon={faInfoCircle}
+                    />
+                    <span className="ml-1 text-xs">
+                      8 to 24 characters. <br />
+                      Must include uppercase and lowercase letters, a number and
+                      a special character. <br />
+                      Allowed special characters:{" "}
+                      <span aria-label="exclamation mark">!</span>
+                      <span aria-label="at symbol">@</span>{" "}
+                      <span aria-label="hashtag">#</span>{" "}
+                      <span aria-label="dollar sign">$</span>{" "}
+                      <span aria-label="percent">%</span>
+                    </span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Confirm Password and Validation */}
+              <div className="flex flex-col relative flex-1">
+                <div className="flex flex-col gap-2 relative">
+                  <label
+                    htmlFor="confirm_pwd"
+                    className="font-secondary font-medium text-color"
+                  >
+                    Confirm Password
+                    <span className={validMatch && matchPwd ? "valid" : "hide"}>
+                      <FontAwesomeIcon className="ml-2" icon={faCheck} />
+                    </span>
+                    <span
+                      className={validMatch || !matchPwd ? "hide" : "invalid"}
+                    >
+                      <FontAwesomeIcon icon={faTimes} />
+                    </span>
+                  </label>
                   <input
-                    type={isPwdVisible ? "text" : "password"}
+                    type={isMatchPwdVisible ? "text" : "password"}
                     placeholder="******"
-                    className=" rounded-[3em] text-[1.2em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount w-full"
-                    id="password"
-                    onChange={(e) => setPwd(e.target.value)}
-                    value={pwd}
+                    className="w-full rounded-[3em] text-[1.2em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
+                    id="confirm_pwd"
+                    onChange={(e) => setMatchPwd(e.target.value)}
+                    value={matchPwd}
                     required
-                    aria-invalid={validPwd ? "false" : "true"}
-                    aria-describedby="pwdnote"
-                    onFocus={() => setPwdFocus(true)}
-                    onBlur={() => setPwdFocus(false)}
+                    aria-invalid={validMatch ? "false" : "true"}
+                    aria-describedby="confirmnote"
+                    onFocus={() => setMatchFocus(true)}
+                    onBlur={() => setMatchFocus(false)}
                   ></input>
 
                   <div
-                    className="text-xl absolute top-3 right-4"
+                    className="text-xl md:text-lg xs:text-base absolute top-11 right-4"
                     onClick={() =>
-                      setIsPwdVisible((prevIsVisible) => !prevIsVisible)
+                      setIsMatchPwdVisible((prevIsVisible) => !prevIsVisible)
                     }
                   >
-                    {isPwdVisible ? (
+                    {isMatchPwdVisible ? (
                       <FontAwesomeIcon icon={faEye} color="#A6A6A6" />
                     ) : (
                       <FontAwesomeIcon icon={faEyeSlash} color="#A6A6A6" />
                     )}
                   </div>
                 </div>
-                <p
-                  id="pwdnote"
-                  className={` adjustWidth ${
-                    pwdFocus && !validPwd ? "instructions" : "offscreen"
-                  }`}
-                >
-                  <FontAwesomeIcon
-                    className="text-color text-xs ml-2"
-                    icon={faInfoCircle}
-                  />
-                  <span className="ml-1 text-xs">
-                    8 to 24 characters. <br />
-                    Must include uppercase and lowercase letters, a number and a
-                    special character. <br />
-                    Allowed special characters:{" "}
-                    <span aria-label="exclamation mark">!</span>
-                    <span aria-label="at symbol">@</span>{" "}
-                    <span aria-label="hashtag">#</span>{" "}
-                    <span aria-label="dollar sign">$</span>{" "}
-                    <span aria-label="percent">%</span>
-                  </span>
-                </p>
-              </div>
-            </div>
-
-            {/* Confirm Password and Validation */}
-            <div className="flex flex-col relative flex-1">
-              <div className="flex flex-col gap-2 relative">
-                <label
-                  htmlFor="confirm_pwd"
-                  className="font-secondary font-medium text-color"
-                >
-                  Confirm Password
-                  <span className={validMatch && matchPwd ? "valid" : "hide"}>
-                    <FontAwesomeIcon className="ml-2" icon={faCheck} />
-                  </span>
-                  <span
-                    className={validMatch || !matchPwd ? "hide" : "invalid"}
+                <div>
+                  <p
+                    id="confirmnote"
+                    className={
+                      matchFocus && !validMatch ? "instructions" : "offscreen"
+                    }
                   >
-                    <FontAwesomeIcon icon={faTimes} />
-                  </span>
-                </label>
-                <input
-                  type={isMatchPwdVisible ? "text" : "password"}
-                  placeholder="******"
-                  className="w-full rounded-[3em] text-[1.2em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
-                  id="confirm_pwd"
-                  onChange={(e) => setMatchPwd(e.target.value)}
-                  value={matchPwd}
-                  required
-                  aria-invalid={validMatch ? "false" : "true"}
-                  aria-describedby="confirmnote"
-                  onFocus={() => setMatchFocus(true)}
-                  onBlur={() => setMatchFocus(false)}
-                ></input>
-
-                <div
-                  className="text-xl absolute top-11 right-4"
-                  onClick={() =>
-                    setIsMatchPwdVisible((prevIsVisible) => !prevIsVisible)
-                  }
-                >
-                  {isMatchPwdVisible ? (
-                    <FontAwesomeIcon icon={faEye} color="#A6A6A6" />
-                  ) : (
-                    <FontAwesomeIcon icon={faEyeSlash} color="#A6A6A6" />
-                  )}
+                    <FontAwesomeIcon
+                      className="text-gray-300 text-xs"
+                      icon={faInfoCircle}
+                    />
+                    <span className="ml-1">
+                      {" "}
+                      Must match the first password input field.
+                    </span>
+                  </p>
                 </div>
               </div>
-              <div>
-                <p
-                  id="confirmnote"
-                  className={
-                    matchFocus && !validMatch ? "instructions" : "offscreen"
-                  }
+            </div>
+            <div className="flex items-center justify-center">
+              <div className=" flex justify-center xs:mt-4 mt-[2em] hover:scale-105 xs:w-[10rem] w-[19rem] bg-tertiary rounded-xl">
+                <Button
+                  type="submit"
+                  className={`border-3 bg-simple1 text-tertiary2 font-oxygen flex items-center justify-center py-1 text-xl`}
                 >
-                  <FontAwesomeIcon
-                    className="text-gray-300 text-xs"
-                    icon={faInfoCircle}
-                  />
-                  <span className="ml-1">
-                    {" "}
-                    Must match the first password input field.
-                  </span>
-                </p>
+                  Send
+                </Button>
               </div>
             </div>
-          </div>
-          <div className="flex items-center justify-center">
-            <div className=" flex justify-center mt-[2em] hover:scale-105 w-[19rem] bg-tertiary rounded-xl">
-              <Button
-                type="submit"
-                className={`border-3 bg-simple1 text-tertiary2 font-oxygen flex items-center justify-center py-1 text-xl`}
-              >
-                Send
-              </Button>
-            </div>
-          </div>
-        </form>
+          </form>
 
-        <p className="mt-4 text-sm font-oxygen text-tertiary4 ">
-          <Link to="/login" href="">
-            Back to login
-          </Link>
-        </p>
-      </div>
-      <div className="z-[10000] pt-[20em]">
-        <ToastContainer position="top-right" autoClose={5000} />
+          <p className="mt-4 text-sm font-oxygen text-tertiary4 ">
+            <Link to="/login" href="">
+              Back to login
+            </Link>
+          </p>
+        </div>
+        <div className="z-[10000] pt-[20em]">
+          <ToastContainer position="top-right" autoClose={5000} />
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ import { LuLogOut } from "react-icons/lu";
 import { MdOutlineAddToPhotos } from "react-icons/md";
 import { BsFillChatSquareQuoteFill } from "react-icons/bs";
 import { RiShoppingBagLine } from "react-icons/ri";
-import { BiBarChart } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
@@ -72,15 +71,7 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
             </div>
           </NavLink>
 
-          <NavLink
-            to="/admin/analytics"
-            onClick={() => handleMenuClick("analytics")}
-          >
-            <div className="flex gap-4 items-center  hover:border-b">
-              <BiBarChart />
-              <p>Analytics</p>
-            </div>
-          </NavLink>
+          
         </div>
 
         <div className="text-primary ">

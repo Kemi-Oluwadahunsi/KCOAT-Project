@@ -8,7 +8,6 @@ import Sales from "./Sales";
 import Feedbacks from "./Feedbacks";
 import Customerbase from "./Customerbase";
 import { useContext, useEffect, useState } from "react";
-import Analytics from "./Analytics";
 import AddProduct from "./AddProduct";
 import salesData from "./soldItems";
 import { ProductContext } from "../../../hooks/ProductContext";
@@ -66,8 +65,6 @@ const AdminManagepage = () => {
         return <Customerbase />;
       case "feedbacks":
         return <Feedbacks />;
-      case "analytics":
-        return <Analytics />;
       default:
         return <Dashboard />;
     }

@@ -110,8 +110,8 @@ const Signup = () => {
 
   return (
     <>
-      <div className=" flex h-screen xs:h-auto w-full xs:pt-[6rem] pt-[8rem] border-l-8 border-simple1 mx-auto">
-        {success ? ( 
+      <div className=" flex h-screen xs:h-auto w-[100%] xs:pt-[6rem] pt-[8rem] border-l-8 border-simple1 mx-auto">
+        {success ? (
           <section className="flex flex-col gap-[3em]">
             <div
               className="w-[60%] py-[4em] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)]
@@ -128,7 +128,7 @@ const Signup = () => {
             </div>
           </section>
         ) : (
-          <div className="flex items-center xs:pt-[7rem] justify-center xs:h-auto h-[45rem]">
+          <div className="flex items-center xs:pt-[2rem] justify-center xs:h-auto h-[45rem] xs:pb-8">
             <div className="flex xs:mx-auto my-auto">
               <div className="flex xs:hidden">
                 <img
@@ -137,13 +137,12 @@ const Signup = () => {
                   className="rounded-tr-[0.625em] rounded-br-[0.625em]"
                 />
               </div>
-
-              <div className=" flex flex-col xs:gap-8 gap-16 px-10 xs:pt-4 pt-10 pb-1 border border-border xs:w-[90%] w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em] xs:rounded-tr-[0.625em] xs:rounded-br-[0.625em]">
+              <div className=" flex flex-col xs:gap-8 gap-16 px-10 xs:pt-4 pt-10 pb-1 border border-border xs:w-[90%] w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em] xs:rounded-tr-[0.625em] xs:rounded-br-[0.625em] xs:ml-4 xs:pb-8">
                 <div className="flex flex-col gap-[1em]">
-                  <h3 className=" font-tertiary font-normal text-[2.25em] justify-center">
+                  <h3 className=" font-tertiary font-normal xs:text-[1.5em] text-[2.25em] xs:text-center justify-center">
                     Signup
                   </h3>
-                  <p className="text-createaccount font-secondary font-bold">
+                  <p className="text-createaccount xs:text-sm font-secondary font-bold">
                     Already Have an account?{" "}
                     <Link to="/login">
                       <span className="font-bold text-bland underline underline-offset-4">
@@ -189,7 +188,7 @@ const Signup = () => {
                           <input
                             type="text/number"
                             placeholder="First-name Last-name"
-                            className="w-[16em] rounded-[3em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
+                            className="w-[16em] rounded-[3em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
                             id="username"
                             ref={userRef}
                             autoComplete="off"
@@ -242,7 +241,7 @@ const Signup = () => {
                         <input
                           type="text/number"
                           placeholder="Grace.joel@xmail.com"
-                          className="w-[16em] rounded-[3em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
+                          className="w-[16em] rounded-[3em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
                           onChange={(e) => setEmail(e.target.value)}
                           value={email}
                           required
@@ -297,7 +296,7 @@ const Signup = () => {
                             <input
                               type={isPwdVisible ? "text" : "password"}
                               placeholder="******"
-                              className=" rounded-[3em] text-[1.2em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount w-full"
+                              className=" rounded-[3em] text-[1.2em] xs:py-2 px-4 py-3 border border-border focus:outline-none focus:border-createaccount w-full"
                               id="password"
                               onChange={(e) => setPwd(e.target.value)}
                               value={pwd}
@@ -309,7 +308,7 @@ const Signup = () => {
                             ></input>
 
                             <div
-                              className="text-xl absolute top-3 right-4"
+                              className="text-xl xs:text-sm absolute top-3 right-4"
                               onClick={() =>
                                 setIsPwdVisible(
                                   (prevIsVisible) => !prevIsVisible
@@ -382,7 +381,7 @@ const Signup = () => {
                           <input
                             type={isMatchPwdVisible ? "text" : "password"}
                             placeholder="******"
-                            className="w-full rounded-[3em] text-[1.2em] px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
+                            className="w-full rounded-[3em] text-[1.2em] xs:py-2 px-4 py-3 border border-border focus:outline-none focus:border-createaccount "
                             id="confirm_pwd"
                             onChange={(e) => setMatchPwd(e.target.value)}
                             value={matchPwd}
@@ -394,7 +393,7 @@ const Signup = () => {
                           ></input>
 
                           <div
-                            className="text-xl absolute top-12 left-[85%]"
+                            className="text-xl xs:text-sm absolute top-12 left-[85%]"
                             onClick={() =>
                               setIsMatchPwdVisible(
                                 (prevIsVisible) => !prevIsVisible
@@ -434,15 +433,15 @@ const Signup = () => {
                     </div>
 
                     <div className="flex gap-2 items-center justify-center w-full">
-                      <input type="checkbox" className="text-md w-4 h-4" />
-                      <span className="font-secondary text-[0.95em] text-subtext font-medium">
+                      <input type="checkbox" className="text-md w-4 h-4" required/>
+                      <span className="font-secondary xs:text-[0.8em] text-[0.95em] text-subtext font-medium">
                         I have read and agreed to the Terms of Service and
-                        <span> Privacy Policy</span>
+                        <Link to="/privacy-policy"><span className="font-bold text-bland"> Privacy Policy</span></Link>
                       </span>
                     </div>
 
                     <div className="flex justify-center items-center w-full ">
-                      <div className="flex font-oxygen justify-center hover:scale-105 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
+                      <div className="flex font-oxygen justify-center hover:scale-105 xs:w-3/4 w-1/2 xs; py-1 bg-tertiary font-normal rounded-xl xs:text-base text-xl">
                         <Button className={`border-0`}>Shop Now</Button>
                       </div>
                     </div>

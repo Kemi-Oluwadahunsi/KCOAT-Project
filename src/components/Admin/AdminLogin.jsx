@@ -1,5 +1,4 @@
 import {
-
   faEye,
   faEyeSlash,
   faLongArrowLeft,
@@ -9,16 +8,12 @@ import AdminImage from "../../assets/adminlogin.png";
 import { useContext, useState } from "react";
 import Button from "../StaticComponents/Button";
 import { AdminContext } from "../../../hooks/AdminContextPage";
-
-
+import { Link } from "react-router-dom";
 
 const AdminLogin = () => {
- const [isPwdVisible, setIsPwdVisible] = useState(false);
+  const [isPwdVisible, setIsPwdVisible] = useState(false);
 
- const {ToastContainer, handleAdminLogin} = useContext(AdminContext)
-
- 
-  
+  const { ToastContainer, handleAdminLogin } = useContext(AdminContext);
 
   return (
     <div className="pt-[7rem] flex items-center justify-center pb-[3em]">
@@ -88,21 +83,25 @@ const AdminLogin = () => {
 
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-4">
-                <div className="flex justify-center items-center w-full" onClick={handleAdminLogin}>
+                <div
+                  className="flex justify-center items-center w-full"
+                  onClick={handleAdminLogin}
+                >
                   <div className="flex font-oxygen justify-center hover:scale-105 w-1/2 py-1 bg-tertiary font-normal rounded-xl text-xl">
                     <Button className={`border-0`}>Login</Button>
                   </div>
                 </div>
-
-                <div className="flex gap-4 items-center justify-center">
-                  <FontAwesomeIcon
-                    icon={faLongArrowLeft}
-                    className="text-tertiary"
-                  />
-                  <p className="font-oxygen">
-                    Go back to <span className="font-tertiary">KCOAT</span>
-                  </p>
-                </div>
+                <Link to="/">
+                  <div className="flex gap-4 items-center justify-center">
+                    <FontAwesomeIcon
+                      icon={faLongArrowLeft}
+                      className="text-tertiary"
+                    />
+                    <p className="font-oxygen">
+                      Go back to <span className="font-tertiary">KCOAT</span>
+                    </p>
+                  </div>
+                </Link>
               </div>
             </div>
           </form>
