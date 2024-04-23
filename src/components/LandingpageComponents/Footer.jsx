@@ -6,24 +6,31 @@ import whatsapp from "../../assets/whatsapp.svg";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 const Footer = () => {
-  
   return (
     <>
       <div className=" flex flex-col pt-[1em] pb-[1em] px-[1rem] sm:px-[4em] md:px-[7rem] lg:px-[8em] bg-color text-primary font-oxygen">
         <div className=" flex xs:flex-col sm:flex-col justify-between md:items-center lg:items-center py-10 w-[100%] lg:w-[90%] gap-8">
           <div className="flex flex-col gap-7 sm:gap-[3em] md:gap-[4em] lg:gap-[5em]">
-            <div className="">
-              <img src={logo} alt="logo" />
-            </div>
+            <Link to="/">
+              <div className="">
+                <img src={logo} alt="logo" />
+              </div>
+            </Link>
 
             <div className="flex flex-col gap-3">
               <h3 className="md:text-2xl text-[1.2rem] lg:text-2xl">
                 Social Media
               </h3>
               <div className="flex justify-between cursor-pointer xs:w-[40%] sm:w-[20%] md:w-[30%]">
-                <img src={whatsapp} alt="" />
-                <img src={instagram} alt="" />
-                <img src={facebook} alt="" />
+                <Link to="#">
+                  <img src={whatsapp} alt="" />
+                </Link>
+                <Link to="#">
+                  <img src={instagram} alt="" />
+                </Link>
+                <Link to="#">
+                  <img src={facebook} alt="" />
+                </Link>
               </div>
             </div>
           </div>

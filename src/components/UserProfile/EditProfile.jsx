@@ -98,7 +98,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="pt-[8rem] xs:px-[2rem] px-[20rem] py-[5em] font-oxygen">
+    <div className="pt-[8rem] xs:px-[2rem] md:px-[10rem] px-[20rem] py-[5em] font-oxygen">
       <form action="" onSubmit={handleSubmit}>
         <div className="">
           <div className=" flex flex-col xs:gap-4 gap-8 items-center justify-center rounded-3xl py-[2em] xs:px-0 px-[5em] ">
@@ -249,7 +249,7 @@ const EditProfile = () => {
           </div>
         </div>
       </form>
-      <div className="z-[10000] pt-[20em]">
+      <div className="z-[10000] pt-[20em] xs:pt-0 md:pt-0">
         <ToastContainer position="top-right" autoClose={2000} />
       </div>
     </div>

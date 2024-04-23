@@ -26,6 +26,7 @@ const Header = () => {
 
   const closeMobileContent = () => {
     setShowMobileContent(false);
+    scrollToTop()
   };
 
   useEffect(() => {
@@ -42,12 +43,21 @@ const Header = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className="small-screens flex flex-col  justify-around items-center font-primary text-sm fixed w-full z-50 md:hidden">
       <div className="flex justify-between items-center w-full h-20 bg-tertiary px-5">
-        <div className="cursor-pointer w-[5rem]">
-          <img src={logo} alt="logo" />
-        </div>
+        <Link to="/">
+          <div className="cursor-pointer w-[5rem]">
+            <img src={logo} alt="logo" />
+          </div>
+        </Link>
 
         <Link to="/cart">
           <div className="relative flex items-center justify-center">

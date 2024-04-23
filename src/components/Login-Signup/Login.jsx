@@ -67,17 +67,17 @@ const Login = () => {
   };
   return (
     <div className="h-screen border-l-8 border-simple1">
-      <div className="flex items-center justify-center xs:h-auto h-[43rem] relative xs:top-[8rem] top-[5rem] ">
+      <div className="flex items-center justify-center xs:h-auto md:h-auto h-[43rem] relative xs:top-[8rem] md:top-[7rem] top-[5rem] ">
         <div className="flex w-4/5 my-auto">
-          <div className="flex xs:hidden ">
+          <div className="flex xs:hidden w-[50%] ">
             <img
               src={LoginImage}
               alt="LoginImage"
-              className="rounded-tr-[0.625em] rounded-br-[0.625em] "
+              className="rounded-tr-[0.625em] rounded-br-[0.625em] object-cover"
             />
           </div>
 
-          <div className=" flex flex-col xs:gap-5 gap-20 xs:pb-8 xs:px-4 px-16 pt-10 border border-border xs:w-[100%] w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em] xs:rounded-tr-[0.625em] xs:rounded-br-[0.625em]">
+          <div className=" flex flex-col xs:gap-5 md:gap-10 gap-20 xs:pb-8 md:pb-8 xs:px-4 md:px-8 px-16 pt-10 border border-border xs:w-[100%] w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em] xs:rounded-tr-[0.625em] xs:rounded-br-[0.625em]">
             <div className="flex flex-col xs:gap-[.5em] gap-[1em]">
               <h3 className=" font-tertiary font-normal xs:text-[2em] text-[2.25em] xs:text-center justify-center">
                 Login

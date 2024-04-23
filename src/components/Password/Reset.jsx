@@ -67,11 +67,11 @@ const ResetPassword = () => {
   return (
     <div className="flex py-[7rem] items-center justify-center w-[100%] border-l-8 border-simple1">
       <div className="flex  xs:px-[2rem] h-[] xs:w-[100%] md:w-[80%] w-[70%]">
-        <div className="xs:hidden w-[50%]object-cover">
+        <div className="xs:hidden w-[50%] ">
           <img
             src={sideImage}
             alt="Reset Password"
-            className=" md:h-[35rem] "
+            className=" md:h-[35rem] object-cover"
           />
         </div>
         <div className=" flex flex-col xs:gap-4 md:gap-4 xs:px-4 gap-8 xs:basis-[100%] xs:justify-center w-[50%]   border border-border rounded-l-md px-[3rem] pt-[1rem] xs:pb-4">

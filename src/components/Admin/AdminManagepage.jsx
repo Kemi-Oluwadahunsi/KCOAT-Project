@@ -70,10 +70,13 @@ const AdminManagepage = () => {
     }
   };
   return (
-    <div className="pt-[8rem] px-[4em] ">
+    <div className="pt-[8rem] xs:px-0 px-[4em] ">
       <div className="flex gap-[3em]">
         <div className="basis-[20%]">
-          <AdminSidebar handleMenuClick={handleMenuClick} handleAdminLogout={handleAdminLogout} />
+          <AdminSidebar
+            handleMenuClick={handleMenuClick}
+            handleAdminLogout={handleAdminLogout}
+          />
         </div>
 
         <div className="basis-[80%] pt-[2em] flex flex-col gap-[3em]">
@@ -123,6 +126,7 @@ const AdminManagepage = () => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

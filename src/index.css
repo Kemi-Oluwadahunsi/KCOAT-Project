@@ -87,6 +87,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 20em;
+  object-fit: cover;
 }
 
 /* HTML: <div class="loader"></div> */

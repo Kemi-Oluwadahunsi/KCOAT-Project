@@ -19,14 +19,12 @@ import Deliver from "../../assets/3d-rotate.svg";
 import Caret from "../../assets/caret.svg";
 
 const SingleProductsPage = () => {
-
   const { Productid } = useParams();
   const { fetchProductById, loading } = useContext(ProductContext);
-  const { addToCart } = useContext(CartContext); 
+  const { addToCart } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
-  
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -48,7 +46,7 @@ const SingleProductsPage = () => {
         productPrice: product.ProductPrice,
       };
       addToCart(productData, quantity);
-      toast.success("Item added to cart!")
+      toast.success("Item added to cart!");
     }
   };
 
@@ -78,11 +76,11 @@ const SingleProductsPage = () => {
         <div className="loader"></div>
       ) : (
         <div
-          className=" flex flex-col gap-[10em] pt-[10rem] border-l-8 border-simple1"
+          className=" flex flex-col gap-[10em] xs:gap-[3rem] pt-[10rem] border-l-8 border-simple1"
           key={product.ProductId}
         >
-          <div className=" flex w-full px-[10em] gap-[15em]">
-            <div className="basis-[40%]">
+          <div className=" flex xs:flex-col w-full xs:px-[2rem] md:px-[5em] px-[10em] xs:gap-[3em] md:gap-[5em] gap-[15em]">
+            <div className="basis-[40%] ">
               <img
                 src={product.ProductImage}
                 alt="ProductImage"
@@ -90,9 +88,9 @@ const SingleProductsPage = () => {
               />
             </div>
 
-            <div className=" flex flex-col gap-[1em] basis-[50%]">
+            <div className=" flex flex-col xs:gap-2 gap-[1em] basis-[50%]">
               <div className="flex flex-col gap-2">
-                <h2 className=" text-categoryborder font-tertiary text-[2.25em] text-center">
+                <h2 className=" text-categoryborder font-tertiary xs:text-[1.5em] text-[2.25em] text-center">
                   {product.ProductName}
                 </h2>
 
@@ -112,18 +110,18 @@ const SingleProductsPage = () => {
                     <CiStar className="text-tertiary text-xl" />
                     <CiStar className="text-tertiary text-xl" />
                   </div>
-                  <p>(0 review)</p>
+                  <p className="xs:hidden">(0 review)</p>
                 </div>
               </div>
-              <hr className="my-[2.5em] text-hr" />
+              <hr className="my-[2.5em] xs:my-3 text-hr" />
 
               <p className="font-oxygen text-secondary leading-7">
                 {product.ProductDescription}
               </p>
 
-              <div className="mt-10 flex flex-col gap-[5em]">
-                <div className="flex justify-between">
-                  <div className="flex justify-between w-[10em] items-center border rounded-[3em] border-minus px-3 py-2 text-center font-bold ">
+              <div className="mt-10 xs:mt-4 flex flex-col xs:gap-[2em] gap-[5em]">
+                <div className="flex xs:flex-col xs:gap-4 justify-between">
+                  <div className="flex justify-between w-[10em] xs:w-[13rem] items-center border rounded-[3em] border-minus px-3 py-2 text-center font-bold ">
                     {/* <button className="text-minus text-[2em]">-</button> */}
                     <FontAwesomeIcon
                       icon={faMinus}
@@ -141,7 +139,7 @@ const SingleProductsPage = () => {
                   </div>
 
                   <div
-                    className=" flex basis-[70%] bg-tertiary items-center justify-center rounded-2xl"
+                    className=" flex basis-[70%] bg-tertiary xs:py-1 items-center justify-center rounded-2xl"
                     onClick={handleAddToCart}
                   >
                     <Button className={`font-medium font-oxygen bg-[none]`}>
@@ -172,28 +170,22 @@ const SingleProductsPage = () => {
             </div>
           </div>
 
-          <div className="p-[5em] flex flex-col gap-[1em] bg-feedback">
-            <h3 className="text-tertiary font-tertiary text-[2.25em]">
+          <div className="p-[5em] xs:p-[1em] flex flex-col gap-[1em] bg-feedback">
+            <h3 className="text-tertiary font-tertiary xs:text-[1.5em] text-[2.25em]">
               Description
             </h3>
             <div className="flex flex-col gap-[2em] font-secondary text-secondary">
-              <p className="font-oxygen w-[70%] text-[1.1em] leading-7">
+              <p className="font-oxygen w-[70%] text-[1.1em] xs:text-base leading-7">
                 {product.ProductDescription}
               </p>
 
-              <ul className="ml-4">
-                <li className=" list-disc">Comfortable bag</li>
-                <li className=" list-disc">Luxurious and sophisticated </li>
-                <li className=" list-disc">Not a common brand</li>
-                <li className=" list-disc">Duarable</li>
-              </ul>
+            </div>
+            <div className="z-[10000] pt-[20em] xs:pt-0 md:pt-0">
+              <ToastContainer position="top-right" autoClose={2000} />
             </div>
           </div>
-          <div className="z-[10000] pt-[20em]">
-            <ToastContainer position="top-right" autoClose={2000} />
-          </div>
         </div>
-      )}
+      )};
     </>
   );
 };

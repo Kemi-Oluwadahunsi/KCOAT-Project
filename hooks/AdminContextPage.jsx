@@ -3,14 +3,13 @@ import { createContext, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import axiosRetry from "axios-retry"; 
+import axiosRetry from "axios-retry";
 
 axiosRetry(axios, {
   retries: 3, // Number of retries
   retryDelay: axiosRetry.exponentialDelay, // Exponential delay between retries
   shouldResetTimeout: true, // Reset timeout between retries
 });
-
 
 export const AdminContext = createContext();
 
@@ -20,14 +19,14 @@ export const AdminContextProvider = ({ children }) => {
     // Initialize isAdminLoggedIn state based on value from localStorage
     return localStorage.getItem("isAdminLoggedIn") === "true";
   });
-   const navigate = useNavigate();
-   
-   const scrollToTop = () => {
-     window.scrollTo({
-       top: 0,
-       behavior: "smooth", // Optional: smooth scroll animation
-     });
-   };
+  const navigate = useNavigate();
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Optional: smooth scroll animation
+    });
+  };
 
   const handleAdminLogin = async (event) => {
     event.preventDefault();
@@ -78,39 +77,69 @@ export const AdminContextProvider = ({ children }) => {
     localStorage.removeItem("isAdminLoggedIn");
     setIsAdminLoggedIn(false);
     navigate("/admin-login");
-  }
+  };
 
- 
- const handleEdit = (product) => {
-   setEditingProduct(product);
- };
+  const handleEdit = (product) => {
+    setEditingProduct(product);
+  };
 
- const handleSave = async (editedProduct) => {
-     if (!isAdminLoggedIn) {
-       // If admin is not logged in, show error message and return
-       toast.error("Admin is not logged in.");
-       return;
-     }
-   try {
-     // Send edited product details to the server using PUT request
-     await axios.put(
-       `https://kcoat.onrender.com/products/${editedProduct.Productid}`,
-       editedProduct
-     );
-     // Update the editingProduct state to null after successful save
-     setEditingProduct(null);
-     // You can add more actions if needed, like showing a success message
-   } catch (error) {
-     console.error("Error saving product:", error);
-     throw new Error("Failed to save product.");
-   }
- };
+  const handleCancel = () => {
+    setEditingProduct(null);
+  };
+
+  const handleSave = async (editedProduct) => {
+    if (!isAdminLoggedIn) {
+      // If admin is not logged in, show error message and return
+      toast.error("Admin is not logged in.");
+      return;
+    }
+    try {
+      // Send edited product details to the server using PUT request
+      await axios.put(
+        `https://kcoat.onrender.com/products/${editedProduct.Productid}`,
+        editedProduct
+      );
+      // Update the editingProduct state to null after successful save
+      setEditingProduct(null);
+      // You can add more actions if needed, like showing a success message
+    } catch (error) {
+      console.error("Error saving product:", error);
+      throw new Error("Failed to save product.");
+    }
+  };
+
+  // const handleDelete = async (product) => {
+  //   try {
+  //     // Send DELETE request to the server to delete the product
+  //     await axios.delete(`https://kcoat.onrender.com/products/${product.Productid}`);
+  //     // You can add more actions if needed, like showing a success message
+  //   } catch (error) {
+  //     console.error("Error deleting product:", error);
+  //     throw new Error("Failed to delete product.");
+  //   }
+  // };
 
   const handleDelete = async (product) => {
     try {
+      // Show confirmation dialog before deleting the product
+      const confirmDelete = window.confirm(
+        "Are you sure you want to delete this product?"
+      );
+      if (!confirmDelete) {
+        return; // Do nothing if user cancels deletion
+      }
+
       // Send DELETE request to the server to delete the product
-      await axios.delete(`https://kcoat.onrender.com/products/${product.Productid}`);
-      // You can add more actions if needed, like showing a success message
+      if (confirmDelete) {
+        await axios.delete(
+          `https://kcoat.onrender.com/products/${product.Productid}`
+        );
+
+        // Show success message using React Toastify
+        toast.success("Product deleted successfully!");
+
+        // You can add more actions if needed
+      }
     } catch (error) {
       console.error("Error deleting product:", error);
       throw new Error("Failed to delete product.");
@@ -128,10 +157,10 @@ export const AdminContextProvider = ({ children }) => {
         handleAdminLogin,
         isAdminLoggedIn,
         handleAdminLogout,
+        handleCancel,
       }}
     >
       {children}
     </AdminContext.Provider>
   );
 };
-

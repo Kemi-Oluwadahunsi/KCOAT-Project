@@ -17,12 +17,12 @@ const AdminLogin = () => {
 
   return (
     <div className="pt-[7rem] flex items-center justify-center pb-[3em]">
-      <div className="flex w-[70%] border border-border rounded-2xl">
-        <div className="w-[50%]">
+      <div className="flex xs:w-[90%] w-[70%] border border-border rounded-2xl">
+        <div className="w-[50%] xs:hidden">
           <img src={AdminImage} alt="" className=" h-full object-cover" />
         </div>
 
-        <div className=" flex  w-[50%] py-[2em]">
+        <div className=" flex  w-[50%] xs:w-[100%] py-[2em]">
           <form
             action=""
             className="w-full px-[3em] flex flex-col gap-[3em]"

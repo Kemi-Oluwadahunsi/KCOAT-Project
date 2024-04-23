@@ -66,7 +66,7 @@ const Contact = () => {
       );
   };
   return (
-    <div className="pt-[5em] flex flex-col xs:gap-[1em] gap-[3rem] border-l-8 border-simple1">
+    <div className="pt-[5em] flex flex-col xs:gap-[1em] md:gap-[2rem] gap-[3rem] border-l-8 border-simple1">
       <div
         className=" flex flex-col gap-3 items-center justify-center h-[20em] "
         style={{
@@ -98,8 +98,8 @@ const Contact = () => {
         </p>
       </div>
 
-      <div className="flex xs:flex-col justify-between items-start xs:px-[2rem] px-[10em]">
-        <div className="basis-[30%] xs:basis-[100%] xs:mt-[0] mt-[10em] xs:py-[1em] py-[3em]">
+      <div className="flex xs:flex-col justify-between items-start xs:px-[2rem] md:px-[5rem] px-[10em]">
+        <div className="basis-[30%] xs:basis-[100%] xs:mt-[0] md:mt-[3rem] mt-[10em] xs:py-[1em] py-[3em]">
           <ul className="flex flex-col xs:gap-[1em] gap-[2em] ">
             <li className="flex flex-col xs:gap-[1em] gap-[2em]">
               <div className="flex gap-[1em]">
@@ -131,9 +131,9 @@ const Contact = () => {
           </ul>
         </div>
 
-        <div className=" bg-tertiary2 w-full xs:basis-[100%] basis-[60%] xs:px-0 px-8 xs:pt-[2em] pt-[8em] xs:pb-[1em] pb-[3em]">
+        <div className=" bg-tertiary2 w-full xs:basis-[100%] basis-[60%] xs:px-0 px-8 xs:pt-[2em] md:pt-[3em] pt-[8em] xs:pb-[1em] pb-[3em]">
           <form
-            className="flex flex-col xs:gap-[1em] gap-[3em] xs:px-[2em] px-[5em]"
+            className="flex flex-col xs:gap-[1em] gap-[3em] xs:px-[2em] md:px-[3em] px-[5em]"
             ref={formRef}
             onSubmit={sendEmail}
             id="form"
@@ -154,7 +154,7 @@ const Contact = () => {
                   autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="border rounded-lg border-border outline-createaccount xs:py-3 px-4 py-6  text-color"
+                  className="border rounded-lg border-border outline-createaccount xs:py-3 md:py-3 px-4 py-6  text-color"
                 />
               </div>
 
@@ -173,7 +173,7 @@ const Contact = () => {
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="border rounded-lg border-border outline-createaccount xs:py-3 px-4 py-6  text-color"
+                  className="border rounded-lg border-border outline-createaccount xs:py-3 md:py-3 px-4 py-6  text-color"
                 />
               </div>
 
@@ -191,7 +191,7 @@ const Contact = () => {
                   placeholder="Inquiry"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="border rounded-lg border-border outline-createaccount xs:py-3 px-4 py-6  text-color"
+                  className="border rounded-lg border-border outline-createaccount xs:py-3 md:py-3 px-4 py-6  text-color"
                 />
               </div>
 
@@ -211,14 +211,14 @@ const Contact = () => {
                   autoComplete="message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="border rounded-lg border-border outline- xs:py-0 px-4 py-6  text-color"
+                  className="border rounded-lg border-border outline- xs:py-0 md:py-3 px-4 py-6  text-color"
                 ></textarea>
               </div>
             </div>
 
             <Button
               type="submit"
-              className={`flex items-center justify-center xs:w-[8em] w-[15em] bg-simple1 text-tertiary2 hover:scale-105 font-oxygen xs:text-lg text-2xl xs:py-0 py-1 px-5 rounded-xl mx-auto cursor-pointer`}
+              className={`flex items-center justify-center xs:w-[8em] md:w-[10em] w-[15em] bg-simple1 text-tertiary2 hover:scale-105 font-oxygen xs:text-lg text-2xl xs:py-0 py-1 px-5 rounded-xl mx-auto cursor-pointer`}
             >
               Submit
             </Button>
@@ -227,7 +227,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      <div className="z-[10000] pt-[20em] xs:pt-0">
+      <div className="z-[10000] pt-[20em] xs:pt-0 md:pt-0">
         <ToastContainer position="top-right" autoClose={2000} />
       </div>
     </div>

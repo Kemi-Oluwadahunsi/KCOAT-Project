@@ -9,10 +9,12 @@ const MainProfile = () => {
  const {isLoading, userProfile} = useContext(ProductContext)
 
   return (
-    <div className="pt-[8rem] xs:px-[2rem] px-[15em]">
+    <div className="pt-[8rem] xs:px-[2rem] md:px-[10rem] px-[15em]">
       <div className="flex flex-col xs:gap-[1em] gap-[3em] font-oxygen pb-[5em]">
         <div className="flex justify-between">
-          <h1 className="text-color xs:text-[base] text-[2rem] font-bold">My Profile</h1>
+          <h1 className="text-color xs:text-[base] text-[2rem] font-bold">
+            My Profile
+          </h1>
           <Link to="/edit-profile">
             <Button
               className={
@@ -27,11 +29,13 @@ const MainProfile = () => {
         {isLoading ? (
           <div className="loader"></div>
         ) : userProfile ? (
-          <div key={userProfile.customerId} className="flex flex-col xs:gap-[1em]] gap-[3em]">
+          <div
+            key={userProfile.customerId}
+            className="flex flex-col xs:gap-[1em]] gap-[3em]"
+          >
             <div className=" flex xs:flex-col gap-8 border border-tertiary rounded-3xl xs:py-[1em] py-[2em] xs:px-[2em] px-[5em] ">
               <div>
                 <img src={userProfile.image} alt="User-Image" />
-
               </div>
               {/* {userProfile.image} */}
               <div className="flex flex-col gap-4 xs:gap-2 xs:text-base text-[1.5em] font-bold  justify-center">
@@ -43,11 +47,13 @@ const MainProfile = () => {
             </div>
 
             <div className="flex flex-col gap-8 border border-tertiary rounded-3xl xs:py-[1em] py-[3em] xs:px-[2em] px-[5em]">
-              <h2 className="text-[1.5em] xs:text-[1.2em] font-bold">Personal Information</h2>
+              <h2 className="text-[1.5em] xs:text-[1.2em] font-bold">
+                Personal Information
+              </h2>
 
               <div>
                 <div className="flex flex-col xs:gap-[1em] gap-[4em]">
-                  <div className="flex xs:flex-col justify-between xs:gap-[1em]  gap-[10em] w-full">
+                  <div className="flex xs:flex-col justify-between xs:gap-[1em] md:gap-[3em] gap-[10em] w-full">
                     <div className="flex flex-col xs:gap-1 gap-3 basis-[50%]">
                       <h2>First Name</h2>
                       <div className="border border-border w-full  px-4 py-3 rounded-[1.5em]">
@@ -63,7 +69,7 @@ const MainProfile = () => {
                     </div>
                   </div>
 
-                  <div className="flex xs:flex-col justify-between xs:gap-[1em] gap-[10em] w-full">
+                  <div className="flex xs:flex-col justify-between xs:gap-[1em] md:gap-[3em] gap-[10em] w-full">
                     <div className="flex basis-[50%] flex-col gap-3">
                       <h2>Email Address</h2>
                       <div className="border border-border px-4 py-3 rounded-[1.5em]">
@@ -82,9 +88,11 @@ const MainProfile = () => {
               </div>
             </div>
 
-            <div className="flex flex-col border border-tertiary rounded-3xl xs:py-[1em] py-[2em] xs:px-[2em] px-[5em]">
+            <div className="flex flex-col border border-tertiary rounded-3xl xs:py-[1em] py-[2em] xs:px-[2em] md:gap-[1em] px-[5em]">
               <div className="flex flex-col xs:gap-[1em] gap-[2em]">
-                <h2 className="text-[1.5em] xs:text-[1.2em] font-bold">Address</h2>
+                <h2 className="text-[1.5em] xs:text-[1.2em] font-bold">
+                  Address
+                </h2>
                 <div className="flex flex-col justify-between xs:gap-[1em] gap-[3em]">
                   <div className="flex flex-col gap-3 xs:basis-[100%] basis-[50%]">
                     <h2>State</h2>
@@ -95,7 +103,7 @@ const MainProfile = () => {
 
                   <div className="flex flex-col gap-3">
                     <h2>Delivery Address</h2>
-                    <div className="border border-border xs:py-2 px-4 py-3 rounded-[1.5em] xs:w-[100%] w-[70%]">
+                    <div className="border border-border xs:py-2 px-4 py-3 rounded-[1.5em] xs:w-[100%] md:w-[80%] w-[70%]">
                       {userProfile.address}
                     </div>
                   </div>

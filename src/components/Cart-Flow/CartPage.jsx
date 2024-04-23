@@ -14,13 +14,11 @@ const CartPage = () => {
    const scrollToTop = () => {
      window.scrollTo({
        top: 0,
-       behavior: "smooth", // Optional: smooth scroll animation
+       behavior: "smooth", 
      });
    };
 
-  // const handleProceedToCheckout = () => {
-  //   navigate("/checkout", { state: { cartItems: cartItems } });
-  // };
+
   const [showLoginPrompt, setShowLoginPrompt] = useState(false); // State to track login prompt modal
   const { isLoggedIn } = useContext(ProductContext);
   const handleProceedToCheckout = () => {
@@ -81,13 +79,13 @@ const CartPage = () => {
       {loading ? (
         <div className="loader h-screen"></div>
       ) : (
-        <div className="flex flex-col gap-[10em] pt-[10em] px-[7.5em] border-l-8 border-simple1">
-          <div className="flex flex-col gap-8">
-            <div className="flex w-full gap-[2em]">
-              <div className="flex-1 border border-cartborder rounded-xl">
-                <table className="w-full">
+        <div className="flex flex-col xs:gap-[3em] gap-[10em] pt-[10em] xs:px-[1em] md:px-[2em] px-[7.5em] border-l-8 border-simple1">
+          <div className="flex flex-col xs:gap-4 gap-8">
+            <div className="flex xs:flex-col w-full xs:gap-[1em] gap-[2em]">
+              <div className="flex-1 border border-cartborder rounded-xl sm:hidden xs:hidden">
+                <table className="w-full ">
                   <thead className="py-10 bg-background">
-                    <tr className="text-xl text-color font-normal font-oxygen py-10">
+                    <tr className="text-xl text-color font-normal font-oxygen py-10 ">
                       <th className="py-10"></th>
                       <th className="flex justify-start py-5 pl-[10%] font-normal">
                         Products
@@ -101,11 +99,11 @@ const CartPage = () => {
                   <tbody className="">
                     {cartItems.map((item) => (
                       <tr
-                        className="border border-t-0 border-b-1 border-l-0 border-r-0 border-border text-center h-20"
+                        className=" border-b border-border text-center h-20 "
                         key={item.id}
                       >
                         <td
-                          className="w-[10%] font-bold cursor-pointer"
+                          className="w-[10%] md:w-[6%] font-bold cursor-pointer"
                           onClick={() => handleRemoveItem(item.id)}
                         >
                           <span className="font-oxygen text-color text-sm">
@@ -128,29 +126,29 @@ const CartPage = () => {
                           <span>N{item.productPrice}</span>
                         </td>
 
-                        <td className="w-[15%]">
+                        <td className="w-[15%] md:w-[18%]">
                           {/* <span>{product.quantity}</span> */}
-                          <div className="flex justify-between items-center border rounded-[3em] border-minus px-3 py-2 w-[80%] text-center mx-auto font-bold ">
+                          <div className="text-lg md-text-base flex justify-between items-center border rounded-[3em] border-minus px-3 py-2 md:py-1 w-[80%] md:w-[90%] text-center mx-auto font-bold ">
                             {/* <button className="text-minus text-[2em]">-</button> */}
                             <FontAwesomeIcon
                               icon={faMinus}
-                              className="text-plus text-lg font-oxygen cursor-pointer"
+                              className="text-plus  font-oxygen cursor-pointer"
                               // onClick={handleDecrement}
                               onClick={() => handleDecrement(item.id)}
                             />
-                            <div className="font-oxygen text-lg text-color">
+                            <div className="font-oxygen  text-color">
                               {item.quantity}
                             </div>
                             <FontAwesomeIcon
                               icon={faPlus}
-                              className="text-plus text-lg font-oxygen cursor-pointer"
+                              className="text-plus  font-oxygen cursor-pointer"
                               // onClick={handleIncrement}
                               onClick={() => handleIncrement(item.id)}
                             />
                           </div>
                         </td>
 
-                        <td className="w-[15%]">
+                        <td className="w-[15%] pr-3 ">
                           <span className="font-bold font-tertiary text-tertiary">
                             {/* ${product.price * product.quantity} */}N
                             {item.productPrice * item.quantity}.00
@@ -162,21 +160,87 @@ const CartPage = () => {
                 </table>
               </div>
 
-              <div className="w-[30%] flex flex-col gap-10 border border-cartborder h-[fit-content] pb-10  rounded-xl mt-10">
+              {/* mobile view */}
+              <div className="lg:hidden md:hidden flex  border border-cartborder rounded-md">
+                <table className="flex flex-col w-full mr-0 pr-2">
+                  {cartItems.map((item) => (
+                    <tr
+                      className="flex text-center items-center justify-between border-b border-border w-[100%] py-2"
+                      key={item.id}
+                    >
+                      <td
+                        className="w-[10%] font-bold cursor-pointer"
+                        onClick={() => handleRemoveItem(item.id)}
+                      >
+                        <span className="font-oxygen text-color text-sm">
+                          X
+                        </span>
+                      </td>
+
+                      <td className="mx-auto">
+                        <img
+                          src={item.productImage}
+                          alt=""
+                          className=" w-[90px] h-[90px] object-cover rounded-lg"
+                        />
+                      </td>
+
+                      <div className="flex flex-col gap-6 w-[60%]">
+                        <td>
+                          <span className="md:text-2xl text-color font-oxygen">
+                            {item.productName}
+                          </span>
+                        </td>
+
+                        <div className="flex gap-4">
+                          <td>
+                            <span className="md:text-xl font-tertiary text-tertiary">
+                              N{item.productPrice}
+                            </span>
+                          </td>
+
+                          <td className="w-[15%] xs:w-[100%]">
+                            <div className="flex justify-between items-center border rounded-[3em] border-minus px-2 py-1 text-center mx-auto font-bold ">
+                              {/* <button className="text-minus text-[2em]">-</button> */}
+                              <FontAwesomeIcon
+                                icon={faMinus}
+                                className="text-plus text-sm font-oxygen cursor-pointer"
+                                // onClick={handleDecrement}
+                                onClick={() => handleDecrement(item.id)}
+                              />
+                              <div className="font-oxygen text-sm text-color">
+                                {item.quantity}
+                              </div>
+                              <FontAwesomeIcon
+                                icon={faPlus}
+                                className="text-plus text-sm font-oxygen cursor-pointer"
+                                // onClick={handleIncrement}
+                                onClick={() => handleIncrement(item.id)}
+                              />
+                            </div>
+                          </td>
+                        </div>
+                      </div>
+                    </tr>
+                  ))}
+                </table>
+              </div>
+
+              <div className="w-[30%] xs:w-[100%] flex flex-col gap-10 border border-cartborder h-[fit-content] xs:pb-5 pb-10  rounded-xl mt-10">
                 <table className="flex flex-col gap-4">
                   <thead className="bg-background">
-                    <tr className="text-xl text-color font-oxygen">
-                      <th className="flex items-start py-6 px-5 font-normal">
+                    <tr className="text-xl xs:text-[1em] text-color font-oxygen">
+                      <th className="flex items-start py-6 xs:py-2 px-5 font-normal">
                         Cart Total
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="flex flex-col text-xl text-color font-oxygen gap-[2em] px-5">
-                    <tr className="flex text-xl text-color font-oxygen justify-between px-5">
+                  <tbody className="flex flex-col xs:text-base text-xl text-color font-oxygen xs:gap-[1em] gap-[2em] px-5">
+                    <tr className="flex   text-color font-oxygen justify-between px-5">
                       <td>SUBTOTAL</td>
-                      <td>N{subtotal}.00</td>
+                      <td className="font-oxygen">N{subtotal}.00</td>
                     </tr>
-                    <tr className="flex text-xl text-color font-oxygen justify-between px-5">
+                    <tr className="flex text-color font-oxygen justify-between px-5">
                       <td>TOTAL</td>
                       <td>N{total}.00</td>
                     </tr>
@@ -185,7 +249,7 @@ const CartPage = () => {
 
                 <div onClick={handleProceedToCheckout}>
                   <div className="flex items-center justify-center">
-                    <div className="flex bg-tertiary gap-1 text-[1.2rem] items-center w-[70%] justify-center rounded-xl p-1 hover:scale-110 ">
+                    <div className="flex bg-tertiary gap-1 text-[1.2rem] xs:text-base items-center w-[70%] md:w-[90%] justify-center rounded-xl p-1 hover:scale-110 xs:hover:scale-0 ">
                       <Button>Proceed To Checkout</Button>
                       <img src={CheckCircle} alt="" />
                     </div>
@@ -196,13 +260,16 @@ const CartPage = () => {
 
             <div className="flex gap-8">
               <Link to="/all-products">
-                <div onClick={scrollToTop} className="flex justify-center items-center font-secondary font-medium hover:scale-105 py-1 w-[12em] bg-tertiary rounded-xl">
+                <div
+                  onClick={scrollToTop}
+                  className="flex justify-center xs:justify-start items-center font-secondary font-medium hover:scale-105 xs:hover:scale-0 xs:text-[0.9em] xs:w-[13em] py-1 w-[12em] bg-tertiary rounded-xl"
+                >
                   <Button>Continue Shopping</Button>
                 </div>
               </Link>
 
               <div
-                className="flex justify-center items-center font-secondary font-medium hover:scale-105 py-1 w-[8em] bg-tertiary rounded-xl"
+                className="flex justify-center items-center font-secondary font-medium hover:scale-105 xs:text-[0.9em] py-1 w-[8em] bg-tertiary rounded-xl"
                 onClick={handleClearCart}
               >
                 <Button>Clear Cart</Button>
@@ -211,8 +278,8 @@ const CartPage = () => {
           </div>
 
           <div>
-            <div className="flex flex-col gap-10 px-10">
-              <h1 className="text-tertiary font-bold font-tertiary text-[2.5em]">
+            <div className="flex flex-col gap-10 xs:px-4 px-10">
+              <h1 className="text-tertiary font-bold font-tertiary xs:text-[1.5em] text-[2.5em]">
                 You May Also Like
               </h1>
 
@@ -221,7 +288,7 @@ const CartPage = () => {
               </div>
             </div>
           </div>
-          <div className="z-[10000] pt-[20em]">
+          <div className="z-[10000] pt-[20em] xs:pt-0 md:pt-0">
             <ToastContainer position="top-right" autoClose={2000} />
           </div>
         </div>

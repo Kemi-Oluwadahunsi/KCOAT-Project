@@ -109,8 +109,8 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <div className=" flex h-screen xs:h-auto w-[100%] xs:pt-[6rem] pt-[8rem] border-l-8 border-simple1 mx-auto">
+    <div className="border-l-8 border-simple1 md:w-[100%]">
+      <div className="justify-center flex h-screen xs:h-auto md:h-auto w-[100%] md:w-[90%] md:pb-[2rem] xs:pt-[6rem] md:pt-[7rem] pt-[5rem]   mx-auto">
         {success ? (
           <section className="flex flex-col gap-[3em]">
             <div
@@ -128,16 +128,16 @@ const Signup = () => {
             </div>
           </section>
         ) : (
-          <div className="flex items-center xs:pt-[2rem] justify-center xs:h-auto h-[45rem] xs:pb-8">
+          <div className="flex items-center xs:pt-[2rem] justify-center md:h-auto xs:h-auto h-[45rem] xs:pb-8">
             <div className="flex xs:mx-auto my-auto">
-              <div className="flex xs:hidden">
+              <div className="flex xs:hidden w-[50%]">
                 <img
                   src={SignupImage}
                   alt="SignupImage"
-                  className="rounded-tr-[0.625em] rounded-br-[0.625em]"
+                  className="rounded-tr-[0.625em] rounded-br-[0.625em] object-cover"
                 />
               </div>
-              <div className=" flex flex-col xs:gap-8 gap-16 px-10 xs:pt-4 pt-10 pb-1 border border-border xs:w-[90%] w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em] xs:rounded-tr-[0.625em] xs:rounded-br-[0.625em] xs:ml-4 xs:pb-8">
+              <div className=" flex flex-col xs:gap-8 gap-16 xs:px-4 px-10 xs:pt-4 pt-10 pb-1 border border-border xs:w-[90%] w-[50%] rounded-tl-[0.625em] rounded-bl-[0.625em] xs:rounded-tr-[0.625em] xs:rounded-br-[0.625em] xs:ml-4 xs:pb-8">
                 <div className="flex flex-col gap-[1em]">
                   <h3 className=" font-tertiary font-normal xs:text-[1.5em] text-[2.25em] xs:text-center justify-center">
                     Signup
@@ -162,10 +162,10 @@ const Signup = () => {
                     {errMsg}{" "}
                   </p>
                   <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
-                    <div className="flex xs:flex-col gap-7">
+                    <div className="flex xs:flex-col gap-7 w-[100%] xs:w-[90%]">
                       {/* Username and Validation */}
-                      <div className="flex flex-col">
-                        <div className="flex flex-col gap-2">
+                      <div className="flex flex-col w-[50%] xs:w-[100%]">
+                        <div className="flex flex-col gap-2 w-full">
                           <label
                             htmlFor="username"
                             className="font-secondary font-medium text-color"
@@ -188,7 +188,7 @@ const Signup = () => {
                           <input
                             type="text/number"
                             placeholder="First-name Last-name"
-                            className="w-[16em] rounded-[3em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
+                            className=" rounded-[3em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
                             id="username"
                             ref={userRef}
                             autoComplete="off"
@@ -221,7 +221,7 @@ const Signup = () => {
                       </div>
 
                       {/* Email and Validation */}
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 xs:w-[100%] w-[50%]">
                         <label
                           htmlFor="email"
                           className="font-secondary font-medium text-color"
@@ -241,7 +241,7 @@ const Signup = () => {
                         <input
                           type="text/number"
                           placeholder="Grace.joel@xmail.com"
-                          className="w-[16em] rounded-[3em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
+                          className="w-full rounded-[3em] px-4 xs:py-2 py-3 border border-border focus:outline-none focus:border-createaccount "
                           onChange={(e) => setEmail(e.target.value)}
                           value={email}
                           required
@@ -296,7 +296,7 @@ const Signup = () => {
                             <input
                               type={isPwdVisible ? "text" : "password"}
                               placeholder="******"
-                              className=" rounded-[3em] text-[1.2em] xs:py-2 px-4 py-3 border border-border focus:outline-none focus:border-createaccount w-full"
+                              className="w-full rounded-[3em] text-[1.2em] xs:py-2 px-4 py-3 border border-border focus:outline-none focus:border-createaccount w-full"
                               id="password"
                               onChange={(e) => setPwd(e.target.value)}
                               value={pwd}
@@ -433,10 +433,19 @@ const Signup = () => {
                     </div>
 
                     <div className="flex gap-2 items-center justify-center w-full">
-                      <input type="checkbox" className="text-md w-4 h-4" required/>
+                      <input
+                        type="checkbox"
+                        className="text-md w-4 h-4"
+                        required
+                      />
                       <span className="font-secondary xs:text-[0.8em] text-[0.95em] text-subtext font-medium">
                         I have read and agreed to the Terms of Service and
-                        <Link to="/privacy-policy"><span className="font-bold text-bland"> Privacy Policy</span></Link>
+                        <Link to="/privacy-policy">
+                          <span className="font-bold text-bland">
+                            {" "}
+                            Privacy Policy
+                          </span>
+                        </Link>
                       </span>
                     </div>
 
@@ -456,7 +465,7 @@ const Signup = () => {
           <ToastContainer position="top-right" autoClose={5000} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -8,8 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import EditProductForm from "./EditProductForm";
 import { AdminContext } from "../../../hooks/AdminContextPage";
-// import { toast, ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AllProducts = () => {
   const { products, loading } = useContext(ProductContext);
@@ -32,6 +32,16 @@ const AllProducts = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+   const onDeleteProduct = async (product) => {
+     try {
+       await handleDelete(product);
+       toast.success("Product deleted successfully!");
+     } catch (error) {
+       console.error("Error deleting product:", error);
+       toast.error("Failed to delete product.");
+     }
+   };
 
   return (
     <>
@@ -96,7 +106,8 @@ const AllProducts = () => {
                           </div>
                           <div
                             className="flex gap-4 bg-delete px-3 basis-[50%] rounded-[0.2em] py-1"
-                            onClick={() => handleDelete(product)}
+                            onClick={() => onDeleteProduct(product)}
+                            
                           >
                             <img src={save} alt="" />
                             <button>Delete</button>
@@ -148,9 +159,9 @@ const AllProducts = () => {
         </div>
       </div>
 
-      {/* <div className="z-[10000] pt-[20em]">
+      <div className="z-[10000] pt-[20em]">
         <ToastContainer position="center" autoClose={2000} />
-      </div> */}
+      </div>
     </>
   );
 };

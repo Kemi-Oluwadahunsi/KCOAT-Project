@@ -14,11 +14,18 @@ const Header = () => {
 
   const { cartCount } = useContext(CartContext);
 
+   const scrollToTop = () => {
+     window.scrollTo({
+       top: 0,
+       behavior: "smooth", // Optional: smooth scroll animation
+     });
+   };
+
   return (
     <div className="sm:hidden xs:hidden h-20 flex justify-around items-center font-primary text-sm px-[4rem] bg-tertiary fixed w-full z-50">
-      <div className="cursor-pointer">
+      <Link to="/"><div className="cursor-pointer">
         <img src={logo} alt="logo" />
-      </div>
+      </div></Link>
 
       <ul className="text-color font-oxygen font-medium flex justify-around space-x-4 xs:w-3/4 w-2/4 place-items-center cursor-pointer">
         <Link to="/">
@@ -49,8 +56,8 @@ const Header = () => {
           </div>
         )}
 
-        <Link to="/cart">
-          <div className="relative flex items-center justify-center">
+        <Link to="/cart" >
+          <div className="relative flex items-center justify-center" onClick={scrollToTop}>
             <FontAwesomeIcon
               icon={faShoppingCart}
               color="white"

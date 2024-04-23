@@ -8,51 +8,51 @@ const CheckOut2 = () => {
   const [checkoutUrl, setCheckoutUrl] = useState(null);
   const [checkout, setCheckOut] = useState(false);
 
- const scrollToTop = () => {
-   window.scrollTo({
-     top: 0,
-     behavior: "smooth", // Optional: smooth scroll animation
-   });
- };
+//  const scrollToTop = () => {
+//    window.scrollTo({
+//      top: 0,
+//      behavior: "smooth", // Optional: smooth scroll animation
+//    });
+//  };
 
-  const handleCheckout = async () => {
-    try {
-      setLoading(true);
-      setCheckOut(true);
+   const handleCheckout = async () => {
+     try {
+       setLoading(true);
+       setCheckOut(true);
 
-       scrollToTop();
+      //  scrollToTop();
 
-      // Retrieve cartItems from local storage
-      const cartItems = JSON.parse(localStorage.getItem("cartItems"));
-      if (!cartItems || cartItems.length === 0) {
-        throw new Error("Cart is empty");
-      }
-      const response = await fetch(
-        "https://kcoat.onrender.com/create-checkout-session",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            // Provide customerId, email, and cartItems data
-            customerId: "CUSTOMER_ID", // You can replace with actual customerId if needed
-            cartItems: cartItems,
-          }),
-        }
-      );
-      const data = await response.json();
-      setCheckoutUrl(data.url);
+       // Retrieve cartItems from local storage
+       const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+       if (!cartItems || cartItems.length === 0) {
+         throw new Error("Cart is empty");
+       }
+       const response = await fetch(
+         "https://kcoat.onrender.com/create-checkout-session",
+         {
+           method: "POST",
+           headers: {
+             "Content-Type": "application/json",
+           },
+           body: JSON.stringify({
+             // Provide customerId, email, and cartItems data
+             customerId: "CUSTOMER_ID", // You can replace with actual customerId if needed
+             cartItems: cartItems,
+           }),
+         }
+       );
+       const data = await response.json();
+       setCheckoutUrl(data.url);
 
-      localStorage.removeItem("cartItems"); 
+       localStorage.removeItem("cartItems");
 
-      setLoading(false);
-    } catch (error) {
-      console.error("Error initiating checkout:", error);
-      setError(error.message);
-      setLoading(false);
-    }
-  };
+       setLoading(false);
+     } catch (error) {
+       console.error("Error initiating checkout:", error);
+       setError(error.message);
+       setLoading(false);
+     }
+   };
   let display;
   if (!checkout) {
     display = "Checkout";
