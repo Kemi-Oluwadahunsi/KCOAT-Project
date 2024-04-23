@@ -42,7 +42,7 @@ const AddProduct = () => {
       formData.append("SubCategory", SubCategory);
       formData.append("ProductPrice", ProductPrice);
       formData.append("Quantity", Quantity);
-      formData.append("ProductImage", imageUrl);
+      formData.append("ProductImage", ProductImage);
 
       await uploadImageToCloudinary(formData.image);
 

@@ -110,7 +110,7 @@ const EditProfile = () => {
   const uploadImageToCloudinary = async (imageFile) => {
     const formData = new FormData();
     formData.append("file", imageFile);
-    formData.append("upload_preset", "wq90ysos"); // Replace with your Cloudinary upload preset
+    formData.append("upload_preset", "joznqvva"); // Replace with your Cloudinary upload preset
 
     return await axios.post(
       "https://api.cloudinary.com/v1_1/dcqybedxj/image/upload",
