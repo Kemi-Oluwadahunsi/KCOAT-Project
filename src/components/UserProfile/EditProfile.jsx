@@ -288,3 +288,41 @@ const EditProfile = () => {
 };
 
 export default EditProfile;
+
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   setIsSubmitting(true);
+  //   const formData = {
+  //     ProductName,
+  //     ProductPrice,
+  //     ProductDescription,
+  //     Quantity,
+  //     ProductCategory,
+  //     SubCategory,
+  //     ProductImage: imageUrl,
+  //   };
+  //   // Make a POST request to your backend endpoint with the form data
+  //   fetch("https://kcoat.onrender.com/products", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(formData),
+  //   });
+    //    if (response.status === 200) {
+    //     setSuccess("Product added successfully!");
+    //     // Clear form data
+    //     setProductName("");
+    //     setProductDescription("");
+    //     setProductPrice("");
+    //     setProductCategory("");
+    //     setSubCategory("");
+    //     setQuantity("");
+    //     setProductImage(null);
+    //   } else {
+    //     setError("Failed to add product. Please try again.");
+    //   }
+    // }
+    
+  // };

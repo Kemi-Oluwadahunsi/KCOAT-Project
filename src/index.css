@@ -4,12 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
+.heroBackground1 {
+  background-image: url("./assets/hero-orange.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+ background-position: top;
+ object-fit: cover;
+}
+
 .heroTalk {
   -webkit-text-stroke-width: 1.0051181316375732;
   -webkit-text-stroke-color: var(--our-white, #fcfafd);
   font-style: normal;
   font-weight: 900;
   line-height: normal;
+ 
+
 }
 
 .submenu-item {
@@ -186,7 +196,7 @@
   }
 }
 @media (max-width: 768px) {
-  .heroBackground {
+  /* .heroBackground {
     background-image: linear-gradient(
         to bottom,
         rgb(0, 0, 0, 0.4),
@@ -196,7 +206,7 @@
     background-position: top;
     background-size: contain;
     object-fit: contain;
-  }
+  } */
 
   .slick-next {
     right: 0;
