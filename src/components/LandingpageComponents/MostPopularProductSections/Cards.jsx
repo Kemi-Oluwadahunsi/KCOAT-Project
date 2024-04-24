@@ -1,16 +1,11 @@
 import Cart from "/images/cart-plus-alt.svg"
 
 const Cards = (props) => {
-   const scrollToTop = () => {
-     window.scrollTo({
-       top: 0,
-       behavior: "smooth", // Optional: smooth scroll animation
-     });
-   };
+
   return (
     <div>
       <div className="flex md:mx-4 justify-center flex-wrap">
-        <div className="flex flex-col gap-[1em]  py-[1rem] rounded-md xs:w-full" onClick={scrollToTop}>
+        <div className="flex flex-col gap-[1em]  py-[1rem] rounded-md xs:w-full">
           <div className="mx-auto">
             <img src={props.image} alt={props.title} className="object-cover md:w-full" />
           </div>
