@@ -21,12 +21,12 @@ export const AdminContextProvider = ({ children }) => {
   });
   const navigate = useNavigate();
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // Optional: smooth scroll animation
-    });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth", // Optional: smooth scroll animation
+  //   });
+  // };
 
   const handleAdminLogin = async (event) => {
     event.preventDefault();
@@ -51,7 +51,6 @@ export const AdminContextProvider = ({ children }) => {
       setTimeout(() => {
         navigate("/admin");
       }, 2000);
-      scrollToTop();
     } catch (error) {
       console.error("Error:", error);
       if (error.response) {

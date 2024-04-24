@@ -49,7 +49,7 @@ const AddProduct = () => {
         toast.error("Failed to add product. Please try again.");
       }
     } catch (error) {
-      console.log(error.message);
+      console.error("An error occured:", error);
       toast.error("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -64,7 +64,7 @@ const AddProduct = () => {
       <div className="flex flex-col w-[50%] pl-[4em]">
         <div className="">
           <h1 className="text-[2.5rem] font-lso text-categoryborder">
-            Add A New Product
+            Add New Product
           </h1>
         </div>
 

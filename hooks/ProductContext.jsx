@@ -20,12 +20,12 @@ export const ProductProvider = ({ children}) => {
     const [totalUsers, setTotalUsers] =useState(null)
 
     const navigate = useNavigate();
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth", // Optional: smooth scroll animation
-      });
-    };
+    // const scrollToTop = () => {
+    //   window.scrollTo({
+    //     top: 0,
+    //     behavior: "smooth", // Optional: smooth scroll animation
+    //   });
+    // };
 
     
 
@@ -112,7 +112,7 @@ export const ProductProvider = ({ children}) => {
         setTimeout(() => {
           navigate("/");
         }, 500);
-        scrollToTop();
+        // scrollToTop();
    
      } catch (error) {
        console.error("Error logging out:", error);

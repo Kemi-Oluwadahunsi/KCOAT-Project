@@ -19,12 +19,12 @@ const AdminManagepage = () => {
   const [totalSales, setTotalSales] = useState(0);
   // const [totalUsers, setTotalUsers] = useState(0);
   const { products, totalUsers } = useContext(ProductContext);
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // Optional: smooth scroll animation
-    });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth", // Optional: smooth scroll animation
+  //   });
+  // };
   const totalProducts = products.length;
   // Calculate total sales amount
   const calculateTotalSales = () => {
@@ -48,7 +48,7 @@ const AdminManagepage = () => {
   // Function to set the selected menu
   const handleMenuClick = (menu) => {
     setSelectedMenu(menu);
-    scrollToTop()
+    // scrollToTop()
   };
   // Render the component based on the selected menu
   const renderComponent = () => {

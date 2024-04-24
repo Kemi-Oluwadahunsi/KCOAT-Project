@@ -36,7 +36,7 @@ const MostPopularProducts = () => {
         </Link>
       </div>
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:py-12 lg:py-12 px-[2em] sm:px-[3em] md:px-[6em] lg:px-[4em] justify-center">
+      <div className="grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:py-12 lg:py-12 xs:px-[1em] px-[2em] sm:px-[3em] md:px-[6em] xs:gap-4 lg:px-[4em] justify-center">
         {mostPopular}
       </div>
       <Link to="/most-popular-product">

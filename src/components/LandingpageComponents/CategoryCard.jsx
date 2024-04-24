@@ -11,17 +11,19 @@ const CategoryCard = () => {
           <h2 className="text-tertiary1 font-lso text-4xl ">
             View Our Range Of Categories
           </h2>
-          <p className="font-montserrat text-[1.25em]">Find everything you need here today</p>
+          <p className="font-montserrat text-[1.25em]">
+            Find everything you need here today
+          </p>
         </div>
 
-        <div className="flex justify-around px-[10rem] gap-10">
+        <div className="flex justify-around md:px-[4rem] px-[10rem] gap-10 md:h-[20rem]">
           {/* Card with img3 */}
           <div
-            className="relative w-[33%] h-auto ml-0 my-4 bg-cover bg-no-repeat bg-center rounded-md overflow-hidden "
+            className="relative w-[33%]   h-auto ml-0 my-4 bg-cover bg-no-repeat bg-center rounded-md overflow-hidden "
             style={{ backgroundImage: `url(${img3})` }}
           >
             <a href="#">
-              <button className="absolute bottom-4 ml-48 bg-primary hover:bg-color text-tertiary font-lso py-2 px-2 rounded">
+              <button className="absolute bottom-4 ml-48 md:ml-32 bg-primary hover:bg-color text-tertiary font-lso py-2 px-2 rounded">
                 Female wears
               </button>
             </a>
@@ -47,7 +49,7 @@ const CategoryCard = () => {
               style={{ backgroundImage: `url(${img2})` }}
             >
               <a href="#">
-                <button className="absolute bottom-3 ml-48 bg-primary hover:bg-color text-tertiary font-lso py-2 px-2 rounded">
+                <button className="absolute bottom-3 ml-48 md:ml-28 bg-primary hover:bg-color text-tertiary font-lso py-2 px-2 rounded">
                   Shoes & Bags
                 </button>
               </a>
@@ -60,7 +62,7 @@ const CategoryCard = () => {
             style={{ backgroundImage: `url(${img4})` }}
           >
             <a href="#">
-              <button className="absolute bottom-4 ml-48 bg-primary hover:bg-color text-tertiary font-lso py-2 px-2 rounded">
+              <button className="absolute bottom-4 ml-48 md:ml-32 bg-primary hover:bg-color text-tertiary font-lso py-2 px-2 rounded">
                 Men Wears
               </button>
             </a>

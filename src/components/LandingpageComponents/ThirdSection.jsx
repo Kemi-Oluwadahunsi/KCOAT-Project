@@ -63,11 +63,13 @@ const ThirdSection = () => {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: slidesToShow, // Set the slidesToShow dynamically
+    slidesToShow: slidesToShow, 
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
     cssEase: "linear",
+    prevArrow: null,
+    nextArrow: null,
   };
 
   return (

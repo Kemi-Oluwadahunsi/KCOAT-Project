@@ -110,7 +110,7 @@ const Signup = () => {
 
   return (
     <div className="border-l-8 border-simple1 md:w-[100%]">
-      <div className="justify-center flex h-screen xs:h-auto md:h-auto w-[100%] md:w-[90%] md:pb-[2rem] xs:pt-[6rem] md:pt-[7rem] pt-[5rem]   mx-auto">
+      <div className="justify-center flex h-auto xs:h-auto md:h-auto w-[100%] md:w-[90%] md:pb-[2rem] xs:pt-[6rem] md:pt-[7rem] pt-[5rem]   mx-auto">
         {success ? (
           <section className="">
             <div

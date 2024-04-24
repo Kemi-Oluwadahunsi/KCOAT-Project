@@ -20,7 +20,7 @@ const Sales = () => {
                 <table className="w-full">
                   <thead className=" bg-tertiary text-primary text-xl font-oxygen font-normal">
                     <tr>
-                      <th className="border-l border-categoryborder2 py-2 w-[40%]">
+                      <th className="border-l border-categoryborder2 py-2 w-[20%]">
                         Customer Name
                       </th>
                       <th className="border-l border-categoryborder2 py-2">
@@ -29,7 +29,7 @@ const Sales = () => {
                       <th className="border-l border-categoryborder2 py-2 w-[60%]">
                         Item(s) Bought
                       </th>
-                      <th className="border-l border-categoryborder2 py-2 w-[25%]">
+                      <th className="border-l border-categoryborder2 py-2 w-[30%]">
                         Total Amount (#)
                       </th>
                     </tr>
@@ -43,12 +43,12 @@ const Sales = () => {
                         <td className="border-l border-categoryborder2 flex justify-between items-center px-[2em] font-medium font-oxygen h-[6rem]">
                           <div>{sale.cusName}</div>
                         </td>
-                        <td className="border-l border-categoryborder2 px-[2em] font-medium font-tertiary h-[3rem] text-center">
+                        <td className="border-l border-categoryborder2 px-[2em] font-medium font-oxygen h-[3rem] text-center">
                           {sale.phone}
                         </td>
-                        <td className="border-l border-categoryborder2  font-medium font-tertiary h-[3rem] text-center">
+                        <td className="border-l border-categoryborder2  font-medium font-oxygen h-[3rem] text-center">
                           {sale.itemsBought.map((eachItem) => (
-                            <div key={eachItem.id} className="flex gap-4">
+                            <div key={eachItem.id} className="flex gap-6">
                               <div className="pb-1">
                                 <img
                                   src={eachItem.image}
@@ -58,7 +58,7 @@ const Sales = () => {
                                 />
                               </div>
 
-                              <p>{eachItem.title}</p>
+                              <p className="w-[50%]">{eachItem.title}</p>
                               <p>N{eachItem.price}</p>
                               <p>{eachItem.quantity}</p>
                               <p>N{eachItem.total}</p>

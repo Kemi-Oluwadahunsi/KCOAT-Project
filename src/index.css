@@ -5,7 +5,23 @@
 @tailwind utilities;
 
 .heroBackground1 {
-  background-image: url("./assets/hero-orange.png");
+  background-image: linear-gradient(rgb(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("./assets/hero-three.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+ background-position: top;
+ object-fit: cover;
+}
+
+.heroBackground2 {
+  background-image: linear-gradient(rgb(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url("./assets/hero-orange3.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+ background-position: center;
+ object-fit: cover;
+}
+
+.heroBackground3 {
+  background-image: linear-gradient(rgb(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("./assets/test6.jpg");
   background-size: cover;
   background-repeat: no-repeat;
  background-position: top;
@@ -186,6 +202,9 @@
     padding: 0.05em 0.3em;
     bottom: 1rem;
   }
+
+  .heroBackground3 {
+  background-image: linear-gradient(rgb(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./assets/test6.jpg");}
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -215,4 +234,10 @@
   display: none;
 }
   
+}
+
+@media screen and (min-width: 801px) and (max-width: 1050px) {
+  /* .hero {
+    max-height: 400px;
+  } */
 }
