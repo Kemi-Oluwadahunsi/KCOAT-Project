@@ -1,12 +1,14 @@
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "../StaticComponents/Button";
+import { ProductContext } from "../../../hooks/ProductContext";
 
 const CheckOut2 = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [checkoutUrl, setCheckoutUrl] = useState(null);
   const [checkout, setCheckOut] = useState(false);
+  const {  loggedInUserEmail } = useContext(ProductContext)
 
    const handleCheckout = async () => {
      try {
@@ -27,8 +29,9 @@ const CheckOut2 = () => {
            },
            body: JSON.stringify({
              // Provide customerId, email, and cartItems data
-             customerId: "customerId", 
+             customerId: "customerId",
              cartItems: cartItems,
+             email: loggedInUserEmail,
            }),
          }
        );
@@ -51,7 +54,7 @@ const CheckOut2 = () => {
     if (loading) {
       display = <p className="loader"></p>;
     } else {
-      display = <a href={checkoutUrl}>Proceed to Checkout</a>;
+      display = <a href={checkoutUrl}>Pay Now</a>;
     }
   } else {
     display = <>Error: {error}</>;

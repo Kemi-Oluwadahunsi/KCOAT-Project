@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Routes, Route, } from "react-router-dom";
 import LandingPage from "./components/LandingpageComponents/LandingPage";
 import Login from "./components/Login-Signup/Login";
 import Firstpage from "../Firstpage";
@@ -18,25 +18,28 @@ import EditProfile from "./components/UserProfile/EditProfile";
 import MostPopularProductPage from "./components/LandingpageComponents/MostPopularProductSections/MostPopularProductPage";
 import AboutUs from "./components/StaticComponents/AboutUs";
 import PaymentSuccessPage from "./components/Cart-Flow/PaymentSuccessPage";
-import CheckOut2 from "./components/Cart-Flow/CheckOut2";
 import NewFeatured from "./components/Products/NewFeatured";
 import AdminManagepage from "./components/Admin/AdminManagepage";
 import AdminLogin from "./components/Admin/AdminLogin";
-import { useContext, useEffect } from "react";
+import { useContext,  } from "react";
 import { ProductContext } from "../hooks/ProductContext";
 import ProductsPage from "./components/Products/ProductsPage";
 import NavBar from "./components/LandingpageComponents/NavBar";
 
 
 function App() {
+  //  const navigate = useNavigate();
+  // const location = useLocation();
 
-   const navigate = useNavigate();
-   const location = useLocation();
+  // useEffect(() => {
+  //   navigate(location.pathname);
+  //   window.scrollTo(0, 0);
+  // }, [location.pathname, navigate]);
 
-  useEffect(() => {
-    navigate(location.pathname);
-    window.scrollTo(0, 0);
-  }, [location.pathname, navigate]);
+
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, [location.pathname]);
 
   const { customerId, isLoggedIn } = useContext(ProductContext);
   return (
@@ -66,7 +69,6 @@ function App() {
           element={<MostPopularProductPage />}
         />
         <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/checkout-payment" element={<CheckOut2 />} />
         <Route path="/new-featured" element={<NewFeatured />} />
         <Route path="/kcoat/*" element={<AdminManagepage />} />
         <Route path="/admin-login" element={<AdminLogin />} />

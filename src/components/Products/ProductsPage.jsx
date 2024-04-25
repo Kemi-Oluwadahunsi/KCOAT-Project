@@ -150,7 +150,6 @@ const AllProducts = () => {
                 { label: "N10000 - N25000", range: [10000, 25000] },
                 { label: "N25000 - N35000", range: [25000, 35000] },
                 { label: "N35000 - N50000", range: [35000, 50000] },
-                { label: "N50000 - N100000", range: [50000, 100000] },
               ].map(({ label, range }, index) => (
                 <div
                   key={index}

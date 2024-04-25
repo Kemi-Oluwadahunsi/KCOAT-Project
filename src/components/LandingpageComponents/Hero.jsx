@@ -51,7 +51,7 @@ const Hero = () => {
           </div>
 
           <div className=" heroBackground2 h-[45rem] md:h-[35rem] xs:h-[25rem] pt-[4em]">
-            <div className="flex flex-col xs:pt-[3.5em] md:pt-[5em] place-items-center w-full xs:text-primary sm:text-primary lg:text-color md:text-color">
+            <div className="flex flex-col xs:pt-[2.5em] md:pt-[5em] place-items-center w-full xs:text-primary sm:text-primary lg:text-color md:text-color">
               <div className="flex w-[50%] xs:w-full md:pt-[1rem] items-center justify-center xs:px-[1em] px-[2rem]">
                 <div className="flex w-full flex-col xs:gap-[0.7em] md:gap-[1.5rem] gap-[2rem] xs:mt-[3em] md:mt-[5em] mt-[8em] text-primary font-tertiary  ">
                   <h1 className="text-[4rem] xs:text-[2rem] md:text-[3rem] w-[80%] md:w-[90%] mx-auto xs:leading-9 md:leading-[3.5rem]">

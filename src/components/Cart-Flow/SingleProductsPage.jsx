@@ -159,7 +159,7 @@ const SingleProductsPage = () => {
                   <div className="flex flex-col gap-5">
                     <div className="flex gap-4">
                       <img src={Delivery} alt="" />
-                      <p>Nation wide delivery avaible</p>
+                      <p>Nation wide delivery available</p>
                     </div>
 
                     <div className="flex gap-4">
