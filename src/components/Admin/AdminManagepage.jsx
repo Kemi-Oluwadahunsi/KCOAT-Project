@@ -65,7 +65,7 @@ const AdminManagepage = () => {
     }
   };
   return (
-    <div className="pt-[8rem] xs:px-0 md:px-0 px-[4em] ">
+    <div className="pt-[8rem] xs:px-0 md:px-0 pr-[4em] ">
       <div className="flex md:gap-4 gap-[3em]">
         <div className="basis-[20%] md:basis-[17%]">
           <AdminSidebar
@@ -116,7 +116,7 @@ const AdminManagepage = () => {
           </div>
 
           {/* <AllProducts /> */}
-          <div className="basis-[80%] pt-[2em] flex flex-col gap-[5em] pb-[5em]">
+          <div className="basis-[80%] pt-[2em] flex flex-col gap-[5em] pb-[5em] md:pb-[2em] xs:pb-[1em]">
             {renderComponent()}
           </div>
         </div>
