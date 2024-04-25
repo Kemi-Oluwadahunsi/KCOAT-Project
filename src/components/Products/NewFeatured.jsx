@@ -1,8 +1,7 @@
-
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
 import { Link } from "react-router-dom";
+import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
 // import { Link } from "react-router-dom";
 
 const NewFeatured = () => {
@@ -20,30 +19,30 @@ const NewFeatured = () => {
 
         setNewFeatured(data.message);
         setIsLoading(false);
-        
       } catch (error) {
         console.error("Error fetching product:", error);
         setIsLoading(false);
       }
     };
     NewFeatured();
-  }, [] );
-         
+  }, []);
 
-   const mostPopular = newFeatured.map((item) => {
-     console.log("Product ID:", item.Productid); // Log the Productid
-     return (
-       <Link key={item.Productid} to="/all-products">
-         <Cards
-           key={item.Productid}
-           id={item.Productid}
-           image={item.ProductImage}
-           title={item.ProductName}
-           price={item.ProductPrice}
-         />
-       </Link>
-     );
-   });
+  const mostPopular = newFeatured.map((item) => {
+    console.log("Product ID:", item.Productid);
+    return (
+      <>
+        <Link key={item.Productid} to={`/products/${item.Productid}`}>
+          <Cards
+            key={item.Productid}
+            id={item.Productid}
+            image={item.ProductImage}
+            title={item.ProductName}
+            price={item.ProductPrice}
+          />
+        </Link>
+      </>
+    );
+  });
 
   return (
     <div className="flex flex-col xs:gap-[1em] gap-[3em] xs:py-[5rem] py-[8rem] xs:px-[2rem] px-[5rem] bg-background">

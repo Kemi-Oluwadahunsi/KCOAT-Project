@@ -11,14 +11,6 @@ import { ProductContext } from "../../../hooks/ProductContext";
 
 const CartPage = () => {
   const navigate = useNavigate();
-   const scrollToTop = () => {
-     window.scrollTo({
-       top: 0,
-       behavior: "smooth", 
-     });
-   };
-
-
   const [showLoginPrompt, setShowLoginPrompt] = useState(false); // State to track login prompt modal
   const { isLoggedIn } = useContext(ProductContext);
   const handleProceedToCheckout = () => {
@@ -261,7 +253,6 @@ const CartPage = () => {
             <div className="flex xs:gap-3 gap-8">
               <Link to="/all-products">
                 <div
-                  onClick={scrollToTop}
                   className="flex justify-center xs:justify-start items-center font-secondary font-medium hover:scale-105 xs:hover:scale-0 xs:text-[0.9em] xs:w-[13em] py-1 w-[12em] bg-tertiary rounded-xl"
                 >
                   <Button>Continue Shopping</Button>

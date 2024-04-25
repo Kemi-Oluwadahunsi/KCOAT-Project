@@ -19,12 +19,7 @@ const AdminManagepage = () => {
   const [totalSales, setTotalSales] = useState(0);
   // const [totalUsers, setTotalUsers] = useState(0);
   const { products, totalUsers } = useContext(ProductContext);
-  // const scrollToTop = () => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: "smooth", // Optional: smooth scroll animation
-  //   });
-  // };
+  
   const totalProducts = products.length;
   // Calculate total sales amount
   const calculateTotalSales = () => {

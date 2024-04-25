@@ -12,12 +12,6 @@ import { ProductContext } from "../../../hooks/ProductContext";
 
 const Checkout = () => {
   const { userProfile } = useContext(ProductContext);
-// const scrollToTop = () => {
-//   window.scrollTo({
-//     top: 0,
-//     behavior: "smooth",
-//   });
-// };
 
 const location = useLocation();
 const { cartItems } = location.state || { cartItems: [] };

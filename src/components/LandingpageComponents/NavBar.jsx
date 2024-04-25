@@ -26,7 +26,7 @@ const Header = () => {
 
   const closeMobileContent = () => {
     setShowMobileContent(false);
-    scrollToTop()
+    // scrollToTop()
   };
 
   useEffect(() => {
@@ -44,14 +44,8 @@ const Header = () => {
     };
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
   return (
-    <div className="small-screens flex flex-col  justify-around items-end font-primary text-sm fixed w-full z-50 md:hidden">
+    <div className="small-screens flex flex-col  justify-around items-end font-primary text-sm fixed w-full z-50 md:hidden lg:hidden">
       <div className="flex justify-between items-center w-full h-20 bg-tertiary px-5">
         <Link to="/">
           <div className="cursor-pointer w-[5rem]">
@@ -118,14 +112,16 @@ const Header = () => {
         </ul>
         <div className="flex flex-col gap-1 place-items-center cursor-pointer">
           {isLoggedIn && (
-            <div className="text-primary flex gap-2 place-items-center p-5">
-              <Link to={`/user-profile`} onClick={closeMobileContent}>
+            <Link to={`/user-profile`} onClick={closeMobileContent}>
+              <div className="text-primary flex gap-2 place-items-center p-5">
                 <div>
                   <FontAwesomeIcon icon={faUserAlt} />
                 </div>
-              </Link>
-            </div>
+                <p>User Profile</p>
+              </div>
+            </Link>
           )}
+
           <div className="flex gap-5 place-items-center cursor-pointer">
             {isLoggedIn ? (
               <div

@@ -18,6 +18,7 @@ import Delivery from "../../assets/group.svg";
 import Deliver from "../../assets/3d-rotate.svg";
 import Caret from "../../assets/caret.svg";
 
+
 const SingleProductsPage = () => {
   const { Productid } = useParams();
   const { fetchProductById, loading } = useContext(ProductContext);
@@ -72,6 +73,7 @@ const SingleProductsPage = () => {
 
   return (
     <>
+ 
       {loading ? (
         <div className="loader"></div>
       ) : (

@@ -75,13 +75,7 @@ const AddProduct = () => {
                 <label className="text-categoryborder font-oxygen text-lg font-medium">
                   Choose File:
                 </label>
-                {/* <input
-                  type="file"
-                  value={imageUrl}
-                  onChange={(e) => setProductImage(e.target.files[0])}
-                  className="border rounded-lg border-simple1 outline-simple1
-                      file:bg-simple1 file:border-none file:py-2  file:font-oxygen"
-                /> */}
+               
               </div>
 
               {/* add new product form */}

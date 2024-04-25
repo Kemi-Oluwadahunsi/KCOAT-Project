@@ -14,18 +14,14 @@ const Header = () => {
 
   const { cartCount } = useContext(CartContext);
 
-   const scrollToTop = () => {
-     window.scrollTo({
-       top: 0,
-       behavior: "smooth", // Optional: smooth scroll animation
-     });
-   };
 
   return (
     <div className="sm:hidden xs:hidden h-20 flex justify-around items-center font-primary text-sm px-[4rem] bg-tertiary fixed w-full z-50">
-      <Link to="/"><div className="cursor-pointer">
-        <img src={logo} alt="logo" />
-      </div></Link>
+      <Link to="/">
+        <div className="cursor-pointer">
+          <img src={logo} alt="logo" />
+        </div>
+      </Link>
 
       <ul className="text-color font-oxygen font-medium flex justify-around space-x-4 xs:w-3/4 w-2/4 place-items-center cursor-pointer">
         <Link to="/">
@@ -49,15 +45,15 @@ const Header = () => {
         {isLoggedIn && (
           <div className="text-primary flex gap-2 place-items-center p-5">
             <Link to={`/user-profile`}>
-              <div>
-                <FontAwesomeIcon icon={faUserAlt} />
+              <div className="rounded-full p-2 border border-primary">
+                <FontAwesomeIcon icon={faUserAlt} className="text-[1.5rem]"/>
               </div>
             </Link>
           </div>
         )}
 
-        <Link to="/cart" >
-          <div className="relative flex items-center justify-center" onClick={scrollToTop}>
+        <Link to="/cart">
+          <div className="relative flex items-center justify-center">
             <FontAwesomeIcon
               icon={faShoppingCart}
               color="white"

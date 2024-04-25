@@ -1,27 +1,25 @@
 import axios from "axios";
 import Button from "../StaticComponents/Button";
 // import userdp from "../../assets/Ellipse-4.svg";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../../hooks/ProductContext";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Upload from "./Upload";
 
 const EditProfile = () => {
-  const [progress, setProgress] = useState({ started: false, percentage: 0 });
-  const [message, setMessage] = useState("");
   const { userProfile } = useContext(ProductContext);
   const navigate = useNavigate();
-  const fileInputRef = useRef(null);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    address: "",
-    state: "",
-    image: null,
-  });
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState(0);
+  const [address, setAddress] = useState("");
+  const [state, setState] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [formData, setFormData] = useState([])
+   const [formSubmitted, setFormSubmitted] = useState(false);
 
   useEffect(() => {
     if (userProfile) {
@@ -32,7 +30,7 @@ const EditProfile = () => {
         phoneNumber: userProfile.phoneNumber || "",
         address: userProfile.address || "",
         state: userProfile.state || "",
-        image: null,
+        image: userProfile.image || null,
       });
     }
   }, [userProfile]);
@@ -44,107 +42,68 @@ const EditProfile = () => {
     });
   };
 
-  const handleImageChange = (e) => {
-    setFormData({
-      ...formData,
-      image: e.target.files[0],
-    });
-  };
-
-  const handleImageClick = () => {
-    // When the image icon is clicked, trigger a click event on the file input
-    fileInputRef.current.click();
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-// if (!image) {
-//   setMessage("Please select an image.");
-//   toast.error(message);
-// }
-    try {
-      const formDataWithImage = new FormData();
-      formDataWithImage.append("firstName", formData.firstName);
-      formDataWithImage.append("lastName", formData.lastName);
-      formDataWithImage.append("email", formData.email);
-      formDataWithImage.append("phoneNumber", formData.phoneNumber);
-      formDataWithImage.append("address", formData.address);
-      formDataWithImage.append("state", formData.state);
-      formDataWithImage.append("image", formData.image);
 
-      await uploadImageToCloudinary(formData.image);
-      setMessage("Uploading...")     
-      setProgress((prevState) => {
-        return { ...prevState, started: true, percentage: 0 };
-      }); 
-      await axios.put(
+    try {
+      const formData = new FormData();
+      formData.append("firstName", firstName);
+      formData.append("lastName", lastName);
+      formData.append("email", email);
+      formData.append("phoneNumber", phoneNumber);
+      formData.append("address", address);
+      formData.append("state", state);
+      formData.append("image", imageUrl);
+
+      const response = await axios.put(
         `https://kcoat.onrender.com/user-profile/${userProfile.customerId}`,
-        formDataWithImage,
-        {
-          onUploadProgress: (progressEvent) => {
-            toast.loading(
-              setProgress((prevState) => {
-                return {
-                  ...prevState,
-                  percentage: Math.round(progressEvent.progress * 100),
-                };
-              })
-            );
-          },
-        },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
+        formData
       );
-      toast.success("Profile edited successful!");
-      setTimeout(() => {
-        navigate("/user-profile");
-      }, 4000);
+      if (response.status === 200) {
+        toast.success("Profile edited successful!");
+        setTimeout(() => {
+          navigate("/user-profile");
+        }, 4000);
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPhoneNumber("");
+        setAddress("");
+        setState("");
+        setFormSubmitted(true);
+      } else {
+        toast.error("Error updating user profile. Please try again.");
+      }
     } catch (error) {
       console.error("Error updating user profile:", error);
     }
-  };
-
-  const uploadImageToCloudinary = async (imageFile) => {
-    const formData = new FormData();
-    formData.append("file", imageFile);
-    formData.append("upload_preset", "joznqvva"); // Replace with your Cloudinary upload preset
-
-    return await axios.post(
-      "https://api.cloudinary.com/v1_1/dcqybedxj/image/upload",
-      formData
-    );
   };
 
   return (
     <div className="pt-[8rem] xs:px-[2rem] md:px-[10rem] px-[20rem] py-[5em] font-oxygen">
       <form action="" onSubmit={handleSubmit}>
         <div className="">
-          <div className=" flex flex-col xs:gap-4 gap-8 items-center justify-center rounded-3xl py-[2em] xs:px-0 px-[5em] ">
-            <div onClick={handleImageClick} style={{ cursor: "pointer" }}>
-              {/* <img src={userdp} alt="" /> */}
-              <img src={formData.image} alt="User-image" />
-              <input
-                type="file"
-                ref={fileInputRef}
-                name="image"
-                onChange={handleImageChange}
-                accept="image/*"
-                className="rounded-full w-20 h-20 bg-bland"
-              />
-
-              {progress.started && (
-                <progress max="100" value={progress.percentage}></progress>
+          <div className="border flex flex-col xs:gap-4 gap-8 items-center justify-center rounded-3xl py-[2em] xs:px-4 px-[5em] ">
+            <div style={{ cursor: "pointer" }}>
+              {formSubmitted ? (
+                <img
+                  src={formData.image}
+                  className="w-[10rem] h-[10rem] xs:w-[8rem] xs:h-[8rem] object-cover border-2 border-tertiary rounded-full ml-4"
+                  alt="User-image"
+                />
+              ) : (
+                <div>
+                  <Upload setImageUrl={setImageUrl} />
+                </div>
               )}
-              {message && <span className="text-tertiary">{message}</span>}
             </div>
+
             <div className="flex flex-col items-center gap-4 xs:text-base text-[1.5em] font-bold  justify-center">
               <h1>
                 {formData.firstName} {formData.lastName}
               </h1>
-              <p>{formData.address}</p>
+              <p className="xs:pl-8">{formData.address}</p>
             </div>
           </div>
 
@@ -288,41 +247,3 @@ const EditProfile = () => {
 };
 
 export default EditProfile;
-
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   setIsSubmitting(true);
-  //   const formData = {
-  //     ProductName,
-  //     ProductPrice,
-  //     ProductDescription,
-  //     Quantity,
-  //     ProductCategory,
-  //     SubCategory,
-  //     ProductImage: imageUrl,
-  //   };
-  //   // Make a POST request to your backend endpoint with the form data
-  //   fetch("https://kcoat.onrender.com/products", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(formData),
-  //   });
-    //    if (response.status === 200) {
-    //     setSuccess("Product added successfully!");
-    //     // Clear form data
-    //     setProductName("");
-    //     setProductDescription("");
-    //     setProductPrice("");
-    //     setProductCategory("");
-    //     setSubCategory("");
-    //     setQuantity("");
-    //     setProductImage(null);
-    //   } else {
-    //     setError("Failed to add product. Please try again.");
-    //   }
-    // }
-    
-  // };

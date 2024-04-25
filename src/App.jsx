@@ -26,14 +26,17 @@ import { useContext } from "react";
 import { ProductContext } from "../hooks/ProductContext";
 import ProductsPage from "./components/Products/ProductsPage";
 import NavBar from "./components/LandingpageComponents/NavBar"
+import ScrollToTop from "./components/ScrollToTop";
+
 function App() {
-  //   const {customerId} = "customerId"
-  //  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+
 
   const { customerId, isLoggedIn } = useContext(ProductContext);
   return (
     <>
-<NavBar />
+      <ScrollToTop />
+      <NavBar />
       <Header customerId={customerId} isLoggedIn={isLoggedIn} />
       <ScrollArrow />
       <Routes>
@@ -64,7 +67,6 @@ function App() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/all-products" element={<ProductsPage />} />
       </Routes>
-
 
       <Footer />
     </>

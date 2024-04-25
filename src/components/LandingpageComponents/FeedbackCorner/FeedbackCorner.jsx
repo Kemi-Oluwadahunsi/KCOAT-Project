@@ -63,7 +63,7 @@ const FeedbackCorner = () => {
 const CustomPrevArrow = (props) => {
   const { onClick } = props;
   return (
-    <button className="bottom-0 absolute left-[49%] " onClick={onClick}>
+    <button className="bottom-0 absolute xs:left-[47%] left-[49%] " onClick={onClick}>
       <FontAwesomeIcon icon={faChevronLeft} className="text-color text-lg hover:bg-tertiary p-1" />
     </button>
   );
@@ -73,7 +73,7 @@ const CustomNextArrow = (props) => {
   const { onClick } = props;
   return (
     <button
-      className="bottom-0 absolute left-[52%] font-bold"
+      className="bottom-0 absolute xs:left-[54%] left-[52%] font-bold"
       onClick={onClick}
     >
       <FontAwesomeIcon icon={faChevronRight} className="text-color text-lg hover:bg-tertiary p-1" />

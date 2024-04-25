@@ -47,7 +47,7 @@ const Upload = ({ setImageUrl }) => {
         cloudName,
         uploadPreset,
         sources: ["local", "url"],
-        tags: ["kcoatstyle-products"], 
+        tags: ["kcoatstyle-products"],
         clientAllowedFormats: ["image"],
         resourceType: "image",
         multiple: false, // Set multiple to false to allow only single file upload
@@ -69,7 +69,11 @@ const Upload = ({ setImageUrl }) => {
 
       {uploadedImage && (
         <div className="w-full p-4">
-          <img className="w-full h-auto object-cover rounded-lg" src={uploadedImage} alt=""/>
+          <img
+            className="w-[10rem] h-[10rem] xs:w-[8rem] xs:h-[8rem] object-cover border-2 border-tertiary rounded-full"
+            src={uploadedImage}
+            alt=""
+          />
         </div>
       )}
 
