@@ -15,11 +15,11 @@ const Cards = (props) => {
               {props.title}
             </h3>
             <div className="flex justify-between gap-3 ">
-              <p className="font-tertiary font-normal text-[1rem] text-tertiary">
+              <p className="font-tertiary font-normal xs:text-[0.8em] text-tertiary">
                 N{props.price}
               </p>
-              <div className="flex gap-3 place-items-center cursor-pointer">
-                <img src={Cart} alt="cart" />
+              <div className="flex  gap-3 place-items-center cursor-pointer">
+                <img src={Cart} alt="cart" className="xs:w-[60%]"/>
               </div>
             </div>
           </div>

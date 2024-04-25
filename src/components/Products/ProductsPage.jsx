@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import SearchInput from "../StaticComponents/SearchInput";
-import angleRight from "../../assets/chevron-right.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
 import Submenu from "./Submenu";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft, faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -98,6 +99,10 @@ const AllProducts = () => {
     if (currentPage > 1) {
       setCurrentPage((prevPage) => prevPage - 1);
     }
+  };
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   
@@ -219,7 +224,7 @@ const AllProducts = () => {
               />
             </div>
 
-            <div className="font-secondary font-medium">
+            {/* <div className="font-secondary font-medium">
               <div className="flex gap-4 justify-center xs:mt-2 mt-4">
                 {currentPage > 1 && (
                   <button
@@ -243,6 +248,40 @@ const AllProducts = () => {
                   </button>
                 )}
               </div>
+
+            </div> */}
+
+            <div className="w-full flex justify-center items-center  gap-2">
+              <button
+                className="flex place-items-center text-color rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
+                onClick={handlePrevPage}
+                disabled={currentPage === 1}
+              >
+                <FontAwesomeIcon icon={faAngleDoubleLeft} />
+              </button>
+              <div>
+                {[...Array(totalPages).keys()].map((number) => (
+                  <button
+                    key={number}
+                    disabled={currentPage === 1}
+                    className={`border border-categoryborder2 px-3 py-1  ${
+                      currentPage === number + 1
+                        ? "bg-tertiary text-primary"
+                        : ""
+                    }`}
+                    onClick={() => paginate(number + 1)}
+                  >
+                    {number + 1}
+                  </button>
+                ))}
+              </div>
+              <button
+                className="flex place-items-center text-color rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
+                onClick={handleNextPage}
+                disabled={currentPage === totalPages}
+              >
+                <FontAwesomeIcon icon={faAngleDoubleRight} />
+              </button>
             </div>
           </div>
         </div>

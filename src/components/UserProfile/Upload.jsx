@@ -70,7 +70,7 @@ const Upload = ({ setImageUrl }) => {
       {uploadedImage && (
         <div className="w-full p-4">
           <img
-            className="w-[10rem] h-[10rem] xs:w-[8rem] xs:h-[8rem] object-cover border-2 border-tertiary rounded-full"
+            className="w-[10rem] h-[10rem] md:h-[9rem] md:w-[9rem] xs:w-[8rem] xs:h-[8rem] object-cover border-2 border-tertiary rounded-full"
             src={uploadedImage}
             alt=""
           />

@@ -65,9 +65,9 @@ const AdminManagepage = () => {
     }
   };
   return (
-    <div className="pt-[8rem] xs:px-0 px-[4em] ">
-      <div className="flex gap-[3em]">
-        <div className="basis-[20%]">
+    <div className="pt-[8rem] xs:px-0 md:px-0 px-[4em] ">
+      <div className="flex md:gap-4 gap-[3em]">
+        <div className="basis-[20%] md:basis-[17%]">
           <AdminSidebar
             handleMenuClick={handleMenuClick}
             handleAdminLogout={handleAdminLogout}

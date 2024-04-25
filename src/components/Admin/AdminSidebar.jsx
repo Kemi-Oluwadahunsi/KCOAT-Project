@@ -24,7 +24,7 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
         <div className="text-primary flex flex-col gap-[2em]">
           <h2>Menu</h2>
           <NavLink
-            to="/admin/dashboard"
+            to="/kcoat/dashboard"
             onClick={() => handleClick("dashboard")}
           >
             <div
@@ -37,7 +37,7 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
             </div>
           </NavLink>
 
-          <NavLink to="/admin/products" onClick={() => handleClick("products")}>
+          <NavLink to="/kcoat/products" onClick={() => handleClick("products")}>
             <div
               className={`flex gap-4 items-center ${
                 activeMenu === "products" ? "border-b-2" : ""
@@ -49,7 +49,7 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
           </NavLink>
 
           <NavLink
-            to="/admin/add-product"
+            to="/kcoat/add-product"
             onClick={() => handleClick("addproduct")}
           >
             <div
@@ -62,7 +62,7 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
             </div>
           </NavLink>
 
-          <NavLink to="/admin/sales" onClick={() => handleClick("sales")}>
+          <NavLink to="/kcoat/sales" onClick={() => handleClick("sales")}>
             <div
               className={`flex gap-4 items-center ${
                 activeMenu === "sales" ? "border-b-2" : ""
@@ -74,7 +74,7 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
           </NavLink>
 
           <NavLink
-            to="/admin/customers"
+            to="/kcoat/customers"
             onClick={() => handleClick("customers")}
           >
             <div
@@ -88,7 +88,7 @@ const AdminSidebar = ({ handleMenuClick, handleAdminLogout }) => {
           </NavLink>
 
           <NavLink
-            to="/admin/feedback-corner"
+            to="/kcoat/feedback-corner"
             onClick={() => handleClick("feedbacks")}
           >
             <div

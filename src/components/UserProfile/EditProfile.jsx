@@ -89,7 +89,7 @@ const EditProfile = () => {
               {formSubmitted ? (
                 <img
                   src={formData.image}
-                  className="w-[10rem] h-[10rem] xs:w-[8rem] xs:h-[8rem] object-cover border-2 border-tertiary rounded-full ml-4"
+                  className="w-[10rem] h-[10rem] md:h-[7rem] md:w-[12rem] xs:w-[8rem] xs:h-[8rem] object-cover border-2 border-tertiary rounded-full ml-4"
                   alt="User-image"
                 />
               ) : (

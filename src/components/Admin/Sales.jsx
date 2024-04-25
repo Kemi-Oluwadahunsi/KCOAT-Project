@@ -7,6 +7,21 @@ import { useState } from "react";
 import sales from "./soldItems";
 const Sales = () => {
   const [loading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const salesPerPage = 5;
+
+  const indexOfLastSales = currentPage * salesPerPage;
+  const indexOfFirstSales = indexOfLastSales - salesPerPage;
+
+  const currentSales = sales.slice(
+    indexOfFirstSales,
+    indexOfLastSales
+  );
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div>
@@ -35,7 +50,7 @@ const Sales = () => {
                     </tr>
                   </thead>
                   <tbody className="text-stats">
-                    {sales.map((sale) => (
+                    {currentSales.map((sale) => (
                       <tr
                         key={sale.id}
                         className="border-b border-categoryborder2"
@@ -54,7 +69,6 @@ const Sales = () => {
                                   src={eachItem.image}
                                   alt="image"
                                   className="w-[3em] h-[2em] object-cover"
-                                  
                                 />
                               </div>
 
@@ -77,27 +91,37 @@ const Sales = () => {
           </div>
 
           <div className="flex gap-4 items-center justify-center w-full">
-            <button>
+            <button
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
               <FontAwesomeIcon
                 icon={faAngleDoubleLeft}
-                className=" text-categoryborder2 text-lg"
+                className=" text-categoryborder text-lg"
               />
             </button>
             <div>
-              <button className="border border-categoryborder2 px-3 py-1">
-                1
-              </button>
-              <button className="border border-categoryborder2 px-3 py-1">
-                2
-              </button>
-              <button className="border border-categoryborder2 px-3 py-1">
-                3
-              </button>
+              {[
+                ...Array(Math.ceil(sales.length / salesPerPage)).keys(),
+              ].map((number) => (
+                <button
+                  key={number}
+                  className={`border border-categoryborder2 px-3 py-1  ${
+                    currentPage === number + 1 ? "bg-tertiary text-primary" : ""
+                  }`}
+                  onClick={() => paginate(number + 1)}
+                >
+                  {number + 1}
+                </button>
+              ))}
             </div>
-            <button>
+            <button
+              onClick={() => paginate(currentPage + 1)}
+              disabled={indexOfLastSales >= sales.length}
+            >
               <FontAwesomeIcon
                 icon={faAngleDoubleRight}
-                className=" text-categoryborder2 text-lg"
+                className=" text-categoryborder text-lg"
               />
             </button>
           </div>

@@ -61,9 +61,9 @@ const AddProduct = () => {
       className="w-full
     "
     >
-      <div className="flex flex-col w-[50%] pl-[4em]">
+      <div className="flex flex-col w-[50%] xs:w-[100%] pl-[4em]">
         <div className="">
-          <h1 className="text-[2.5rem] font-lso text-categoryborder">
+          <h1 className="text-[2.5rem] xs:text-[1.8rem] font-lso text-categoryborder">
             Add New Product
           </h1>
         </div>

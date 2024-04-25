@@ -73,7 +73,7 @@ const Footer = () => {
             <h3>Nigeria</h3>
           </div>
 
-          <ul className="flex xs:text-[0.8em] justify-between xs:w-[80%] xs:gap-3 gap-10 cursor-pointer">
+          <ul className="flex xs:text-[0.8em] justify-between xs:w-[100%] xs:gap-3 gap-10 cursor-pointer">
             <li>Guides</li>
             <li>Terms of Sale</li>
             <li>Terms of Use</li>

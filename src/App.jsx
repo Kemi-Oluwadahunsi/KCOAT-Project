@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import LandingPage from "./components/LandingpageComponents/LandingPage";
 import Login from "./components/Login-Signup/Login";
 import Firstpage from "../Firstpage";
@@ -29,11 +29,14 @@ import NavBar from "./components/LandingpageComponents/NavBar";
 
 
 function App() {
-  const location = useLocation();
+
+   const navigate = useNavigate();
+   const location = useLocation();
 
   useEffect(() => {
+    navigate(location.pathname);
     window.scrollTo(0, 0);
-  }, [location.pathname]);
+  }, [location.pathname, navigate]);
 
   const { customerId, isLoggedIn } = useContext(ProductContext);
   return (
@@ -65,7 +68,7 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/checkout-payment" element={<CheckOut2 />} />
         <Route path="/new-featured" element={<NewFeatured />} />
-        <Route path="/admin/*" element={<AdminManagepage />} />
+        <Route path="/kcoat/*" element={<AdminManagepage />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/all-products" element={<ProductsPage />} />
       </Routes>

@@ -16,7 +16,7 @@ const Feedbacks = () => {
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 
   // Slice the products array to display only the products for the current page
-  const currentProducts = feedbacks.slice(
+  const currentFeedbacks = feedbacks.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
@@ -43,7 +43,7 @@ const Feedbacks = () => {
               </tr>
             </thead>
             <tbody className="text-stats">
-              {currentProducts.map((feedback) => (
+              {currentFeedbacks.map((feedback) => (
                 <tr
                   key={feedback.id}
                   className="border-b border-categoryborder2"
