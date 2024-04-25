@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import LandingPage from "./components/LandingpageComponents/LandingPage";
 import Login from "./components/Login-Signup/Login";
 import Firstpage from "../Firstpage";
@@ -22,20 +22,22 @@ import CheckOut2 from "./components/Cart-Flow/CheckOut2";
 import NewFeatured from "./components/Products/NewFeatured";
 import AdminManagepage from "./components/Admin/AdminManagepage";
 import AdminLogin from "./components/Admin/AdminLogin";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ProductContext } from "../hooks/ProductContext";
 import ProductsPage from "./components/Products/ProductsPage";
-import NavBar from "./components/LandingpageComponents/NavBar"
-import ScrollToTop from "./components/ScrollToTop";
+import NavBar from "./components/LandingpageComponents/NavBar";
+
 
 function App() {
+  const location = useLocation();
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const { customerId, isLoggedIn } = useContext(ProductContext);
   return (
     <>
-      <ScrollToTop />
       <NavBar />
       <Header customerId={customerId} isLoggedIn={isLoggedIn} />
       <ScrollArrow />

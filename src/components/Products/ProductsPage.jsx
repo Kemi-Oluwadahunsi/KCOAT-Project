@@ -49,7 +49,7 @@ const AllProducts = () => {
           product.ProductDescription.toLowerCase().includes(
             searchQuery.toLowerCase()
           ) ||
-          (Number(searchQuery) && product.ProductPrice === Number(searchQuery));
+          (searchQuery && Number(product.ProductPrice) === Number(searchQuery));
 
         return matchesPriceRange && matchesSearchQuery;
       });
@@ -141,11 +141,16 @@ const AllProducts = () => {
             {/* Price range checkboxes */}
             <div className="flex flex-col xs:gap-[0.5em] xs:text-[0.8em] xs:leading-5 leading-9 font-oxygen text-secondary">
               {[
-                { label: "N5000 - N20000", range: [5000, 20000] },
-                { label: "N20000 - N25000", range: [20000, 25000] },
-                { label: "N25000 - N30000", range: [25000, 30000] },
+                { label: "N5000 - N10000", range: [5000, 10000] },
+                { label: "N10000 - N25000", range: [10000, 25000] },
+                { label: "N25000 - N35000", range: [25000, 35000] },
+                { label: "N35000 - N50000", range: [35000, 50000] },
+                { label: "N50000 - N100000", range: [50000, 100000] },
               ].map(({ label, range }, index) => (
-                <div key={index} className="flex xs:gap-1 gap-5 xs:items-start items-center">
+                <div
+                  key={index}
+                  className="flex xs:gap-1 gap-5 xs:items-start items-center"
+                >
                   <input
                     type="checkbox"
                     className="w-4 h-4 checkbox"
@@ -204,7 +209,7 @@ const AllProducts = () => {
             <div className="w-full flex">
               <hr
                 className={`w-[50%] h-1 border-0 ${
-                  currentPage === 1 ? "bg-tertiary" : "bg-nextpage"
+                  currentPage === currentPage ? "bg-tertiary" : "bg-nextpage"
                 }`}
               />
               <hr
@@ -215,7 +220,7 @@ const AllProducts = () => {
             </div>
 
             <div className="font-secondary font-medium">
-              <div className="flex justify-center xs:mt-2 mt-4">
+              <div className="flex gap-4 justify-center xs:mt-2 mt-4">
                 {currentPage > 1 && (
                   <button
                     className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
