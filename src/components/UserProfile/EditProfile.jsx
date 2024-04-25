@@ -11,15 +11,17 @@ import Upload from "./Upload";
 const EditProfile = () => {
   const { userProfile } = useContext(ProductContext);
   const navigate = useNavigate();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState(0);
-  const [address, setAddress] = useState("");
-  const [state, setState] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [formData, setFormData] = useState([])
-   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [imageUrl, setImageUrl] = useState('');
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    state: "",
+    image: null,
+  });
 
   useEffect(() => {
     if (userProfile) {
@@ -35,6 +37,12 @@ const EditProfile = () => {
     }
   }, [userProfile]);
 
+  const handleImageChange = (newImageUrl) => {
+    setFormData({ ...formData, image: newImageUrl });
+    setImageUrl(newImageUrl);
+    console.log("Image URL:", newImageUrl);
+  };
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -42,35 +50,26 @@ const EditProfile = () => {
     });
   };
 
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("firstName", firstName);
-      formData.append("lastName", lastName);
-      formData.append("email", email);
-      formData.append("phoneNumber", phoneNumber);
-      formData.append("address", address);
-      formData.append("state", state);
+      formData.append("firstName", formData.firstName);
+      formData.append("lastName", formData.lastName);
+      formData.append("email", formData.email);
+      formData.append("phoneNumber", formData.phoneNumber);
+      formData.append("address", formData.address);
+      formData.append("state", formData.state);
       formData.append("image", imageUrl);
-
       const response = await axios.put(
         `https://kcoat.onrender.com/user-profile/${userProfile.customerId}`,
         formData
       );
       if (response.status === 200) {
-        toast.success("Profile edited successful!");
+        toast.success("Profile edited successfully!");
         setTimeout(() => {
           navigate("/user-profile");
         }, 4000);
-        setFirstName("");
-        setLastName("");
-        setEmail("");
-        setPhoneNumber("");
-        setAddress("");
-        setState("");
         setFormSubmitted(true);
       } else {
         toast.error("Error updating user profile. Please try again.");
@@ -79,6 +78,7 @@ const EditProfile = () => {
       console.error("Error updating user profile:", error);
     }
   };
+
 
   return (
     <div className="pt-[8rem] xs:px-[2rem] md:px-[10rem] px-[20rem] py-[5em] font-oxygen">
@@ -94,7 +94,7 @@ const EditProfile = () => {
                 />
               ) : (
                 <div>
-                  <Upload setImageUrl={setImageUrl} />
+                  <Upload setImageUrl={handleImageChange} />
                 </div>
               )}
             </div>

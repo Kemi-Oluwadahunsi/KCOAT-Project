@@ -112,10 +112,10 @@ const Signup = () => {
     <div className="border-l-8 border-simple1 md:w-[100%]">
       <div className="justify-center flex h-auto xs:h-auto md:h-auto w-[100%] md:w-[90%] md:pb-[2rem] xs:pt-[6rem] md:pt-[7rem] pt-[5rem]   mx-auto">
         {success ? (
-          <section className="">
+          <section className=" pb-8 pt-4 ">
             <div
               className="w-[100%] py-[4em] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)]
-          rounded-[1em] flex flex-col xs:gap-4 gap-[3em]"
+          rounded-[1em] flex flex-col xs:gap-4 gap-[3em] px-[2rem]"
             >
               <h1 className="text-white xs:text-2xl text-4xl">
                 Success! Please Sign in
@@ -462,7 +462,6 @@ const Signup = () => {
             </div>
           </div>
         )}
-        ;
         <div className="z-[10000]">
           <ToastContainer position="top-right" autoClose={5000} />
         </div>

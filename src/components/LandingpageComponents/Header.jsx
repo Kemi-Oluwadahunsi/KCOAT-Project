@@ -25,19 +25,19 @@ const Header = () => {
 
       <ul className="text-color font-oxygen font-medium flex justify-around space-x-4 xs:w-3/4 w-2/4 place-items-center cursor-pointer">
         <Link to="/">
-          <li className="text-lg">Home</li>
+          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">Home</li>
         </Link>
 
         <Link to="/all-products">
-          <li className="text-lg">Products</li>
+          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">Products</li>
         </Link>
 
         <Link to="/new-featured">
-          <li className="text-lg">New & Featured</li>
+          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">New & Featured</li>
         </Link>
 
         <Link to="/contact">
-          <li className="text-lg">Contact</li>
+          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">Contact</li>
         </Link>
       </ul>
 

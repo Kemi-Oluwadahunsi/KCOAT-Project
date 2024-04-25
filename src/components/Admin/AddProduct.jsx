@@ -21,6 +21,7 @@ const AddProduct = () => {
    const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
+   
     try {
       const formData = new FormData();
       formData.append("ProductName", ProductName);

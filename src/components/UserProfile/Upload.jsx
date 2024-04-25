@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const Upload = ({ setImageUrl }) => {
   const [loaded, setLoaded] = useState(false);
-  const [uploadedImage, setUploadedImage] = useState([]);
+  const [uploadedImage, setUploadedImage] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
