@@ -49,7 +49,7 @@ export const AdminContextProvider = ({ children }) => {
       localStorage.setItem("isAdminLoggedIn", "true");
       setIsAdminLoggedIn(true);
       setTimeout(() => {
-        navigate("/admin");
+        navigate("/kcoat");
       }, 2000);
     } catch (error) {
       console.error("Error:", error);
