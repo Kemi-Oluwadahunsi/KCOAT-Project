@@ -1,6 +1,6 @@
 import axios from "axios";
 import Button from "../StaticComponents/Button";
-// import userdp from "../../assets/Ellipse-4.svg";
+ import userdp from "../../assets/Ellipse-4.svg";
 import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../../hooks/ProductContext";
 import { useNavigate } from "react-router-dom";
@@ -11,8 +11,8 @@ import Upload from "./Upload";
 const EditProfile = () => {
   const { userProfile } = useContext(ProductContext);
   const navigate = useNavigate();
-  const [imageUrl, setImageUrl] = useState('');
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  //const [imageUrl, setImageUrl] = useState('');
+  // const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -32,7 +32,7 @@ const EditProfile = () => {
         phoneNumber: userProfile.phoneNumber || "",
         address: userProfile.address || "",
         state: userProfile.state || "",
-        image: userProfile.image || null,
+        // image: userProfile.image || null,
       });
     }
   }, [userProfile]);
@@ -60,7 +60,7 @@ const EditProfile = () => {
       formData.append("phoneNumber", formData.phoneNumber);
       formData.append("address", formData.address);
       formData.append("state", formData.state);
-      formData.append("image", imageUrl);
+      // formData.append("image", imageUrl);
       const response = await axios.put(
         `https://kcoat.onrender.com/user-profile/${userProfile.customerId}`,
         formData
@@ -70,7 +70,7 @@ const EditProfile = () => {
         setTimeout(() => {
           navigate("/user-profile");
         }, 4000);
-        setFormSubmitted(true);
+        
       } else {
         toast.error("Error updating user profile. Please try again.");
       }
@@ -86,19 +86,12 @@ const EditProfile = () => {
         <div className="">
           <div className="border flex flex-col xs:gap-4 gap-8 items-center justify-center rounded-3xl py-[2em] xs:px-4 px-[5em] ">
             <div style={{ cursor: "pointer" }}>
-              {formSubmitted ? (
+             
                 <img
-                  src={formData.image}
+                  src={userdp}
                   className="w-[10rem] h-[10rem] md:h-[7rem] md:w-[12rem] xs:w-[8rem] xs:h-[8rem] object-cover border-2 border-tertiary rounded-full ml-4"
                   alt="User-image"
-                />
-              ) : (
-                <div>
-                  <Upload setImageUrl={handleImageChange} />
-                </div>
-              )}
-            </div>
-
+                /></div>
             <div className="flex flex-col items-center gap-4 xs:text-base text-[1.5em] font-bold  justify-center">
               <h1>
                 {formData.firstName} {formData.lastName}
