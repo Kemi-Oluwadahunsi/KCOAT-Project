@@ -2,6 +2,7 @@ import img1 from "../../assets/p-necklace.png";
 import img2 from "../../assets/bbb.png";
 import img3 from "../../assets/orangefit.png";
 import img4 from "../../assets/faceless.png";
+import { Link } from "react-router-dom";
 
 const CategoryCard = () => {
   return (
@@ -22,11 +23,11 @@ const CategoryCard = () => {
             className="relative w-[33%]   h-auto ml-0 my-4 bg-cover bg-no-repeat bg-center rounded-md overflow-hidden "
             style={{ backgroundImage: `url(${img3})` }}
           >
-            <a href="#">
+            <Link to={"/all-products"}>
               <button className="absolute bottom-4 ml-48 md:ml-32 bg-primary hover:bg-color text-tertiary font-lso py-2 px-2 rounded">
                 Female wears
               </button>
-            </a>
+            </Link>
           </div>
 
           {/* Card with img1 and img2 */}
@@ -36,11 +37,11 @@ const CategoryCard = () => {
               className="relative  h-48 mx-4 my-4 bg-cover bg-no-repeat bg-center rounded-md overflow-hidden"
               style={{ backgroundImage: `url(${img1})` }}
             >
-              <a href="#">
+              <Link to={"/all-products"}>
                 <button className="absolute bottom-1 mx-3 bg-primary hover:bg-color text-tertiary font-lso py-2 px-2 rounded">
                   Jewelries
                 </button>
-              </a>
+              </Link>
             </div>
 
             {/* img2 */}
@@ -48,11 +49,11 @@ const CategoryCard = () => {
               className="relative h-48 mx-4 my-4 bg-cover bg-no-repeat bg-center rounded-md overflow-hidden"
               style={{ backgroundImage: `url(${img2})` }}
             >
-              <a href="#">
+              <Link to={"/all-products"}>
                 <button className="absolute bottom-3 ml-48 md:ml-28 bg-primary hover:bg-color text-tertiary font-lso py-2 px-2 rounded">
                   Shoes & Bags
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -61,11 +62,11 @@ const CategoryCard = () => {
             className="relative w-[33%] h-auto my-4 bg-cover bg-no-repeat bg-center rounded-md overflow-hidden"
             style={{ backgroundImage: `url(${img4})` }}
           >
-            <a href="#">
+            <Link to={"/all-products"}>
               <button className="absolute bottom-4 ml-48 md:ml-32 bg-primary hover:bg-color text-tertiary font-lso py-2 px-2 rounded">
                 Men Wears
               </button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
