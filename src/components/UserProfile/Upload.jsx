@@ -60,7 +60,7 @@ const Upload = ({ setImageUrl }) => {
     <div className="">
       <button
         disabled={isDisabled}
-        className="ml-4 text-lg font-bold border border-border px-4 py-2 rounded-lg text-tertiary hover:text-white transition-all duration-300"
+        className=" text-base font-bold border border-border px-4 py-2 rounded-lg text-tertiary hover:text-white transition-all duration-300"
         type="button"
         onClick={uploadWidget}
       >

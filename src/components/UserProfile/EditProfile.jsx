@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Upload from "./Upload";
-
-// import Upload from "./Upload";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaCameraRetro } from "react-icons/fa";
+import { faCameraRetro } from "@fortawesome/free-solid-svg-icons";
 
 const EditProfile = () => {
   const { userProfile } = useContext(ProductContext);
@@ -25,6 +26,17 @@ const EditProfile = () => {
     image: "",
   });
 
+  const [editingImage, setEditingImage] = useState(false);
+
+  const handleImageEdit = () => {
+    setEditingImage(true);
+  };
+
+  const handleImageUpload = (newImageUrl) => {
+    setImageUrl(newImageUrl);
+    setEditingImage(false);
+  };
+
   useEffect(() => {
     if (userProfile) {
       setFormData({
@@ -34,16 +46,10 @@ const EditProfile = () => {
         phoneNumber: userProfile.phoneNumber || "",
         address: userProfile.address || "",
         state: userProfile.state || "",
-        image: imageUrl || "",
+        image: userProfile.image || "",
       });
     }
   }, [userProfile]);
-
-  // const handleImageChange = (newImageUrl) => {
-  //   setFormData({ ...formData, image: newImageUrl });
-  //   setImageUrl(newImageUrl);
-  //   console.log("Image URL:", newImageUrl);
-  // };
 
   const handleChange = (e) => {
     setFormData({
@@ -57,7 +63,7 @@ const EditProfile = () => {
     try {
       const response = await axios.put(
         `https://kcoat.onrender.com/user-profile/${userProfile.customerId}`,
-        formData
+        { ...formData, image: imageUrl || formData.image }
       );
       if (response.status === 200) {
         toast.success("Profile edited successfully!");
@@ -80,8 +86,33 @@ const EditProfile = () => {
           <div className="border flex flex-col xs:gap-4 gap-8 items-center justify-center rounded-3xl py-[2em] xs:px-4 px-[5em] ">
             <div style={{ cursor: "pointer" }}>
               {formSubmitted ? (
+                <Upload setImageUrl={handleImageUpload} />
+              ) : (
+                <div className="relative">
+                  <img
+                    src={imageUrl || formData.image} // Use uploaded image if available, else use existing image
+                    className="w-[10rem] h-[10rem] md:h-[7rem] md:w-[12rem] xs:w-[8rem] xs:h-[8rem] object-cover border-2 border-tertiary rounded-full ml-4"
+                    alt="User-image"
+                  />
+                  <div className="absolute top-[80%] left-[80%]">
+                    {editingImage ? (
+                      <Upload setImageUrl={handleImageUpload}/>
+                    ) : (
+                      <button
+                        onClick={handleImageEdit}
+                        // className="ml-4 text-lg font-bold border border-border px-4 py-2 rounded-lg text-tertiary hover:text-white transition-all duration-300"
+                      >
+                        <FontAwesomeIcon icon={faCameraRetro} className=" text-2xl text-tertiary" title="Update profile Image"/>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ) }
+            </div>
+            {/* <div style={{ cursor: "pointer" }}>
+              {formSubmitted || formData.image ? ( // Check if formSubmitted or image is present
                 <img
-                  src={formData.image}
+                  src={formData.image} // Use image from formData
                   className="w-[10rem] h-[10rem] md:h-[7rem] md:w-[12rem] xs:w-[8rem] xs:h-[8rem] object-cover border-2 border-tertiary rounded-full ml-4"
                   alt="User-image"
                 />
@@ -90,7 +121,8 @@ const EditProfile = () => {
                   <Upload setImageUrl={setImageUrl} />
                 </div>
               )}
-            </div>
+            </div> */}
+
             {/* <div style={{ cursor: "pointer" }}>
               <img
                 src={userdp}

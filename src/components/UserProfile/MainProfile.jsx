@@ -1,5 +1,5 @@
 import Button from "../StaticComponents/Button";
-import userdp from "../../assets/Ellipse-4.svg";
+// import userdp from "../../assets/Ellipse-4.svg";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ProductContext } from "../../../hooks/ProductContext";
@@ -34,19 +34,19 @@ const MainProfile = () => {
           >
             <div className=" flex xs:flex-col gap-8 border border-tertiary rounded-3xl  xs:py-[1em] py-[2em] xs:px-[2em] px-[5em] ">
               <div className="flex justify-center">
-                {userProfile.image ? (
-                  <img
+                {/* {userProfile.image ? ( */}
+                  {/* <img
                     src={userdp}
                     className="w-[10rem] h-[10rem] md:h-[7rem] md:w-[12rem] xs:w-[8rem] xs:h-[8rem] object-cover border-2 border-tertiary rounded-full"
                     alt="User-Image"
                   />
-                ) : (
+                ) : ( */}
                   <img
                     src={userProfile.image}
                     className="w-[10rem] h-[10rem] md:h-[7rem] md:w-[12rem] xs:w-[5rem] xs:h-[5rem] object-cover border-2 border-tertiary rounded-full"
                     alt="User-Image"
                   />
-                )}
+                {/* )} */}
               </div>
               {/* {userProfile.image} */}
               <div className="flex flex-col gap-4 xs:gap-2 xs:text-base text-[1.5em] font-bold  justify-center">
