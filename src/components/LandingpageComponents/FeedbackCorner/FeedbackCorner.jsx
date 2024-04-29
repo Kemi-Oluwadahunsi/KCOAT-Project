@@ -1,14 +1,23 @@
 import Slider from "react-slick";
 import FeedbackCards from "./FeedbackCards";
 import feedbackArray from "./feedbackArray";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import Button from "../../StaticComponents/Button";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useContext, useState } from "react";
+import { ProductContext } from "../../../../hooks/ProductContext";
+import axios from "axios";
 
 const FeedbackCorner = () => {
+   const { isLoggedIn, loggedInUserEmail } = useContext(ProductContext);
+const [name, setName] = useState("");
+const [feedback, setFeedback] = useState("");
+
   const settings = {
     infinite: true,
     slidesToShow: 3, // Show 3 cards at a time
@@ -34,16 +43,97 @@ const FeedbackCorner = () => {
       },
     ],
   };
+
+   const handleSubmit = async (event) => {
+     event.preventDefault();
+     if (!isLoggedIn) {
+       // If user is not logged in, prompt them to log in
+       toast.error("Please log in to leave a feedback.");
+       return;
+     }
+
+     try {
+       // Send feedback data to the endpoint
+       const response = await axios.post("https://kcoat.onrender.com/feedbacks", {
+         name,
+         feedback,
+         email: loggedInUserEmail,
+       });
+
+       if (response.status === 200) {
+         toast.success("Feedback submitted successfully!");
+         // Clear input fields after successful submission
+         setName("");
+         setFeedback("");
+       } else {
+         toast.error("Error submitting feedback. Please try again.");
+       }
+     } catch (error) {
+       console.error("Error submitting feedback:", error);
+       toast.error("Error submitting feedback. Please try again.");
+     }
+   };
+
   return (
     <>
       <div className="bg-feedback py-8">
-        <div className="text-color text-center">
-          <h2 className="font-tertiary font-bold text-2xl md:text-3xl lg:text-4xl mt-10 mb-1">
-            Feedback Corner
-          </h2>
-          <p className="font-medium">What Our Customers Are Saying..........</p>
+        <div className="flex justify-center ">
+          <div className="text-color text-center w-[60%] ">
+            <h2 className="font-tertiary font-bold text-2xl md:text-3xl lg:text-4xl mt-8 mb-1">
+              Feedback Corner
+            </h2>
+            <p className="font-medium">
+              What Our Customers Are Saying..........
+            </p>
+          </div>
+
+          <div className="w-[30%] mx-auto mt-4">
+            <div className="border border-border rounded-2xl px-4 flex flex-col gap-4 py-4">
+              <p className="text-color font-bold font-oxygen text-lg">
+                Shopped from Kcoat yet? Kindly leave us a review.
+              </p>
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-[1em] "
+              >
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Please Enter Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="border rounded-lg border-border bg-nextpage outline-createaccount xs:py-1 md:py-3 px-4 py-1  text-color"
+                />
+                <textarea
+                  name="feedback"
+                  id=""
+                  cols="10"
+                  placeholder="Please Enter Your Feedback"
+                  value={feedback}
+                  onChange={(e) => setFeedback(e.target.value)}
+                  className="border rounded-lg border-border bg-nextpage outline-createaccount px-4  text-color"
+                ></textarea>
+
+                <div className="flex items-center justify-center">
+                  <Button
+                    type="submit"
+                    // className="bg-primary py-2 px-4 text-white rounded-lg"
+                  >
+                    Submit Feedback
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <Slider {...settings} style={{}} className="px-[2rem] sm:px-[3rem] md:px-[5rem] lg:px-[6rem] py-20">
+
+        {/* Collect testimonials from customers. */}
+
+        <Slider
+          {...settings}
+          style={{}}
+          className="px-[2rem] sm:px-[3rem] md:px-[5rem] lg:px-[6rem] py-20"
+        >
           {feedbackArray.map((item) => (
             <div key={item.id} className=" ">
               <FeedbackCards
@@ -55,6 +145,10 @@ const FeedbackCorner = () => {
           ))}
         </Slider>
       </div>
+
+      <div className="z-[10000]">
+        <ToastContainer position="top-right" autoClose={2000} />
+      </div>
     </>
   );
 };
@@ -63,8 +157,14 @@ const FeedbackCorner = () => {
 const CustomPrevArrow = (props) => {
   const { onClick } = props;
   return (
-    <button className="bottom-0 absolute xs:left-[47%] left-[49%] " onClick={onClick}>
-      <FontAwesomeIcon icon={faChevronLeft} className="text-color text-lg hover:bg-tertiary p-1" />
+    <button
+      className="bottom-0 absolute xs:left-[47%] left-[49%] "
+      onClick={onClick}
+    >
+      <FontAwesomeIcon
+        icon={faChevronLeft}
+        className="text-color text-lg hover:bg-tertiary p-1"
+      />
     </button>
   );
 };
@@ -76,7 +176,10 @@ const CustomNextArrow = (props) => {
       className="bottom-0 absolute xs:left-[54%] left-[52%] font-bold"
       onClick={onClick}
     >
-      <FontAwesomeIcon icon={faChevronRight} className="text-color text-lg hover:bg-tertiary p-1" />
+      <FontAwesomeIcon
+        icon={faChevronRight}
+        className="text-color text-lg hover:bg-tertiary p-1"
+      />
     </button>
   );
 };

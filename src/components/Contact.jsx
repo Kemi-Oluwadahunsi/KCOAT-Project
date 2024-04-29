@@ -204,7 +204,7 @@ const Contact = () => {
                   autoComplete="message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="border rounded-lg border-border outline- xs:py-0 md:py-3 px-4 py-6  text-color"
+                  className="border rounded-lg border-border outline xs:py-0 md:py-3 px-4 py-6  text-color"
                 ></textarea>
               </div>
             </div>

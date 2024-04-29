@@ -4,30 +4,24 @@ import { useNavigate } from "react-router-dom";
 
 export const ProductContext = createContext();
 
-export const ProductProvider = ({ children}) => {
-  
+export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-   const [loadings, setLoadings] = useState(true); 
-  const [isLoading, setIsLoading] = useState(true)
+  const [loadings, setLoadings] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-// localStorage.getItem("isLoggedIn") === true ? setIsLoggedIn(true) : setIsLoggedIn(false);
-  const [loggedInUserEmail, setLoggedInUserEmail] = useState(null)
-  // const [loggedInUserId, setLoggedInUserId] = useState(null)
+  const [loggedInUserEmail, setLoggedInUserEmail] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
-    const [usersProfile, setUsersProfile] = useState([]);
-    const [totalUsers, setTotalUsers] =useState(null)
+  const [usersProfile, setUsersProfile] = useState([]);
+  const [totalUsers, setTotalUsers] = useState(null);
 
-    const navigate = useNavigate();
-    // const scrollToTop = () => {
-    //   window.scrollTo({
-    //     top: 0,
-    //     behavior: "smooth", // Optional: smooth scroll animation
-    //   });
-    // };
-
-    
+  const navigate = useNavigate();
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth", // Optional: smooth scroll animation
+  //   });
+  // };
 
   useEffect(() => {
     setLoadings(true);
@@ -81,51 +75,40 @@ export const ProductProvider = ({ children}) => {
     fetchUserProfile();
   }, [loggedInUserEmail]);
 
-   useEffect(() => {
-     // Check local storage for login state
-     const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
-     const storedUserEmail = localStorage.getItem("userEmail");
-     if (storedIsLoggedIn && storedUserEmail) {
-       setIsLoggedIn(JSON.parse(storedIsLoggedIn));
-       setLoggedInUserEmail(storedUserEmail);
-     }
-   }, []);
+  useEffect(() => {
+    // Check local storage for login state
+    const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
+    const storedUserEmail = localStorage.getItem("userEmail");
+    if (storedIsLoggedIn && storedUserEmail) {
+      setIsLoggedIn(JSON.parse(storedIsLoggedIn));
+      setLoggedInUserEmail(storedUserEmail);
+    }
+  }, []);
 
-
-   const login = (email) => {
-     // Update login function to set loggedInUserId
-     setLoggedInUserEmail(email);
+  const login = (email) => {
+    // Update login function to set loggedInUserId
+    setLoggedInUserEmail(email);
     //  setLoggedInUserId(customerId);
-    setIsLoggedIn( true);
+    setIsLoggedIn(true);
     localStorage.setItem("isLoggedIn", true);
     localStorage.setItem("userEmail", email);
-   };
+  };
 
-   const logout = async () => {
-     try {
-      
-       setIsLoggedIn(false);
-        setLoggedInUserEmail(null);
-       // Remove login state from local storage
-       localStorage.removeItem("isLoggedIn");
-       localStorage.removeItem("userEmail");
-        setTimeout(() => {
-          navigate("/");
-        }, 500);
-        // scrollToTop();
-   
-     } catch (error) {
-       console.error("Error logging out:", error);
-     }
-   };
-
-  //  const logout = () => {
-  //    // Update logout function to clear loggedInUserId
-  //    setLoggedInUserEmail(null);
-  //    setLoggedInUserId(null);
-  //    localStorage.removeItem("isLoggedIn");
-  //  };
-
+  const logout = async () => {
+    try {
+      setIsLoggedIn(false);
+      setLoggedInUserEmail(null);
+      // Remove login state from local storage
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("userEmail");
+      setTimeout(() => {
+        navigate("/");
+      }, 500);
+      // scrollToTop();
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
 
   // useEffect(() => {
   //   const MostPopularProduct = async () => {
@@ -187,7 +170,7 @@ export const ProductProvider = ({ children}) => {
         usersProfile,
         totalUsers,
         loadings,
-        
+
         // mostPopularProducts,
         // fetchUserDetails,
       }}
