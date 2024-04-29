@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Upload from "./Upload";
+
 // import Upload from "./Upload";
 
 const EditProfile = () => {
@@ -21,6 +22,7 @@ const EditProfile = () => {
     phoneNumber: "",
     address: "",
     state: "",
+    image: "",
   });
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const EditProfile = () => {
         phoneNumber: userProfile.phoneNumber || "",
         address: userProfile.address || "",
         state: userProfile.state || "",
-        image: imageUrl || null,
+        image: imageUrl || "",
       });
     }
   }, [userProfile]);
