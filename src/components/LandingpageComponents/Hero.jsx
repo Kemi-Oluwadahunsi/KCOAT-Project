@@ -14,7 +14,6 @@ const Hero = () => {
     autoplay: true,
     autoplaySpeed: 5000,
     cssEase: "linear",
-   
   };
   return (
     <>
@@ -62,13 +61,15 @@ const Hero = () => {
                     Where Styles Meets Class
                   </p>
 
-                  <div className="flex items-center justify-center">
-                    <div
-                      className={`w-[15rem] xs:w-[9em] bg-tertiary font-secondary text-2xl xs:text-base xs:py-0 py-1 flex items-center justify-center rounded-xl`}
-                    >
-                      <Button>Shop Now</Button>
+                  <Link to={"/all-products"}>
+                    <div className="flex items-center justify-center">
+                      <div
+                        className={`w-[15rem] xs:w-[9em] bg-tertiary font-secondary text-2xl xs:text-base xs:py-0 py-1 flex items-center justify-center rounded-xl`}
+                      >
+                        <Button>Shop Now</Button>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -85,13 +86,15 @@ const Hero = () => {
                   Where Styles Meets Class
                 </p>
 
-                <div className="flex items-center justify-center">
-                  <div
-                    className={`w-[15rem] xs:w-[9em] bg-tertiary font-secondary xs:text-base text-2xl md:text-xl xs:py-0 md:py-0 py-1 flex items-center justify-center rounded-xl`}
-                  >
-                    <Button>Shop Now</Button>
+                <Link to={"/all-products"}>
+                  <div className="flex items-center justify-center">
+                    <div
+                      className={`w-[15rem] xs:w-[9em] bg-tertiary font-secondary xs:text-base text-2xl md:text-xl xs:py-0 md:py-0 py-1 flex items-center justify-center rounded-xl`}
+                    >
+                      <Button>Shop Now</Button>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           </div>
