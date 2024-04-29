@@ -45,6 +45,7 @@ const AddProduct = () => {
         setProductCategory("");
         setSubCategory("");
         setQuantity("");
+        setImageUrl("");
         
       } else {
         toast.error("Failed to add product. Please try again.");

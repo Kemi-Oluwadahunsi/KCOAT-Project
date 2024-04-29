@@ -64,7 +64,7 @@ const Upload = ({ setImageUrl }) => {
         type="button"
         onClick={uploadWidget}
       >
-        {isDisabled ? "Opening Widget" : "Upload Image"}
+        {isDisabled ? "Opening Widget" : "Choose Image"}
       </button>
 
       {uploadedImage && (

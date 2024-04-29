@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AdminContext } from "../../../hooks/AdminContextPage";
 
 const EditProductForm = ({ product }) => {
@@ -13,7 +13,7 @@ const EditProductForm = ({ product }) => {
     Quantity: 0,
   });
 
-  const { handleSave, editingProduct } = useContext(AdminContext);
+  const { handleSave,handleCancel } = useContext(AdminContext);
 
   useEffect(() => {
     setEditedProduct(product);
@@ -28,8 +28,6 @@ const handleInputChange = (e) => {
     [name]: value,
   }));
 };
-
-    // setEditedProduct({ ...editedProduct, [name]: value });
   
 
   const handleSubmit = (e) => {
@@ -37,9 +35,32 @@ const handleInputChange = (e) => {
     handleSave(editedProduct);
   };
 
-  const handleCancel = () => {
-    editingProduct(null);
-  };
+  // const handleCancel = () => {
+  //   setEditingProduct(null);
+  // };
+
+    const formRef = useRef(null);
+
+    useEffect(() => {
+      setEditedProduct(product);
+    }, [product]);
+
+    useEffect(() => {
+      const handleOutsideClick = (e) => {
+        if (formRef.current && !formRef.current.contains(e.target)) {
+          // Click occurred outside of the form, handle closing the form
+          handleCancel();
+        }
+      };
+
+      // Add event listener for clicks on the document body
+      document.body.addEventListener("click", handleOutsideClick);
+
+      // Cleanup function to remove event listener when component unmounts
+      return () => {
+        document.body.removeEventListener("click", handleOutsideClick);
+      };
+    }, []);
 
   return (
     <div className="bg-tertiary4 text-nextpage absolute top-[27%] z-50 xs:right-2 right-10 xs:w-[20rem] w-[30rem] ">

@@ -8,8 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import EditProductForm from "./EditProductForm";
 import { AdminContext } from "../../../hooks/AdminContextPage";
-// import { toast, ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AllProducts = () => {
   const { products, loading } = useContext(ProductContext);
@@ -149,9 +149,9 @@ const AllProducts = () => {
         </div>
       </div>
 
-      {/* <div className="z-[10000] pt-[20em]">
-        <ToastContainer position="center" autoClose={2000} />
-      </div> */}
+      <div className="z-[10000] pt-[20em]">
+        <ToastContainer position="center-center" autoClose={2000} />
+      </div>
     </>
   );
 };

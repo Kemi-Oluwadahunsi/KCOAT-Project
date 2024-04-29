@@ -6,7 +6,7 @@ import { ProductContext } from "../../../hooks/ProductContext";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Upload from "./Upload";
+// import Upload from "./Upload";
 
 const EditProfile = () => {
   const { userProfile } = useContext(ProductContext);
@@ -37,11 +37,11 @@ const EditProfile = () => {
     }
   }, [userProfile]);
 
-  const handleImageChange = (newImageUrl) => {
-    setFormData({ ...formData, image: newImageUrl });
-    setImageUrl(newImageUrl);
-    console.log("Image URL:", newImageUrl);
-  };
+  // const handleImageChange = (newImageUrl) => {
+  //   setFormData({ ...formData, image: newImageUrl });
+  //   setImageUrl(newImageUrl);
+  //   console.log("Image URL:", newImageUrl);
+  // };
 
   const handleChange = (e) => {
     setFormData({

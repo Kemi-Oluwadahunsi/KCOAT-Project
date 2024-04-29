@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import axiosRetry from "axios-retry";
 
+
 axiosRetry(axios, {
   retries: 3, // Number of retries
   retryDelay: axiosRetry.exponentialDelay, // Exponential delay between retries
@@ -82,9 +83,9 @@ export const AdminContextProvider = ({ children }) => {
     setEditingProduct(product);
   };
 
-  // const handleCancel = () => {
-  //   setEditingProduct(null);
-  // };
+  const handleCancel = () => {
+    setEditingProduct(null);
+  };
 
   const handleSave = async (editedProduct) => {
     if (!isAdminLoggedIn) {
@@ -107,11 +108,12 @@ export const AdminContextProvider = ({ children }) => {
     }
   };
 
+
   const handleDelete = async (product) => {
     try {
       // Show confirmation dialog before deleting the product
       const confirmDelete = window.confirm(
-        "Are you sure you want to delete this product?"
+        `Are you sure you want to delete ${product.ProductName}?`
       );
       if (!confirmDelete) {
         return; // Do nothing if user cancels deletion
@@ -123,8 +125,12 @@ export const AdminContextProvider = ({ children }) => {
           `https://kcoat.onrender.com/products/${product.Productid}`
         );
 
+        // Update the products state to remove the deleted product
+     
         // Show success message using React Toastify
         toast.success("Product deleted successfully!");
+        // Rerender the AllProducts component
+  
 
         // You can add more actions if needed
       }
@@ -145,7 +151,7 @@ export const AdminContextProvider = ({ children }) => {
         handleAdminLogin,
         isAdminLoggedIn,
         handleAdminLogout,
-        // handleCancel,
+        handleCancel,
       }}
     >
       {children}
