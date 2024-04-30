@@ -172,7 +172,7 @@ const CustomPrevArrow = (props) => {
   const { onClick } = props;
   return (
     <button
-      className="bottom-0 absolute xs:left-[47%] left-[46%] "
+      className="bottom-0 absolute left-[46%] xs:left-[44%] "
       onClick={onClick}
     >
       <FontAwesomeIcon
@@ -187,7 +187,7 @@ const CustomNextArrow = (props) => {
   const { onClick } = props;
   return (
     <button
-      className="bottom-0 absolute xs:left-[54%] left-[52%] font-bold"
+      className="bottom-0 absolute xs:left-[52%] left-[52%] font-bold xs"
       onClick={onClick}
     >
       <FontAwesomeIcon

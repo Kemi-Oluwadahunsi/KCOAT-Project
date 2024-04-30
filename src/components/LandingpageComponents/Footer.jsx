@@ -12,16 +12,16 @@ const Footer = () => {
         <div className=" flex xs:flex-wrap sm:flex-col justify-between xs:justify-around md:items-center lg:items-center py-10 w-[100%] lg:w-[90%] gap-8">
           <div className="flex flex-col xs:flex-row xs:basis-[100%] xs:gap-[6rem] gap-7 sm:gap-[3em] md:gap-[4em] lg:gap-[5em]">
             <Link to="/">
-              <div className="">
+              <div className="xs:basis-[50%] xs:ml-8">
                 <img src={logo} alt="logo" />
               </div>
             </Link>
 
-            <div className="flex h-[5rem] xs:h-auto flex-col gap-3 xs:basis-[60%]">
+            <div className="flex h-[5rem] xs:h-auto flex-col gap-3 xs:basis-[50%]">
               <h3 className="md:text-2xl text-[1.2rem] lg:text-2xl">
                 Social Media
               </h3>
-              <div className="flex py-2 justify-between cursor-pointer xs:w-[60%] sm:w-[20%] ">
+              <div className="flex py-2 justify-between cursor-pointer xs:w-[80%] sm:w-[20%] ">
                 <Link to="#">
                   <div className="hover:border hover:bg-primary rounded-md xs:hover:p-0 hover:p-1">
                     <img src={whatsapp} alt="" />
@@ -82,7 +82,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex xs:flex-col justify-between xs:text-[0.8em] ">
+        <div className="flex xs:flex-col xs:gap-4 justify-between xs:text-[0.8em] ">
           <div className=" flex gap-2 items-center">
             <FontAwesomeIcon icon={faLocationDot} color="white" />
             <h3>Nigeria</h3>

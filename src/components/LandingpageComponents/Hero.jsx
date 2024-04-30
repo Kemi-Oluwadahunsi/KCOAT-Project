@@ -30,8 +30,8 @@ const Hero = () => {
           <div className=" heroBackground1 h-[45rem] md:h-[35rem] xs:h-[25rem] pt-[4em]">
             <div className="flex flex-col xs:items-center xs:h-[30%] xs:justify-end w-full xs:text-primary sm:text-primary lg:text-color md:text-color ]">
               <div className="flex w-[40%] xs:w-[90%] items-end justify-center relative">
-                <div className="flex w-full items-center flex-col xs:gap-4 gap-[2rem] absolute top-[13em] xs:top-0 text-primary font-secondary  ">
-                  <h1 className="text-[4rem] md:text-[3rem] xs:text-[2rem] md:leading-[3.5rem] xs:font-bold text-center text-color leading-[1.2em] xs:leading-10 md:leading-12">
+                <div className="flex w-full items-center flex-col xs:gap-4 gap-[2rem] absolute top-[13em] xs:top-[1em] text-primary font-secondary  ">
+                  <h1 className="text-[4rem] md:text-[3rem] xs:text-[2rem] md:leading-[3.5rem] xs:font-medium text-center text-primary leading-[1.2em] xs:leading-10 md:leading-12">
                     Circular and Renewable Fashion Statement
                   </h1>
 
