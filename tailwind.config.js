@@ -48,7 +48,7 @@ export default {
       'md': {'min': '801px', 'max': '1200px'},
       // => @media (min-width: 1024px and max-width: 1279px) { ... }
 
-      'lg': {'min': '1201px', 'max': '1600px'},
+      'lg': {'min': '1201px', 'max': '2500px'},
       // => @media (min-width: 1280px and max-width: 1535px) { ... }
     },
     fontFamily: {

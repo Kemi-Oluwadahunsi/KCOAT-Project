@@ -9,19 +9,19 @@ const Footer = () => {
   return (
     <>
       <div className=" flex flex-col pt-[1em] pb-[1em] px-[1rem] sm:px-[4em] md:px-[7rem] lg:px-[8em] bg-color text-primary font-oxygen">
-        <div className=" flex xs:flex-col sm:flex-col justify-between md:items-center lg:items-center py-10 w-[100%] lg:w-[90%] gap-8">
-          <div className="flex flex-col gap-7 sm:gap-[3em] md:gap-[4em] lg:gap-[5em]">
+        <div className=" flex xs:flex-wrap sm:flex-col justify-between xs:justify-around md:items-center lg:items-center py-10 w-[100%] lg:w-[90%] gap-8">
+          <div className="flex flex-col xs:flex-row xs:basis-[100%] xs:gap-[6rem] gap-7 sm:gap-[3em] md:gap-[4em] lg:gap-[5em]">
             <Link to="/">
               <div className="">
                 <img src={logo} alt="logo" />
               </div>
             </Link>
 
-            <div className="flex h-[5rem] xs:h-auto flex-col gap-3">
+            <div className="flex h-[5rem] xs:h-auto flex-col gap-3 xs:basis-[60%]">
               <h3 className="md:text-2xl text-[1.2rem] lg:text-2xl">
                 Social Media
               </h3>
-              <div className="flex py-2 justify-between cursor-pointer xs:w-[40%] sm:w-[20%] ">
+              <div className="flex py-2 justify-between cursor-pointer xs:w-[60%] sm:w-[20%] ">
                 <Link to="#">
                   <div className="hover:border hover:bg-primary rounded-md xs:hover:p-0 hover:p-1">
                     <img src={whatsapp} alt="" />
@@ -34,7 +34,6 @@ const Footer = () => {
                 </Link>
                 <Link to="#">
                   <div className="hover:border hover:bg-primary rounded-md xs:hover:p-0 hover:p-1">
-                    {" "}
                     <img src={facebook} alt="" />
                   </div>
                 </Link>
@@ -42,7 +41,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 ">
+          <div className="flex flex-col gap-3">
             <h2 className="text-tertiary ">PRODUCTS</h2>
             <ul className="flex flex-col gap-3 cursor-pointer">
               <Link to="/all-products">
