@@ -25,9 +25,12 @@ const Upload = ({ setImageUrl }) => {
       const secureUrl = result.info.secure_url;
       //   const previewUrl = secureUrl.replace('/upload/', '/upload/w_400/f_auto,q_auto/');
       //   setUploadedImage((prevImages) => [...prevImages, previewUrl]);
+    if (uploadedImage !== secureUrl) {
+      // Check if uploadedImage is different from the new secureUrl
       setUploadedImage(secureUrl);
-      setIsDisabled(false);
       setImageUrl(secureUrl); // Use the setImageUrl prop here
+    } 
+      setIsDisabled(false);
     }
     if (error) {
       setIsDisabled(false);

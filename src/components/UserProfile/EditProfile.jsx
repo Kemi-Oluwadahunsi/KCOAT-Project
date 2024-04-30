@@ -8,7 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Upload from "./Upload";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaCameraRetro } from "react-icons/fa";
+
 import { faCameraRetro } from "@fortawesome/free-solid-svg-icons";
 
 const EditProfile = () => {
@@ -63,7 +63,7 @@ const EditProfile = () => {
     try {
       const response = await axios.put(
         `https://kcoat.onrender.com/user-profile/${userProfile.customerId}`,
-        { ...formData, image: imageUrl || formData.image }
+        { ...formData, image: imageUrl  }
       );
       if (response.status === 200) {
         toast.success("Profile edited successfully!");

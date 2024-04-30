@@ -17,6 +17,7 @@ const FeedbackCorner = () => {
    const { isLoggedIn, loggedInUserEmail } = useContext(ProductContext);
 const [name, setName] = useState("");
 const [feedback, setFeedback] = useState("");
+const [showReviewForm, setShowReviewForm] = useState(false);
 
   const settings = {
     infinite: true,
@@ -44,6 +45,9 @@ const [feedback, setFeedback] = useState("");
     ],
   };
 
+  const toggleReviewForm = () => {
+    setShowReviewForm(!showReviewForm);
+  };
    const handleSubmit = async (event) => {
      event.preventDefault();
      if (!isLoggedIn) {
@@ -65,6 +69,8 @@ const [feedback, setFeedback] = useState("");
          // Clear input fields after successful submission
          setName("");
          setFeedback("");
+
+         toggleReviewForm();
        } else {
          toast.error("Error submitting feedback. Please try again.");
        }
@@ -77,8 +83,8 @@ const [feedback, setFeedback] = useState("");
   return (
     <>
       <div className="bg-feedback py-8">
-        <div className="flex justify-center ">
-          <div className="text-color text-center w-[60%] ">
+        <div className="flex xs:flex-col justify-center xs:px-4 ">
+          <div className="text-color text-center w-[60%] xs:w-full ">
             <h2 className="font-tertiary font-bold text-2xl md:text-3xl lg:text-4xl mt-8 mb-1">
               Feedback Corner
             </h2>
@@ -87,42 +93,50 @@ const [feedback, setFeedback] = useState("");
             </p>
           </div>
 
-          <div className="w-[30%] mx-auto mt-4">
+          <div className="w-[30%] xs:w-full mx-auto mt-4">
             <div className="border border-border rounded-2xl px-4 flex flex-col gap-4 py-4">
-              <p className="text-color font-bold font-oxygen text-lg">
+              <p className="text-color font-bold font-oxygen text-lg xs:text-sm">
                 Shopped from Kcoat yet? Kindly leave us a review.
               </p>
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col gap-[1em] "
+              <button
+                onClick={toggleReviewForm}
+                className="border rounded-lg border-border bg-nextpage outline-createaccount xs:py-1 md:py-3 px-4 py-1  text-color"
               >
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Please Enter Your Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="border rounded-lg border-border bg-nextpage outline-createaccount xs:py-1 md:py-3 px-4 py-1  text-color"
-                />
-                <textarea
-                  name="feedback"
-                  id=""
-                  cols="10"
-                  placeholder="Please Enter Your Feedback"
-                  value={feedback}
-                  onChange={(e) => setFeedback(e.target.value)}
-                  className="border rounded-lg border-border bg-nextpage outline-createaccount px-4  text-color"
-                ></textarea>
+                Leave a Review
+              </button>
+              {showReviewForm && (
+                <form
+                  onSubmit={handleSubmit}
+                  className="flex flex-col gap-[1em] "
+                >
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Please Enter Your Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="border rounded-lg border-border bg-nextpage outline-createaccount xs:py-1 md:py-3 px-4 py-1  text-color"
+                  />
+                  <textarea
+                    name="feedback"
+                    id=""
+                    cols="10"
+                    placeholder="Please Enter Your Feedback"
+                    value={feedback}
+                    onChange={(e) => setFeedback(e.target.value)}
+                    className="border rounded-lg border-border bg-nextpage outline-createaccount px-4  text-color"
+                  ></textarea>
 
-                <div className="flex items-center justify-center">
-                  <Button
-                    type="submit"
-                    // className="bg-primary py-2 px-4 text-white rounded-lg"
-                  >
-                    Submit Feedback
-                  </Button>
-                </div>
-              </form>
+                  <div className="flex items-center justify-center">
+                    <Button
+                      type="submit"
+                      // className="bg-primary py-2 px-4 text-white rounded-lg"
+                    >
+                      Submit Feedback
+                    </Button>
+                  </div>
+                </form>
+              )}
             </div>
           </div>
         </div>
@@ -132,7 +146,7 @@ const [feedback, setFeedback] = useState("");
         <Slider
           {...settings}
           style={{}}
-          className="px-[2rem] sm:px-[3rem] md:px-[5rem] lg:px-[6rem] py-20"
+          className="px-[2rem] sm:px-[3rem] md:px-[5rem] lg:px-[6rem] py-20 xs:py-8"
         >
           {feedbackArray.map((item) => (
             <div key={item.id} className=" ">
@@ -158,7 +172,7 @@ const CustomPrevArrow = (props) => {
   const { onClick } = props;
   return (
     <button
-      className="bottom-0 absolute xs:left-[47%] left-[49%] "
+      className="bottom-0 absolute xs:left-[47%] left-[46%] "
       onClick={onClick}
     >
       <FontAwesomeIcon
