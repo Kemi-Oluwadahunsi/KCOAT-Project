@@ -28,10 +28,10 @@ const MostPopularProductPage = () => {
     /></Link>
   ));
   return (
-    <div className="pt-[8rem] px-[10em]">
-      <div className="  flex  ">
+    <div className="pt-[8rem] xs:pt-[5rem] xs:px-[2em] sm:px-[5rem] md:px-[4rem] px-[10em]">
+      <div className="  flex xs:text-center sm:text-center">
         <div className="  flex flex-col ">
-          <h2 className="font-tertiary text-color font-bold text-[3em] mt-10 mb-1 ">
+          <h2 className="font-poppins text-color font-bold xs:text-[1.5em] text-[3em] mt-10 mb-1 ">
             Most Popular Products
           </h2>
           <p className="font-medium text-color">
@@ -40,7 +40,7 @@ const MostPopularProductPage = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 my-12 justify-between ">
+      <div className="grid xs:grid-cols-2 sm:grid-cols-2 grid-cols-4 my-12 xs:gap-8 sm:gap-8 md:gap-3 gap-8 justify-between ">
         {mostPopular}
       </div>
     </div>

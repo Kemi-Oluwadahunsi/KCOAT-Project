@@ -18,11 +18,11 @@ const MostPopularProducts = () => {
   return (
     <div className="xs:pb-[2rem] sm:pb-[2rem]">
       <div className="  flex place-content-center mt-0 sm:mt-5 md:mt-7 lg:mt-8">
-        <div className=" basis-[72%] flex flex-col lg:ml-12  place-items-center">
-          <h2 className="font-tertiary text-color font-bold text-2xl md:text-3xl lg:text-4xl mt-10 mb-1 ">
+        <div className=" basis-[72%] xs:basis-[100%] flex flex-col lg:ml-12  place-items-center">
+          <h2 className=" font-poppins text-color font-bold text-2xl md:text-3xl lg:text-4xl mt-10 mb-1 ">
             Most Popular Products
           </h2>
-          <p className="font-medium text-color">
+          <p className="font-medium text-color xs:w-[90%] xs:text-center">
             Quality never goes out of styles, everything you need on a budget
           </p>
         </div>
