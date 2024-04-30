@@ -84,7 +84,7 @@ const [showReviewForm, setShowReviewForm] = useState(false);
     <>
       <div className="bg-feedback py-8">
         <div className="flex xs:flex-col justify-center xs:px-4 ">
-          <div className="text-color text-center w-[60%] xs:w-full ">
+          <div className="text-color text-center w-[50%] xs:w-full flex flex-col items-end">
             <h2 className="font-tertiary font-bold text-2xl md:text-3xl lg:text-4xl mt-8 mb-1">
               Feedback Corner
             </h2>

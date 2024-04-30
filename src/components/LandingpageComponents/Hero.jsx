@@ -29,9 +29,9 @@ const Hero = () => {
         <Slider {...settings}>
           <div className=" heroBackground1 h-[45rem] md:h-[35rem] xs:h-[25rem] pt-[4em]">
             <div className="flex flex-col xs:items-center xs:h-[30%] xs:justify-end w-full xs:text-primary sm:text-primary lg:text-color md:text-color ]">
-              <div className="flex w-[40%] xs:w-[80%] items-end justify-center relative">
-                <div className="flex w-full items-center flex-col xs:gap-4 gap-[2rem] absolute top-[13em] xs:top-0 text-primary font-tertiary  ">
-                  <h1 className="text-[4rem] md:text-[3rem] xs:text-[2rem] md:leading-[3.5rem] text-center text-color leading-[1.2em] xs:leading-10 md:leading-12">
+              <div className="flex w-[40%] xs:w-[90%] items-end justify-center relative">
+                <div className="flex w-full items-center flex-col xs:gap-4 gap-[2rem] absolute top-[13em] xs:top-0 text-primary font-secondary  ">
+                  <h1 className="text-[4rem] md:text-[3rem] xs:text-[2rem] md:leading-[3.5rem] xs:font-bold text-center text-color leading-[1.2em] xs:leading-10 md:leading-12">
                     Circular and Renewable Fashion Statement
                   </h1>
 
@@ -52,8 +52,8 @@ const Hero = () => {
           <div className=" heroBackground2 h-[45rem] md:h-[35rem] xs:h-[25rem] pt-[4em]">
             <div className="flex flex-col xs:pt-[2.5em] md:pt-[5em] place-items-center w-full xs:text-primary sm:text-primary lg:text-color md:text-color">
               <div className="flex w-[50%] xs:w-full md:pt-[1rem] items-center justify-center xs:px-[1em] px-[2rem]">
-                <div className="flex w-full flex-col xs:gap-[0.7em] md:gap-[1.5rem] gap-[2rem] xs:mt-[3em] md:mt-[5em] mt-[8em] text-primary font-tertiary  ">
-                  <h1 className="text-[4rem] xs:text-[2rem] md:text-[3rem] w-[80%] md:w-[90%] mx-auto xs:leading-9 md:leading-[3.5rem]">
+                <div className="flex w-full flex-col xs:gap-[0.7em] md:gap-[1.5rem] gap-[2rem] xs:mt-[3em] md:mt-[5em] mt-[8em] text-primary font-secondary  ">
+                  <h1 className="text-[4rem] xs:text-[2rem] md:text-[3rem] w-[90%] xs:w-full mx-auto xs:leading-9 md:leading-[3.5rem]">
                     Luxury & Elegance Pieces Just For You
                   </h1>
                   <p className="font-oxygen mx-auto text-center w-[80%] xs:w-[90%]">
@@ -77,8 +77,8 @@ const Hero = () => {
 
           <div className=" heroBackground3 h-[45rem] md:h-[35rem] xs:h-[25rem] pt-[4em]">
             <div className="flex w-[40%] md:w-[50%] xs:w-full h-full items-center justify-center md:px-[4] px-[2rem]">
-              <div className="flex w-full xs:pt-[3.8em] md:pt-[5rem] flex-col xs:gap-[1em] md:gap-[1.5em] gap-[3rem] text-primary font-tertiary ">
-                <h1 className="text-[4rem] text-center xs:text-[2em] md:text-[3em] xs:leading-9 md:w-[90%] md:leading-[3.5rem]">
+              <div className="flex w-full xs:pt-[3.8em] md:pt-[5rem] flex-col xs:gap-[1em] md:gap-[1.5em] gap-[3rem] text-primary font-secondary ">
+                <h1 className="text-[4rem] text-center xs:text-[2em] md:text-[3em] xs:leading-9 md:w-[90%] xs:w-full md:leading-[3.5rem]">
                   Discover And Find your Own Fashion
                 </h1>
                 <p className="font-oxygen mx-auto text-center w-[80%] xs:w-[90%]">

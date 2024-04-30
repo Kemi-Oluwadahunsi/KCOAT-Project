@@ -25,19 +25,27 @@ const Header = () => {
 
       <ul className="text-color font-oxygen font-medium flex justify-around space-x-4 xs:w-3/4 w-2/4 place-items-center cursor-pointer">
         <Link to="/">
-          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">Home</li>
+          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">
+            Home
+          </li>
         </Link>
 
         <Link to="/all-products">
-          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">Products</li>
+          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">
+            Products
+          </li>
         </Link>
 
         <Link to="/new-featured">
-          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">New & Featured</li>
+          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">
+            New & Featured
+          </li>
         </Link>
 
         <Link to="/contact">
-          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">Contact</li>
+          <li className="text-lg hover:text-categoryborder2 hover:font-bold hover:underline underline-offset-4 hover:scale-105">
+            Contact
+          </li>
         </Link>
       </ul>
 
@@ -46,7 +54,7 @@ const Header = () => {
           <div className="text-primary flex gap-2 place-items-center p-5">
             <Link to={`/user-profile`}>
               <div className="rounded-full p-2 border border-primary">
-                <FontAwesomeIcon icon={faUserAlt} className="text-[1.5rem]"/>
+                <FontAwesomeIcon icon={faUserAlt} className="text-[1.5rem]" />
               </div>
             </Link>
           </div>
@@ -74,17 +82,19 @@ const Header = () => {
             className="text-primary flex gap-2 place-items-center p-5"
             onClick={logout}
           >
-            <FontAwesomeIcon icon={faUser} />
-            <span className="font-bold">Logout</span>
+            <FontAwesomeIcon icon={faUser} className="text-[1.5rem] xs:text-base" />
+            <span className="font-bold text-lg xs:text-base">Logout</span>
           </div>
         ) : (
           <div
             className="text-primary flex gap-2 place-items-center p-5"
             onClick={() => console.log(isLoggedIn)}
           >
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon icon={faUser} className="text-[1.5rem] xs:text-base" />
             <Link to="/login">
-              <span className="font-bold">Login / Register</span>
+              <span className="font-bold text-lg xs:text-base">
+                Login / Register
+              </span>
             </Link>
           </div>
         )}
