@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import SearchInput from "../StaticComponents/SearchInput";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Cards from "../LandingpageComponents/MostPopularProductSections/Cards";
 import Submenu from "./Submenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDoubleLeft, faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleDoubleLeft,
+  faAngleDoubleRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -16,6 +19,17 @@ const AllProducts = () => {
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
   const [priceRange, setPriceRange] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [pagesToShow, setPagesToShow] = useState([]);
+  const [isPending, startTransition] = useTransition();
+
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    
+  
 
   // Fetch products on component mount
   useEffect(() => {
@@ -61,13 +75,13 @@ const AllProducts = () => {
     filterProducts();
   }, [selectedProducts, priceRange, searchQuery]);
 
- const handleSearchInputChange = (value) => {
-   // Ensure that value is defined before accessing its properties
-   if (value !== undefined) {
-     setSearchQuery(value);
-   }
- };
-  
+  const handleSearchInputChange = (value) => {
+    // Ensure that value is defined before accessing its properties
+    if (value !== undefined) {
+      setSearchQuery(value);
+    }
+  };
+
   const handlePriceRangeClick = (range) => {
     // Toggle the price range filter
     if (priceRange[0] === range[0] && priceRange[1] === range[1]) {
@@ -89,24 +103,82 @@ const AllProducts = () => {
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
 
+  useEffect(() => {
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(i);
+    }
+    if (totalPages > 5) {
+      setPagesToShow(pages.slice(0, 5).concat("...")); // Show first 5 pages and ellipsis
+    } else {
+      setPagesToShow(pages); // Show all pages if less than or equal to 5
+    }
+  }, [totalPages]);
+
+
+
   const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prevPage) => prevPage + 1);
+    if (!isPending && currentPage < totalPages) {
+      startTransition(() => {
+        if (currentPage < totalPages) {
+          setCurrentPage((prevPage) => prevPage + 1);
+          if (currentPage === 5) {
+            const newPagesToShow = [];
+            for (let i = 2; i <= 6; i++) {
+              newPagesToShow.push(i);
+            }
+            setPagesToShow(newPagesToShow);
+          } else if (currentPage === totalPages) {
+            setPagesToShow((prevPages) => prevPages.slice(0, -1));
+          }
+        }
+      });
+      scrollToTop();
     }
   };
 
   const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1);
+    if (!isPending && currentPage > 1) {
+      startTransition(() => {
+        if (currentPage > 1) {
+          setCurrentPage((prevPage) => prevPage - 1);
+          if (currentPage === 6) {
+            const newPagesToShow = [];
+            for (let i = 2; i <= 6; i++) {
+              newPagesToShow.push(i);
+            }
+            setPagesToShow(newPagesToShow);
+          } else if (currentPage === 2) {
+            const newPagesToShow = [];
+            for (let i = 1; i <= 5; i++) {
+              newPagesToShow.push(i);
+            }
+            newPagesToShow.push("..."); // add ellipsis
+            setPagesToShow(newPagesToShow);
+          }
+        }
+      });
+      scrollToTop();
     }
   };
 
+  // const handleNextPage = () => {
+  //   if (currentPage < totalPages) {
+  //     setCurrentPage((prevPage) => prevPage + 1);
+  //   }
+  // };
+
+  // const handlePrevPage = () => {
+  //   if (currentPage > 1) {
+  //     setCurrentPage((prevPage) => prevPage - 1);
+  //   }
+  // };
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
+    
   };
 
-  
-  
   const mostPopular = currentProducts.map((item) => {
     console.log("Product ID:", item.Productid); // Log the Productid
     return (
@@ -223,34 +295,7 @@ const AllProducts = () => {
               />
             </div>
 
-            {/* <div className="font-secondary font-medium">
-              <div className="flex gap-4 justify-center xs:mt-2 mt-4">
-                {currentPage > 1 && (
-                  <button
-                    className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
-                    onClick={handlePrevPage}
-                  >
-                    Previous
-                  </button>
-                )}
-                {currentPage < totalPages && (
-                  <button
-                    className="flex place-items-center gap-4 bg-tertiary text-primary rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
-                    onClick={handleNextPage}
-                  >
-                    View More
-                    <img
-                      src={angleRight}
-                      alt="View More"
-                      className="w-4 inline ml-1"
-                    />
-                  </button>
-                )}
-              </div>
-
-            </div> */}
-
-            <div className="w-full flex justify-center items-center  gap-2">
+            <div className="w-full flex justify-center items-center xs:gap-0 gap-2">
               <button
                 className="flex place-items-center text-color rounded-xl px-4 py-2 cursor-pointer hover:scale-110"
                 onClick={handlePrevPage}
@@ -259,7 +304,7 @@ const AllProducts = () => {
                 <FontAwesomeIcon icon={faAngleDoubleLeft} />
               </button>
               <div>
-                {[...Array(totalPages).keys()].map((number) => (
+                {/* {[...Array(totalPages).keys()].map((number) => (
                   <button
                     key={number}
                     disabled={currentPage === 1}
@@ -271,6 +316,18 @@ const AllProducts = () => {
                     onClick={() => paginate(number + 1)}
                   >
                     {number + 1}
+                  </button>
+                ))} */}
+                {pagesToShow.map((page) => (
+                  <button
+                    key={page}
+                    disabled={currentPage === 1}
+                    className={`border border-categoryborder2 px-3 xs:text-sm py-1 ${
+                      currentPage === page ? "bg-tertiary text-primary" : ""
+                    }`}
+                    onClick={() => paginate(page)}
+                  >
+                    {page}
                   </button>
                 ))}
               </div>
