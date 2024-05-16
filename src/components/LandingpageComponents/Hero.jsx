@@ -12,7 +12,7 @@ const Hero = () => {
     slidesToShow: 1, // Set the slidesToShow dynamically
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 4000,
     cssEase: "linear",
   };
   return (
@@ -27,28 +27,6 @@ const Hero = () => {
         </div>
 
         <Slider {...settings}>
-          <div className=" heroBackground1 h-[45rem] md:h-[35rem] xs:h-[25rem] pt-[4em]">
-            <div className="flex flex-col xs:items-center xs:h-[30%] xs:justify-end w-full xs:text-primary sm:text-primary lg:text-color md:text-color ]">
-              <div className="flex w-[40%] xs:w-[90%] items-end justify-center relative">
-                <div className="flex w-full items-center flex-col xs:gap-4 gap-[2rem] absolute top-[13em] xs:top-[1em] text-primary font-secondary  ">
-                  <h1 className="text-[4rem] md:text-[3rem] xs:text-[2rem] md:leading-[3.5rem] xs:font-medium text-center text-primary leading-[1.2em] xs:leading-10 md:leading-12">
-                    Circular and Renewable Fashion Statement
-                  </h1>
-
-                  <Link to="/all-products">
-                    <div className="flex items-center">
-                      <div
-                        className={`w-[15rem] xs:w-[9em] bg-tertiary font-secondary text-2xl xs:text-base py-1 xs:py-0 flex items-center justify-center rounded-xl`}
-                      >
-                        <Button>Shop Now</Button>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className=" heroBackground2 h-[45rem] md:h-[35rem] xs:h-[25rem] pt-[4em]">
             <div className="flex flex-col xs:pt-[2.5em] md:pt-[5em] place-items-center w-full xs:text-primary sm:text-primary lg:text-color md:text-color">
               <div className="flex w-[50%] xs:w-full md:pt-[1rem] items-center justify-center xs:px-[1em] px-[2rem]">
@@ -95,6 +73,28 @@ const Hero = () => {
                     </div>
                   </div>
                 </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className=" heroBackground1 h-[45rem] md:h-[35rem] xs:h-[25rem] pt-[4em]">
+            <div className="flex flex-col xs:items-center xs:h-[30%] xs:justify-end w-full xs:text-primary sm:text-primary lg:text-color md:text-color ]">
+              <div className="flex w-[40%] xs:w-[90%] items-end justify-center relative">
+                <div className="flex w-full items-center flex-col xs:gap-4 gap-[2rem] absolute top-[13em] xs:top-[1em] text-primary font-secondary  ">
+                  <h1 className="text-[4rem] md:text-[3rem] xs:text-[2rem] md:leading-[3.5rem] xs:font-medium text-center text-primary leading-[1.2em] xs:leading-10 md:leading-12">
+                    Circular and Renewable Fashion Statement
+                  </h1>
+
+                  <Link to="/all-products">
+                    <div className="flex items-center">
+                      <div
+                        className={`w-[15rem] xs:w-[9em] bg-tertiary font-secondary text-2xl xs:text-base py-1 xs:py-0 flex items-center justify-center rounded-xl`}
+                      >
+                        <Button>Shop Now</Button>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

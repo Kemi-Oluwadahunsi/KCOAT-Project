@@ -6,14 +6,18 @@ import { Link } from "react-router-dom";
 
 const MostPopularProducts = () => {
   const mostPopular = products.map((item) => (
-    <Cards
-      key={item.id}
-      id={item.id} // Pass the id as a prop
-      image={item.image}
-      title={item.title}
-      cart={item.cart}
-      price={item.price}
-    />
+    <div key={item.id}>
+      <Link to={"/all-products"}>
+        <Cards
+          key={item.id}
+          id={item.id} // Pass the id as a prop
+          image={item.image}
+          title={item.title}
+          cart={item.cart}
+          price={item.price}
+        />
+      </Link>
+    </div>
   ));
   return (
     <div className="xs:pb-[2rem] sm:pb-[2rem]">
@@ -40,7 +44,7 @@ const MostPopularProducts = () => {
         {mostPopular}
       </div>
       <Link to="/most-popular-product">
-        <div className="flex justify-center text-base font-secondary font-medium lg:hidden md:hidden" >
+        <div className="flex justify-center text-base font-secondary font-medium lg:hidden md:hidden">
           <Button>
             View All <img src={angleRight} alt="angleRight" />{" "}
           </Button>
