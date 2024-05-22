@@ -80,7 +80,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="pt-[8rem] xs:px-[2rem] md:px-[10rem] px-[20rem] py-[5em] font-oxygen">
+    <div className="pt-[8rem] xs:px-[2rem] md:px-[10rem] px-[20rem] py-[5em] font-oxygen border-l-8 border-simple1">
       <form action="" onSubmit={handleSubmit}>
         <div className="">
           <div className="border flex flex-col xs:gap-4 gap-8 items-center justify-center rounded-3xl py-[2em] xs:px-4 px-[5em] ">
@@ -96,18 +96,22 @@ const EditProfile = () => {
                   />
                   <div className="absolute top-[80%] left-[80%]">
                     {editingImage ? (
-                      <Upload setImageUrl={handleImageUpload}/>
+                      <Upload setImageUrl={handleImageUpload} />
                     ) : (
                       <button
                         onClick={handleImageEdit}
                         // className="ml-4 text-lg font-bold border border-border px-4 py-2 rounded-lg text-tertiary hover:text-white transition-all duration-300"
                       >
-                        <FontAwesomeIcon icon={faCameraRetro} className=" text-2xl text-tertiary" title="Update profile Image"/>
+                        <FontAwesomeIcon
+                          icon={faCameraRetro}
+                          className=" text-2xl text-tertiary"
+                          title="Update profile Image"
+                        />
                       </button>
                     )}
                   </div>
                 </div>
-              ) }
+              )}
             </div>
             {/* <div style={{ cursor: "pointer" }}>
               {formSubmitted || formData.image ? ( // Check if formSubmitted or image is present

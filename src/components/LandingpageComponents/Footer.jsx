@@ -5,10 +5,10 @@ import instagram from "../../assets/instagram.svg";
 import whatsapp from "../../assets/whatsapp.svg";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-const Footer = () => {
+const Footer = ({loading}) => {
   return (
     <>
-      <div className=" flex flex-col pt-[1em] pb-[1em] px-[1rem] sm:px-[4em] md:px-[7rem] lg:px-[8em] bg-color text-primary font-oxygen">
+      <div className={`flex ${loading ? "fixed bottom-0" : ""} flex-col pt-[1em] pb-[1em] px-[1rem] sm:px-[4em] md:px-[7rem] lg:px-[8em] bg-color text-primary font-oxygen`}>
         <div className=" flex xs:flex-wrap sm:flex-col justify-between xs:justify-around md:items-center lg:items-center py-10 w-[100%] lg:w-[90%] gap-8">
           <div className="flex flex-col xs:flex-row xs:basis-[100%] xs:gap-[6rem] gap-7 sm:gap-[3em] md:gap-[4em] lg:gap-[5em]">
             <Link to="/">
