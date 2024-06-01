@@ -1,4 +1,4 @@
-# KCoat Fashion Store
+# KCOAT Fashion Store
 
 Welcome to KCoat Fashion Store, an e-commerce web application built using ReactJS, TailwindCSS, NodeJS, ExpressJS, and MySQL. This application provides a comprehensive shopping experience for customers with features such as user authentication, product filtering, shopping cart, and payment integration. Additionally, it includes a full-fledged admin panel for managing products, customers, feedback, and sales.
 
