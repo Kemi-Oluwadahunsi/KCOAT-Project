@@ -49,7 +49,7 @@ Welcome to KCoat Fashion Store, an e-commerce web application built using ReactJ
 - **Frontend**: ReactJS, TailwindCSS
 - **Backend**: NodeJS, ExpressJS
 - **Database**: MySQL
-- **Libraries**: Axios, EmailJS, Stripe
+- **Libraries**: Axios, EmailJS, Stripe, React-js-pagination, React-responsive, React-toastify, React-slick-carousel, Cloudinary-react, and others.
 
 ## Installation
 
