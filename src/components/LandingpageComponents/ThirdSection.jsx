@@ -17,7 +17,8 @@ const ThirdSection = () => {
     const NewFeatured = async () => {
       try {
         const response = await axios.get(
-          "https://kcoat.onrender.com/new-featured-products"
+          // "https://kcoat.onrender.com/new-featured-products"
+           "https://kcoat.onrender.com/new-featured-products"
         );
         const data = response.data;
         const limit = 6;
