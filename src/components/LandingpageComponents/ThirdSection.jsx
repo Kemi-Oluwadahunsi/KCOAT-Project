@@ -22,7 +22,7 @@ const ThirdSection = () => {
         );
         const data = response.data;
         const limit = 6;
-        const slicedData = data.message.slice(0, limit);
+        const slicedData = data.slice(0, limit);
 
         console.log("Newly featured Products:", data.message);
         setNewFeatured(slicedData);
