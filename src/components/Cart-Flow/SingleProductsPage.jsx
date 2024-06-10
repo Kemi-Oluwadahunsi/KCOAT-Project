@@ -2,7 +2,7 @@ import { ProductContext } from "../../../hooks/ProductContext";
 // import { useHistory } from "react-router-dom";
 import { CartContext } from "../../../hooks/CartContext";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -17,7 +17,6 @@ import { CiStar } from "react-icons/ci";
 import Delivery from "../../assets/group.svg";
 import Deliver from "../../assets/3d-rotate.svg";
 import Caret from "../../assets/caret.svg";
-
 
 const SingleProductsPage = () => {
   const { Productid } = useParams();
@@ -121,37 +120,50 @@ const SingleProductsPage = () => {
               </p>
 
               <div className="mt-10 xs:mt-4 flex flex-col xs:gap-[2em] gap-[5em]">
-                <div className="flex xs:flex-col xs:gap-4 justify-between">
-                  <div className="flex justify-between w-[10em] xs:w-[13rem] items-center border rounded-[3em] border-minus px-3 py-2 text-center font-bold ">
-                    {/* <button className="text-minus text-[2em]">-</button> */}
-                    <FontAwesomeIcon
-                      icon={faMinus}
-                      className="text-plus text-lg font-oxygen cursor-pointer"
-                      onClick={decrementQuantity}
-                    />
-                    <div className="font-oxygen text-lg text-color">
-                      {quantity}
+                <div className="flex flex-col gap-8 xs:gap-4">
+                  <div className="flex xs:flex-col xs:gap-4 justify-between">
+                    <div className="flex justify-between w-[10em] xs:w-[13rem] items-center border rounded-[3em] border-minus px-3 py-2 text-center font-bold ">
+                      {/* <button className="text-minus text-[2em]">-</button> */}
+                      <FontAwesomeIcon
+                        icon={faMinus}
+                        className="text-plus text-lg font-oxygen cursor-pointer"
+                        onClick={decrementQuantity}
+                      />
+                      <div className="font-oxygen text-lg text-color">
+                        {quantity}
+                      </div>
+                      <FontAwesomeIcon
+                        icon={faPlus}
+                        className="text-plus text-lg font-oxygen cursor-pointer"
+                        onClick={incrementQuantity}
+                      />
                     </div>
-                    <FontAwesomeIcon
-                      icon={faPlus}
-                      className="text-plus text-lg font-oxygen cursor-pointer"
-                      onClick={incrementQuantity}
-                    />
+
+                    <div
+                      className=" flex basis-[70%] bg-tertiary xs:py-1 items-center justify-center rounded-2xl"
+                      onClick={handleAddToCart}
+                    >
+                      <Button className={`font-medium font-oxygen bg-[none]`}>
+                        ADD TO CART
+                      </Button>
+                      <FontAwesomeIcon
+                        icon={faShoppingCart}
+                        color="white"
+                        className=" z-20"
+                      />
+                    </div>
                   </div>
 
-                  <div
-                    className=" flex basis-[70%] bg-tertiary xs:py-1 items-center justify-center rounded-2xl"
-                    onClick={handleAddToCart}
-                  >
-                    <Button className={`font-medium font-oxygen bg-[none]`}>
-                      ADD TO CART
-                    </Button>
-                    <FontAwesomeIcon
-                      icon={faShoppingCart}
-                      color="white"
-                      className=" z-20"
-                    />
-                  </div>
+                  <Link to={'/all-products'}>
+                    {" "}
+                    <div className="w-full">
+                      <div className="w-[40%] xs:w-[100%] sm:w-[70%] md:w-[60%] flex bg-tertiary xs:py-1 items-center justify-center rounded-2xl">
+                        <Button className={`font-medium font-oxygen bg-[none] text-lg`}>
+                          Continue shopping
+                        </Button>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
 
                 <div>
