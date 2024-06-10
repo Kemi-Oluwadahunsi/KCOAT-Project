@@ -46,7 +46,7 @@ const Header = () => {
 
   return (
     <div className="small-screens flex flex-col  justify-around items-end font-primary text-sm fixed w-full z-50 md:hidden lg:hidden">
-      <div className="flex justify-between items-center w-full h-20 bg-tertiary px-5">
+      <div className="flex justify-between items-center w-full h-16 bg-tertiary px-5">
         <Link to="/">
           <div className="cursor-pointer w-[5rem]">
             <img src={logo} alt="logo" />

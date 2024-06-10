@@ -4,16 +4,16 @@ const CardNew = (props) => {
   return (
     <div>
       <div className="flex md:mx-4 xs:px-8 justify-center flex-wrap">
-        <div className="flex flex-col gap-[1em]  py-[1rem] rounded-md xs:w-[90%]">
+        <div className="flex flex-col gap-[1em] mx-auto py-[1rem] rounded-md xs:w-[90%]">
           <div className="mx-auto">
             <img
               src={props.image}
               alt={props.title}
-              className="object-cover xs:rounded-[1.5rem]"
+              className="object-cover xs:rounded-[1.5rem] xs:w-[70%] mx-auto"
             />
           </div>
 
-          <div className="flex flex-col gap-3  px-1">
+          <div className="flex flex-col gap-3 mx-auto px-1 xs:w-[70%]">
             <h3 className="font-oxygen font-normal xs:text-[.9rem] md:text-[0.9em] sm:text-base text-[1.1rem] text-secondary">
               {props.title}
             </h3>

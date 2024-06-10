@@ -12,12 +12,14 @@ const NewFeatured = () => {
     const NewFeatured = async () => {
       try {
         const response = await axios.get(
-          "https://kcoat.onrender.com/new-featured-products"
+          "https://kcoat.onrender.com/products"
         );
         const data = response.data;
+        const limit = 20;
+        const slicedData = data.slice(0, limit); 
         console.log("Newly featured Products:", data.message);
 
-        setNewFeatured(data.message);
+        setNewFeatured(slicedData);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching product:", error);

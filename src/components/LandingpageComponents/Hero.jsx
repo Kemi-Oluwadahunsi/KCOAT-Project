@@ -17,7 +17,7 @@ const Hero = () => {
   };
   return (
     <>
-      <section className="relative hero h-[45rem] xs:h-[28rem] md:h-[35rem]  mb-[7rem] md:mb-[5rem] xs:mb-0 flex flex-col gap-[2rem] sm:gap-[3rem] md:gap-[4rem] lg:gap-[5rem] pt-[5rem]">
+      <section className="relative hero h-[45rem] xs:h-[28rem] md:h-[35rem]  mb-[7rem] md:mb-[5rem] xs:mb-0 flex flex-col gap-[2rem] sm:gap-[3rem] md:gap-[4rem] lg:gap-[5rem] xs:pt-[4rem] pt-[5rem]">
         <div className="absolute top-[7em] w-[3em] xs:pl-4 md:pl-[5em] pl-[7em] sm:w-[4em] md:w-[5em] lg:w-full mt-[1rem]">
           <img src={Tinydots} alt="dotsbox" />
         </div>
