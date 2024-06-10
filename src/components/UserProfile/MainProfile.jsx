@@ -8,7 +8,7 @@ const MainProfile = () => {
   const { isLoading, userProfile } = useContext(ProductContext);
 
   return (
-    <div className="pt-[8rem] xs:px-[2rem] md:px-[10rem] px-[15em] border-l-8 border-simple1">
+    <div className="pt-[8rem] xs:px-[2rem] md:px-[10rem] px-[15em] border-l-8 xs:border-l-0 border-simple1">
       <div className="flex flex-col xs:gap-[1em] gap-[3em] font-oxygen pb-[5em]">
         <div className="flex justify-between">
           <h1 className="text-color xs:text-[base] text-[2rem] font-bold">

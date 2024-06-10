@@ -64,7 +64,7 @@ const Contact = () => {
       );
   };
   return (
-    <div className="pt-[5em] flex flex-col xs:gap-[1em] md:gap-[2rem] gap-[3rem] border-l-8 border-simple1">
+    <div className="pt-[5em] flex flex-col xs:gap-[1em] md:gap-[2rem] gap-[3rem] border-l-8 xs:border-l-0 border-simple1">
       <div className="contactbg flex flex-col gap-2 items-center justify-center ">
         <h1 className=" font-bold text-tertiary font-tertiary xs:text-[2.5em] text-[4em]">
           Contact

@@ -71,7 +71,7 @@ const CartPage = () => {
       {loading ? (
         <div className="loader h-screen"></div>
       ) : (
-        <div className="flex flex-col xs:gap-[3em] gap-[10em] pt-[10em] xs:px-[1em] md:px-[2em] px-[7.5em] border-l-8 border-simple1">
+        <div className="flex flex-col xs:gap-[3em] gap-[10em] pt-[10em] xs:pt-[5em] xs:px-[1em] md:px-[2em] px-[7.5em] border-l-8 xs:border-l-0 border-simple1">
           <div className="flex flex-col xs:gap-4 gap-8">
             <div className="flex xs:flex-col w-full xs:gap-[1em] gap-[2em]">
               <div className="flex-1 border border-cartborder rounded-xl sm:hidden xs:hidden">
@@ -241,7 +241,7 @@ const CartPage = () => {
 
                 <div onClick={handleProceedToCheckout}>
                   <div className="flex items-center justify-center">
-                    <div className="flex bg-tertiary gap-1 text-[1.2rem] xs:text-base items-center xs:w-[90%] w-[70%] md:w-[90%] justify-center rounded-xl p-1 hover:scale-110 xs:hover:scale-0 ">
+                    <div className="flex bg-tertiary gap-1 text-[1.2rem] xs:text-base items-center xs:w-[90%] w-[70%] md:w-[90%] justify-center rounded-xl p-1 hover:scale-110 xs:hover:scale-100 ">
                       <Button>Proceed To Checkout</Button>
                       <img src={CheckCircle} alt="" />
                     </div>
@@ -253,14 +253,14 @@ const CartPage = () => {
             <div className="flex xs:gap-3 gap-8">
               <Link to="/all-products">
                 <div
-                  className="flex justify-center xs:justify-start items-center font-secondary font-medium hover:scale-105 xs:hover:scale-0 xs:text-[0.9em] xs:w-[13em] py-1 w-[12em] bg-tertiary rounded-xl"
+                  className="flex justify-center xs:justify-start items-center font-secondary font-medium hover:scale-105 xs:hover:scale-100 xs:text-[0.9em] xs:w-[13em] py-1 w-[12em] bg-tertiary rounded-xl"
                 >
                   <Button>Continue Shopping</Button>
                 </div>
               </Link>
 
               <div
-                className="flex justify-center items-center font-secondary font-medium hover:scale-105 xs:text-[0.9em] py-1 w-[8em] bg-tertiary rounded-xl"
+                className="flex justify-center items-center font-secondary font-medium hover:scale-105 xs:hover:scale-100 xs:text-[0.9em] py-1 w-[8em] bg-tertiary rounded-xl"
                 onClick={handleClearCart}
               >
                 <Button>Clear Cart</Button>

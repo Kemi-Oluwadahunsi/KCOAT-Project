@@ -16,7 +16,7 @@ const AdminLogin = () => {
   const { ToastContainer, handleAdminLogin } = useContext(AdminContext);
 
   return (
-    <div className="pt-[7rem] flex items-center justify-center pb-[3em] border-l-8 border-simple1">
+    <div className="pt-[7rem] flex items-center justify-center pb-[3em] border-l-8 xs:border-l-0 border-simple1">
       <div className="flex xs:w-[90%] w-[70%] border border-border rounded-2xl">
         <div className="w-[50%] xs:hidden">
           <img src={AdminImage} alt="" className=" h-full object-cover" />

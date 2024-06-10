@@ -65,7 +65,7 @@ const ResetPassword = () => {
 
   // /reset-password/:token
   return (
-    <div className="flex py-[7rem] items-center justify-center w-[100%] border-l-8 border-simple1">
+    <div className="flex py-[7rem] items-center justify-center w-[100%] border-l-8 xs:border-l-0 border-simple1">
       <div className="flex  xs:px-[2rem] h-[] xs:w-[100%] md:w-[80%] w-[70%]">
         <div className="xs:hidden w-[50%] ">
           <img

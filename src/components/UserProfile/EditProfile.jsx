@@ -80,7 +80,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="pt-[8rem] xs:px-[2rem] md:px-[10rem] px-[20rem] py-[5em] font-oxygen border-l-8 border-simple1">
+    <div className="pt-[8rem] xs:px-[2rem] md:px-[10rem] px-[20rem] py-[5em] font-oxygen border-l-8 xs:border-l-0 border-simple1">
       <form action="" onSubmit={handleSubmit}>
         <div className="">
           <div className="border flex flex-col xs:gap-4 gap-8 items-center justify-center rounded-3xl py-[2em] xs:px-4 px-[5em] ">
