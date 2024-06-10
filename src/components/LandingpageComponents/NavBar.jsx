@@ -12,6 +12,7 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../hooks/CartContext";
+import "animate.css";
 
 //isLoggedIn, onLogout
 const Header = () => {
@@ -86,7 +87,7 @@ const Header = () => {
       </div>
 
       <div
-        className={` ${
+        className={`animate__animated animate__fadeInBottomRight ${
           showMobileContent ? "visible" : "hidden"
         } flex flex-col  text-primary h-[30rem] z-[999] bg-[#FD6905] w-3/4 pb-4 transition-all ease-in-out duration-100 rounded-bl-xl`}
       >
